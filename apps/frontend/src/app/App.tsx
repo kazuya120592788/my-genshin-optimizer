@@ -8,7 +8,6 @@ import { DatabaseContext } from '@genshin-optimizer/gi/db-ui'
 import '@genshin-optimizer/gi/i18n' // import to load translations
 import { theme } from '@genshin-optimizer/gi/theme'
 import {
-  GOAdWrapper,
   SillyContext,
   SnowContext,
   useSilly,
@@ -21,16 +20,10 @@ import {
   Skeleton,
   StyledEngineProvider,
   ThemeProvider,
-  useTheme,
 } from '@mui/material'
 import { Suspense, lazy, useCallback, useMemo, useState } from 'react'
 import { HashRouter, Route, Routes } from 'react-router-dom'
 import './App.scss'
-import {
-  AdBanner,
-  AdBlockContextWrapper,
-  AdRailSticky,
-} from '@genshin-optimizer/common/ad'
 import ErrorBoundary from './ErrorBoundary'
 import Footer from './Footer'
 import Header from './Header'
@@ -94,9 +87,7 @@ function App() {
             <DatabaseContext.Provider value={dbContextObj}>
               <ErrorBoundary>
                 <HashRouter basename="/">
-                  <AdBlockContextWrapper>
-                    <Content />
-                  </AdBlockContextWrapper>
+                  <Content />
                   <ScrollTop />
                 </HashRouter>
               </ErrorBoundary>
@@ -109,9 +100,7 @@ function App() {
 }
 function Content() {
   useTitle()
-  const theme = useTheme()
-  const { width, ref } = useRefSize(true)
-  const adWidth = width - (theme.breakpoints.values.xl + 10) //account for the "full width" of container
+  const { ref } = useRefSize(true)
   return (
     <Box
       display="flex"
@@ -123,8 +112,6 @@ function Content() {
       })}
     >
       <Header anchor="back-to-top-anchor" />
-      {/* Top banner ad */}
-      <AdBanner width={width} dataAdSlot="3477080462" Ad={GOAdWrapper} />
       {/* Main content */}
       <Box
         display="flex"
@@ -132,12 +119,6 @@ function Content() {
         justifyContent="center"
         alignItems="flex-start"
       >
-        {/* left Rail ad */}
-        <AdRailSticky
-          adWidth={adWidth}
-          dataAdSlot="2411728037"
-          Ad={GOAdWrapper}
-        />
         {/* Content */}
         <Container
           maxWidth="xl"
@@ -168,20 +149,11 @@ function Content() {
             </Routes>
           </Suspense>
         </Container>
-        {/* right rail ad */}
-        <AdRailSticky
-          adWidth={adWidth}
-          dataAdSlot="2411728037"
-          Ad={GOAdWrapper}
-          isRightRail
-        />
       </Box>
 
       {/* make sure footer is always at bottom */}
       <Box flexGrow={1} />
       <Snow />
-      {/* Footer Ad */}
-      <AdBanner width={width} dataAdSlot="2396256483" Ad={GOAdWrapper} />
       <Footer />
     </Box>
   )

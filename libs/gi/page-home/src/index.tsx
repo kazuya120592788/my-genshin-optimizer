@@ -1,10 +1,8 @@
 import {
-  AdResponsive,
   GO_LOOTBAR_LINK,
   go_lootbar_banner,
 } from '@genshin-optimizer/common/ad'
 import { CardThemed, NextImage } from '@genshin-optimizer/common/ui'
-import { GOAdWrapper } from '@genshin-optimizer/gi/ui'
 import DescriptionIcon from '@mui/icons-material/Description'
 import {
   Box,
@@ -46,7 +44,6 @@ export default function PageHome() {
         >
           <QuickLinksCard />
           <ResinCard />
-          <AdResponsive dataAdSlot="6687816711" Ad={GOAdWrapper} />
         </Grid>
         <Grid
           item
