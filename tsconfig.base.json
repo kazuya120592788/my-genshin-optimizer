@@ -99,6 +99,7 @@
       ],
       "@genshin-optimizer/gi/page-doc": ["libs/gi/page-doc/src/index.tsx"],
       "@genshin-optimizer/gi/page-home": ["libs/gi/page-home/src/index.tsx"],
+      "@genshin-optimizer/gi/page-my": ["libs/gi/page-my/src/index.tsx"],
       "@genshin-optimizer/gi/page-scanner": [
         "libs/gi/page-scanner/src/index.tsx"
       ],
