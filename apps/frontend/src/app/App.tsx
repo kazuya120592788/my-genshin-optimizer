@@ -48,6 +48,8 @@ const PageCharacters = lazy(
 const PageTeams = lazy(() => import('@genshin-optimizer/gi/page-teams'))
 const PageTeam = lazy(() => import('@genshin-optimizer/gi/page-team'))
 
+const PageMy = lazy(() => import('@genshin-optimizer/gi/page-my'))
+
 function App() {
   const dbIndex = parseInt(localStorage.getItem('dbIndex') || '1')
   const [databases, setDatabases] = useState(() => {
@@ -153,6 +155,7 @@ function Content() {
               <Route path="/setting" element={<PageSettings />} />
               <Route path="/doc/*" element={<PageDocumentation />} />
               <Route path="/scanner" element={<PageScanner />} />
+              <Route path="/my" element={<PageMy />} />
             </Routes>
           </Suspense>
         </Container>

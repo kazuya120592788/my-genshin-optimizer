@@ -94,6 +94,12 @@ const doc: ITab = {
   to: '/doc',
   value: 'doc',
 }
+const my: ITab = {
+  i18Key: 'tabs.my',
+  icon: <FlowerIcon />,
+  to: '/my',
+  value: 'my',
+}
 const setting: ITab = {
   i18Key: 'tabs.setting',
   icon: <SettingsIcon />,
@@ -141,6 +147,7 @@ const maincontent = [
   tools,
   scanner,
   doc,
+  my,
   setting,
 ] as const
 function HeaderContent({ anchor }: { anchor: string }) {
@@ -260,6 +267,7 @@ const mobileContent = [
   tools,
   scanner,
   doc,
+  my,
   setting,
 ] as const
 function MobileHeader({
