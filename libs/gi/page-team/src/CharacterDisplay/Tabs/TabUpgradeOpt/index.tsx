@@ -26,7 +26,6 @@ import {
 } from '@genshin-optimizer/gi/db-ui'
 import type { dataContextObj } from '@genshin-optimizer/gi/ui'
 import {
-  AdResponsive,
   AddArtInfo,
   ArtifactEditor,
   ArtifactSetMultiAutocomplete,
@@ -519,7 +518,6 @@ export default function TabUpopt() {
                     onClick={() => setArtifactIdToEdit('new')}
                   />
                   <StatFilterCard disabled={false} />
-                  <AdResponsive bgt="light" dataAdSlot="3955015620" />
                 </Grid>
               </Grid>
             </Box>

@@ -2,7 +2,6 @@ import { CardThemed, ModalWrapper } from '@genshin-optimizer/common/ui'
 import { TeamCharacterContext, useDatabase } from '@genshin-optimizer/gi/db-ui'
 import { getCharStat } from '@genshin-optimizer/gi/stats'
 import {
-  AdResponsive,
   BuildInfoAlert,
   EquippedBuildInfoAlert,
   TCBuildInfoAlert,
@@ -81,9 +80,6 @@ function BuildManagementContent({ onClose }: { onClose: () => void }) {
             active={loadoutDatum?.buildType === 'equipped'}
             onChangeBuild={onChangeBuild}
           />
-        </Grid>
-        <Grid item xs={1}>
-          <AdResponsive dataAdSlot="5385429639" bgt="light" />
         </Grid>
       </Grid>
 

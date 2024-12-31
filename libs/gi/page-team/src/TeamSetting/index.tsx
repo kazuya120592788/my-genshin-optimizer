@@ -4,7 +4,6 @@ import type { LoadoutDatum } from '@genshin-optimizer/gi/db'
 import { useDBMeta, useDatabase } from '@genshin-optimizer/gi/db-ui'
 import type { TeamData, dataContextObj } from '@genshin-optimizer/gi/ui'
 import {
-  AdResponsive,
   CharIconSide,
   CharacterMultiSelectionModal,
   CharacterName,
@@ -241,9 +240,6 @@ function TeamEditor({
             team={team}
             dataContextValue={dataContextValue}
           />
-        </Grid>
-        <Grid item xs={1}>
-          <AdResponsive bgt="light" dataAdSlot="5102492054" maxHeight={400} />
         </Grid>
       </Grid>
       <Alert severity="info">

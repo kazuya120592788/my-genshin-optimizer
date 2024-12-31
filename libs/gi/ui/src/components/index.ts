@@ -1,4 +1,3 @@
-export * from './ad'
 export * from './AddArtInfo'
 export * from './AdditiveReactionModeText'
 export * from './AddTeamInfo'
