@@ -11,5 +11,16 @@
   "typescript.preferences.importModuleSpecifier": "project-relative",
   "editor.defaultFormatter": "biomejs.biome",
   "files.eol": "\n",
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "i18n-ally.localesPaths": [
+    "libs/gi/i18n",
+    "libs/sr/i18n",
+    "libs/common/localization/assets/locales",
+    "libs/gi/dm-localization/assets/locales",
+    "libs/gi/localization/assets/locales",
+    "libs/gi/silly-wisher-names/assets/locales",
+    "libs/sr/dm-localization/assets/locales",
+    "libs/sr/localization/assets/locales",
+    "libs/common/localization/Translated",
+  ]
 }
