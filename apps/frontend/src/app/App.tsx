@@ -3,7 +3,6 @@ import {
   SandboxStorage,
 } from '@genshin-optimizer/common/database'
 import {
-  AdBlockContextWrapper,
   ScrollTop,
   useRefSize,
   useTitle,
@@ -94,9 +93,7 @@ function App() {
             <DatabaseContext.Provider value={dbContextObj}>
               <ErrorBoundary>
                 <HashRouter basename="/">
-                  <AdBlockContextWrapper>
-                    <Content />
-                  </AdBlockContextWrapper>
+                  <Content />
                   <ScrollTop />
                 </HashRouter>
               </ErrorBoundary>
