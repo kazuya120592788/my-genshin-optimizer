@@ -34,7 +34,7 @@ jobs:
       - name: Commit external deploy
         run: |
           git add .
-          git write-tree >> $TREE_HASH
-          echo '' | git commit-tree $TREE_HASH -p deploy -p master >> $COMMIT_HASH
+          TREE_HASH = $(git write-tree)
+          COMMIT_HASH = $(echo '' | git commit-tree $TREE_HASH -p deploy -p master)
           git update-ref refs/heads/deploy $COMMIT_HASH
           git push origin deploy
