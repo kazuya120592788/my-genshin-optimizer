@@ -1,0 +1,40 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    name: 'build'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          submodules: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
+      - name: Yarn install
+        run: |
+          yarn install --immutable --immutable-cache
+      - name: Build frontend
+        run: yarn run nx run frontend:build:production
+      - name: Init external deploy
+        run: |
+          git init ./dist/frontend
+          cd ./dist/frontend
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config pull.rebase false
+      - name: Commit external deploy
+        run: |
+          git add .
+          git write-tree >> $TREE_HASH
+          echo '' | git commit-tree $TREE_HASH -p deploy -p master >> $COMMIT_HASH
+          git update-ref refs/heads/deploy $COMMIT_HASH
+          git push origin deploy
