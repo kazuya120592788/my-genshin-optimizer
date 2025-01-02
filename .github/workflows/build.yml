@@ -26,16 +26,16 @@ jobs:
         run: yarn run nx run frontend:build:production
       - name: Init external deploy
         run: |
-          git init ./dist/frontend
-          cd ./dist/frontend
+          git init
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config pull.rebase false
+        working-directory: dist/frontend
       - name: Commit external deploy
         run: |
-          cd ./dist/frontend
           git add .
           TREE_HASH = $(git write-tree)
           COMMIT_HASH = $(echo '' | git commit-tree $TREE_HASH -p deploy -p master)
           git update-ref refs/heads/deploy $COMMIT_HASH
           git push origin deploy
+        working-directory: dist/frontend
