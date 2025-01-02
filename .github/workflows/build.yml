@@ -35,7 +35,7 @@ jobs:
         run: |
           cd dist/frontend
           git add .
-          TREE_HASH = $(git write-tree)
-          COMMIT_HASH = $(echo '' | git commit-tree $TREE_HASH -p deploy -p master)
+          TREE_HASH=$(git write-tree)
+          COMMIT_HASH=$(echo '' | git commit-tree $TREE_HASH -p deploy -p master)
           git update-ref refs/heads/deploy $COMMIT_HASH
           git push origin deploy
