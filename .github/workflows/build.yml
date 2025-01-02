@@ -33,6 +33,7 @@ jobs:
           git config pull.rebase false
       - name: Commit external deploy
         run: |
+          cd ./dist/frontend
           git add .
           TREE_HASH = $(git write-tree)
           COMMIT_HASH = $(echo '' | git commit-tree $TREE_HASH -p deploy -p master)
