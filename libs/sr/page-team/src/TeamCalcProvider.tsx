@@ -1,6 +1,7 @@
 import { notEmpty } from '@genshin-optimizer/common/util'
+import type { Preset } from '@genshin-optimizer/game-opt/engine'
+import { CalcContext } from '@genshin-optimizer/game-opt/formula-ui'
 import { constant } from '@genshin-optimizer/pando/engine'
-import { CalcContext } from '@genshin-optimizer/pando/ui-sheet'
 import type {
   RelicMainStatKey,
   RelicSetKey,
@@ -19,17 +20,12 @@ import {
   useRelics,
   useTeam,
 } from '@genshin-optimizer/sr/db-ui'
-import type {
-  Member,
-  Preset,
-  TagMapNodeEntries,
-} from '@genshin-optimizer/sr/formula'
+import type { Member, TagMapNodeEntries } from '@genshin-optimizer/sr/formula'
 import {
   charTagMapNodeEntries,
   conditionalEntries,
   enemyDebuff,
   lightConeTagMapNodeEntries,
-  members,
   ownBuff,
   relicTagMapNodeEntries,
   srCalculatorWithEntries,
@@ -61,9 +57,7 @@ export function TeamCalcProvider({
         // Specify members present in the team
         ...teamData(
           team.teamMetadata
-            .map((meta, index) =>
-              meta === undefined ? undefined : members[index]
-            )
+            .map((meta) => meta?.characterKey)
             .filter((m): m is Member => !!m)
         ),
         // Add actual member data

@@ -134,9 +134,19 @@ async function start({
         type: 'module',
       })
   )
-  // Wait for all workers to finish optimizing
+
   let results: BuildResult[] = []
   let numBuildsComputed = 0
+
+  // post initial progress
+  postMessage({
+    resultType: 'progress',
+    progress: {
+      numBuildsKept: 0,
+      numBuildsComputed: 0,
+    },
+  })
+  // Wait for all workers to finish optimizing
   await Promise.all(
     workers.map((worker, index) => {
       return new Promise<void>((res, rej) => {
@@ -188,15 +198,10 @@ async function start({
     })
   )
 
-  // Trigger spinner on UI
-  if (results.length > MAX_BUILDS) {
-    results.sort((a, b) => b.value - a.value)
-    results = results.slice(0, MAX_BUILDS)
-  }
   // Send back results, which can take a few seconds
   postMessage({
     resultType: 'done',
-    buildResults: results,
+    buildResults: results.sort((a, b) => b.value - a.value).slice(0, 10), // TODO: take numBuilds from opt UI
   })
 }
 

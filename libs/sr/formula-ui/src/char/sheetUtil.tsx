@@ -6,13 +6,14 @@ import {
 import type {
   Document,
   UISheetElement,
-} from '@genshin-optimizer/pando/ui-sheet'
+} from '@genshin-optimizer/game-opt/sheet-ui'
 import { characterAsset } from '@genshin-optimizer/sr/assets'
 import {
   characterGenderedKeyToCharacterKey,
   type CharacterGenderedKey,
   type StatKey,
 } from '@genshin-optimizer/sr/consts'
+import { own } from '@genshin-optimizer/sr/formula'
 import { Translate } from '@genshin-optimizer/sr/i18n'
 import {
   getCharInterpolateObject,
@@ -48,13 +49,15 @@ export function talentSheet(
     documents: [
       {
         type: 'text',
-        text: () =>
+        text: (calc) =>
           chg(
             `abilities.${talentKey}.0.fullDesc`,
             getCharInterpolateObject(
               characterGenderedKeyToCharacterKey(ckey),
               talentKey,
-              0
+              talentKey === 'technique'
+                ? 1
+                : calc.compute(own.char[talentKey]).val
             )
           ),
       },
