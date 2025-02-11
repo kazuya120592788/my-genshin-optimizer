@@ -72,6 +72,9 @@ export default function UpgradeOptChartCard(props: Props) {
             artifactId={id}
             onEdit={() => props.setArtifactIdToEdit(id)}
             extraButtons={<EquipButton newArtId={id} disabled={isEquipped} />}
+            onLockToggle={() =>
+              database.arts.set(id, ({ lock }) => ({ lock: !lock }))
+            }
           />
         </Grid>
         <Grid item xs={12} sm={7} md={8} lg={9} xl={9}>
