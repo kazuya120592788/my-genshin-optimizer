@@ -5,16 +5,16 @@ import {
   range,
   shallowCompareObj,
 } from '@genshin-optimizer/common/util'
-import type { IConditionalData } from '@genshin-optimizer/game-opt/formula'
+import { correctConditionalValue } from '@genshin-optimizer/game-opt/engine'
 import type { CharacterKey } from '@genshin-optimizer/sr/consts'
 import {
   allCharacterKeys,
   allRelicSlotKeys,
 } from '@genshin-optimizer/sr/consts'
+import type { Dst, Src } from '@genshin-optimizer/sr/formula'
 import {
   getConditional,
   isMember,
-  type Member,
   type Sheet,
   type Tag,
 } from '@genshin-optimizer/sr/formula'
@@ -53,8 +53,8 @@ export interface Team {
   frames: Array<Frame>
   conditionals: Array<{
     sheet: Sheet
-    src: Member
-    dst: Member
+    src: Src
+    dst: Dst
     condKey: string
     condValues: number[] // should be the same length as `frames`
   }>
@@ -200,7 +200,7 @@ export class TeamDataManager extends DataManager<string, 'teams', Team, Team> {
       const hashList: string[] = [] // a hash to ensure sheet:condKey:src:dst is unique
       conditionals = conditionals.filter(
         ({ sheet, condKey, src, dst, condValues }) => {
-          if (!isMember(src) || !isMember(dst)) return false
+          if (!isMember(src) || !(dst === null || isMember(dst))) return false
           const cond = getConditional(sheet, condKey)
           if (!cond) return false
 
@@ -415,8 +415,8 @@ export class TeamDataManager extends DataManager<string, 'teams', Team, Team> {
     teamId: string,
     sheet: Sheet,
     condKey: string,
-    src: Member,
-    dst: Member,
+    src: Src,
+    dst: Dst,
     condValue: number,
     frameIndex: number
   ) {
@@ -522,25 +522,4 @@ export class TeamDataManager extends DataManager<string, 'teams', Team, Team> {
       }
     })
   }
-}
-
-function correctConditionalValue(conditional: IConditionalData, value: number) {
-  if (conditional.type === 'bool') {
-    return +!!value
-  } else if (conditional.type === 'num') {
-    if (conditional.int_only && !Number.isInteger(value)) {
-      value = Math.round(value)
-    }
-    if (conditional.min !== undefined && value < conditional.min)
-      value = conditional.min
-    if (conditional.max !== undefined && value > conditional.max)
-      value = conditional.max
-  } else if (conditional.type === 'list') {
-    if (!Number.isInteger(value)) {
-      value = Math.round(value)
-    }
-    if (value < 0) value = 0
-    if (value > conditional.list.length - 1) value = conditional.list.length - 1
-  }
-  return value
 }

@@ -26,11 +26,9 @@ import {
   useTeam,
 } from '@genshin-optimizer/sr/db-ui'
 import {
-  filterDebug,
   getConditional,
   isMember,
   isSheet,
-  type Sheet,
   type Tag,
 } from '@genshin-optimizer/sr/formula'
 import { CharacterName } from '@genshin-optimizer/sr/ui'
@@ -148,7 +146,10 @@ function Page({ teamId }: { teamId: string }) {
     const charDisplay = objKeyMap(charList, (ck) => (
       <CharacterName genderedKey={characterKeyToGenderedKey(ck)} />
     ))
-    return { srcDisplay: charDisplay, dstDisplay: charDisplay }
+    return {
+      srcDisplay: charDisplay,
+      dstDisplay: charDisplay,
+    }
   }, [team.teamMetadata, characterKey])
   const conditionals = useMemo(
     () =>
@@ -166,11 +167,12 @@ function Page({ teamId }: { teamId: string }) {
       sheet: string,
       condKey: string,
       src: string,
-      dst: string,
+      dst: string | null,
       condValue: number
     ) => {
-      if (!isSheet(sheet) || !isMember(src) || !isMember(dst)) return
-      const cond = getConditional(sheet as Sheet, condKey)
+      if (!isSheet(sheet) || !isMember(src) || !(dst === null || isMember(dst)))
+        return
+      const cond = getConditional(sheet, condKey)
       if (!cond) return
 
       database.teams.setConditional(
@@ -213,7 +215,7 @@ function Page({ teamId }: { teamId: string }) {
               <ConditionalValuesContext.Provider value={conditionals}>
                 <SetConditionalContext.Provider value={setConditional}>
                   <DebugReadContext.Provider value={debugObj}>
-                    <DebugReadModal filterFunc={filterDebug} />
+                    <DebugReadModal />
                     <Box
                       sx={{
                         display: 'flex',

@@ -5,11 +5,10 @@ import type {
   DiscMainStatKey,
   DiscSetKey,
   DiscSubStatKey,
-  ModificationKey,
+  MilestoneKey,
   PhaseKey,
   WengineKey,
 } from '@genshin-optimizer/zzz/consts'
-import {} from '@genshin-optimizer/zzz/db'
 import type { Member, TagMapNodeEntries } from './data/util'
 import {
   convert,
@@ -82,10 +81,12 @@ export function charTagMapNodeEntries(data: TempICharacter): TagMapNodeEntries {
 export function wengineTagMapNodeEntries(
   key: WengineKey,
   level: number,
-  modification: ModificationKey,
+  modification: MilestoneKey,
   phase: PhaseKey
 ): TagMapNodeEntries {
   return [
+    // Opt-in for wengine buffs, instead of enabling it by default to reduce `read` traffic
+    reader.sheet('agg').reread(reader.sheet('wengine')),
     // Mark wengine cones as used
     own.common.count.sheet(key).add(1),
     own.wengine.lvl.add(level),

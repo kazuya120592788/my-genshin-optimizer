@@ -1,6 +1,7 @@
 import {
   cmpEq,
   cmpGE,
+  max,
   min,
   prod,
   subscript,
@@ -12,7 +13,6 @@ import {
   allBoolConditionals,
   customBreakDmg,
   enemy,
-  enemyDebuff,
   notOwnBuff,
   own,
   ownBuff,
@@ -55,7 +55,7 @@ const sheet = register(
   // Buffs
   registerBuff(
     'skillOvertone_dmg_',
-    teamBuff.premod.dmg_.add(
+    teamBuff.premod.common_dmg_.add(
       skillOvertone.ifOn(subscript(char.skill, dm.skill.dmg_))
     )
   ),
@@ -81,27 +81,32 @@ const sheet = register(
   ),
   registerBuffFormula(
     'ba3_dmg_',
-    teamBuff.premod.dmg_.add(
+    teamBuff.premod.common_dmg_.add(
       cmpEq(
         char.bonusAbility3,
         1,
         skillOvertone.ifOn(
           min(
-            // (brEff_ - breakThreshold) / perBreak * dmgPer
-            prod(
-              sum(own.final.brEffect_, -dm.b3.breakThreshold),
-              1 / dm.b3.perBreak,
-              dm.b3.dmg_per
+            max(
+              // (brEff_ - breakThreshold) / perBreak * dmgPer
+              prod(
+                sum(own.final.brEffect_, -dm.b3.breakThreshold),
+                1 / dm.b3.perBreak,
+                dm.b3.dmg_per
+              ),
+              0
             ),
             dm.b3.max_dmg_
           )
         )
       )
-    )
+    ),
+    undefined,
+    true
   ),
   registerBuff(
     'e1_defIgn_',
-    enemyDebuff.common.defIgn_.add(cmpGE(char.eidolon, 1, dm.e1.defIgn_))
+    teamBuff.premod.defIgn_.add(cmpGE(char.eidolon, 1, dm.e1.defIgn_))
   ),
   registerBuff(
     'e2_atk_',

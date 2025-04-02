@@ -7,11 +7,19 @@ import {
   setReader,
 } from '@genshin-optimizer/game-opt/engine'
 import type { AnyNode } from '@genshin-optimizer/pando/engine'
-import type { DamageType, Dst, Src, TagMapNodeEntry } from '.'
+import type {
+  DamageType,
+  Dst,
+  ElementalType,
+  Path,
+  Src,
+  TagMapNodeEntry,
+} from '.'
 import {
   damageTypes,
   elementalTypes,
   members,
+  paths,
   sheets,
   type Sheet,
 } from './listing'
@@ -26,10 +34,37 @@ export const fixedTags = {
   elementalType: elementalTypes,
   damageType1: damageTypes,
   damageType2: damageTypes,
+
+  // Count
+  path: paths,
 }
-export type Tag = BaseTag<Src, Dst, Sheet>
+export type Tag = BaseTag<Src, Dst, Sheet> & {
+  elementalType?: ElementalType
+  damageType1?: DamageType
+  damageType2?: DamageType
+
+  // Count
+  path?: Path
+}
 
 export class Read extends BaseRead<Tag, Src, Dst, Sheet> {
+  override add(
+    value: number | string | AnyNode,
+    force = false
+  ): TagMapNodeEntry {
+    if (
+      !force &&
+      this.tag.q === 'dmg_' &&
+      !this.tag.elementalType &&
+      !this.tag.damageType1 &&
+      !this.tag.damageType2
+    ) {
+      throw new Error(
+        'Tried to add to `dmg_` without optional modifier, use `common_dmg_` instead'
+      )
+    }
+    return super.add(value)
+  }
   addWithDmgType(
     dmgType: DamageType,
     val: number | string | AnyNode
@@ -44,7 +79,7 @@ export class Read extends BaseRead<Tag, Src, Dst, Sheet> {
   // Optional Modifiers
 
   // Elemental Type
-  get physical() {
+  get physical(): Read {
     return super.with('elementalType', 'physical')
   }
   get quantum(): Read {
@@ -109,6 +144,12 @@ export class Read extends BaseRead<Tag, Src, Dst, Sheet> {
       super.with('damageType2', 'elemental'),
     ]
   }
+
+  // For `count` usage, use lighter footprint so it doesn't pollute autocomplete
+  // Path
+  withPath(path: Path): Read {
+    return super.with('path', path)
+  }
 }
 
 // Need to instantiate with sr-specific reader
@@ -151,7 +192,7 @@ export function tagStr(tag: Tag, ex?: any): string {
   }
   required(name && `#${name}`, 'name')
   required(preset, 'preset')
-  required(src, 'src')
+  required(src && `[${src}]`, 'src')
   required(dst && `(${dst})`, 'dst')
   required(sheet, 'sheet')
   required(et, 'et')

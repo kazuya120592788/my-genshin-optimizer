@@ -1,6 +1,8 @@
 import {
   allCharacterKeys,
+  allElementalTypeKeys,
   allLightConeKeys,
+  allPathKeys,
   allRelicSetKeys,
 } from '@genshin-optimizer/sr/consts'
 
@@ -21,7 +23,9 @@ const stats = [
   'enerRegen_',
   'heal_',
   'dmg_',
+  'common_dmg_',
   'resPen_',
+  'defIgn_',
   'weakness_',
   'brEfficiency_',
 ] as const
@@ -45,15 +49,7 @@ export const statBoosts = [
   'statBoost10',
 ] as const
 
-export const elementalTypes = [
-  'physical',
-  'quantum',
-  'lightning',
-  'ice',
-  'wind',
-  'fire',
-  'imaginary',
-] as const
+export const elementalTypes = [...allElementalTypeKeys] as const
 
 export const damageTypes = [
   'basic',
@@ -81,6 +77,8 @@ export const sheets = [
   'custom',
 ] as const
 
+export const paths = [...allPathKeys] as const
+
 export const members = [...allCharacterKeys] as const
 export type Stat = (typeof stats)[number]
 export type BonusAbility = (typeof bonusAbilities)[number]
@@ -89,8 +87,9 @@ export type ElementalType = (typeof elementalTypes)[number]
 export type DamageType = (typeof damageTypes)[number]
 export type Sheet = (typeof sheets)[number]
 export type Member = (typeof members)[number]
-export type Src = Member | null
+export type Src = Member
 export type Dst = Member | null
+export type Path = (typeof paths)[number]
 
 export function isMember(x: string): x is Member {
   return members.includes(x as Member)

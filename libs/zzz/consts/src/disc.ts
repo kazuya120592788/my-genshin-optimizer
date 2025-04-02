@@ -28,6 +28,10 @@ export const allDiscSetKeys = [
 ] as const
 export type DiscSetKey = (typeof allDiscSetKeys)[number]
 
+export function isDiscSetKey(key: unknown): key is DiscSetKey {
+  return typeof key === 'string' && allDiscSetKeys.includes(key as DiscSetKey)
+}
+
 export const allDiscSubStatKeys = [
   'hp',
   'atk',
@@ -152,9 +156,12 @@ const mainData = {
 export function getDiscMainStatVal(
   rarity: DiscRarityKey,
   mainStatKey: DiscMainStatKey,
-  _level: number
+  level: number
 ): number {
-  return (mainData as any)[mainStatKey][rarity] ?? 0
+  const maxVal = (mainData as any)[mainStatKey][rarity]
+  if (!maxVal) return 0
+  // the lvl0 value is always 0.25 of the max value, with linear increments per level
+  return maxVal * (0.25 + (0.75 * level) / discMaxLevel[rarity])
 }
 
 /**
@@ -202,12 +209,6 @@ export const discSetNames: Record<DiscSetKey, string> = {
   AstralVoice: 'Astral Voice',
 }
 
-export const discRarityColor = {
-  S: 'warning',
-  A: 'roll6',
-  B: 'roll5',
-} as const
-
 export const allDiscCondKeys = {
   AstralVoice: {
     key: 'AstralVoice',
@@ -251,6 +252,12 @@ export const allDiscCondKeys = {
     min: 1,
     max: 1,
   },
+  PolarMetalBasicOrDash: {
+    key: 'PolarMetalBasicOrDash',
+    text: 'Optimizing for Basic Attack or Dash Attack',
+    min: 1,
+    max: 1,
+  },
   PolarMetal: {
     key: 'PolarMetal',
     text: 'Whenever a squad member Freezes or Shatters an enemy',
@@ -260,6 +267,12 @@ export const allDiscCondKeys = {
   ProtoPunk: {
     key: 'ProtoPunk',
     text: 'When any squad member triggers a Defensive Assist or Evasive Assist',
+    min: 1,
+    max: 1,
+  },
+  PufferElectroUltimate: {
+    key: 'PufferElectroUltimate',
+    text: 'Optimizing for Ultimate Damage',
     min: 1,
     max: 1,
   },
@@ -320,7 +333,15 @@ export const disc4PeffectSheets: Partial<
     condMeta: allDiscCondKeys.BranchBladeSong,
     getStats: (conds, stats) => {
       const ret: Record<string, number> = {}
-      if (stats['anomMas'] >= 115) ret['crit_dmg_'] = 0.3
+      // Have to calculate the "final" here because there are no stages for calc
+      if (
+        ((stats['anomMas_base'] ?? 0) * (1 + (stats['anomMas_'] ?? 0)) +
+          (stats['anomMas'] ?? 0)) *
+          (1 + (stats['cond_anomMas_'] ?? 0)) +
+          (stats['cond_anomMas'] ?? 0) >=
+        115
+      )
+        ret['crit_dmg_'] = 0.3
       if (conds['BranchBladeSong']) ret['crit_'] = 0.12
       return ret
     },
@@ -376,8 +397,12 @@ export const disc4PeffectSheets: Partial<
     },
   },
   PolarMetal: {
-    condMeta: allDiscCondKeys.PolarMetal,
+    condMeta: [
+      allDiscCondKeys.PolarMetalBasicOrDash,
+      allDiscCondKeys.PolarMetal,
+    ],
     getStats: (conds) => {
+      if (!conds['PolarMetalBasicOrDash']) return {}
       const ret = { dmg_: 0.2 } // TODO: Increase the DMG of Basic Attack and Dash Attack by 20%
       if (conds['PolarMetal']) {
         objMultiplication(ret, 2)
@@ -393,9 +418,13 @@ export const disc4PeffectSheets: Partial<
     },
   },
   PufferElectro: {
-    condMeta: allDiscCondKeys.PufferElectro,
+    condMeta: [
+      allDiscCondKeys.PufferElectroUltimate,
+      allDiscCondKeys.PufferElectro,
+    ],
     getStats: (conds) => {
-      const ret: Record<string, number> = { dmg_: 0.2 } //Ultimate DMG increases by 20%
+      const ret: Record<string, number> = {}
+      if (conds['PufferElectroUltimate']) ret['dmg_'] = 0.2 //Ultimate DMG increases by 20%
       if (conds['PufferElectro']) ret['cond_atk_'] = 0.15 // Launching an Ultimate increases the equipper's ATK by 15%
       return ret
     },

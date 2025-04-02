@@ -3,6 +3,8 @@
   "rarity": "A",
   "attribute": "electric",
   "specialty": "attack",
+  "faction": "BelebogHeavyIndustries",
+  "fullname": "Anton Ivanov",
   "stats": {
     "atk_base": 114,
     "atk_growth": 6.7737,

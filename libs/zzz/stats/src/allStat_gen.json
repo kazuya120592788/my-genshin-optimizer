@@ -119,6 +119,8 @@
       "rarity": "A",
       "attribute": "electric",
       "specialty": "stun",
+      "faction": "CunningHares",
+      "fullname": "Anby Demara",
       "stats": {
         "atk_base": 95,
         "atk_growth": 5.423,
@@ -1201,6 +1203,8 @@
       "rarity": "S",
       "attribute": "physical",
       "specialty": "attack",
+      "faction": "CunningHares",
+      "fullname": "Nekomiya Mana",
       "stats": {
         "atk_base": 131,
         "atk_growth": 7.9762,
@@ -2315,6 +2319,8 @@
       "rarity": "A",
       "attribute": "ether",
       "specialty": "support",
+      "faction": "CunningHares",
+      "fullname": "Nicole Demara",
       "stats": {
         "atk_base": 93,
         "atk_growth": 5.3249,
@@ -4130,6 +4136,8 @@
       "rarity": "S",
       "attribute": "fire",
       "specialty": "attack",
+      "faction": "ObolSquad",
+      "fullname": "Soldier 11",
       "stats": {
         "atk_base": 128,
         "atk_growth": 7.7554,
@@ -5385,6 +5393,8 @@
       "rarity": "A",
       "attribute": "physical",
       "specialty": "attack",
+      "faction": "VictoriaHousekeepingCo",
+      "fullname": "Corin Wickes",
       "stats": {
         "atk_base": 116,
         "atk_growth": 6.9346,
@@ -6682,6 +6692,8 @@
       "rarity": "S",
       "attribute": "physical",
       "specialty": "defense",
+      "faction": "SonsOfCalydon",
+      "fullname": "Caesar King",
       "stats": {
         "atk_base": 101,
         "atk_growth": 5.8761,
@@ -8137,6 +8149,8 @@
       "rarity": "A",
       "attribute": "physical",
       "specialty": "attack",
+      "faction": "CunningHares",
+      "fullname": "Billy Kid",
       "stats": {
         "atk_base": 113,
         "atk_growth": 6.7335,
@@ -9303,6 +9317,8 @@
       "rarity": "S",
       "attribute": "ice",
       "specialty": "anomaly",
+      "faction": "HollowSpecialOoperationsSection6",
+      "fullname": "Hoshimi Miyabi",
       "stats": {
         "atk_base": 127,
         "atk_growth": 7.6728,
@@ -10684,6 +10700,8 @@
       "rarity": "S",
       "attribute": "fire",
       "specialty": "stun",
+      "faction": "BelebogHeavyIndustries",
+      "fullname": "Koleda Belobog",
       "stats": {
         "atk_base": 106,
         "atk_growth": 6.2007,
@@ -12059,6 +12077,8 @@
       "rarity": "A",
       "attribute": "electric",
       "specialty": "attack",
+      "faction": "BelebogHeavyIndustries",
+      "fullname": "Anton Ivanov",
       "stats": {
         "atk_base": 114,
         "atk_growth": 6.7737,
@@ -13394,6 +13414,8 @@
       "rarity": "A",
       "attribute": "fire",
       "specialty": "defense",
+      "faction": "BelebogHeavyIndustries",
+      "fullname": "Ben Bigger",
       "stats": {
         "atk_base": 94,
         "atk_growth": 5.3574,
@@ -14538,6 +14560,8 @@
       "rarity": "A",
       "attribute": "ice",
       "specialty": "support",
+      "faction": "HollowSpecialOoperationsSection6",
+      "fullname": "Soukaku",
       "stats": {
         "atk_base": 96,
         "atk_growth": 5.4887,
@@ -15979,6 +16003,8 @@
       "rarity": "S",
       "attribute": "ice",
       "specialty": "stun",
+      "faction": "VictoriaHousekeepingCo",
+      "fullname": "Von Lycaon",
       "stats": {
         "atk_base": 105,
         "atk_growth": 6.1287,
@@ -17521,6 +17547,8 @@
       "rarity": "A",
       "attribute": "fire",
       "specialty": "support",
+      "faction": "SonsOfCalydon",
+      "fullname": "Luciana de Montefio",
       "stats": {
         "atk_base": 95,
         "atk_growth": 5.423,
@@ -18883,6 +18911,8 @@
       "rarity": "S",
       "attribute": "fire",
       "specialty": "stun",
+      "faction": "SonsOfCalydon",
+      "fullname": "Lighter",
       "stats": {
         "atk_base": 109,
         "atk_growth": 6.3891,
@@ -20485,6 +20515,8 @@
       "rarity": "S",
       "attribute": "fire",
       "specialty": "anomaly",
+      "faction": "SonsOfCalydon",
+      "fullname": "Burnice White",
       "stats": {
         "atk_base": 124,
         "atk_growth": 7.4992,
@@ -21839,6 +21871,8 @@
       "rarity": "S",
       "attribute": "electric",
       "specialty": "anomaly",
+      "faction": "BelebogHeavyIndustries",
+      "fullname": "Grace Howard",
       "stats": {
         "atk_base": 119,
         "atk_growth": 7.1181,
@@ -22823,6 +22857,8 @@
       "rarity": "S",
       "attribute": "ice",
       "specialty": "attack",
+      "faction": "VictoriaHousekeepingCo",
+      "fullname": "Ellen Joe",
       "stats": {
         "atk_base": 135,
         "atk_growth": 8.2578,
@@ -24231,6 +24267,8 @@
       "rarity": "S",
       "attribute": "electric",
       "specialty": "attack",
+      "faction": "HollowSpecialOoperationsSection6",
+      "fullname": "Asaba Harumasa",
       "stats": {
         "atk_base": 132,
         "atk_growth": 8.027,
@@ -25616,6 +25654,8 @@
       "rarity": "S",
       "attribute": "electric",
       "specialty": "support",
+      "faction": "VictoriaHousekeepingCo",
+      "fullname": "Alexandrina Sebastiane",
       "stats": {
         "atk_base": 103,
         "atk_growth": 6.0201,
@@ -26615,6 +26655,8 @@
       "rarity": "S",
       "attribute": "electric",
       "specialty": "anomaly",
+      "faction": "HollowSpecialOoperationsSection6",
+      "fullname": "Tsukishiro Yanagi",
       "stats": {
         "atk_base": 126,
         "atk_growth": 7.586,
@@ -27965,6 +28007,8 @@
       "rarity": "S",
       "attribute": "ether",
       "specialty": "attack",
+      "faction": "CriminalInvestigationSpecialResponseTeam",
+      "fullname": "Zhu Yuan",
       "stats": {
         "atk_base": 132,
         "atk_growth": 8.0729,
@@ -29331,6 +29375,8 @@
       "rarity": "S",
       "attribute": "electric",
       "specialty": "stun",
+      "faction": "CriminalInvestigationSpecialResponseTeam",
+      "fullname": "Qingyi",
       "stats": {
         "atk_base": 109,
         "atk_growth": 6.4272,
@@ -30661,6 +30707,8 @@
       "rarity": "S",
       "attribute": "physical",
       "specialty": "anomaly",
+      "faction": "CriminalInvestigationSpecialResponseTeam",
+      "fullname": "Jane Doe",
       "stats": {
         "atk_base": 127,
         "atk_growth": 7.6728,
@@ -32111,6 +32159,8 @@
       "rarity": "A",
       "attribute": "electric",
       "specialty": "defense",
+      "faction": "CriminalInvestigationSpecialResponseTeam",
+      "fullname": "Seth Lowell",
       "stats": {
         "atk_base": 93,
         "atk_growth": 5.2593,
@@ -33269,6 +33319,8 @@
       "rarity": "A",
       "attribute": "physical",
       "specialty": "anomaly",
+      "faction": "SonsOfCalydon",
+      "fullname": "Piper",
       "stats": {
         "atk_base": 109,
         "atk_growth": 6.4308,
@@ -34499,6 +34551,8 @@
       "rarity": "S",
       "attribute": "ether",
       "specialty": "support",
+      "faction": "StarsOfLyra",
+      "fullname": "Astra Yao",
       "stats": {
         "atk_base": 103,
         "atk_growth": 5.9961,
@@ -35852,6 +35906,8 @@
       "rarity": "S",
       "attribute": "fire",
       "specialty": "attack",
+      "faction": "StarsOfLyra",
+      "fullname": "Evelyn Chevalier",
       "stats": {
         "atk_base": 134,
         "atk_growth": 8.1654,
@@ -37246,6 +37302,7 @@
   "wengine": {
     "LunarPleniluna": {
       "name": "[Lunar] Pleniluna",
+      "rarity": "B",
       "type": "attack",
       "atk_base": 32,
       "second_statkey": "atk_",
@@ -37279,6 +37336,7 @@
     },
     "LunarDecrescent": {
       "name": "[Lunar] Decrescent",
+      "rarity": "B",
       "type": "attack",
       "atk_base": 32,
       "second_statkey": "atk_",
@@ -37312,6 +37370,7 @@
     },
     "LunarNoviluna": {
       "name": "[Lunar] Noviluna",
+      "rarity": "B",
       "type": "attack",
       "atk_base": 32,
       "second_statkey": "crit_",
@@ -37345,6 +37404,7 @@
     },
     "ReverbMarkI": {
       "name": "[Reverb] Mark I",
+      "rarity": "B",
       "type": "support",
       "atk_base": 32,
       "second_statkey": "atk_",
@@ -37378,6 +37438,7 @@
     },
     "ReverbMarkII": {
       "name": "[Reverb] Mark II",
+      "rarity": "B",
       "type": "support",
       "atk_base": 32,
       "second_statkey": "enerRegen_",
@@ -37411,6 +37472,7 @@
     },
     "ReverbMarkIII": {
       "name": "[Reverb] Mark III",
+      "rarity": "B",
       "type": "support",
       "atk_base": 32,
       "second_statkey": "hp_",
@@ -37444,6 +37506,7 @@
     },
     "VortexRevolver": {
       "name": "[Vortex] Revolver",
+      "rarity": "B",
       "type": "stun",
       "atk_base": 32,
       "second_statkey": "atk_",
@@ -37477,6 +37540,7 @@
     },
     "VortexArrow": {
       "name": "[Vortex] Arrow",
+      "rarity": "B",
       "type": "stun",
       "atk_base": 32,
       "second_statkey": "impact_",
@@ -37510,6 +37574,7 @@
     },
     "VortexHatchet": {
       "name": "[Vortex] Hatchet",
+      "rarity": "B",
       "type": "stun",
       "atk_base": 32,
       "second_statkey": "enerRegen_",
@@ -37543,6 +37608,7 @@
     },
     "MagneticStormAlpha": {
       "name": "[Magnetic Storm] Alpha",
+      "rarity": "B",
       "type": "anomaly",
       "atk_base": 32,
       "second_statkey": "atk_",
@@ -37576,6 +37642,7 @@
     },
     "MagneticStormBravo": {
       "name": "[Magnetic Storm] Bravo",
+      "rarity": "B",
       "type": "anomaly",
       "atk_base": 32,
       "second_statkey": "anomProf",
@@ -37609,6 +37676,7 @@
     },
     "MagneticStormCharlie": {
       "name": "[Magnetic Storm] Charlie",
+      "rarity": "B",
       "type": "anomaly",
       "atk_base": 32,
       "second_statkey": "pen_",
@@ -37642,6 +37710,7 @@
     },
     "IdentityBase": {
       "name": "[Identity] Base",
+      "rarity": "B",
       "type": "defense",
       "atk_base": 32,
       "second_statkey": "def_",
@@ -37675,6 +37744,7 @@
     },
     "IdentityInflection": {
       "name": "[Identity] Inflection",
+      "rarity": "B",
       "type": "defense",
       "atk_base": 32,
       "second_statkey": "def_",

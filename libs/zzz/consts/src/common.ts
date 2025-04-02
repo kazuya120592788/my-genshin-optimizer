@@ -15,6 +15,7 @@ export const otherStatKeys = [
   'enemyRes_', // Enemy Resistance
   'enemyResRed_', // Enemy Resistance Reduction
   'enemyResIgn_', // Enemy Resistance Ignore
+  'common_dmg_', // Common DMG bonus
   'dmg_', // Bonus DMG
 
   // Other stats
@@ -96,6 +97,7 @@ export const statKeyTextMap: Partial<Record<string, string>> = {
   crit_dmg_: 'CRIT DMG',
   enerRegen_: 'Energy Regen',
   impact_: 'Impact',
+  impact: 'Impact',
   daze_: 'Daze',
   shield_: 'Shield Effect',
   anomMas: 'Anomaly Mastery',
@@ -103,6 +105,7 @@ export const statKeyTextMap: Partial<Record<string, string>> = {
   anomProf: 'Anomaly Proficiency',
   anomBuild_: 'Anomaly Buildup',
   ...objKeyMap(allAnomalyDmgKeys, (dmg_) => `${dmg_} DMG Bonus`),
+  common_dmg_: 'DMG Bonus',
   dmg_: 'DMG Bonus',
   charLvl: 'Character Level',
   enemyDef: 'Enemy DEF',
@@ -148,3 +151,18 @@ export type CondMeta = {
   max: number
   min: number
 }
+
+export const rarityColor = {
+  S: 'rankS',
+  A: 'rankA',
+  B: 'rankB',
+} as const
+
+export const allRaritykeys = ['S', 'A', 'B'] as const
+export type Raritykey = (typeof allRaritykeys)[number]
+export const skillLimits = [1, 3, 5, 7, 9, 12] as const
+export const coreLimits = [0, 1, 2, 3, 4, 6] as const
+
+// Referred to as "promotions" for characters, and "modifications" for wengines
+export const allMilestoneKeys = [0, 1, 2, 3, 4, 5] as const
+export type MilestoneKey = (typeof allMilestoneKeys)[number]

@@ -2,61 +2,93 @@ import { useBoolState } from '@genshin-optimizer/common/react-util'
 import {
   BootstrapTooltip,
   CardThemed,
+  ConditionalWrapper,
   ImgIcon,
   NextImage,
 } from '@genshin-optimizer/common/ui'
-import {
-  getUnitStr,
-  statKeyToFixed,
-  toPercent,
-} from '@genshin-optimizer/common/util'
+import type { WenginePhaseKey } from '@genshin-optimizer/zzz/assets'
 import {
   specialityDefIcon,
   wengineAsset,
   wenginePhaseIcon,
 } from '@genshin-optimizer/zzz/assets'
-import type {
-  LocationKey,
-  WengineKey,
-  WengineSubStatKey,
-} from '@genshin-optimizer/zzz/consts'
-import { discRarityColor as rarityColor } from '@genshin-optimizer/zzz/consts'
+import type { PhaseKey } from '@genshin-optimizer/zzz/consts'
+import { rarityColor, type LocationKey } from '@genshin-optimizer/zzz/consts'
+import { useWengine } from '@genshin-optimizer/zzz/db-ui'
 import { getWengineStat, getWengineStats } from '@genshin-optimizer/zzz/stats'
 import { Edit } from '@mui/icons-material'
 import {
   Box,
   Button,
+  CardActionArea,
   CardContent,
   ClickAwayListener,
   Skeleton,
   Stack,
   Typography,
 } from '@mui/material'
-import { Suspense } from 'react'
+import type { ReactNode } from 'react'
+import { Suspense, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { StatDisplay } from '../Character'
 import { LocationAutocomplete } from '../Character/LocationAutocomplete'
 import { LocationName } from '../Character/LocationName'
 import { ZCard } from '../Components'
+import { WengineSubstatDisplay } from './WengineSubstatDisplay'
+import { WengineName } from './WengineTrans'
+
+const wenginePhaseIconsMap: Record<PhaseKey, WenginePhaseKey> = {
+  1: 'p1',
+  2: 'p2',
+  3: 'p3',
+  4: 'p4',
+  5: 'p5',
+}
 
 export function WengineCard({
-  wengineKey,
+  wengineId,
+  onClick,
   onEdit,
   setLocation,
   extraButtons,
 }: {
-  wengineKey: WengineKey
-  onClick?: () => void
-  onEdit?: () => void
-  onDelete?: () => void
-  onLockToggle?: () => void
+  wengineId: string
+  onClick?: (wengineId: string) => void
+  onEdit?: (wengineId: string) => void
   setLocation?: (lk: LocationKey) => void
   extraButtons?: JSX.Element
 }) {
-  const { t } = useTranslation('wengineNames')
+  const { t } = useTranslation('ui')
   const [show, onShow, onHide] = useBoolState()
-  const wengineStats = getWengineStat(wengineKey)
-  const maxLvlWengine = getWengineStats(wengineKey, 60, 5)
+  const wrapperFunc = useCallback(
+    (children: ReactNode) => (
+      <CardActionArea onClick={() => onClick?.(wengineId)}>
+        {children}
+      </CardActionArea>
+    ),
+    [onClick, wengineId]
+  )
+  const falseWrapperFunc = useCallback(
+    (children: ReactNode) => <Box>{children}</Box>,
+    []
+  )
+  const {
+    id = '',
+    key,
+    level = 0,
+    phase = 1,
+    location = '',
+    modification = 0,
+  } = useWengine(wengineId) ?? {}
+  if (!key)
+    return (
+      <CardThemed>
+        <Typography color="error">Error: Wengine not found</Typography>
+      </CardThemed>
+    )
+  const wengineStat = getWengineStat(key)
+  const wengineStats = getWengineStats(key, level, phase, modification)
+
   return (
     <Suspense
       fallback={
@@ -75,122 +107,129 @@ export function WengineCard({
           flexGrow: 1,
         }}
       >
-        <CardContent>
-          <CardThemed bgt="light" sx={{ borderRadius: '11px' }}>
-            <CardContent
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                paddingBottom: '0 !important',
-              }}
-            >
-              <ClickAwayListener onClickAway={onHide}>
-                <div>
-                  <BootstrapTooltip
-                    placement="top"
-                    onClose={onHide}
-                    open={show}
-                    disableFocusListener
-                    disableTouchListener
-                    title={
-                      <Box>
-                        <Typography>Description</Typography>
-                      </Box>
-                    }
-                    slotProps={{
-                      popper: {
-                        disablePortal: true,
-                      },
-                    }}
-                  >
-                    <Typography
-                      noWrap
-                      variant="subtitle1"
-                      align="center"
-                      fontWeight="bold"
-                      maxWidth={'100%'}
-                      width="200px"
-                      onClick={onShow}
-                    >
-                      {
-                        <ImgIcon
-                          size={2}
-                          src={specialityDefIcon(wengineStats.type)}
-                        />
-                      }{' '}
-                      {t(`${wengineKey}`)}
-                    </Typography>
-                  </BootstrapTooltip>
-                </div>
-              </ClickAwayListener>
-              <Box component="div">
-                <Box
-                  component={NextImage ? NextImage : 'img'}
-                  alt="Wengine Image"
-                  src={wengineAsset(wengineKey, 'icon')}
-                  sx={{
-                    width: 'auto',
-                    float: 'right',
-                    height: '150px',
-                  }}
-                />
-              </Box>
-              <Box
-                display="flex"
-                justifyContent="space-between"
-                width="100%"
-                alignItems="center"
-              >
-                <Typography
-                  sx={{
-                    fontWeight: 'bold',
-                  }}
-                  variant="h6"
-                >
-                  Lv.60
-                </Typography>
-                <Box>
-                  <ImgIcon
-                    size={3}
-                    src={wenginePhaseIcon('p1')}
-                    sx={{ py: '10px', margin: 0, width: '5em' }}
-                  />{' '}
-                </Box>
-              </Box>
-              {/* Main stats */}
-            </CardContent>
-          </CardThemed>
-          <Stack spacing={1} sx={{ pt: 1 }}>
-            <Box
-              display="flex"
-              gap={1}
-              alignItems="center"
-              width={'100%'}
-              color={`${rarityColor[wengineStats.rarity]}.main`}
-            >
-              <Typography
-                variant="subtitle1"
-                noWrap
+        <ConditionalWrapper
+          condition={!!onClick}
+          wrapper={wrapperFunc}
+          falseWrapper={falseWrapperFunc}
+        >
+          <CardContent>
+            <CardThemed bgt="light" sx={{ borderRadius: '11px' }}>
+              <CardContent
                 sx={{
                   display: 'flex',
+                  flexDirection: 'column',
                   alignItems: 'center',
-                  flexGrow: 1,
-                  fontWeight: 'bold',
+                  paddingBottom: '0 !important',
                 }}
               >
-                <StatDisplay statKey={'atk'} />
-              </Typography>
-              <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
-                {maxLvlWengine['atk_base'].toFixed()}
-              </Typography>
-            </Box>
-            <SubstatDisplay
-              substatKey={wengineStats['second_statkey']}
-              substatValue={maxLvlWengine[wengineStats['second_statkey']]}
-            />
-          </Stack>
-        </CardContent>
+                <ClickAwayListener onClickAway={onHide}>
+                  <div>
+                    <BootstrapTooltip
+                      placement="top"
+                      onClose={onHide}
+                      open={show}
+                      disableFocusListener
+                      disableTouchListener
+                      title={
+                        <Box>
+                          <Typography>Description</Typography>
+                        </Box>
+                      }
+                      slotProps={{
+                        popper: {
+                          disablePortal: true,
+                        },
+                      }}
+                    >
+                      <Typography
+                        noWrap
+                        variant="subtitle1"
+                        align="center"
+                        fontWeight="bold"
+                        maxWidth={'100%'}
+                        width="200px"
+                        onClick={onShow}
+                      >
+                        {
+                          <ImgIcon
+                            size={2}
+                            src={specialityDefIcon(wengineStat.type)}
+                          />
+                        }{' '}
+                        <WengineName wKey={key} />
+                      </Typography>
+                    </BootstrapTooltip>
+                  </div>
+                </ClickAwayListener>
+                <Box component="div">
+                  <Box
+                    component={NextImage ? NextImage : 'img'}
+                    alt="Wengine Image"
+                    src={wengineAsset(key, 'icon')}
+                    sx={{
+                      width: 'auto',
+                      float: 'right',
+                      height: '150px',
+                    }}
+                  />
+                </Box>
+                <Box
+                  display="flex"
+                  justifyContent="space-between"
+                  width="100%"
+                  alignItems="center"
+                >
+                  <Typography
+                    sx={{
+                      fontWeight: 'bold',
+                    }}
+                    variant="h6"
+                  >
+                    Lv.{level}
+                  </Typography>
+                  <Box>
+                    <ImgIcon
+                      size={3}
+                      src={wenginePhaseIcon(wenginePhaseIconsMap[phase])}
+                      sx={{ py: '10px', margin: 0, width: '5em' }}
+                    />{' '}
+                  </Box>
+                </Box>
+                {/* Main stats */}
+              </CardContent>
+            </CardThemed>
+            <Stack spacing={1} sx={{ pt: 1 }}>
+              <Box
+                display="flex"
+                gap={1}
+                alignItems="center"
+                width={'100%'}
+                color={`${rarityColor[wengineStat.rarity]}.main`}
+              >
+                <Typography
+                  variant="subtitle1"
+                  noWrap
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    flexGrow: 1,
+                    fontWeight: 'bold',
+                  }}
+                >
+                  <StatDisplay statKey={'atk'} />
+                </Typography>
+                <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                  {wengineStats['atk_base'].toFixed()}
+                </Typography>
+              </Box>
+              <WengineSubstatDisplay
+                substatKey={wengineStat['second_statkey']}
+                substatValue={wengineStats[wengineStat['second_statkey']]}
+              />
+            </Stack>
+          </CardContent>
+        </ConditionalWrapper>
+
         <Box flexGrow={1} />
         <Box
           sx={{
@@ -203,9 +242,9 @@ export function WengineCard({
         >
           <Box sx={{ flexGrow: 1 }}>
             {setLocation ? (
-              <LocationAutocomplete locKey={''} setLocKey={setLocation} />
+              <LocationAutocomplete locKey={location} setLocKey={setLocation} />
             ) : (
-              <LocationName location={''} />
+              <LocationName location={location} />
             )}
           </Box>
           <Box
@@ -221,7 +260,7 @@ export function WengineCard({
                 placement="top"
                 arrow
               >
-                <Button color="info" size="small" onClick={onEdit}>
+                <Button color="info" size="small" onClick={() => onEdit(id)}>
                   <Edit />
                 </Button>
               </BootstrapTooltip>
@@ -231,36 +270,5 @@ export function WengineCard({
         </Box>
       </ZCard>
     </Suspense>
-  )
-}
-function SubstatDisplay({
-  substatKey,
-  substatValue,
-}: {
-  substatKey: WengineSubStatKey
-  substatValue: number
-}) {
-  if (!substatKey) return null
-  const displayValue = toPercent(substatValue, substatKey).toFixed(
-    statKeyToFixed(substatKey)
-  )
-  return (
-    <Typography
-      variant="subtitle2"
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        fontWeight: 'bold',
-      }}
-    >
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <StatDisplay statKey={substatKey} />
-      </Box>
-      <span>
-        {displayValue}
-        {getUnitStr(substatKey)}
-      </span>
-    </Typography>
   )
 }

@@ -73,9 +73,10 @@ export function dmg(
   const attackType = dmgTag.damageType1 ?? abilityScalingType
   if (attackType === 'talent')
     throw new Error(`Cannot infer attack type for Talent-type ability ${name}`)
-  dmgTag.damageType1 = attackType
+  const tag = { ...dmgTag }
+  tag.damageType1 = attackType
   const base = prod(own.final[stat], multi)
-  return customDmg(name, dmgTag, base, splits, arg, ...extra)
+  return customDmg(name, tag, base, splits, arg, ...extra)
 }
 
 /**
@@ -153,6 +154,7 @@ export function entriesForChar(data_gen: CharacterDatum): TagMapNodeEntries {
   return [
     ownBuff.char.ele.add(data_gen.damageType),
     ownBuff.char.path.add(data_gen.path),
+    ownBuff.common.count.withPath(data_gen.path).add(1),
     // Base stats
     ...(['hp', 'atk', 'def'] as const).map((sk) => {
       const basePerAsc = data_gen.ascension.map((p) => p[sk].base)
@@ -220,7 +222,6 @@ export function entriesForChar(data_gen: CharacterDatum): TagMapNodeEntries {
     ownBuff.listing.formulas.add(
       listingItem(own.final.dmg_[data_gen.damageType])
     ),
-    ownBuff.listing.formulas.add(listingItem(own.final.dmg_)),
     ownBuff.listing.formulas.add(listingItem(own.final.weakness_)),
     ownBuff.listing.formulas.add(listingItem(own.final.resPen_)),
   ]

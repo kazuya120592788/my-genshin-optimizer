@@ -1,23 +1,15 @@
 import { max, min, prod, sum } from '@genshin-optimizer/pando/engine'
-import { allWengineKeys } from '@genshin-optimizer/zzz/consts'
 import type { TagMapNodeEntries } from '../util'
-import { own, ownBuff, percent, reader, stats } from '../util'
+import {
+  flatAndPercentStats,
+  nonFlatAndPercentStats,
+  own,
+  ownBuff,
+  percent,
+  reader,
+} from '../util'
 import dmg from './dmg'
 import prep from './prep'
-
-const flatAndPercentStats = [
-  'atk',
-  'def',
-  'hp',
-  'impact',
-  'anomProf',
-  'anomMas',
-  'enerRegen',
-] as const
-const otherStats = stats.filter(
-  (stat) =>
-    !flatAndPercentStats.flatMap((stat) => [stat, `${stat}_`]).includes(stat)
-)
 
 const data: TagMapNodeEntries = [
   ...dmg,
@@ -26,15 +18,10 @@ const data: TagMapNodeEntries = [
   reader.withTag({ sheet: 'iso', et: 'own' }).reread(reader.sheet('custom')),
   reader.withTag({ sheet: 'agg', et: 'own' }).reread(reader.sheet('custom')),
 
-  // convert sheet:<char/wengine> to sheet:agg for accumulation
+  // convert sheet:<char> to sheet:agg for accumulation
+  // sheet:<wengine> is reread in src/util.ts:wengineTagMapNodeEntries()
   // sheet:<disc> is reread in src/util.ts:discTagMapNodeEntries()
   reader.sheet('agg').reread(reader.sheet('char')),
-
-  // add all wengine by default
-  ...allWengineKeys.map((we) =>
-    reader.sheet('wengine').reread(reader.sheet(we))
-  ),
-  reader.sheet('agg').reread(reader.sheet('wengine')),
 
   // For stats with a flat and percent variant
   // initial x += base x * initial x%
@@ -57,15 +44,18 @@ const data: TagMapNodeEntries = [
 
   // For stats with only 1 variant
   // initial x += base X; assuming base exists for that stat
-  ...otherStats
+  ...nonFlatAndPercentStats
     .filter((s) => s in ownBuff.base)
     .map(
       (s) =>
-        ownBuff.initial[s].add(ownBuff.base[s as keyof typeof ownBuff.base]) // Validated with filter
+        ownBuff.initial[s].add(
+          ownBuff.base[s as keyof typeof ownBuff.base],
+          true
+        ) // Validated with filter
     ),
   // final x += initial X + combat X
-  ...otherStats.map((s) =>
-    ownBuff.final[s].add(sum(own.initial[s], own.combat[s]))
+  ...nonFlatAndPercentStats.map((s) =>
+    ownBuff.final[s].add(sum(own.initial[s], own.combat[s]), true)
   ),
 
   // Capped CR = Max(Min(Final CR, 1), 0)

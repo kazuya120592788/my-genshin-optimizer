@@ -26,7 +26,7 @@ export function getBaseTag(data_gen: CharacterDatum): DmgTag {
  * @param dmgTag Tag object containing damageType1, damageType2 and attribute
  * @param stat Stat that the damage scales on
  * @param levelScaling Array representing the scaling at different levels of the ability
- * @param abilityScalingType Ability level that the scaling depends on. This also controls the default damageType1 for dmgTag, if it is not specified already.
+ * @param abilityScalingType Ability level that the scaling depends on.
  * @param arg `{ team: true }` to use `teamBuff` instead of `ownBuff`. `{ cond: <node> }` to hide these instances behind a conditional check.
  * @param extra Buffs that should only apply to this damage instance
  * @returns Array of TagMapNodeEntries representing the damage instance
@@ -40,9 +40,11 @@ export function dmg(
   arg: FormulaArg = {},
   ...extra: TagMapNodeEntries
 ): TagMapNodeEntries {
+  if (!dmgTag.damageType1)
+    throw Error(
+      `No damageType specified on ${name}. Please specify at least one.`
+    )
   const multi = percent(subscript(own.char[abilityScalingType], levelScaling))
-  const attackType = dmgTag.damageType1 ?? abilityScalingType
-  dmgTag.damageType1 = attackType
   const base = prod(own.final[stat], multi)
   return customDmg(name, dmgTag, base, arg, ...extra)
 }
@@ -138,6 +140,9 @@ export function entriesForChar(data_gen: CharacterDatum): TagMapNodeEntries {
   return [
     ownBuff.char.attribute.add(data_gen.attribute),
     ownBuff.char.specialty.add(data_gen.specialty),
+    ownBuff.common.count.withSpecialty(data_gen.specialty).add(1),
+    ownBuff.char.faction.add(data_gen.faction),
+    ownBuff.common.count.withFaction(data_gen.faction).add(1),
     // Base + promotion stats
     ...(['hp', 'atk', 'def'] as const).map((sk) => {
       const addPerPromo = data_gen.promotionStats.map((p) => p[sk])
@@ -202,6 +207,5 @@ export function entriesForChar(data_gen: CharacterDatum): TagMapNodeEntries {
     ownBuff.listing.formulas.add(
       listingItem(own.final.dmg_[data_gen.attribute])
     ),
-    ownBuff.listing.formulas.add(listingItem(own.final.dmg_)),
   ]
 }

@@ -1,10 +1,10 @@
-import type { DebugMeta } from '@genshin-optimizer/pando/engine'
+import { prettify } from '@genshin-optimizer/common/util'
 import {
   compileTagMapValues,
   read,
   setDebugMode,
 } from '@genshin-optimizer/pando/engine'
-import type { ModificationKey, WengineKey } from '@genshin-optimizer/zzz/consts'
+import type { MilestoneKey, WengineKey } from '@genshin-optimizer/zzz/consts'
 import {
   allCharacterKeys,
   allDiscSetKeys,
@@ -14,7 +14,9 @@ import {
 import { fail } from 'assert'
 import {
   charTagMapNodeEntries,
+  discTagMapNodeEntries,
   formulas,
+  teamData,
   wengineTagMapNodeEntries,
   withMember,
 } from '.'
@@ -29,12 +31,19 @@ import {
   ownBuff,
   ownTag,
   tagStr,
+  team,
   type TagMapNodeEntries,
 } from './data/util'
 
 setDebugMode(true)
 // This is generally unnecessary, but without it, some tags in `DebugCalculator` will be missing
 Object.assign(values, compileTagMapValues(keys, data))
+describe('read test', () => {
+  it('Throws an error when trying to add to dmg_ without modifier', () => {
+    expect(() => ownBuff.final.dmg_.add(1)).toThrowError('dmg_')
+    ownBuff.final.dmg_.ice.add(1)
+  })
+})
 
 describe('character test', () => {
   it.each([
@@ -107,7 +116,7 @@ describe('wengine test', () => {
           ...wengineTagMapNodeEntries(
             wengKey,
             lvl,
-            modification as ModificationKey,
+            modification as MilestoneKey,
             1
           )
         ),
@@ -222,30 +231,18 @@ describe('char+wengine test', () => {
         enemyDebuff.common.dmgInc_.add(0.1),
         enemyDebuff.common.dmgRed_.add(0.15),
         enemyDebuff.common.stun_.add(1.5),
+        enemyDebuff.common.unstun_.add(1),
       ]
       const calc = new Calculator(keys, values, compileTagMapValues(keys, data))
       const anby = convert(ownTag, { et: 'own', src: 'Anby' })
       expect(calc.compute(anby.base.atk).val).toBeCloseTo(1134.797)
       expect(calc.compute(anby.final.atk).val).toBeCloseTo(1597.696912)
 
-      // Debug printing
-      function filterDebug(debug: DebugMeta) {
-        for (let i = debug.deps.length - 1; i >= 0; i--) {
-          const readSeq = debug.deps[i].toJSON().readSeq
-          if (readSeq?.includes('{ wengine } : { wengine }')) {
-            debug.deps.splice(i, 1)
-            continue
-          }
-          debug.deps[i] = filterDebug(debug.deps[i])
-        }
-        return debug
-      }
       const debug = calc
         .withTag({ src: 'Anby', dst: 'Anby' })
         .toDebug()
         .compute(read(formulas.Anby.standardDmgInst.tag, undefined))
-      const filtered = filterDebug(debug.meta)
-      console.log(JSON.stringify(filtered, undefined, 2))
+      console.log(prettify(debug))
 
       expect(
         calc
@@ -257,8 +254,8 @@ describe('char+wengine test', () => {
         .withTag({ src: 'Anby', dst: 'Anby' })
         .toDebug()
         .compute(read(formulas.Anby.anomalyDmgInst.tag, undefined))
-      const filtered2 = filterDebug(debug2.meta)
-      console.log(JSON.stringify(filtered2, undefined, 2))
+      console.log(prettify(debug2))
+
       expect(
         calc
           .withTag({ src: 'Anby', dst: 'Anby' })
@@ -266,12 +263,153 @@ describe('char+wengine test', () => {
       ).toBeCloseTo(expectedAnomalyDmg)
     }
   )
+  it('calculate specific elemental damage bonus separate from common', () => {
+    const data: TagMapNodeEntries = [
+      ...withMember(
+        'Anby',
+        ...charTagMapNodeEntries({
+          level: 60,
+          promotion: 5,
+          key: 'Anby',
+          mindscape: 0,
+          basic: 0,
+          dodge: 0,
+          special: 0,
+          assist: 0,
+          chain: 0,
+          core: 6,
+        }),
+        ...wengineTagMapNodeEntries('VortexRevolver', 60, 5, 1),
+
+        ownBuff.initial.atk.add(25),
+        ownBuff.combat.atk.add(100),
+        ownBuff.combat.atk_.add(0.08),
+        ownBuff.initial.crit_.add(0.7),
+        ownBuff.initial.crit_dmg_.add(1.04),
+        ownBuff.initial.common_dmg_.add(0.2),
+        ownBuff.initial.dmg_.electric.add(0.4),
+        ...ownBuff.combat.dmg_.electric.addWithDmgType('chain', 0.3),
+        ownBuff.initial.pen_.add(0.05),
+        ownBuff.initial.pen.add(90),
+        ownBuff.initial.resIgn_.add(0.02),
+        ownBuff.initial.anomProf.add(338)
+      ),
+      own.common.critMode.add('avgHit'),
+      enemy.common.def.add(635),
+      enemy.common.res_.electric.add(0.1),
+      enemy.common.isStunned.add(1),
+      enemyDebuff.common.resRed_.electric.add(0.15),
+      enemyDebuff.common.dmgInc_.add(0.1),
+      enemyDebuff.common.dmgRed_.add(0.15),
+      enemyDebuff.common.stun_.add(1.5),
+      enemyDebuff.common.unstun_.add(1),
+    ]
+    const calc = new Calculator(keys, values, compileTagMapValues(keys, data))
+    const anby = convert(ownTag, { et: 'own', src: 'Anby' })
+    expect(calc.compute(anby.final.dmg_).val).toBeCloseTo(0)
+    expect(calc.compute(anby.final.dmg_.electric).val).toBeCloseTo(0.4)
+    expect(calc.compute(anby.final.dmg_.electric.chain[0]).val).toBeCloseTo(0.7)
+    expect(calc.compute(anby.final.dmg_.electric.chain[1]).val).toBeCloseTo(0.7)
+    expect(calc.compute(anby.final.dmg_.chain[0]).val).toBeCloseTo(0)
+    expect(calc.compute(anby.final.dmg_.chain[1]).val).toBeCloseTo(0)
+    expect(calc.compute(anby.final.common_dmg_).val).toBeCloseTo(0.2)
+  })
 })
+
+describe('disc2p test', () => {
+  it('calculate initial stats', () => {
+    const data: TagMapNodeEntries = [
+      ...withMember(
+        'Anby',
+        ...charTagMapNodeEntries({
+          level: 1,
+          promotion: 0,
+          key: 'Anby',
+          mindscape: 0,
+          basic: 0,
+          dodge: 0,
+          special: 0,
+          assist: 0,
+          chain: 0,
+          core: 0,
+        }),
+        ...discTagMapNodeEntries({ atk: 100 }, { BranchBladeSong: 2 })
+      ),
+    ]
+    const calc = new Calculator(
+      keys,
+      values,
+      compileTagMapValues(keys, data)
+    ).withTag({ src: 'Anby', dst: 'Anby' })
+    const anby = convert(ownTag, { et: 'own', src: 'Anby' })
+    console.log(prettify(calc.toDebug().compute(anby.final.atk)))
+    expect(calc.compute(anby.final.atk).val).toBeCloseTo(195)
+    expect(calc.compute(anby.final.crit_dmg_).val).toBeCloseTo(0.66)
+  })
+})
+
+describe('team', () => {
+  test('can count faction and specialty', () => {
+    const data: TagMapNodeEntries = [
+      ...teamData(['Anby', 'Anton']),
+      ...withMember(
+        'Anby',
+        ...charTagMapNodeEntries({
+          level: 1,
+          promotion: 0,
+          key: 'Anby',
+          mindscape: 0,
+          basic: 0,
+          dodge: 0,
+          special: 0,
+          assist: 0,
+          chain: 0,
+          core: 0,
+        })
+      ),
+      ...withMember(
+        'Anton',
+        ...charTagMapNodeEntries({
+          level: 1,
+          promotion: 0,
+          key: 'Anton',
+          mindscape: 0,
+          basic: 0,
+          dodge: 0,
+          special: 0,
+          assist: 0,
+          chain: 0,
+          core: 0,
+        })
+      ),
+    ]
+    const calc = new Calculator(keys, values, compileTagMapValues(keys, data))
+    expect(calc.compute(team.common.count.withSpecialty('attack')).val).toEqual(
+      1
+    )
+    expect(calc.compute(team.common.count.withSpecialty('stun')).val).toEqual(1)
+    expect(
+      calc.compute(team.common.count.withSpecialty('anomaly')).val
+    ).toEqual(0)
+    expect(
+      calc.compute(team.common.count.withFaction('CunningHares')).val
+    ).toEqual(1)
+    expect(
+      calc.compute(team.common.count.withFaction('BelebogHeavyIndustries')).val
+    ).toEqual(1)
+    expect(
+      calc.compute(team.common.count.withFaction('StarsOfLyra')).val
+    ).toEqual(0)
+  })
+})
+
 describe('sheet', () => {
   test('buff entries', () => {
     const sheets = new Set([
       ...allCharacterKeys,
+      'wengine',
       ...allWengineKeys,
+      'disc',
       ...allDiscSetKeys,
     ])
     for (const { tag } of data) {

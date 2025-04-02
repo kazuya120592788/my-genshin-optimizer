@@ -36,8 +36,12 @@ export function withMember(
   return data.map(({ tag, value }) => ({ tag: { ...tag, src }, value }))
 }
 
-export function charTagMapNodeEntries(data: ICharacter): TagMapNodeEntries {
-  const { lvl, basic, skill, ult, talent, ascension, eidolon } = own.char
+export function charTagMapNodeEntries(
+  data: ICharacter,
+  position: number
+): TagMapNodeEntries {
+  const { lvl, basic, skill, ult, talent, ascension, eidolon, teamPosition } =
+    own.char
   const { char, iso, [data.key]: sheet } = reader.withAll('sheet', [])
 
   return [
@@ -51,6 +55,7 @@ export function charTagMapNodeEntries(data: ICharacter): TagMapNodeEntries {
     talent.add(data.talent),
     ascension.add(data.ascension),
     eidolon.add(data.eidolon),
+    teamPosition.add(position),
     ...allStatBoostKeys.map((index) =>
       ownBuff.char[`statBoost${index}`].add(data.statBoosts[index] ? 1 : 0)
     ),
@@ -73,6 +78,9 @@ export function lightConeTagMapNodeEntries(
   superimpose: SuperimposeKey
 ): TagMapNodeEntries {
   return [
+    // Opt-in for light cone buffs, instead of enabling it by default to reduce `read` traffic
+    reader.sheet('agg').reread(reader.sheet('lightCone')),
+
     // Mark light cones as used
     own.common.count.sheet(key).add(1),
     own.lightCone.lvl.add(level),
@@ -93,7 +101,7 @@ export function relicTagMapNodeEntries(
     et: 'own',
   })
   return [
-    // Opt-in for artifact buffs, instead of enabling it by default to reduce `read` traffic
+    // Opt-in for relic buffs, instead of enabling it by default to reduce `read` traffic
     reader.sheet('agg').reread(reader.sheet('relic')),
 
     // Add `sheet:dyn` between the stat and the buff so that we can `detach` them easily

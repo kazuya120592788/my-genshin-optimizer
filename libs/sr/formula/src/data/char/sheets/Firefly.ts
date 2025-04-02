@@ -3,8 +3,6 @@ import { type CharacterKey } from '@genshin-optimizer/sr/consts'
 import { allStats, mappedStats } from '@genshin-optimizer/sr/stats'
 import {
   allBoolConditionals,
-  allListConditionals,
-  allNumConditionals,
   customDmg,
   customHeal,
   enemyDebuff,
@@ -13,7 +11,6 @@ import {
   percent,
   register,
   registerBuff,
-  teamBuff,
 } from '../../util'
 import { dmg, entriesForChar, getBaseTag, isBonusAbilityActive } from '../util'
 
@@ -26,8 +23,6 @@ const { char } = own
 
 // TODO: Add conditionals
 const { ultInCompleteCombustion, techFireWeakness } = allBoolConditionals(key)
-const { listConditional } = allListConditionals(key, ['val1', 'val2'])
-const { numConditional } = allNumConditionals(key, true, 0, 2)
 
 function skillDmg(name: string, baseMult: number, addlMult: number[]) {
   // (baseMult * capped break effect + addlMult)
@@ -36,7 +31,7 @@ function skillDmg(name: string, baseMult: number, addlMult: number[]) {
     percent(subscript(char.skill, addlMult))
   )
   const base = prod(own.final.atk, multi)
-  return customDmg(name, baseTag, base)
+  return customDmg(name, { ...baseTag, damageType1: 'skill' }, base)
 }
 
 const ba3_brEffect_ = isBonusAbilityActive(
@@ -58,7 +53,7 @@ const sheet = register(
   ...skillDmg('skill1DmgBlast', dm.skill1.dmgBlastBase, dm.skill1.dmgBlast),
   ...customDmg(
     'techDmg',
-    baseTag,
+    { ...baseTag, damageType1: 'technique' },
     prod(own.final.atk, percent(dm.technique.dmg))
   ),
   // TODO: ba2 superbreak; needs toughness reduction calculations + maybe some kind of reaction toggle
@@ -84,8 +79,6 @@ const sheet = register(
     ultInCompleteCombustion.ifOn(
       percent(subscript(char.talent, dm.talent.eff_res_))
     )
-  ),
-  teamBuff.premod.dmg_.add(listConditional.map({ val1: 1, val2: 2 })),
-  enemyDebuff.common.defIgn_.add(numConditional)
+  )
 )
 export default sheet
