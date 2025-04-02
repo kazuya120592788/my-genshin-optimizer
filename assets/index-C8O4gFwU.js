@@ -1,0 +1,1 @@
+import{d as e,B as i}from"./index-DS5KRQCa.js";function s(){return e(i,{children:"a"},void 0,!1,{fileName:"D:\\Projects\\git\\genshin-optimizer\\libs\\gi\\page-my\\src\\index.tsx",lineNumber:5,columnNumber:5},this)}export{s as default};
