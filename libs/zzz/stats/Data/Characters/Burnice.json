@@ -1,10 +1,12 @@
 {
+  "id": "1171",
   "icon": "IconRole32",
   "rarity": "S",
   "attribute": "fire",
   "specialty": "anomaly",
   "faction": "SonsOfCalydon",
   "fullname": "Burnice White",
+  "name": "Burnice",
   "stats": {
     "atk_base": 124,
     "atk_growth": 7.4992,

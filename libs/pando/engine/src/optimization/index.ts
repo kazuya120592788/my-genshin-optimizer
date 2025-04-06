@@ -1,2 +1,2 @@
-export { prune } from './prune'
-export * from './simplify'
+export { prune, type Candidate } from './prune'
+export { simplify } from './simplify'

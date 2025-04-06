@@ -1,3 +1,4 @@
+import { useBoolState } from '@genshin-optimizer/common/react-util'
 import {
   CardThemed,
   ModalWrapper,
@@ -17,8 +18,8 @@ import {
   getDiscMainStatVal,
 } from '@genshin-optimizer/zzz/consts'
 import {
-  validateDiscBasedOnRarity,
   type ICachedDisc,
+  validateDiscBasedOnRarity,
 } from '@genshin-optimizer/zzz/db'
 import { useDatabaseContext } from '@genshin-optimizer/zzz/db-ui'
 import type { Processed } from '@genshin-optimizer/zzz/disc-scanner'
@@ -67,6 +68,7 @@ import { DiscCard } from '../DiscCard'
 import { DiscMainStatGroup } from '../DiscMainStatGroup'
 import { DiscRarityDropdown } from '../DiscRarityDropdown'
 import { DiscSetAutocomplete } from '../DiscSetAutocomplete'
+import { ScanInfoModal } from './ScanInfoModal'
 import { textsFromImage } from './ScanningUtil'
 import SubstatInput from './SubstatInput'
 
@@ -460,6 +462,9 @@ export function DiscEditor({
                               <DebugModal imgs={debugImgs} />
                             </Grid>
                           )}
+                          <Grid item>
+                            <ScanInfoModal />
+                          </Grid>
                           {/* <Grid item>
                           <Button
                             color="info"
@@ -557,7 +562,13 @@ export function DiscEditor({
                 sx={{ justifyContent: 'space-around' }}
                 spacing={1}
               >
-                <Grid item xs={12} md={5.5} lg={4}>
+                <Grid
+                  item
+                  xs={12}
+                  md={5.5}
+                  lg={4}
+                  sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
+                >
                   <CardThemed bgt="light">
                     <Typography
                       sx={{ textAlign: 'center' }}
@@ -571,8 +582,8 @@ export function DiscEditor({
                           : t('editor.updateDisc')
                         : t('editor.beforeEdit')}
                     </Typography>
-                    <DiscCard disc={prev} />
                   </CardThemed>
+                  <DiscCard disc={prev} />
                 </Grid>
                 {grmd && (
                   <Grid
@@ -587,7 +598,13 @@ export function DiscEditor({
                     </CardThemed>
                   </Grid>
                 )}
-                <Grid item xs={12} md={5.5} lg={4}>
+                <Grid
+                  item
+                  xs={12}
+                  md={5.5}
+                  lg={4}
+                  sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
+                >
                   <CardThemed bgt="light">
                     <Typography
                       sx={{ textAlign: 'center' }}
@@ -597,8 +614,8 @@ export function DiscEditor({
                     >
                       {t('editor.preview')}
                     </Typography>
-                    {validatedDisc && <DiscCard disc={validatedDisc} />}
                   </CardThemed>
+                  {validatedDisc && <DiscCard disc={validatedDisc} />}
                 </Grid>
               </Grid>
             )}
@@ -687,9 +704,7 @@ export function DiscEditor({
 }
 
 function DebugModal({ imgs }: { imgs: Record<string, string> }) {
-  const [show, setshow] = useState(false)
-  const onOpen = () => setshow(true)
-  const onClose = () => setshow(false)
+  const [show, onOpen, onClose] = useBoolState()
   return (
     <>
       <Button color="warning" onClick={onOpen}>

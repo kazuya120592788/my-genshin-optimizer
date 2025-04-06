@@ -4,7 +4,7 @@ import {
   Calculator as BaseCalculator,
   calculation,
 } from '@genshin-optimizer/pando/engine'
-import type { Read, Tag } from './read'
+import type { Member, Read, Sheet, Tag } from './read'
 import { reader } from './read'
 
 type MemRec<Member extends string, V> = Partial<Record<Member, V>>
@@ -21,199 +21,160 @@ type CondInfo<Member extends string, Sheet extends string> = MemRec<
   SrcCondInfo<Member, Sheet>
 >
 
-export type CalcMeta<
-  Src extends string | null,
-  Dst extends string | null,
-  Member extends string,
-  Sheet extends string,
-  Op = 'const' | 'sum' | 'prod' | 'min' | 'max' | 'sumfrac'
-> = PartialMeta<Src, Dst, Sheet, Op> & Info<Member, Sheet>
-export type PartialMeta<
-  Src extends string | null,
-  Dst extends string | null,
-  Sheet extends string,
-  Op = 'const' | 'sum' | 'prod' | 'min' | 'max' | 'sumfrac'
-> = {
-  tag?: Tag<Src, Dst, Sheet>
-  op: Op
-  ops: CalcResult<number, PartialMeta<Src, Dst, Sheet, Op>>[]
+/// `op`s that appear in `Meta['op']`, inserted by the Calculator.computeMeta
+type MetaOp = 'sum' | 'prod' | 'min' | 'max' | 'sumfrac' | 'const'
+export interface CalcMeta<Tag_ extends Tag, COp> extends Info<Tag_> {
+  tag?: Tag_
+  op: MetaOp | COp
+  ops: CalcResult<number, CalcMeta<Tag_, COp>>[]
 }
-export type Info<Member extends string, Sheet extends string> = {
-  conds: CondInfo<Member | 'All', Sheet>
+interface Info<Tag_ extends Tag> {
+  usedCats: Set<keyof Tag_>
+  conds: CondInfo<Member<Tag_> | 'All', Sheet<Tag_>>
 }
 
 const { arithmetic } = calculation
 
 export class Calculator<
-  Src extends string | null,
-  Dst extends string | null,
-  Member extends string,
-  Sheet extends string,
-  Op = 'const' | 'sum' | 'prod' | 'min' | 'max' | 'sumfrac'
-> extends BaseCalculator {
+  Tag_ extends Tag = Tag,
+  COp extends string = string, // values of supported `Custom['ex']` if any
+> extends BaseCalculator<CalcMeta<Tag_, COp>> {
   override computeMeta(
-    { op, ex }: AnyNode,
+    { op, ex, tag: nTag }: AnyNode,
     val: number | string,
-    _x: (
-      | CalcResult<number | string, CalcMeta<Src, Dst, Member, Sheet, Op>>
-      | undefined
-    )[],
-    _br: CalcResult<number | string, CalcMeta<Src, Dst, Member, Sheet, Op>>[],
-    tag: Tag<Src, Dst, Sheet> | undefined
-  ): CalcMeta<Src, Dst, Member, Sheet, Op> {
-    const info = {
-      ...Object.freeze({
-        conds: Object.freeze({}),
-      }),
-    }
-    const x = _x.filter((x) => !!x).map((x) => extract(x, info))
-    _br.forEach((br) => extract(br, info))
+    _x: (CalcResult<number | string, CalcMeta<Tag_, COp>> | undefined)[],
+    br: CalcResult<number | string, CalcMeta<Tag_, COp>>[],
+    tag: Tag_ | undefined
+  ): CalcMeta<Tag_, COp> {
+    let x = _x.filter((x) => !!x) as CalcResult<number, CalcMeta<Tag_, COp>>[]
+    const info = extractInfo(x, br)
 
-    function withTag(
-      tag: Tag<Src, Dst, Sheet> | undefined,
-      meta: CalcMeta<Src, Dst, Member, Sheet, Op>
-    ): CalcMeta<Src, Dst, Member, Sheet, Op> {
-      return !meta.tag && tag ? { tag, ...meta } : meta
+    function finalize(meta: CalcMeta<Tag_, COp>): CalcMeta<Tag_, COp> {
+      return Object.freeze(tag && !meta.tag ? { tag, ...meta } : meta) // use inner tag when available
     }
-    function finalize(
-      op: CalcMeta<Src, Dst, Member, Sheet, Op>['op'],
-      ops: CalcResult<number, PartialMeta<Src, Dst, Sheet, Op>>[]
-    ): CalcMeta<Src, Dst, Member, Sheet, Op> {
-      return withTag(tag, { op, ops, ...info })
+
+    function newMeta(
+      op: MetaOp | COp,
+      ops: CalcResult<number, CalcMeta<Tag_, COp>>[]
+    ): CalcMeta<Tag_, COp> {
+      return finalize({ op, ops, ...info })
     }
     function wrap(
-      result: CalcResult<number | string, PartialMeta<Src, Dst, Sheet, Op>>
-    ): CalcMeta<Src, Dst, Member, Sheet, Op> {
-      const meta = result.meta as CalcMeta<Src, Dst, Member, Sheet, Op>
-      const reuse = meta.conds === info.conds
-      return withTag(tag, reuse ? meta : { ...meta, ...info })
+      result: CalcResult<number | string, CalcMeta<Tag_, COp>>,
+      extraCats?: (keyof Tag_)[]
+    ): CalcMeta<Tag_, COp> {
+      let { meta } = result
+      if (extraCats?.some((c) => !meta.usedCats.has(c)))
+        meta = { ...meta, usedCats: new Set([...meta.usedCats, ...extraCats]) }
+      return finalize(meta.conds === info.conds ? meta : { ...meta, ...info })
     }
 
-    if (op === 'read' && ex !== undefined) {
-      if (ex === 'min' || ex === 'max')
-        return wrap(x.find((x) => x!.val === val)!)
-      op = ex
-      ex = undefined
+    if (op === 'read' && tag?.qt === 'cond') {
+      const { src, dst, sheet, q } = tag
+      if (src && sheet && q)
+        info.conds = merge(info.conds, {
+          [dst ?? 'All']: { [src]: { [sheet!]: { [q!]: val } } },
+        })
     }
+    if (op === 'read' && ex !== 'unique') [op, ex] = [ex, undefined]
     switch (op) {
       case 'sum':
       case 'prod':
       case 'min':
       case 'max':
-      case 'sumfrac': {
-        let ops = x as CalcResult<number, PartialMeta<Src, Dst, Sheet, Op>>[]
-        if (ops.length > 1) {
-          const empty = arithmetic[op]([], ex)
-          ops = ops.filter((x) => x!.val !== empty)
+      case 'sumfrac':
+        if (x.length > 1) {
+          const empty = arithmetic[op]([])
+          x = x.filter((x) => x.val !== empty)
         }
-        if (ops.length === 1) return wrap(ops[0])
-        if (ops.length === 0) return finalize('const' as Op, [])
-        return finalize(op as Op, ops)
-      }
+        if (x.length === 1) return wrap(x[0])
+        return newMeta(x.length ? op : 'const', x)
       case 'const':
-      case 'vtag':
       case 'subscript':
-        return finalize('const' as Op, [])
+        return newMeta('const', [])
+      case 'vtag':
+        info.usedCats = new Set([ex])
+        return newMeta('const', [])
       case 'match':
       case 'thres':
       case 'lookup':
-      case 'tag':
-      case 'dtag':
-        return wrap(x[0])
       case 'read':
-        return Object.freeze(wrap(x[0]))
+        return wrap(x[0])
+      case 'tag':
+        return wrap(x[0], Object.keys(nTag!))
+      case 'dtag':
+        return wrap(x[0], ex)
       case 'custom':
-        return finalize(
-          ex,
-          x as CalcResult<number, PartialMeta<Src, Dst, Sheet, Op>>[]
-        )
+        return newMeta(ex, x) // This is the only usage of `COp`
       default:
         assertUnreachable(op)
     }
   }
   override markGathered(
-    tag: Tag<Src, Dst, Sheet>,
+    _tag: Tag_,
+    entryTag: Tag_,
     _n: AnyNode,
-    result: CalcResult<string | number, CalcMeta<Src, Dst, Member, Sheet, Op>>
-  ): CalcResult<string | number, CalcMeta<Src, Dst, Member, Sheet, Op>> {
+    result: CalcResult<string | number, CalcMeta<Tag_, COp>>
+  ): CalcResult<string | number, CalcMeta<Tag_, COp>> {
+    const { val } = result
+    const meta = { ...result.meta }
     let dirty = false
-    const val = result.val
-    const meta = { ...Object.freeze(result.meta) }
 
-    if (tag.qt === 'cond') {
-      const { src, dst, sheet, q } = tag
-      if (src && sheet && q)
-        meta.conds = {
-          [dst ?? 'All']: { [src]: { [sheet!]: { [q!]: val } } },
-        } as CondInfo<Member | 'All', Sheet>
+    const newUsedCats = new Set([...meta.usedCats, ...Object.keys(entryTag)])
+    if (meta.usedCats.size !== newUsedCats.size) {
+      meta.usedCats = newUsedCats
       dirty = true
     }
-    Object.freeze(meta)
-    return dirty ? { val, meta } : result
+    return dirty ? { val, meta: Object.freeze(meta) } : result
   }
 
-  listFormulas(
-    read: Read<Tag<Src, Dst, Sheet>, Src, Dst, Sheet>
-  ): Read<Tag<Src, Dst, Sheet>, Src, Dst, Sheet>[] {
+  listFormulas(read: Read<Tag_>): Read<Tag_>[] {
     return this.gather(read.tag)
       .filter((x) => x.val)
       .map(
         ({ val, meta }) =>
-          reader.withTag(meta.tag!)[
-            val as Read<Tag<Src, Dst, Sheet>, Src, Dst, Sheet>['accu']
-          ]
+          (reader as Read<Tag_>).withTag(meta.tag!)[val as Read['accu']]
       )
   }
   listCondFormulas(
-    read: Read<Tag<Src, Dst, Sheet>, Src, Dst, Sheet>
-  ): CondInfo<Member | 'All', Sheet> {
+    read: Read<Tag_>
+  ): CondInfo<Member<Tag_> | 'All', Sheet<Tag_>> {
     return this.listFormulas(read)
       .map((x) => this.compute(x).meta.conds)
-      .reduce(mergeConds, {})
+      .reduce(merge, {})
   }
 }
 
-function extract<
-  V,
-  Src extends string | null,
-  Dst extends string | null,
-  Member extends string,
-  Sheet extends string,
-  Op = 'const' | 'sum' | 'prod' | 'min' | 'max' | 'sumfrac'
->(
-  x: CalcResult<V, CalcMeta<Src, Dst, Member, Sheet, Op>>,
-  info: Info<Member, Sheet>
-): CalcResult<V, PartialMeta<Src, Dst, Sheet, Op>> {
-  const { conds, ...meta } = x.meta
-  info.conds = mergeConds(info.conds, conds)
-  return Object.isFrozen(x.meta) ? x : { val: x.val, meta }
+function extractInfo<Tag_ extends Tag, COp>(
+  x: CalcResult<any, CalcMeta<Tag_, COp>>[],
+  br: CalcResult<any, CalcMeta<Tag_, COp>>[]
+): Info<Tag_> {
+  const metas = [...x.map((x) => x.meta), ...br.map((br) => br.meta)]
+  let conds: Info<Tag_>['conds'] = {}
+  let usedCats: Info<Tag_>['usedCats'] = new Set()
+  for (const meta of metas) {
+    conds = merge(conds, meta.conds)
+    meta.usedCats.forEach((c) => usedCats.add(c))
+  }
+  const catLen = usedCats.size
+  usedCats = metas.find((m) => m.usedCats.size === catLen)?.usedCats ?? usedCats
+  return { usedCats, conds }
 }
-
-function mergeConds<Member extends string, Sheet extends string>(
-  a: CondInfo<Member | 'All', Sheet>,
-  b: CondInfo<Member | 'All', Sheet>
-): CondInfo<Member | 'All', Sheet> {
-  return merge(a, b, (_, v) => (typeof v === 'number' ? v : undefined))
-}
-function merge<T extends Record<string, any>>(
-  a: T,
-  b: T,
-  leaf: (a: any, b: any) => any
-): T {
-  const l = leaf(a, b)
-  if (l !== undefined) return l
-  if (Object.keys(a).length < Object.keys(b).length) [a, b] = [b, a]
-  if (!Object.keys(b).length) return a
+function merge<T extends object>(o: T, n: any): T {
+  if (o === n) return o
+  if (typeof o !== 'object') throw new Error(`cannot merge ${o} and ${n}`)
+  if (Object.keys(n).length > Object.keys(o).length) [o, n] = [n, o] as any
+  if (!Object.keys(n).length) return o
 
   let dirty = false
-  const result: any = { ...a }
-  for (const [k, v] of Object.entries(b)) {
+  const result = { ...(o as any) }
+  for (const [k, v] of Object.entries(n)) {
     const oldV = result[k]
-    const newV = k in result ? merge(oldV, v, leaf) : v
+    const newV = k in result ? merge(oldV, v as any) : v
     if (oldV !== newV) {
       result[k] = newV
       dirty = true
     }
   }
-  return dirty ? result : a
+  return Object.freeze(dirty ? result : o)
 }

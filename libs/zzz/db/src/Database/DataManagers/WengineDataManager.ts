@@ -4,13 +4,12 @@ import {
   allWengineKeys,
   wengineMaxLevel,
 } from '@genshin-optimizer/zzz/consts'
-import { getWengineStat } from '@genshin-optimizer/zzz/stats'
 import { validateLevelMilestone } from '@genshin-optimizer/zzz/util'
 import type { IWengine } from '@genshin-optimizer/zzz/zood'
 import type { ICachedCharacter } from '../../Interfaces'
 import type { ICachedWengine } from '../../Interfaces/IDbWengine'
-import type { ZzzDatabase } from '../Database'
 import { DataManager } from '../DataManager'
+import type { ZzzDatabase } from '../Database'
 import { initialCharacterData } from './CharacterDataManager'
 
 export class WengineDataManager extends DataManager<
@@ -29,8 +28,7 @@ export class WengineDataManager extends DataManager<
     let { phase, location, lock } = obj as IWengine
 
     if (!allWengineKeys.includes(key)) return undefined
-    const { rarity } = getWengineStat(key)
-    if (rawLevel > wengineMaxLevel[rarity]) return undefined
+    if (rawLevel > wengineMaxLevel) return undefined
     const { sanitizedLevel, milestone: modification } = validateLevelMilestone(
       rawLevel,
       rawMod
@@ -68,7 +66,7 @@ export class WengineDataManager extends DataManager<
         : undefined
 
       // previously equipped wengine at new location
-      let prevWengine = super.get(newChar?.equippedWengine)
+      const prevWengine = super.get(newChar?.equippedWengine)
 
       //current prevWengine <-> newChar  && newWengine <-> prevChar
       //swap to prevWengine <-> prevChar && newWengine <-> newChar(outside of this if)
@@ -78,14 +76,13 @@ export class WengineDataManager extends DataManager<
           ...prevWengine,
           location: prevChar?.key ?? '',
         })
-      else if (prevChar?.key) prevWengine = undefined
 
       if (newChar)
         this.database.chars.setEquippedWengine(newChar.key, newWengine.id)
-      if (prevChar && prevWengine)
+      if (prevChar)
         this.database.chars.setEquippedWengine(
           prevChar.key,
-          prevWengine?.id as WengineKey
+          prevWengine?.id ?? ''
         )
     } else
       newWengine.location &&
@@ -152,8 +149,8 @@ export class WengineDataManager extends DataManager<
 export const initialWengine = (key: WengineKey): ICachedWengine => ({
   id: '',
   key,
-  level: 1,
-  modification: 0,
+  level: 60,
+  modification: 5,
   phase: 1,
   location: '',
   lock: false,

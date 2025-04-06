@@ -1,15 +1,15 @@
 import { registerEquipment } from '@genshin-optimizer/game-opt/formula'
-import { cmpGE, prod, subscript, sum } from '@genshin-optimizer/pando/engine'
+import type { NumNode } from '@genshin-optimizer/pando/engine'
+import {
+  cmpEq,
+  cmpGE,
+  prod,
+  subscript,
+  sum,
+} from '@genshin-optimizer/pando/engine'
 import type { WengineKey } from '@genshin-optimizer/zzz/consts'
-import { allStats } from '@genshin-optimizer/zzz/stats'
-import type {
-  Dst,
-  Sheet,
-  Src,
-  Tag,
-  TagMapNodeEntries,
-  TagMapNodeEntry,
-} from '../util'
+import { allStats, getWengineStat } from '@genshin-optimizer/zzz/stats'
+import type { Tag, TagMapNodeEntries, TagMapNodeEntry } from '../util'
 import { own, ownBuff } from '../util'
 
 const atk_multiplier = [
@@ -26,7 +26,7 @@ export function registerWengine(
   sheet: WengineKey,
   ...data: (TagMapNodeEntry | TagMapNodeEntries)[]
 ): TagMapNodeEntries {
-  return registerEquipment<Tag, Src, Dst, Sheet>(sheet, 'wengine', ...data)
+  return registerEquipment<Tag>(sheet, 'wengine', ...data)
 }
 
 export function entriesForWengine(key: WengineKey): TagMapNodeEntries {
@@ -56,4 +56,16 @@ export function entriesForWengine(key: WengineKey): TagMapNodeEntries {
       )
     ),
   ]
+}
+
+export function cmpSpecialtyAndEquipped(key: WengineKey, num: NumNode) {
+  const weCount = own.common.count.sheet(key)
+  const type = getWengineStat(key).type
+  return cmpGE(weCount, 1, cmpEq(type, own.char.specialty, num))
+}
+
+export function showSpecialtyAndEquipped(key: WengineKey) {
+  const weCount = own.common.count.sheet(key)
+  const type = getWengineStat(key).type
+  return cmpGE(weCount, 1, cmpEq(type, own.char.specialty, 'infer', ''), '')
 }

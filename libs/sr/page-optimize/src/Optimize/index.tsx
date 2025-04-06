@@ -1,32 +1,36 @@
+import { useDataManagerBaseDirty } from '@genshin-optimizer/common/database-ui'
 import { CardThemed } from '@genshin-optimizer/common/ui'
 import { objKeyMap } from '@genshin-optimizer/common/util'
-import type { ProgressResult } from '@genshin-optimizer/game-opt/solver'
-import { MAX_BUILDS } from '@genshin-optimizer/game-opt/solver'
+import type { BuildResult, Progress } from '@genshin-optimizer/game-opt/solver'
+import { buildCount } from '@genshin-optimizer/game-opt/solver'
 import {
-  allRelicSlotKeys,
   type RelicSlotKey,
+  allRelicSlotKeys,
 } from '@genshin-optimizer/sr/consts'
 import { type ICachedRelic } from '@genshin-optimizer/sr/db'
 import {
   OptConfigContext,
   OptConfigProvider,
-  useCharacterContext,
   useCharOpt,
+  useCharacterContext,
   useDatabaseContext,
 } from '@genshin-optimizer/sr/db-ui'
 import { StatFilterCard } from '@genshin-optimizer/sr/formula-ui'
-import { Solver } from '@genshin-optimizer/sr/solver'
-import { getCharStat, getLightConeStat } from '@genshin-optimizer/sr/stats'
-import { useSrCalcContext, WorkerSelector } from '@genshin-optimizer/sr/ui'
+import { optimize } from '@genshin-optimizer/sr/solver'
+import { getLightConeStat } from '@genshin-optimizer/sr/stats'
+import {
+  BuildsSelector,
+  WorkerSelector,
+  useSrCalcContext,
+} from '@genshin-optimizer/sr/ui'
 import CloseIcon from '@mui/icons-material/Close'
 import TrendingUpIcon from '@mui/icons-material/TrendingUp'
 import {
   Box,
   Button,
   CardContent,
-  CardHeader,
-  Divider,
   LinearProgress,
+  Stack,
   Typography,
 } from '@mui/material'
 import {
@@ -39,6 +43,8 @@ import {
 } from 'react'
 import { useTranslation } from 'react-i18next'
 import GeneratedBuildsDisplay from './GeneratedBuildsDisplay'
+import { LightConeFilter } from './LightConeFilter'
+import { RelicFilter } from './RelicFilter'
 
 export default function Optimize() {
   const { key: characterKey } = useCharacterContext()!
@@ -67,14 +73,34 @@ function OptimizeWrapper() {
   const { key: characterKey } = useCharacterContext()!
   const { target } = useCharOpt(characterKey)!
   const [numWorkers, setNumWorkers] = useState(8)
-  const [progress, setProgress] = useState<ProgressResult | undefined>(
-    undefined
-  )
+  const [progress, setProgress] = useState<Progress | undefined>(undefined)
   const { optConfig, optConfigId } = useContext(OptConfigContext)
-  const relicsBySlot = useMemo(
-    () =>
+  const relicDirty = useDataManagerBaseDirty(database.relics)
+  const relicsBySlot = useMemo(() => {
+    const slotKeyMap = {
+      body: optConfig.slotBodyKeys,
+      feet: optConfig.slotFeetKeys,
+      sphere: optConfig.slotSphereKeys,
+      rope: optConfig.slotRopeKeys,
+    } as const
+    const isFilteredSlot = (
+      slotKey: RelicSlotKey
+    ): slotKey is 'body' | 'feet' | 'sphere' | 'rope' =>
+      ['body', 'feet', 'sphere', 'rope'].includes(slotKey)
+    return (
+      relicDirty &&
       database.relics.values.reduce(
         (relicsBySlot, relic) => {
+          const { slotKey, mainStatKey, level, location } = relic
+          if (level < optConfig.levelLow || level > optConfig.levelHigh)
+            return relicsBySlot
+          if (location && !optConfig.useEquipped && location !== characterKey)
+            return relicsBySlot
+          if (
+            isFilteredSlot(slotKey) &&
+            !slotKeyMap[slotKey].includes(mainStatKey)
+          )
+            return relicsBySlot
           relicsBySlot[relic.slotKey].push(relic)
           return relicsBySlot
         },
@@ -86,23 +112,55 @@ function OptimizeWrapper() {
           sphere: [],
           rope: [],
         } as Record<RelicSlotKey, ICachedRelic[]>
-      ),
-    [database.relics.values]
-  )
+      )
+    )
+  }, [
+    characterKey,
+    database.relics,
+    optConfig.levelHigh,
+    optConfig.levelLow,
+    optConfig.slotBodyKeys,
+    optConfig.slotFeetKeys,
+    optConfig.slotRopeKeys,
+    optConfig.slotSphereKeys,
+    optConfig.useEquipped,
+    relicDirty,
+  ])
+  const lightConeDirty = useDataManagerBaseDirty(database.lightCones)
   const lightCones = useMemo(() => {
-    const { path } = getCharStat(characterKey)
-    return database.lightCones.values.filter(({ key }) => {
-      // filter by path
-      const { path: lcPath } = getLightConeStat(key)
-      return path === lcPath
-    })
-  }, [characterKey, database.lightCones.values])
+    return (
+      lightConeDirty &&
+      database.lightCones.values.filter(({ key, level, location }) => {
+        // only return equipped lightcone if not opting for lightcone
+        if (!optConfig.optLightCone) return location === characterKey
+
+        if (level < optConfig.lcLevelLow || level > optConfig.lcLevelHigh)
+          return false
+        if (
+          location &&
+          !optConfig.useEquippedLightCone &&
+          location !== characterKey
+        )
+          return false
+
+        const { path } = getLightConeStat(key)
+        // filter by path
+        if (!optConfig.lightConePaths.includes(path)) return false
+        return true
+      })
+    )
+  }, [
+    characterKey,
+    database.lightCones,
+    optConfig.lcLevelLow,
+    optConfig.lcLevelHigh,
+    optConfig.optLightCone,
+    optConfig.lightConePaths,
+    optConfig.useEquippedLightCone,
+    lightConeDirty,
+  ])
   const totalPermutations = useMemo(
-    () =>
-      Object.values(relicsBySlot).reduce(
-        (total, relics) => total * relics.length,
-        1
-      ) * lightCones.length,
+    () => buildCount(Object.values(relicsBySlot)) * lightCones.length,
     [lightCones.length, relicsBySlot]
   )
 
@@ -120,40 +178,36 @@ function OptimizeWrapper() {
     setOptimizing(true)
 
     // Filter out disabled
-    const statFilters = (optConfig.statFilters ?? [])
-      .filter(({ disabled }) => !disabled)
-      .map(({ tag, value, isMax }) => ({
-        tag,
-        value,
-        isMax,
-      }))
-    const optimizer = new Solver(
+    const statFilters = (optConfig.statFilters ?? []).filter((s) => !s.disabled)
+    const optimizer = optimize(
       characterKey,
       calc,
-      [
-        {
-          tag: target,
-          multiplier: 1,
-        },
-      ],
+      [{ tag: target, multiplier: 1 }],
+      optConfig.maxBuildsToShow,
       statFilters,
+      optConfig.setFilter2Cavern,
+      optConfig.setFilter4Cavern,
+      optConfig.setFilter2Planar,
       lightCones,
       relicsBySlot,
       numWorkers,
       setProgress
     )
 
-    cancelled.then(async () => await optimizer.terminate())
-    const results = await optimizer.optimize()
-    // Clean up workers
-    await optimizer.terminate()
-    cancelToken.current = () => {}
-
-    setOptimizing(false)
+    cancelled.then(() => optimizer.terminate('user cancelled'))
+    let results: BuildResult<string>[]
+    try {
+      results = await optimizer.results
+    } catch (e) {
+      return
+    } finally {
+      cancelToken.current = () => {}
+      setOptimizing(false)
+    }
     // Save results to optConfig
     if (results.length)
       database.optConfigs.newOrSetGeneratedBuildList(optConfigId, {
-        builds: results.slice(0, 5).map(({ ids, value }) => ({
+        builds: results.map(({ ids, value }) => ({
           lightConeId: ids[0],
           relicIds: objKeyMap(
             allRelicSlotKeys,
@@ -166,6 +220,10 @@ function OptimizeWrapper() {
   }, [
     calc,
     optConfig.statFilters,
+    optConfig.maxBuildsToShow,
+    optConfig.setFilter2Cavern,
+    optConfig.setFilter4Cavern,
+    optConfig.setFilter2Planar,
     characterKey,
     target,
     lightCones,
@@ -182,15 +240,25 @@ function OptimizeWrapper() {
 
   return (
     <CardThemed>
-      <CardHeader
-        title={t('optimize')}
-        action={
-          <Box>
+      <CardContent>
+        <Stack spacing={1}>
+          <StatFilterCard />
+          <LightConeFilter numLightCone={lightCones.length} />
+          <RelicFilter relicsBySlot={relicsBySlot} />
+          {progress && (
+            <ProgressIndicator progress={progress} total={totalPermutations} />
+          )}
+          <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <BuildsSelector
+              maxBuildsToShow={optConfig.maxBuildsToShow}
+              optConfigId={optConfigId}
+            />
             <WorkerSelector
               numWorkers={numWorkers}
               setNumWorkers={setNumWorkers}
             />
             <Button
+              disabled={!totalPermutations}
               onClick={optimizing ? onCancel : onOptimize}
               color={optimizing ? 'error' : 'primary'}
               startIcon={optimizing ? <CloseIcon /> : <TrendingUpIcon />}
@@ -198,43 +266,37 @@ function OptimizeWrapper() {
               {optimizing ? t('cancel') : t('optimize')}
             </Button>
           </Box>
-        }
-      />
-      <Divider />
-      <CardContent>
-        <StatFilterCard />
-        {progress && (
-          <ProgressIndicator
-            progress={progress}
-            totalPermutations={totalPermutations}
-          />
-        )}
+        </Stack>
       </CardContent>
     </CardThemed>
   )
 }
 
-function ProgressIndicator({
-  progress,
-  totalPermutations,
-}: {
-  progress: ProgressResult
-  totalPermutations: number
-}) {
+function Monospace({ value }: { value: number }): JSX.Element {
+  const str = value.toLocaleString()
+  return <Box sx={{ fontFamily: 'Monospace', display: 'inline' }}>{str}</Box>
+}
+function ProgressIndicator(props: { progress: Progress; total: number }) {
   const { t } = useTranslation('optimize')
+  const { computed, remaining, skipped } = props.progress
+  const unskipped = computed + remaining
+
+  const unskippedRatio = Math.log1p(unskipped) / Math.log1p(props.total)
+  const remRatio = (remaining / unskipped) * unskippedRatio
   return (
     <Box>
       <Typography>
-        {t('totalProgress')}: {progress.numBuildsComputed.toLocaleString()} /{' '}
-        {totalPermutations.toLocaleString()}
+        {t('computed')}: <Monospace value={computed} /> /{' '}
+        <Monospace value={unskipped} />{' '}
       </Typography>
       <Typography>
-        {t('buildsKept')}: {progress.numBuildsKept.toLocaleString()} /{' '}
-        {MAX_BUILDS.toLocaleString()}
+        {t('computed + skipped')}: <Monospace value={computed + skipped} /> /{' '}
+        <Monospace value={props.total} />
       </Typography>
-      <LinearProgress
+      <LinearProgress // ideally, it should be | <computed> | <remaining> | <skipped> |
         variant="determinate"
-        value={(progress.numBuildsComputed / totalPermutations) * 100}
+        value={(1 - remRatio) * 100}
+        sx={{ height: 10, borderRadius: 5 }}
       />
     </Box>
   )

@@ -7,13 +7,14 @@ import type {
   RelicPlanarSetKey,
   RelicPlanarSlotKey,
 } from '@genshin-optimizer/sr/consts'
+import type { RelicSlotDMKey } from '@genshin-optimizer/sr/dm'
 import {
+  DmAttackTypeMap,
   avatarConfig,
   avatarRankConfig,
   avatarSkillConfig,
   avatarSkillTreeConfig,
   characterIdMap,
-  DmAttackTypeMap,
   equipmentConfig,
   lightConeIdMap,
   relicDataInfo,
@@ -79,7 +80,7 @@ const runExecutor: PromiseExecutor<GenAssetsDataExecutorSchema> = async (
         relicSetIdMap[relicSetId],
         Object.fromEntries(
           Object.entries(relicDatas).map(([relicSlotKey, relicData]) => [
-            relicSlotMap[relicSlotKey],
+            relicSlotMap[relicSlotKey as RelicSlotDMKey],
             relicData.ItemFigureIconPath,
           ])
         ),
@@ -128,9 +129,10 @@ const runExecutor: PromiseExecutor<GenAssetsDataExecutorSchema> = async (
     SkillList.forEach((skillId) => {
       // Grab the first level; we just need the image names
       const { AttackType, SkillIcon } = avatarSkillConfig[skillId][0]
-      assets[AttackType ? DmAttackTypeMap[AttackType] : 'talent']?.push(
-        SkillIcon
-      )
+      const assetType = AttackType ? DmAttackTypeMap[AttackType] : 'talent'
+      // TODO: Add memosprite support
+      if (assetType === 'servantSkill' || assetType === 'servantTalent') return
+      assets[assetType]?.push(SkillIcon)
     })
 
     assetData.chars[characterIdMap[avatarId]] = assets

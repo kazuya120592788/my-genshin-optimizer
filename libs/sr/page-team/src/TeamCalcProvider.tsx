@@ -1,5 +1,5 @@
 import { notEmpty } from '@genshin-optimizer/common/util'
-import type { Preset } from '@genshin-optimizer/game-opt/engine'
+import type { Calculator, Preset } from '@genshin-optimizer/game-opt/engine'
 import { CalcContext } from '@genshin-optimizer/game-opt/formula-ui'
 import { constant } from '@genshin-optimizer/pando/engine'
 import type { TeammateDatum } from '@genshin-optimizer/sr/db'
@@ -24,8 +24,8 @@ import {
   withPreset,
 } from '@genshin-optimizer/sr/formula'
 import {
-  relicsTagMapNodes,
   relicTcTagMapNodes,
+  relicsTagMapNodes,
 } from '@genshin-optimizer/sr/solver'
 import type { ILightCone } from '@genshin-optimizer/sr/srod'
 import type { ReactNode } from 'react'
@@ -87,7 +87,11 @@ export function TeamCalcProvider({
     [team, member0, member1, member2, member3]
   )
 
-  return <CalcContext.Provider value={calc}>{children}</CalcContext.Provider>
+  return (
+    <CalcContext.Provider value={calc as Calculator}>
+      {children}
+    </CalcContext.Provider>
+  )
 }
 
 function useCharacterAndEquipment(
@@ -102,15 +106,15 @@ function useCharacterAndEquipment(
     meta?.buildType === 'equipped'
       ? character?.equippedLightCone
       : meta?.buildType === 'real'
-      ? build?.lightConeId
-      : undefined
+        ? build?.lightConeId
+        : undefined
   )
   const relics = useRelics(
     meta?.buildType === 'equipped'
       ? character?.equippedRelics
       : meta?.buildType === 'real'
-      ? build?.relicIds
-      : undefined
+        ? build?.relicIds
+        : undefined
   )
   const lcTagEntries = useMemo(() => {
     const lc =

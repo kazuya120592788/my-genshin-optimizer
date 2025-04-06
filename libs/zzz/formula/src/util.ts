@@ -86,9 +86,13 @@ export function wengineTagMapNodeEntries(
 ): TagMapNodeEntries {
   return [
     // Opt-in for wengine buffs, instead of enabling it by default to reduce `read` traffic
-    reader.sheet('agg').reread(reader.sheet('wengine')),
+    reader
+      .sheet('agg')
+      .reread(reader.sheet('wengine')),
     // Mark wengine cones as used
-    own.common.count.sheet(key).add(1),
+    own.common.count
+      .sheet(key)
+      .add(1),
     own.wengine.lvl.add(level),
     own.wengine.modification.add(modification),
     own.wengine.phase.add(phase),
@@ -105,7 +109,9 @@ export function discTagMapNodeEntries(
   } = convert(ownTag, { sheet: 'disc', et: 'own' })
   return [
     // Opt-in for disc buffs, instead of enabling it by default to reduce `read` traffic
-    reader.sheet('agg').reread(reader.sheet('disc')),
+    reader
+      .sheet('agg')
+      .reread(reader.sheet('disc')),
 
     // Add `sheet:dyn` between the stat and the buff so that we can `detach` them easily
     // Used for disc main/sub stats, as those are fed into the builder at run-time, after nodes are optimized
@@ -171,14 +177,6 @@ export function teamData(members: readonly Member[]): TagMapNodeEntries {
     }),
 
     // Total Team Stat
-    //
-    // CAUTION:
-    // This formula only works for queries with default `undefined` or `sum` accumulator.
-    // Using this on queries with other accumulators, e.g., `ampMulti` may results in an
-    // incorrect result. We cannot use `reread` here because the outer `team` query may
-    // use different accumulators from the inner query. Such is the case for maximum team
-    // final eleMas, where the outer query uses a `max` accumulator, while final eleMas
-    // must use `sum` accumulator for a correct result.
-    members.map((src) => teamEntry.add(reader.withTag({ src, et: 'own' }).sum)),
+    members.map((src) => teamEntry.add(reader.withTag({ src, et: 'own' }))),
   ].flat()
 }

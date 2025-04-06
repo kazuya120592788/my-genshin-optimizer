@@ -1,36 +1,31 @@
-import {
-  getUnitStr,
-  objKeyMap,
-  toPercent,
-} from '@genshin-optimizer/common/util'
+import { getUnitStr, objKeyMap } from '@genshin-optimizer/common/util'
 import type {
   Document,
   UISheetElement,
 } from '@genshin-optimizer/game-opt/sheet-ui'
 import { characterAsset } from '@genshin-optimizer/sr/assets'
 import {
-  characterGenderedKeyToCharacterKey,
   type CharacterGenderedKey,
   type StatKey,
+  characterGenderedKeyToCharacterKey,
 } from '@genshin-optimizer/sr/consts'
-import { own } from '@genshin-optimizer/sr/formula'
+import { buffs, own } from '@genshin-optimizer/sr/formula'
 import { Translate } from '@genshin-optimizer/sr/i18n'
 import {
   getCharInterpolateObject,
   getCharStat,
 } from '@genshin-optimizer/sr/stats'
 import { StatDisplay } from '@genshin-optimizer/sr/ui'
-import { statToFixed } from '@genshin-optimizer/sr/util'
 import { trans } from '../util'
+import { EidolonSubtitle } from './EidolonSubtitle'
+import { SkillSubtitle } from './SkillSubtitle'
+import { bonusAbilityReqMap, bonusStatsReqMap } from './StatBoostBonusAbility'
 import type {
   TalentSheetElementBonusAbilityKey,
   TalentSheetElementEidolonKey,
   TalentSheetElementStatBoostKey,
 } from './consts'
 import { allTalentSheetElementStatBoostKey, getEidolonKey } from './consts'
-import { EidolonSubtitle } from './EidolonSubtitle'
-import { SkillSubtitle } from './SkillSubtitle'
-import { bonusAbilityReqMap, bonusStatsReqMap } from './StatBoostBonusAbility'
 
 export function talentSheet(
   ckey: CharacterGenderedKey,
@@ -97,9 +92,10 @@ export function bonusStatsSheets(
 ): Record<TalentSheetElementStatBoostKey, UISheetElement> {
   return objKeyMap(allTalentSheetElementStatBoostKey, (key) => {
     const stats = getCharStat(characterGenderedKeyToCharacterKey(ckey))
-    const [statKey, value] = Object.entries(
+    const [statKey] = Object.entries(
       stats.skillTree[key]?.levels?.[0].stats ?? {}
     )[0]
+    const buff = buffs[characterGenderedKeyToCharacterKey(ckey)]
     return {
       title: <Translate ns={'charSheet_gen'} key18={`statBoost.${statKey}`} />,
       subtitle: bonusStatsReqMap[key].subtitle,
@@ -109,9 +105,7 @@ export function bonusStatsSheets(
           fields: [
             {
               title: <StatDisplay statKey={statKey as StatKey} />,
-              fieldValue: toPercent(value, statKey).toFixed(
-                statToFixed(statKey as any)
-              ),
+              fieldRef: buff[key].tag,
               unit: getUnitStr(statKey),
             },
           ],

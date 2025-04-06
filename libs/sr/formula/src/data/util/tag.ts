@@ -10,9 +10,10 @@ import {
 } from '@genshin-optimizer/game-opt/engine'
 import type { NumNode } from '@genshin-optimizer/pando/engine'
 import { constant } from '@genshin-optimizer/pando/engine'
-import type { Dst, Sheet, Src, Stat } from './listing'
+import type { Sheet, Stat } from './listing'
 import { bonusAbilities, statBoosts } from './listing'
-import { reader, type Read, type Tag } from './read'
+import type { Read, Tag } from './read'
+import { reader } from './read'
 
 export function percent(x: number | NumNode): NumNode {
   return tag(typeof x === 'number' ? constant(x) : x, { qt: 'misc', q: '_' })
@@ -68,15 +69,15 @@ export function priorityTable(
  * only include contributions from character and custom values.
  */
 
-type Desc = BaseDesc<Tag, Src, Dst, Sheet>
-const aggStr: Desc = { sheet: 'agg', accu: 'unique' }
+type Desc = BaseDesc<Sheet>
+const aggStr: Desc = { sheet: 'agg' }
 const agg: Desc = { sheet: 'agg', accu: 'sum' }
-const iso: Desc = { sheet: 'iso', accu: 'unique' }
+const iso: Desc = { sheet: 'iso' }
 const isoSum: Desc = { sheet: 'iso', accu: 'sum' }
 /** `sheet:`-agnostic calculation */
-const fixed: Desc = { sheet: 'static', accu: 'unique' }
+const fixed: Desc = { sheet: 'static' }
 /** The calculation must have a matching `sheet:` */
-const prep: Desc = { sheet: undefined, accu: 'unique' }
+const prep: Desc = { sheet: undefined }
 
 const stats: Record<Stat, Desc> = {
   hp: agg,
@@ -94,6 +95,7 @@ const stats: Record<Stat, Desc> = {
   eff_res_: agg,
   enerRegen_: agg,
   heal_: agg,
+  incHeal_: agg,
   dmg_: agg,
   resPen_: agg,
   defIgn_: agg,
@@ -112,10 +114,13 @@ export const ownTag = {
     ascension: iso,
     teamPosition: iso,
     eidolon: iso,
+    maxEnergy: iso,
     basic: agg,
     skill: agg,
     ult: agg,
     talent: agg,
+    servantSkill: agg,
+    servantTalent: agg,
     ...objKeyMap(bonusAbilities, () => isoSum),
     ...objKeyMap(statBoosts, () => isoSum),
   },
@@ -151,31 +156,28 @@ export const enemyTag = {
   },
 } as const
 
-export const convert = createConvert<Read, Tag, Src, Dst, Sheet>()
+export const convert = createConvert<Read>()
 
 // Default queries
 const noName = { src: null, name: null }
-export const own = convert(ownTag, {
-  et: 'own',
-  dst: null,
-})
-export const team = convert(ownTag, {
-  et: 'team',
-  dst: null,
-  ...noName,
-})
+export const own = convert(ownTag, { et: 'own', dst: null })
+// `semiOwn` retains `dst`, so this can calculate a buff
+// that comes from charA (`own`) but scales off charB stats (`target`)
+export const semiOwn = convert(ownTag, { et: 'own' })
+export const team = convert(ownTag, { et: 'team', dst: null, ...noName })
 export const target = convert(ownTag, { et: 'target', ...noName })
 export const enemy = convert(enemyTag, { et: 'enemy', dst: null, ...noName })
 
 // Default tag DB keys
 export const ownBuff = convert(ownTag, { et: 'own' })
+export const semiOwnBuff = ownBuff
 export const teamBuff = convert(ownTag, { et: 'teamBuff' })
 export const notOwnBuff = convert(ownTag, { et: 'notOwnBuff' })
 export const enemyDebuff = convert(enemyTag, { et: 'enemy' })
 export const userBuff = convert(ownTag, { et: 'own', sheet: 'custom' })
 
 // Custom tags
-const nullTag = {
+const nullTag: Tag = {
   name: null,
   elementalType: null,
   damageType1: null,

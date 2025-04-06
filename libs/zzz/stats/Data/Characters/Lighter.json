@@ -1,10 +1,12 @@
 {
+  "id": "1161",
   "icon": "IconRole26",
   "rarity": "S",
   "attribute": "fire",
   "specialty": "stun",
   "faction": "SonsOfCalydon",
   "fullname": "Lighter",
+  "name": "Lighter",
   "stats": {
     "atk_base": 109,
     "atk_growth": 6.3891,

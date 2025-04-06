@@ -1,4 +1,4 @@
-import { isPercentStat } from '@genshin-optimizer/common/util'
+import { isPercentStat, parseFloatBetter } from '@genshin-optimizer/common/util'
 import type {
   SpecialityKey,
   WengineKey,
@@ -6,9 +6,9 @@ import type {
 } from '@genshin-optimizer/zzz/consts'
 import { readHakushinJSON } from '../../util'
 import {
+  WengineIdMap,
   specialityMap,
   subStatMap,
-  WengineIdMap,
   wengineRarityMap,
 } from './consts'
 const SCALING = 10000
@@ -45,7 +45,12 @@ export type WengineData = {
   desc: string
   desc2: string
   desc3: string
-  phase: Array<{ name: string; desc: string }>
+  phase: PhaseData[]
+}
+type PhaseData = {
+  name: string
+  desc: string
+  params: number[]
 }
 export const wengineDetailedJSONData = Object.fromEntries(
   Object.entries(WengineIdMap).map(([id, name]) => {
@@ -68,6 +73,14 @@ export const wengineDetailedJSONData = Object.fromEntries(
       phase: Object.values(raw.Talents).map(({ Name, Desc }) => ({
         name: Name,
         desc: Desc,
+        // Match (number with possible decimal portion)(% or s or word boundary) and not followed by '>' such as for color tags
+        params: [...Desc.matchAll(/(\d+\.?\d*)(?:(%)|s?\b)(?!>)/g)].map(
+          (matches) => {
+            const [_match, value, percent] = matches
+            if (percent) return parseFloatBetter(value)
+            return +value
+          }
+        ),
       })),
     }
     return [name, data] as const

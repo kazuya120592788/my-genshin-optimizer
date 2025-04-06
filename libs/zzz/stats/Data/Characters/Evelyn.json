@@ -1,10 +1,12 @@
 {
+  "id": "1321",
   "icon": "IconRole37",
   "rarity": "S",
   "attribute": "fire",
   "specialty": "attack",
   "faction": "StarsOfLyra",
   "fullname": "Evelyn Chevalier",
+  "name": "Evelyn",
   "stats": {
     "atk_base": 134,
     "atk_growth": 8.1654,

@@ -101,6 +101,7 @@ export const nonTravelerCharacterKeys = [
   'Ganyu',
   'Gorou',
   'HuTao',
+  'Iansan',
   'Jean',
   'Kachina',
   'KaedeharaKazuha',
@@ -145,6 +146,7 @@ export const nonTravelerCharacterKeys = [
   'Tartaglia',
   'Thoma',
   'Tighnari',
+  'Varesa',
   'Venti',
   'Wanderer',
   'Wriothesley',
@@ -245,6 +247,12 @@ export function locCharKeyToCharKey(
 ): CharacterKey {
   if (locKey === 'Traveler') return travelerEleMap[travelerEle] as CharacterKey
   return locKey as CharacterKey
+}
+
+export function sheetKeyToCharKey(sheetKey: CharacterSheetKey): CharacterKey {
+  if (sheetKey.includes('Traveler'))
+    return sheetKey.slice(0, -1) as CharacterKey
+  else return sheetKey as CharacterKey
 }
 
 export function travelerElement(element: TravelerElementKey): TravelerKey {

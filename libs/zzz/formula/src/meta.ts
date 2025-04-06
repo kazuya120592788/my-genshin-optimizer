@@ -10,10 +10,49 @@ export const conditionals = {
       max: 3,
     },
   },
+  BashfulDemon: {
+    launch_ex_attack: {
+      sheet: 'BashfulDemon',
+      name: 'launch_ex_attack',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 4,
+    },
+  },
+  BlazingLaurel: {
+    quickOrPerfectAssistUsed: {
+      sheet: 'BlazingLaurel',
+      name: 'quickOrPerfectAssistUsed',
+      type: 'bool',
+    },
+    wilt: {
+      sheet: 'BlazingLaurel',
+      name: 'wilt',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 20,
+    },
+  },
+  BoxCutter: {
+    launchedAftershock: {
+      sheet: 'BoxCutter',
+      name: 'launchedAftershock',
+      type: 'bool',
+    },
+  },
   BranchBladeSong: {
     apply_or_trigger: {
       sheet: 'BranchBladeSong',
       name: 'apply_or_trigger',
+      type: 'bool',
+    },
+  },
+  BunnyBand: {
+    wearerShielded: {
+      sheet: 'BunnyBand',
+      name: 'wearerShielded',
       type: 'bool',
     },
   },
@@ -34,12 +73,103 @@ export const conditionals = {
       max: 6,
     },
   },
+  DeepSeaVisitor: {
+    basicHit: { sheet: 'DeepSeaVisitor', name: 'basicHit', type: 'bool' },
+    iceDashAtkHit: {
+      sheet: 'DeepSeaVisitor',
+      name: 'iceDashAtkHit',
+      type: 'bool',
+    },
+  },
+  DemaraBatteryMarkII: {
+    dodgeCounterOrAssistHit: {
+      sheet: 'DemaraBatteryMarkII',
+      name: 'dodgeCounterOrAssistHit',
+      type: 'bool',
+    },
+  },
+  DrillRigRedAxis: {
+    exSpecialOrChainUsed: {
+      sheet: 'DrillRigRedAxis',
+      name: 'exSpecialOrChainUsed',
+      type: 'bool',
+    },
+  },
+  ElectroLipGloss: {
+    anomalyOnEnemy: {
+      sheet: 'ElectroLipGloss',
+      name: 'anomalyOnEnemy',
+      type: 'bool',
+    },
+  },
+  ElegantVanity: {
+    consumed25Energy: {
+      sheet: 'ElegantVanity',
+      name: 'consumed25Energy',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 2,
+    },
+  },
   FangedMetal: {
     inflict_assault: {
       sheet: 'FangedMetal',
       name: 'inflict_assault',
       type: 'bool',
     },
+  },
+  FlamemakerShaker: {
+    exSpecialAssistHits: {
+      sheet: 'FlamemakerShaker',
+      name: 'exSpecialAssistHits',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 10,
+    },
+    offField: { sheet: 'FlamemakerShaker', name: 'offField', type: 'bool' },
+  },
+  FusionCompiler: {
+    specialUsed: {
+      sheet: 'FusionCompiler',
+      name: 'specialUsed',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 3,
+    },
+  },
+  HailstormShrine: {
+    exSpecialOrAnomaly: {
+      sheet: 'HailstormShrine',
+      name: 'exSpecialOrAnomaly',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 2,
+    },
+  },
+  HeartstringNocturne: {
+    heartstring: {
+      sheet: 'HeartstringNocturne',
+      name: 'heartstring',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 2,
+    },
+  },
+  HellfireGears: {
+    exSpecialUsed: {
+      sheet: 'HellfireGears',
+      name: 'exSpecialUsed',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 2,
+    },
+    offField: { sheet: 'HellfireGears', name: 'offField', type: 'bool' },
   },
   HormonePunk: {
     entering_combat: {
@@ -48,10 +178,107 @@ export const conditionals = {
       type: 'bool',
     },
   },
+  Housekeeper: {
+    exSpecialHits: {
+      sheet: 'Housekeeper',
+      name: 'exSpecialHits',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 15,
+    },
+    offField: { sheet: 'Housekeeper', name: 'offField', type: 'bool' },
+  },
+  IceJadeTeapot: {
+    teariffic: {
+      sheet: 'IceJadeTeapot',
+      name: 'teariffic',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 30,
+    },
+  },
+  IdentityBase: {
+    equipperAttacked: {
+      sheet: 'IdentityBase',
+      name: 'equipperAttacked',
+      type: 'bool',
+    },
+  },
   InfernoMetal: {
     hitting_burning_enemy: {
       sheet: 'InfernoMetal',
       name: 'hitting_burning_enemy',
+      type: 'bool',
+    },
+  },
+  KaboomTheCannon: {
+    allyHitsEnemy: {
+      sheet: 'KaboomTheCannon',
+      name: 'allyHitsEnemy',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 4,
+    },
+  },
+  LunarDecrescent: {
+    chainOrUltUsed: {
+      sheet: 'LunarDecrescent',
+      name: 'chainOrUltUsed',
+      type: 'bool',
+    },
+  },
+  MagneticStormAlpha: {
+    anomalyBuildupIncreased: {
+      sheet: 'MagneticStormAlpha',
+      name: 'anomalyBuildupIncreased',
+      type: 'bool',
+    },
+  },
+  MagneticStormBravo: {
+    anomalyBuildupIncreased: {
+      sheet: 'MagneticStormBravo',
+      name: 'anomalyBuildupIncreased',
+      type: 'bool',
+    },
+  },
+  MarcatoDesire: {
+    attributeAnomalyInflicted: {
+      sheet: 'MarcatoDesire',
+      name: 'attributeAnomalyInflicted',
+      type: 'bool',
+    },
+    exSpecialOrChainHitsEnemy: {
+      sheet: 'MarcatoDesire',
+      name: 'exSpecialOrChainHitsEnemy',
+      type: 'bool',
+    },
+  },
+  OriginalTransmorpher: {
+    equipperHit: {
+      sheet: 'OriginalTransmorpher',
+      name: 'equipperHit',
+      type: 'bool',
+    },
+  },
+  PeacekeeperSpecialized: {
+    shielded: {
+      sheet: 'PeacekeeperSpecialized',
+      name: 'shielded',
+      type: 'bool',
+    },
+  },
+  PhaethonsMelody: {
+    not_char_use_ex: {
+      sheet: 'PhaethonsMelody',
+      name: 'not_char_use_ex',
+      type: 'bool',
+    },
+    squad_use_ex: {
+      sheet: 'PhaethonsMelody',
+      name: 'squad_use_ex',
       type: 'bool',
     },
   },
@@ -76,14 +303,195 @@ export const conditionals = {
       type: 'bool',
     },
   },
+  RainforestGourmet: {
+    energyConsumed: {
+      sheet: 'RainforestGourmet',
+      name: 'energyConsumed',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 10,
+    },
+  },
+  ReverbMarkI: {
+    exSpecialUsed: {
+      sheet: 'ReverbMarkI',
+      name: 'exSpecialUsed',
+      type: 'bool',
+    },
+  },
+  ReverbMarkII: {
+    exSpecialOrChainUsed: {
+      sheet: 'ReverbMarkII',
+      name: 'exSpecialOrChainUsed',
+      type: 'bool',
+    },
+  },
+  ReverbMarkIII: {
+    chainOrUltUsed: {
+      sheet: 'ReverbMarkIII',
+      name: 'chainOrUltUsed',
+      type: 'bool',
+    },
+  },
+  RiotSuppressorMarkVI: {
+    charge: { sheet: 'RiotSuppressorMarkVI', name: 'charge', type: 'bool' },
+  },
+  RoaringRide: {
+    anomProf: { sheet: 'RoaringRide', name: 'anomProf', type: 'bool' },
+    atk_: { sheet: 'RoaringRide', name: 'atk_', type: 'bool' },
+  },
+  SeveredInnocence: {
+    basicSpecialAftershockHit: {
+      sheet: 'SeveredInnocence',
+      name: 'basicSpecialAftershockHit',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 3,
+    },
+  },
+  ShadowHarmony: {
+    stacks: {
+      sheet: 'ShadowHarmony',
+      name: 'stacks',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 3,
+    },
+  },
+  SharpenedStinger: {
+    predatoryInstinct: {
+      sheet: 'SharpenedStinger',
+      name: 'predatoryInstinct',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 3,
+    },
+  },
+  SpectralGaze: {
+    hit_aftershock_electric: {
+      sheet: 'SpectralGaze',
+      name: 'hit_aftershock_electric',
+      type: 'bool',
+    },
+    spiritLock: {
+      sheet: 'SpectralGaze',
+      name: 'spiritLock',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 3,
+    },
+  },
+  SpringEmbrace: {
+    when_attacked: {
+      sheet: 'SpringEmbrace',
+      name: 'when_attacked',
+      type: 'bool',
+    },
+  },
+  StarlightEngine: {
+    dodgecounter_quickassist: {
+      sheet: 'StarlightEngine',
+      name: 'dodgecounter_quickassist',
+      type: 'bool',
+    },
+  },
+  StarlightEngineReplica: {
+    hit_away: {
+      sheet: 'StarlightEngineReplica',
+      name: 'hit_away',
+      type: 'bool',
+    },
+  },
+  SteamOven: {
+    stacks: {
+      sheet: 'SteamOven',
+      name: 'stacks',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 8,
+    },
+  },
+  SteelCushion: {
+    hit_behind: { sheet: 'SteelCushion', name: 'hit_behind', type: 'bool' },
+  },
+  StreetSuperstar: {
+    charge: {
+      sheet: 'StreetSuperstar',
+      name: 'charge',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 3,
+    },
+  },
   SwingJazz: {
     chain_or_ult: { sheet: 'SwingJazz', name: 'chain_or_ult', type: 'bool' },
+  },
+  TheBrimstone: {
+    hit_basic_dash_dodge: {
+      sheet: 'TheBrimstone',
+      name: 'hit_basic_dash_dodge',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 8,
+    },
+  },
+  TheVault: {
+    ether_hit: { sheet: 'TheVault', name: 'ether_hit', type: 'bool' },
   },
   ThunderMetal: {
     enemy_shocked: {
       sheet: 'ThunderMetal',
       name: 'enemy_shocked',
       type: 'bool',
+    },
+  },
+  Timeweaver: {
+    hit_anomaly: { sheet: 'Timeweaver', name: 'hit_anomaly', type: 'bool' },
+  },
+  TusksOfFury: {
+    interrupt_perfdodge: {
+      sheet: 'TusksOfFury',
+      name: 'interrupt_perfdodge',
+      type: 'bool',
+    },
+  },
+  UnfetteredGameBall: {
+    anomaly_counter: {
+      sheet: 'UnfetteredGameBall',
+      name: 'anomaly_counter',
+      type: 'bool',
+    },
+  },
+  VortexHatchet: {
+    entering: { sheet: 'VortexHatchet', name: 'entering', type: 'bool' },
+  },
+  WeepingCradle: {
+    attack: { sheet: 'WeepingCradle', name: 'attack', type: 'bool' },
+    stacks: {
+      sheet: 'WeepingCradle',
+      name: 'stacks',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 6,
+    },
+  },
+  WeepingGemini: {
+    anomaly_stack: {
+      sheet: 'WeepingGemini',
+      name: 'anomaly_stack',
+      type: 'num',
+      int_only: true,
+      min: 0,
+      max: 4,
     },
   },
   WoodpeckerElectro: {
@@ -94,6 +502,13 @@ export const conditionals = {
       int_only: true,
       min: 0,
       max: 3,
+    },
+  },
+  ZanshinHerbCase: {
+    apply_anom_stun: {
+      sheet: 'ZanshinHerbCase',
+      name: 'apply_anom_stun',
+      type: 'bool',
     },
   },
 } as const
@@ -121,7 +536,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Anby',
         attribute: 'electric',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -149,7 +563,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Anton',
         attribute: 'electric',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -177,7 +590,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Astra',
         attribute: 'ether',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -205,8 +617,21 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Ben',
         attribute: 'fire',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
+      },
+    },
+  },
+  BigCylinder: {
+    damage: {
+      sheet: 'BigCylinder',
+      name: 'damage',
+      tag: {
+        et: 'own',
+        qt: 'formula',
+        q: 'standardDmg',
+        sheet: 'BigCylinder',
+        damageType1: 'elemental',
+        name: 'damage',
       },
     },
   },
@@ -233,7 +658,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Billy',
         attribute: 'physical',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -261,7 +685,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Burnice',
         attribute: 'fire',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -289,8 +712,21 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Caesar',
         attribute: 'physical',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
+      },
+    },
+  },
+  CannonRotor: {
+    damage: {
+      sheet: 'CannonRotor',
+      name: 'damage',
+      tag: {
+        et: 'own',
+        qt: 'formula',
+        q: 'standardDmg',
+        sheet: 'CannonRotor',
+        damageType1: 'elemental',
+        name: 'damage',
       },
     },
   },
@@ -317,7 +753,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Corin',
         attribute: 'physical',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -345,7 +780,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Ellen',
         attribute: 'ice',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -373,7 +807,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Evelyn',
         attribute: 'fire',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -401,7 +834,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Grace',
         attribute: 'electric',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -429,7 +861,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Harumasa',
         attribute: 'electric',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -457,7 +888,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Jane',
         attribute: 'physical',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -485,7 +915,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Koleda',
         attribute: 'fire',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -513,7 +942,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Lighter',
         attribute: 'fire',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -541,7 +969,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Lucy',
         attribute: 'fire',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -569,7 +996,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Lycaon',
         attribute: 'ice',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -597,7 +1023,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Miyabi',
         attribute: 'ice',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -625,7 +1050,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Nekomata',
         attribute: 'physical',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -653,7 +1077,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Nicole',
         attribute: 'ether',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -681,7 +1104,33 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Piper',
         attribute: 'physical',
-        damageType1: 'elemental',
+        name: 'standardDmgInst',
+      },
+    },
+  },
+  Pulchra: {
+    anomalyDmgInst: {
+      sheet: 'Pulchra',
+      name: 'anomalyDmgInst',
+      tag: {
+        et: 'own',
+        qt: 'formula',
+        q: 'anomalyDmg',
+        sheet: 'Pulchra',
+        attribute: 'physical',
+        damageType1: 'anomaly',
+        name: 'anomalyDmgInst',
+      },
+    },
+    standardDmgInst: {
+      sheet: 'Pulchra',
+      name: 'standardDmgInst',
+      tag: {
+        et: 'own',
+        qt: 'formula',
+        q: 'standardDmg',
+        sheet: 'Pulchra',
+        attribute: 'physical',
         name: 'standardDmgInst',
       },
     },
@@ -709,7 +1158,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'QingYi',
         attribute: 'electric',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -737,7 +1185,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Rina',
         attribute: 'electric',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -765,7 +1212,33 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Seth',
         attribute: 'electric',
-        damageType1: 'elemental',
+        name: 'standardDmgInst',
+      },
+    },
+  },
+  Soldier0Anby: {
+    anomalyDmgInst: {
+      sheet: 'Soldier0Anby',
+      name: 'anomalyDmgInst',
+      tag: {
+        et: 'own',
+        qt: 'formula',
+        q: 'anomalyDmg',
+        sheet: 'Soldier0Anby',
+        attribute: 'electric',
+        damageType1: 'anomaly',
+        name: 'anomalyDmgInst',
+      },
+    },
+    standardDmgInst: {
+      sheet: 'Soldier0Anby',
+      name: 'standardDmgInst',
+      tag: {
+        et: 'own',
+        qt: 'formula',
+        q: 'standardDmg',
+        sheet: 'Soldier0Anby',
+        attribute: 'electric',
         name: 'standardDmgInst',
       },
     },
@@ -793,7 +1266,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Soldier11',
         attribute: 'fire',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -821,7 +1293,33 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Soukaku',
         attribute: 'ice',
-        damageType1: 'elemental',
+        name: 'standardDmgInst',
+      },
+    },
+  },
+  Trigger: {
+    anomalyDmgInst: {
+      sheet: 'Trigger',
+      name: 'anomalyDmgInst',
+      tag: {
+        et: 'own',
+        qt: 'formula',
+        q: 'anomalyDmg',
+        sheet: 'Trigger',
+        attribute: 'electric',
+        damageType1: 'anomaly',
+        name: 'anomalyDmgInst',
+      },
+    },
+    standardDmgInst: {
+      sheet: 'Trigger',
+      name: 'standardDmgInst',
+      tag: {
+        et: 'own',
+        qt: 'formula',
+        q: 'standardDmg',
+        sheet: 'Trigger',
+        attribute: 'electric',
         name: 'standardDmgInst',
       },
     },
@@ -849,7 +1347,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'Yanagi',
         attribute: 'electric',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -877,7 +1374,6 @@ export const formulas = {
         q: 'standardDmg',
         sheet: 'ZhuYuan',
         attribute: 'ether',
-        damageType1: 'elemental',
         name: 'standardDmgInst',
       },
     },
@@ -885,6 +1381,17 @@ export const formulas = {
 } as const
 export const buffs = {
   AstralVoice: {
+    set2: {
+      sheet: 'AstralVoice',
+      name: 'set2',
+      tag: {
+        et: 'display',
+        qt: 'initial',
+        q: 'atk_',
+        sheet: 'AstralVoice',
+        name: 'set2',
+      },
+    },
     set4_team_dmg_: {
       sheet: 'AstralVoice',
       name: 'set4_team_dmg_',
@@ -897,7 +1404,94 @@ export const buffs = {
       },
     },
   },
+  BashfulDemon: {
+    passive_ice_dmg_: {
+      sheet: 'BashfulDemon',
+      name: 'passive_ice_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'dmg_',
+        sheet: 'BashfulDemon',
+        attribute: 'ice',
+        name: 'passive_ice_dmg_',
+      },
+    },
+    team_atk_: {
+      sheet: 'BashfulDemon',
+      name: 'team_atk_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'atk_',
+        sheet: 'BashfulDemon',
+        name: 'team_atk_',
+      },
+    },
+  },
+  BlazingLaurel: {
+    crit_dmg_fire_: {
+      sheet: 'BlazingLaurel',
+      name: 'crit_dmg_fire_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'crit_dmg_',
+        sheet: 'BlazingLaurel',
+        attribute: 'fire',
+        name: 'crit_dmg_fire_',
+      },
+    },
+    crit_dmg_ice_: {
+      sheet: 'BlazingLaurel',
+      name: 'crit_dmg_ice_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'crit_dmg_',
+        sheet: 'BlazingLaurel',
+        attribute: 'ice',
+        name: 'crit_dmg_ice_',
+      },
+    },
+    impact_: {
+      sheet: 'BlazingLaurel',
+      name: 'impact_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'impact_',
+        sheet: 'BlazingLaurel',
+        name: 'impact_',
+      },
+    },
+  },
+  BoxCutter: {
+    physical_dmg_: {
+      sheet: 'BoxCutter',
+      name: 'physical_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'dmg_',
+        sheet: 'BoxCutter',
+        attribute: 'physical',
+        name: 'physical_dmg_',
+      },
+    },
+  },
   BranchBladeSong: {
+    set2: {
+      sheet: 'BranchBladeSong',
+      name: 'set2',
+      tag: {
+        et: 'display',
+        qt: 'initial',
+        q: 'crit_dmg_',
+        sheet: 'BranchBladeSong',
+        name: 'set2',
+      },
+    },
     set4_cond: {
       sheet: 'BranchBladeSong',
       name: 'set4_cond',
@@ -921,7 +1515,55 @@ export const buffs = {
       },
     },
   },
+  BunnyBand: {
+    atk_: {
+      sheet: 'BunnyBand',
+      name: 'atk_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'atk_',
+        sheet: 'BunnyBand',
+        name: 'atk_',
+      },
+    },
+    passive_hp_: {
+      sheet: 'BunnyBand',
+      name: 'passive_hp_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'hp_',
+        sheet: 'BunnyBand',
+        name: 'passive_hp_',
+      },
+    },
+  },
+  CannonRotor: {
+    passive_atk_: {
+      sheet: 'CannonRotor',
+      name: 'passive_atk_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'atk_',
+        sheet: 'CannonRotor',
+        name: 'passive_atk_',
+      },
+    },
+  },
   ChaosJazz: {
+    set2: {
+      sheet: 'ChaosJazz',
+      name: 'set2',
+      tag: {
+        et: 'display',
+        qt: 'initial',
+        q: 'anomProf',
+        sheet: 'ChaosJazz',
+        name: 'set2',
+      },
+    },
     set4_off_field_assist_dmg_: {
       sheet: 'ChaosJazz',
       name: 'set4_off_field_assist_dmg_',
@@ -976,6 +1618,18 @@ export const buffs = {
     },
   },
   ChaoticMetal: {
+    set2: {
+      sheet: 'ChaoticMetal',
+      name: 'set2',
+      tag: {
+        et: 'display',
+        qt: 'initial',
+        q: 'dmg_',
+        sheet: 'ChaoticMetal',
+        attribute: 'ether',
+        name: 'set2',
+      },
+    },
     set4_cond_trigger_corruption: {
       sheet: 'ChaoticMetal',
       name: 'set4_cond_trigger_corruption',
@@ -999,7 +1653,145 @@ export const buffs = {
       },
     },
   },
+  DeepSeaVisitor: {
+    crit_: {
+      sheet: 'DeepSeaVisitor',
+      name: 'crit_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'crit_',
+        sheet: 'DeepSeaVisitor',
+        name: 'crit_',
+      },
+    },
+    extra_crit_: {
+      sheet: 'DeepSeaVisitor',
+      name: 'extra_crit_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'crit_',
+        sheet: 'DeepSeaVisitor',
+        name: 'extra_crit_',
+      },
+    },
+    passive_ice_dmg_: {
+      sheet: 'DeepSeaVisitor',
+      name: 'passive_ice_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'dmg_',
+        sheet: 'DeepSeaVisitor',
+        attribute: 'ice',
+        name: 'passive_ice_dmg_',
+      },
+    },
+  },
+  DemaraBatteryMarkII: {
+    enerRegen_: {
+      sheet: 'DemaraBatteryMarkII',
+      name: 'enerRegen_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'enerRegen_',
+        sheet: 'DemaraBatteryMarkII',
+        name: 'enerRegen_',
+      },
+    },
+    passive_electric_dmg_: {
+      sheet: 'DemaraBatteryMarkII',
+      name: 'passive_electric_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'dmg_',
+        sheet: 'DemaraBatteryMarkII',
+        attribute: 'electric',
+        name: 'passive_electric_dmg_',
+      },
+    },
+  },
+  DrillRigRedAxis: {
+    basic_eletric_dmg_: {
+      sheet: 'DrillRigRedAxis',
+      name: 'basic_eletric_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'dmg_',
+        sheet: 'DrillRigRedAxis',
+        attribute: 'electric',
+        damageType1: 'basic',
+        name: 'basic_eletric_dmg_',
+      },
+    },
+    dash_eletric_dmg_: {
+      sheet: 'DrillRigRedAxis',
+      name: 'dash_eletric_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'dmg_',
+        sheet: 'DrillRigRedAxis',
+        attribute: 'electric',
+        damageType1: 'dash',
+        name: 'dash_eletric_dmg_',
+      },
+    },
+  },
+  ElectroLipGloss: {
+    atk_: {
+      sheet: 'ElectroLipGloss',
+      name: 'atk_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'atk_',
+        sheet: 'ElectroLipGloss',
+        name: 'atk_',
+      },
+    },
+    common_dmg_: {
+      sheet: 'ElectroLipGloss',
+      name: 'common_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'common_dmg_',
+        sheet: 'ElectroLipGloss',
+        name: 'common_dmg_',
+      },
+    },
+  },
+  ElegantVanity: {
+    common_dmg_: {
+      sheet: 'ElegantVanity',
+      name: 'common_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'common_dmg_',
+        sheet: 'ElegantVanity',
+        name: 'common_dmg_',
+      },
+    },
+  },
   FangedMetal: {
+    set2: {
+      sheet: 'FangedMetal',
+      name: 'set2',
+      tag: {
+        et: 'display',
+        qt: 'initial',
+        q: 'dmg_',
+        sheet: 'FangedMetal',
+        attribute: 'physical',
+        name: 'set2',
+      },
+    },
     set4_cond_inflict_assault: {
       sheet: 'FangedMetal',
       name: 'set4_cond_inflict_assault',
@@ -1012,7 +1804,203 @@ export const buffs = {
       },
     },
   },
+  FlamemakerShaker: {
+    anomProf: {
+      sheet: 'FlamemakerShaker',
+      name: 'anomProf',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'anomProf',
+        sheet: 'FlamemakerShaker',
+        name: 'anomProf',
+      },
+    },
+    common_dmg_: {
+      sheet: 'FlamemakerShaker',
+      name: 'common_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'common_dmg_',
+        sheet: 'FlamemakerShaker',
+        name: 'common_dmg_',
+      },
+    },
+    enerRegen: {
+      sheet: 'FlamemakerShaker',
+      name: 'enerRegen',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'enerRegen',
+        sheet: 'FlamemakerShaker',
+        name: 'enerRegen',
+      },
+    },
+  },
+  FreedomBlues: {
+    set2: {
+      sheet: 'FreedomBlues',
+      name: 'set2',
+      tag: {
+        et: 'display',
+        qt: 'initial',
+        q: 'anomProf',
+        sheet: 'FreedomBlues',
+        name: 'set2',
+      },
+    },
+  },
+  FusionCompiler: {
+    anomProf: {
+      sheet: 'FusionCompiler',
+      name: 'anomProf',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'anomProf',
+        sheet: 'FusionCompiler',
+        name: 'anomProf',
+      },
+    },
+    passive_atk_: {
+      sheet: 'FusionCompiler',
+      name: 'passive_atk_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'atk_',
+        sheet: 'FusionCompiler',
+        name: 'passive_atk_',
+      },
+    },
+  },
+  GildedBlossom: {
+    passive_atk_: {
+      sheet: 'GildedBlossom',
+      name: 'passive_atk_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'atk_',
+        sheet: 'GildedBlossom',
+        name: 'passive_atk_',
+      },
+    },
+    passive_exSpecial_dmg_: {
+      sheet: 'GildedBlossom',
+      name: 'passive_exSpecial_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'dmg_',
+        sheet: 'GildedBlossom',
+        damageType1: 'exSpecial',
+        name: 'passive_exSpecial_dmg_',
+      },
+    },
+  },
+  HailstormShrine: {
+    ice_dmg_: {
+      sheet: 'HailstormShrine',
+      name: 'ice_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'dmg_',
+        sheet: 'HailstormShrine',
+        attribute: 'ice',
+        name: 'ice_dmg_',
+      },
+    },
+    passive_crit_dmg_: {
+      sheet: 'HailstormShrine',
+      name: 'passive_crit_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'crit_dmg_',
+        sheet: 'HailstormShrine',
+        name: 'passive_crit_dmg_',
+      },
+    },
+  },
+  HeartstringNocturne: {
+    chain_resIgn_fire_: {
+      sheet: 'HeartstringNocturne',
+      name: 'chain_resIgn_fire_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'resIgn_',
+        sheet: 'HeartstringNocturne',
+        attribute: 'fire',
+        damageType1: 'chain',
+        name: 'chain_resIgn_fire_',
+      },
+    },
+    passive_crit_dmg_: {
+      sheet: 'HeartstringNocturne',
+      name: 'passive_crit_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'crit_dmg_',
+        sheet: 'HeartstringNocturne',
+        name: 'passive_crit_dmg_',
+      },
+    },
+    ult_resIgn_fire_: {
+      sheet: 'HeartstringNocturne',
+      name: 'ult_resIgn_fire_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'resIgn_',
+        sheet: 'HeartstringNocturne',
+        attribute: 'fire',
+        damageType1: 'ult',
+        name: 'ult_resIgn_fire_',
+      },
+    },
+  },
+  HellfireGears: {
+    enerRegen: {
+      sheet: 'HellfireGears',
+      name: 'enerRegen',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'enerRegen',
+        sheet: 'HellfireGears',
+        name: 'enerRegen',
+      },
+    },
+    impact_: {
+      sheet: 'HellfireGears',
+      name: 'impact_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'impact_',
+        sheet: 'HellfireGears',
+        name: 'impact_',
+      },
+    },
+  },
   HormonePunk: {
+    set2: {
+      sheet: 'HormonePunk',
+      name: 'set2',
+      tag: {
+        et: 'display',
+        qt: 'initial',
+        q: 'atk_',
+        sheet: 'HormonePunk',
+        name: 'set2',
+      },
+    },
     set4_cond_entering_combat: {
       sheet: 'HormonePunk',
       name: 'set4_cond_entering_combat',
@@ -1025,7 +2013,81 @@ export const buffs = {
       },
     },
   },
+  Housekeeper: {
+    enerRegen: {
+      sheet: 'Housekeeper',
+      name: 'enerRegen',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'enerRegen',
+        sheet: 'Housekeeper',
+        name: 'enerRegen',
+      },
+    },
+    physical_dmg_: {
+      sheet: 'Housekeeper',
+      name: 'physical_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'dmg_',
+        sheet: 'Housekeeper',
+        attribute: 'physical',
+        name: 'physical_dmg_',
+      },
+    },
+  },
+  IceJadeTeapot: {
+    common_dmg_: {
+      sheet: 'IceJadeTeapot',
+      name: 'common_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'common_dmg_',
+        sheet: 'IceJadeTeapot',
+        name: 'common_dmg_',
+      },
+    },
+    impact_: {
+      sheet: 'IceJadeTeapot',
+      name: 'impact_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'impact_',
+        sheet: 'IceJadeTeapot',
+        name: 'impact_',
+      },
+    },
+  },
+  IdentityBase: {
+    def_: {
+      sheet: 'IdentityBase',
+      name: 'def_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'def_',
+        sheet: 'IdentityBase',
+        name: 'def_',
+      },
+    },
+  },
   InfernoMetal: {
+    set2: {
+      sheet: 'InfernoMetal',
+      name: 'set2',
+      tag: {
+        et: 'display',
+        qt: 'initial',
+        q: 'dmg_',
+        sheet: 'InfernoMetal',
+        attribute: 'fire',
+        name: 'set2',
+      },
+    },
     set4_cond_hitting_burning_enemy: {
       sheet: 'InfernoMetal',
       name: 'set4_cond_hitting_burning_enemy',
@@ -1038,7 +2100,195 @@ export const buffs = {
       },
     },
   },
+  KaboomTheCannon: {
+    atk_: {
+      sheet: 'KaboomTheCannon',
+      name: 'atk_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'atk_',
+        sheet: 'KaboomTheCannon',
+        name: 'atk_',
+      },
+    },
+  },
+  LunarDecrescent: {
+    common_dmg_: {
+      sheet: 'LunarDecrescent',
+      name: 'common_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'common_dmg_',
+        sheet: 'LunarDecrescent',
+        name: 'common_dmg_',
+      },
+    },
+  },
+  LunarPleniluna: {
+    basic_dmg_: {
+      sheet: 'LunarPleniluna',
+      name: 'basic_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'dmg_',
+        sheet: 'LunarPleniluna',
+        damageType1: 'basic',
+        name: 'basic_dmg_',
+      },
+    },
+    dash_dmg_: {
+      sheet: 'LunarPleniluna',
+      name: 'dash_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'dmg_',
+        sheet: 'LunarPleniluna',
+        damageType1: 'dash',
+        name: 'dash_dmg_',
+      },
+    },
+    dodgeCounter_dmg_: {
+      sheet: 'LunarPleniluna',
+      name: 'dodgeCounter_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'dmg_',
+        sheet: 'LunarPleniluna',
+        damageType1: 'dodgeCounter',
+        name: 'dodgeCounter_dmg_',
+      },
+    },
+  },
+  MagneticStormAlpha: {
+    anomMas: {
+      sheet: 'MagneticStormAlpha',
+      name: 'anomMas',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'anomMas',
+        sheet: 'MagneticStormAlpha',
+        name: 'anomMas',
+      },
+    },
+  },
+  MagneticStormBravo: {
+    anomProf: {
+      sheet: 'MagneticStormBravo',
+      name: 'anomProf',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'anomProf',
+        sheet: 'MagneticStormBravo',
+        name: 'anomProf',
+      },
+    },
+  },
+  MarcatoDesire: {
+    atk_: {
+      sheet: 'MarcatoDesire',
+      name: 'atk_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'atk_',
+        sheet: 'MarcatoDesire',
+        name: 'atk_',
+      },
+    },
+  },
+  OriginalTransmorpher: {
+    impact_: {
+      sheet: 'OriginalTransmorpher',
+      name: 'impact_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'impact_',
+        sheet: 'OriginalTransmorpher',
+        name: 'impact_',
+      },
+    },
+    passive_hp_: {
+      sheet: 'OriginalTransmorpher',
+      name: 'passive_hp_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'hp_',
+        sheet: 'OriginalTransmorpher',
+        name: 'passive_hp_',
+      },
+    },
+  },
+  PeacekeeperSpecialized: {
+    enerRegen: {
+      sheet: 'PeacekeeperSpecialized',
+      name: 'enerRegen',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'enerRegen',
+        sheet: 'PeacekeeperSpecialized',
+        name: 'enerRegen',
+      },
+    },
+  },
+  PhaethonsMelody: {
+    set2: {
+      sheet: 'PhaethonsMelody',
+      name: 'set2',
+      tag: {
+        et: 'display',
+        qt: 'initial',
+        q: 'anomMas_',
+        sheet: 'PhaethonsMelody',
+        name: 'set2',
+      },
+    },
+    set4_not_self_ether_: {
+      sheet: 'PhaethonsMelody',
+      name: 'set4_not_self_ether_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'dmg_',
+        sheet: 'PhaethonsMelody',
+        attribute: 'ether',
+        name: 'set4_not_self_ether_',
+      },
+    },
+    set4_squad_anomProf: {
+      sheet: 'PhaethonsMelody',
+      name: 'set4_squad_anomProf',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'anomProf',
+        sheet: 'PhaethonsMelody',
+        name: 'set4_squad_anomProf',
+      },
+    },
+  },
   PolarMetal: {
+    set2: {
+      sheet: 'PolarMetal',
+      name: 'set2',
+      tag: {
+        et: 'display',
+        qt: 'initial',
+        q: 'dmg_',
+        sheet: 'PolarMetal',
+        attribute: 'ice',
+        name: 'set2',
+      },
+    },
     set4_basic_dmg_: {
       sheet: 'PolarMetal',
       name: 'set4_basic_dmg_',
@@ -1065,6 +2315,17 @@ export const buffs = {
     },
   },
   ProtoPunk: {
+    set2: {
+      sheet: 'ProtoPunk',
+      name: 'set2',
+      tag: {
+        et: 'display',
+        qt: 'initial',
+        q: 'shield_',
+        sheet: 'ProtoPunk',
+        name: 'set2',
+      },
+    },
     set4_cond_def_assist_or_evasive_assist_dmg_: {
       sheet: 'ProtoPunk',
       name: 'set4_cond_def_assist_or_evasive_assist_dmg_',
@@ -1078,6 +2339,17 @@ export const buffs = {
     },
   },
   PufferElectro: {
+    set2: {
+      sheet: 'PufferElectro',
+      name: 'set2',
+      tag: {
+        et: 'display',
+        qt: 'initial',
+        q: 'pen_',
+        sheet: 'PufferElectro',
+        name: 'set2',
+      },
+    },
     set4_cond_launching_ult_atk_: {
       sheet: 'PufferElectro',
       name: 'set4_cond_launching_ult_atk_',
@@ -1102,7 +2374,229 @@ export const buffs = {
       },
     },
   },
+  RainforestGourmet: {
+    atk_: {
+      sheet: 'RainforestGourmet',
+      name: 'atk_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'atk_',
+        sheet: 'RainforestGourmet',
+        name: 'atk_',
+      },
+    },
+  },
+  ReverbMarkI: {
+    impact_: {
+      sheet: 'ReverbMarkI',
+      name: 'impact_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'impact_',
+        sheet: 'ReverbMarkI',
+        name: 'impact_',
+      },
+    },
+  },
+  ReverbMarkII: {
+    anomMas: {
+      sheet: 'ReverbMarkII',
+      name: 'anomMas',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'anomMas',
+        sheet: 'ReverbMarkII',
+        name: 'anomMas',
+      },
+    },
+    anomProf: {
+      sheet: 'ReverbMarkII',
+      name: 'anomProf',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'anomProf',
+        sheet: 'ReverbMarkII',
+        name: 'anomProf',
+      },
+    },
+  },
+  ReverbMarkIII: {
+    atk_: {
+      sheet: 'ReverbMarkIII',
+      name: 'atk_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'atk_',
+        sheet: 'ReverbMarkIII',
+        name: 'atk_',
+      },
+    },
+  },
+  RiotSuppressorMarkVI: {
+    basic_ether_dmg_: {
+      sheet: 'RiotSuppressorMarkVI',
+      name: 'basic_ether_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'dmg_',
+        sheet: 'RiotSuppressorMarkVI',
+        attribute: 'ether',
+        damageType1: 'basic',
+        name: 'basic_ether_dmg_',
+      },
+    },
+    passive_crit_: {
+      sheet: 'RiotSuppressorMarkVI',
+      name: 'passive_crit_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'crit_',
+        sheet: 'RiotSuppressorMarkVI',
+        name: 'passive_crit_',
+      },
+    },
+  },
+  RoaringRide: {
+    anomProf: {
+      sheet: 'RoaringRide',
+      name: 'anomProf',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'anomProf',
+        sheet: 'RoaringRide',
+        name: 'anomProf',
+      },
+    },
+    atk_: {
+      sheet: 'RoaringRide',
+      name: 'atk_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'atk_',
+        sheet: 'RoaringRide',
+        name: 'atk_',
+      },
+    },
+  },
+  SeveredInnocence: {
+    crit_dmg_: {
+      sheet: 'SeveredInnocence',
+      name: 'crit_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'crit_dmg_',
+        sheet: 'SeveredInnocence',
+        name: 'crit_dmg_',
+      },
+    },
+    electric_dmg_: {
+      sheet: 'SeveredInnocence',
+      name: 'electric_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'dmg_',
+        sheet: 'SeveredInnocence',
+        attribute: 'electric',
+        name: 'electric_dmg_',
+      },
+    },
+    passive_crit_dmg_: {
+      sheet: 'SeveredInnocence',
+      name: 'passive_crit_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'crit_dmg_',
+        sheet: 'SeveredInnocence',
+        name: 'passive_crit_dmg_',
+      },
+    },
+  },
+  ShadowHarmony: {
+    set2_aftershock: {
+      sheet: 'ShadowHarmony',
+      name: 'set2_aftershock',
+      tag: {
+        et: 'display',
+        qt: 'initial',
+        q: 'dmg_',
+        sheet: 'ShadowHarmony',
+        damageType1: 'aftershock',
+        name: 'set2_aftershock',
+      },
+    },
+    set2_dash: {
+      sheet: 'ShadowHarmony',
+      name: 'set2_dash',
+      tag: {
+        et: 'display',
+        qt: 'initial',
+        q: 'dmg_',
+        sheet: 'ShadowHarmony',
+        damageType1: 'dash',
+        name: 'set2_dash',
+      },
+    },
+    set4_stack_atk_: {
+      sheet: 'ShadowHarmony',
+      name: 'set4_stack_atk_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'atk_',
+        sheet: 'ShadowHarmony',
+        name: 'set4_stack_atk_',
+      },
+    },
+    set4_stack_crit_: {
+      sheet: 'ShadowHarmony',
+      name: 'set4_stack_crit_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'crit_',
+        sheet: 'ShadowHarmony',
+        name: 'set4_stack_crit_',
+      },
+    },
+  },
+  SharpenedStinger: {
+    physical_dmg_: {
+      sheet: 'SharpenedStinger',
+      name: 'physical_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'dmg_',
+        sheet: 'SharpenedStinger',
+        attribute: 'physical',
+        name: 'physical_dmg_',
+      },
+    },
+  },
   ShockstarDisco: {
+    set2: {
+      sheet: 'ShockstarDisco',
+      name: 'set2',
+      tag: {
+        et: 'display',
+        qt: 'initial',
+        q: 'impact_',
+        sheet: 'ShockstarDisco',
+        name: 'set2',
+      },
+    },
     set4_basic_daze_: {
       sheet: 'ShockstarDisco',
       name: 'set4_basic_daze_',
@@ -1115,32 +2609,149 @@ export const buffs = {
         name: 'set4_basic_daze_',
       },
     },
-    set4_dash_daze_: {
-      sheet: 'ShockstarDisco',
-      name: 'set4_dash_daze_',
+  },
+  SoulRock: {
+    set2: {
+      sheet: 'SoulRock',
+      name: 'set2',
       tag: {
         et: 'display',
-        qt: 'common',
-        q: 'stun_',
-        sheet: 'ShockstarDisco',
-        damageType1: 'dash',
-        name: 'set4_dash_daze_',
+        qt: 'initial',
+        q: 'def_',
+        sheet: 'SoulRock',
+        name: 'set2',
       },
     },
-    set4_dodgeCounter_daze_: {
-      sheet: 'ShockstarDisco',
-      name: 'set4_dodgeCounter_daze_',
+  },
+  SpectralGaze: {
+    cond_defRed_: {
+      sheet: 'SpectralGaze',
+      name: 'cond_defRed_',
       tag: {
         et: 'display',
         qt: 'common',
-        q: 'stun_',
-        sheet: 'ShockstarDisco',
-        damageType1: 'dodgeCounter',
-        name: 'set4_dodgeCounter_daze_',
+        q: 'defRed_',
+        sheet: 'SpectralGaze',
+        name: 'cond_defRed_',
+      },
+    },
+    cond_impact_: {
+      sheet: 'SpectralGaze',
+      name: 'cond_impact_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'impact_',
+        sheet: 'SpectralGaze',
+        dst: null,
+        name: 'cond_impact_',
+      },
+    },
+  },
+  SpringEmbrace: {
+    cond_enerRegen_: {
+      sheet: 'SpringEmbrace',
+      name: 'cond_enerRegen_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'enerRegen_',
+        sheet: 'SpringEmbrace',
+        name: 'cond_enerRegen_',
+      },
+    },
+  },
+  StarlightEngine: {
+    cond_dmg_: {
+      sheet: 'StarlightEngine',
+      name: 'cond_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'atk_',
+        sheet: 'StarlightEngine',
+        name: 'cond_dmg_',
+      },
+    },
+  },
+  StarlightEngineReplica: {
+    cond_dmg_: {
+      sheet: 'StarlightEngineReplica',
+      name: 'cond_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'dmg_',
+        sheet: 'StarlightEngineReplica',
+        attribute: 'physical',
+        name: 'cond_dmg_',
+      },
+    },
+  },
+  SteamOven: {
+    cond_impact_: {
+      sheet: 'SteamOven',
+      name: 'cond_impact_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'impact_',
+        sheet: 'SteamOven',
+        name: 'cond_impact_',
+      },
+    },
+  },
+  SteelCushion: {
+    cond_dmg_: {
+      sheet: 'SteelCushion',
+      name: 'cond_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'common_dmg_',
+        sheet: 'SteelCushion',
+        name: 'cond_dmg_',
+      },
+    },
+    passive_physical_dmg_: {
+      sheet: 'SteelCushion',
+      name: 'passive_physical_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'dmg_',
+        sheet: 'SteelCushion',
+        attribute: 'physical',
+        name: 'passive_physical_dmg_',
+      },
+    },
+  },
+  StreetSuperstar: {
+    cond_ult_dmg_: {
+      sheet: 'StreetSuperstar',
+      name: 'cond_ult_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'common_dmg_',
+        sheet: 'StreetSuperstar',
+        damageType1: 'ult',
+        name: 'cond_ult_dmg_',
       },
     },
   },
   SwingJazz: {
+    set2: {
+      sheet: 'SwingJazz',
+      name: 'set2',
+      tag: {
+        et: 'display',
+        qt: 'initial',
+        q: 'enerRegen_',
+        sheet: 'SwingJazz',
+        name: 'set2',
+      },
+    },
     set4_cond_chain_or_ult: {
       sheet: 'SwingJazz',
       name: 'set4_cond_chain_or_ult',
@@ -1153,7 +2764,45 @@ export const buffs = {
       },
     },
   },
+  TheBrimstone: {
+    cond_atk_: {
+      sheet: 'TheBrimstone',
+      name: 'cond_atk_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'atk_',
+        sheet: 'TheBrimstone',
+        name: 'cond_atk_',
+      },
+    },
+  },
+  TheVault: {
+    cond_dmg_: {
+      sheet: 'TheVault',
+      name: 'cond_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'common_dmg_',
+        sheet: 'TheVault',
+        name: 'cond_dmg_',
+      },
+    },
+  },
   ThunderMetal: {
+    set2: {
+      sheet: 'ThunderMetal',
+      name: 'set2',
+      tag: {
+        et: 'display',
+        qt: 'initial',
+        q: 'dmg_',
+        sheet: 'ThunderMetal',
+        attribute: 'electric',
+        name: 'set2',
+      },
+    },
     set4_cond_enemy_shocked_atk_: {
       sheet: 'ThunderMetal',
       name: 'set4_cond_enemy_shocked_atk_',
@@ -1166,7 +2815,120 @@ export const buffs = {
       },
     },
   },
+  Timeweaver: {
+    cond_anomProf: {
+      sheet: 'Timeweaver',
+      name: 'cond_anomProf',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'anomProf',
+        sheet: 'Timeweaver',
+        name: 'cond_anomProf',
+      },
+    },
+    passive_disorder_dmg_: {
+      sheet: 'Timeweaver',
+      name: 'passive_disorder_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'common_dmg_',
+        sheet: 'Timeweaver',
+        damageType1: 'disorder',
+        name: 'passive_disorder_dmg_',
+      },
+    },
+  },
+  TusksOfFury: {
+    cond_dmg_: {
+      sheet: 'TusksOfFury',
+      name: 'cond_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'common_dmg_',
+        sheet: 'TusksOfFury',
+        name: 'cond_dmg_',
+      },
+    },
+    passive_shield_: {
+      sheet: 'TusksOfFury',
+      name: 'passive_shield_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'shield_',
+        sheet: 'TusksOfFury',
+        name: 'passive_shield_',
+      },
+    },
+  },
+  UnfetteredGameBall: {
+    cond_crit_: {
+      sheet: 'UnfetteredGameBall',
+      name: 'cond_crit_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'crit_',
+        sheet: 'UnfetteredGameBall',
+        name: 'cond_crit_',
+      },
+    },
+  },
+  VortexHatchet: {
+    cond_impact_: {
+      sheet: 'VortexHatchet',
+      name: 'cond_impact_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'impact_',
+        sheet: 'VortexHatchet',
+        name: 'cond_impact_',
+      },
+    },
+  },
+  WeepingCradle: {
+    cond_dmg_: {
+      sheet: 'WeepingCradle',
+      name: 'cond_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'common_dmg_',
+        sheet: 'WeepingCradle',
+        name: 'cond_dmg_',
+      },
+    },
+  },
+  WeepingGemini: {
+    anomaly_stack: {
+      sheet: 'WeepingGemini',
+      name: 'anomaly_stack',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'anomProf',
+        sheet: 'WeepingGemini',
+        dst: null,
+        name: 'anomaly_stack',
+      },
+    },
+  },
   WoodpeckerElectro: {
+    set2: {
+      sheet: 'WoodpeckerElectro',
+      name: 'set2',
+      tag: {
+        et: 'display',
+        qt: 'initial',
+        q: 'crit_',
+        sheet: 'WoodpeckerElectro',
+        name: 'set2',
+      },
+    },
     set4_cond_crit_basic_dodge_ex_atk_: {
       sheet: 'WoodpeckerElectro',
       name: 'set4_cond_crit_basic_dodge_ex_atk_',
@@ -1176,6 +2938,43 @@ export const buffs = {
         q: 'atk_',
         sheet: 'WoodpeckerElectro',
         name: 'set4_cond_crit_basic_dodge_ex_atk_',
+      },
+    },
+  },
+  ZanshinHerbCase: {
+    cond_crit_: {
+      sheet: 'ZanshinHerbCase',
+      name: 'cond_crit_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'crit_',
+        sheet: 'ZanshinHerbCase',
+        name: 'cond_crit_',
+      },
+    },
+    passive_crit_: {
+      sheet: 'ZanshinHerbCase',
+      name: 'passive_crit_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'crit_',
+        sheet: 'ZanshinHerbCase',
+        name: 'passive_crit_',
+      },
+    },
+    passive_electric_dmg_: {
+      sheet: 'ZanshinHerbCase',
+      name: 'passive_electric_dmg_',
+      tag: {
+        et: 'display',
+        qt: 'combat',
+        q: 'dmg_',
+        sheet: 'ZanshinHerbCase',
+        attribute: 'electric',
+        damageType1: 'dash',
+        name: 'passive_electric_dmg_',
       },
     },
   },

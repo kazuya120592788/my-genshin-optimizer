@@ -1,24 +1,21 @@
-/// <reference types="vitest" />
-import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
-import { defineConfig, normalizePath } from 'vite'
 // viteStaticCopy contains some `require`, so we need to have our config as .mts instead of .ts.
 // https://vitejs.dev/guide/troubleshooting.html#this-package-is-esm-only
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
+/// <reference types="vitest" />
+import react from '@vitejs/plugin-react'
+import { defineConfig, normalizePath } from 'vite'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 import pkg from '../../package.json' assert { type: 'json' }
 
-export default defineConfig({
+export default defineConfig(() => ({
   base: '',
   root: __dirname,
-  cacheDir: '../../node_modules/.vite/frontend',
+  cacheDir: '../../node_modules/.vite/apps/frontend',
 
   server: {
     port: 4200,
     host: 'localhost',
-    fs: {
-      cachedChecks: false,
-    },
   },
 
   preview: {
@@ -89,8 +86,8 @@ export default defineConfig({
   },
 
   test: {
+    watch: false,
     globals: true,
-    cache: { dir: '../../node_modules/.vitest' },
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     reporters: ['default'],
@@ -99,4 +96,4 @@ export default defineConfig({
       provider: 'v8',
     },
   },
-})
+}))

@@ -1,16 +1,7 @@
 import { cmpGE } from '@genshin-optimizer/pando/engine'
 import type { RelicSetKey } from '@genshin-optimizer/sr/consts'
 import { allStats, mappedStats } from '@genshin-optimizer/sr/stats'
-import {
-  allBoolConditionals,
-  allListConditionals,
-  allNumConditionals,
-  enemyDebuff,
-  own,
-  ownBuff,
-  registerBuff,
-  teamBuff,
-} from '../../util'
+import { allBoolConditionals, own, ownBuff, registerBuff } from '../../util'
 import { entriesForRelic, registerRelic } from '../util'
 
 const key: RelicSetKey = 'FiresmithOfLavaForging'
@@ -19,36 +10,28 @@ const dm = mappedStats.relic[key]
 
 const relicCount = own.common.count.sheet(key)
 
-// TODO: Add conditionals
-const { boolConditional } = allBoolConditionals(key)
-const { listConditional } = allListConditionals(key, ['val1', 'val2'])
-const { numConditional } = allNumConditionals(key, true, 0, 2)
+const { ultUsed } = allBoolConditionals(key)
 
 const sheet = registerRelic(
   key,
   // Handles passive buffs
   entriesForRelic(key, data_gen),
 
-  // TODO: Add formulas/buffs
   // Conditional buffs
   registerBuff(
-    'set2_dmg_',
-    ownBuff.premod.common_dmg_.add(
-      cmpGE(relicCount, 2, boolConditional.ifOn(dm[2].cond_dmg_))
+    'set4_skill_dmg_',
+    ownBuff.premod.dmg_.addWithDmgType(
+      'skill',
+      cmpGE(relicCount, 4, dm[4].skill_dmg)
     ),
-    cmpGE(relicCount, 2, 'unique', '')
+    cmpGE(relicCount, 4, 'infer', '')
   ),
   registerBuff(
-    'team_dmg_',
-    teamBuff.premod.common_dmg_.add(
-      cmpGE(relicCount, 4, listConditional.map({ val1: 1, val2: 2 }))
+    'set4_fire_dmg_',
+    ownBuff.premod.dmg_.fire.add(
+      cmpGE(relicCount, 4, ultUsed.ifOn(dm[4].fire_dmg_))
     ),
-    cmpGE(relicCount, 4, 'unique', '')
-  ),
-  registerBuff(
-    'enemy_defRed_',
-    enemyDebuff.common.defRed_.add(cmpGE(relicCount, 4, numConditional)),
-    cmpGE(relicCount, 4, 'unique', '')
+    cmpGE(relicCount, 4, 'infer', '')
   )
 )
 export default sheet

@@ -2,9 +2,9 @@ import type { DebugCalculator } from '../debug'
 import type { DedupTag, RawTagMapKeys, RawTagMapValues, Tag } from '../tag'
 import {
   DedupTags,
-  mergeTagMapValues,
   TagMapKeys,
   TagMapSubsetValues,
+  mergeTagMapValues,
 } from '../tag'
 import {
   assertUnreachable,
@@ -18,7 +18,7 @@ import type { AnyNode, BaseRead, NumNode, ReRead, StrNode } from './type'
 
 export type TagCache<M> = DedupTag<PreRead<M>>
 export type PreRead<M> = Partial<
-  Record<NonNullable<BaseRead['ex']> | 'unique', CalcResult<number | string, M>>
+  Record<NonNullable<BaseRead['ex']>, CalcResult<number | string, M>>
 > & { pre: CalcResult<number | string, M>[] }
 const getV = <V, M>(n: CalcResult<V, M>[]) => extract(n, 'val')
 
@@ -64,11 +64,11 @@ export class Calculator<M = any> {
   _gather(cache: TagCache<M>): PreRead<M> {
     if (cache.val) return cache.val
     const pre = this.nodes
-      .subset(cache.id)
-      .flatMap((n) =>
+      .entries(cache.id)
+      .flatMap(({ tag, value: n }) =>
         n.op === 'reread'
           ? this._gather(cache.with(n.tag)).pre
-          : [this.markGathered(cache.tag, n, this._compute(n, cache))]
+          : [this.markGathered(cache.tag, tag, n, this._compute(n, cache))]
       )
     return (cache.val = { pre })
   }
@@ -94,7 +94,7 @@ export class Calculator<M = any> {
       case 'max':
       case 'sumfrac': {
         const x = n.x.map((n) => this._compute(n, cache))
-        return finalize(arithmetic[op](getV(x), n.ex), x, [])
+        return finalize(arithmetic[op](getV(x)), x, [])
       }
       case 'thres':
       case 'match':
@@ -127,13 +127,14 @@ export class Calculator<M = any> {
       case 'read': {
         const newCache = cache.with(n.tag)
         const computed = this._gather(newCache)
-        const { pre } = computed,
-          ex = n.ex ?? 'unique'
+        const { pre } = computed
+        const ex = n.ex ?? this.defaultAccu(newCache.tag) ?? 'unique'
+        if (ex !== n.ex) n = { ...n, ex }
 
         if (computed[ex]) return computed[ex]
         if (isDebug('calc') && ex === 'unique' && pre.length !== 1)
           throw new Error(`Ill-form read for ${tagString(newCache.tag)}`)
-        const val = arithmetic[ex](getV(pre) as number[], undefined)
+        const val = arithmetic[ex](getV(pre) as number[])
         return (computed[ex] = finalize(val, pre, [], newCache.tag))
       }
       case 'custom': {
@@ -145,8 +146,12 @@ export class Calculator<M = any> {
     }
   }
 
+  defaultAccu(_tag: Tag): BaseRead['ex'] {
+    return
+  }
   markGathered(
     _tag: Tag,
+    _entryTag: Tag,
     _n: AnyNode | undefined,
     result: CalcResult<number | string, M>
   ): CalcResult<number | string, M> {
@@ -163,6 +168,6 @@ export class Calculator<M = any> {
   }
 
   toDebug(): DebugCalculator {
-    throw 'Not implemented'
+    throw new Error('not implemented')
   }
 }

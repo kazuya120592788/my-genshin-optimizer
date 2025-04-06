@@ -1,20 +1,21 @@
-export const MAX_BUILDS = 50_000
+import type { Candidate as BaseCnd } from '@genshin-optimizer/pando/engine'
 
-export interface BuildResult {
-  value: number
-  ids: string[]
+export const splitThreshold = 2_000_000 // split if there are more possible builds than this
+
+export type Candidate = BaseCnd<string | number>
+export type BuildResult<ID = Candidate['id']> = { value: number; ids: ID[] }
+export interface Work {
+  ids: Candidate['id'][][] // possible ids for each slot
+  count: number // # of possible builds
 }
 
-export interface BuildResultByIndex {
-  value: number
-  indices: number[]
+export interface Progress {
+  computed: number // # of builds computed
+  failed: number // # of (computed) builds that fail some constraints
+  skipped: number // # of builds not computed e.g. via pruning
+  remaining: number // # of uncomputed and unskipped builds
 }
 
-export interface ProgressResult {
-  numBuildsKept: number
-  numBuildsComputed: number
+export function buildCount<V>(candidates: V[][]): number {
+  return candidates.reduce((num, cnds) => num * cnds.length, 1)
 }
-
-// Store metadata in 'id' key
-// We will store some index information here, since it needs to be number type
-export type EquipmentStats = Record<string, number> & { id: number }

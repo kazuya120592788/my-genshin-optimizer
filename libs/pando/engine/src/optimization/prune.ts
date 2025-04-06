@@ -10,17 +10,27 @@ import {
   traverse,
 } from '../node'
 import type { Monotonicity, Range } from '../util'
-import { assertUnreachable, customOps } from '../util'
-import { combineConst, flatten } from './simplify'
+import { ArrayMap, assertUnreachable, customOps, isDebug } from '../util'
+import { simplify } from './simplify'
 const { arithmetic, branching } = calculation
 
 type OP = Exclude<TaggedOP, 'tag' | 'dtag' | 'vtag'>
 
-type Component = Record<string, number> & { id: number }
+// The downside of this is that object literal will not work if `ID` is not `number`, you need to cast it
+export type Candidate<ID = number> = { id: ID } & Record<string, number>
 
-type CompRanges = Record<string, Range>[]
+type CndRanges = Record<string, Range>[]
 type NodeRanges = Map<AnyNode<OP>, Range>
 type Monotonicities = Map<string, Monotonicity>
+
+type PruneResult<I extends OP, ID> = {
+  nodes: NumNode<I>[]
+  minimum: number[]
+  candidates: Candidate<ID>[][]
+
+  cndRanges: CndRanges
+  monotonicities: Monotonicities
+}
 
 /**
  * Reduce the complexity of the optimization problem
@@ -33,87 +43,93 @@ type Monotonicities = Map<string, Monotonicity>
  *    A set of nodes used for minimum constraints, objective function, and other calculations.
  *    The nodes must be in the order [minConstraints, other calc], and `minConstraint[0]` is
  *    the obj function.
- * @param candidates Components used to construct the builds. Keys in `component` except 'id' may be removed in the results.
- * @param cat Tag category used by `compile` in the actual computation
+ * @param candidates Candidates used to construct the builds. Keys in `candidates` except 'id' may be removed in the results.
+ * @param dynTagCat Tag category used by `compile` in the actual computation
  * @param minimum Minimum values for min constraint nodes.
- * @param _topN The number of top builds to keep.
+ * @param topN The number of top builds to keep.
  * @returns
  *    A new values for `nodes`, `candidates`, and `minimum`. The returned values are incompatible
- *    with the passed-in arguments (DO NOT mix them). Components may also change, so all related
+ *    with the passed-in arguments (DO NOT mix them). Candidates may also change, so all related
  *    computation needs to pass in to `nodes` as well, else they'll become unusable. `minConstraints`
  *    in `nodes` may be removed, excepts for `minConstraints[0]` if the constraint is always satisfied.
  */
-export function prune<I extends OP>(
+export function prune<I extends OP, ID>(
   nodes: NumNode<I>[],
-  candidates: Component[][],
-  cat: string,
+  candidates: Candidate<ID>[][],
+  dynTagCat: string,
   minimum: number[],
-  _keepTop: number
-): { nodes: NumNode<I>[]; candidates: Component[][]; minimum: number[] } {
-  const state = new State(nodes, minimum, candidates, cat)
+  topN: number
+): PruneResult<I, ID> {
+  const state = new State(nodes, minimum, candidates, dynTagCat)
   while (state.progress) {
     state.progress = false
     pruneBranches(state)
     pruneRange(state, 1)
     reaffine(state)
+    pruneBottom(state, topN)
   }
-  state.setNodes(flatten(state.nodes))
-  state.setNodes(combineConst(state.nodes))
+  state.nodes = simplify(state.nodes)
   return state
 }
 
-export class State<I extends OP> {
-  nodes: NumNode<I>[]
+export class State<I extends OP, ID> implements PruneResult<I, ID> {
+  #nodes: NumNode<I>[]
   minimum: number[]
-  candidates: Component[][]
+  #candidates: Candidate<ID>[][]
   cat: string
 
   progress = true
-  _compRanges: CompRanges | undefined
-  _nodeRanges: NodeRanges | undefined
-  _monotonicities: Monotonicities | undefined
+  #cndRanges: CndRanges | undefined
+  #nodeRanges: NodeRanges | undefined
+  #monotonicities: Monotonicities | undefined
 
   constructor(
     nodes: NumNode<I>[],
     minimum: number[],
-    candidates: Component[][],
+    candidates: Candidate<ID>[][],
     cat: string
   ) {
-    this.nodes = nodes
+    this.#nodes = nodes
     this.minimum = minimum
-    this.candidates = candidates
+    this.#candidates = candidates
     this.cat = cat
   }
 
-  setNodes(nodes: NumNode<I>[], minimum?: number[]) {
-    if (this.nodes === nodes) return
-    this.progress = true
-    this.nodes = nodes
-    if (minimum !== undefined) this.minimum = minimum
-    this._nodeRanges = undefined
-    this._monotonicities = undefined
+  get nodes(): NumNode<I>[] {
+    return this.#nodes
   }
-  setCandidates(candidates: Component[][], compRanges?: CompRanges) {
-    if (this.candidates === candidates) return
+  set nodes(nodes: NumNode<I>[]) {
+    if (this.#nodes === nodes) return
     this.progress = true
-    this.candidates = candidates
-    this._compRanges = compRanges
-    this._nodeRanges = undefined
-    this._monotonicities = undefined
+    this.#nodes = nodes
+    this.#nodeRanges = this.#monotonicities = undefined
   }
 
-  get compRanges(): CompRanges {
-    return (this._compRanges ??= this.candidates.map(computeCompRanges))
+  get candidates(): Candidate<ID>[][] {
+    return this.#candidates
+  }
+  set candidates(candidates: Candidate<ID>[][]) {
+    if (this.candidates === candidates) return
+    this.progress = true
+    this.#candidates = candidates
+    this.#cndRanges = this.#nodeRanges = this.#monotonicities = undefined
+  }
+
+  get cndRanges(): CndRanges {
+    return (this.#cndRanges ??= this.candidates.map(computeCndRanges))
+  }
+  set cndRanges(cndRanges: CndRanges) {
+    this.#cndRanges = cndRanges
   }
   get nodeRanges(): NodeRanges {
-    return (this._nodeRanges ??= computeNodeRanges(
+    return (this.#nodeRanges ??= computeNodeRanges(
       this.nodes,
       this.cat,
-      this.compRanges
+      this.cndRanges
     ))
   }
   get monotonicities(): Monotonicities {
-    return (this._monotonicities ??= getMonotonicities(
+    return (this.#monotonicities ??= getMonotonicities(
       this.nodes.slice(0, this.minimum.length),
       this.cat,
       this.nodeRanges
@@ -122,7 +138,7 @@ export class State<I extends OP> {
 }
 
 /** Remove branches that are never chosen */
-export function pruneBranches(state: State<OP>) {
+export function pruneBranches<ID>(state: State<OP, ID>) {
   const { nodes, nodeRanges } = state
   const result = mapBottomUp(nodes, (n, o) => {
     const r = nodeRanges.get(o)!
@@ -159,18 +175,17 @@ export function pruneBranches(state: State<OP>) {
     }
     return n
   })
-  state.setNodes(result)
+  state.nodes = result
 }
 
 /**
- * - Remove components that do not meet the `minimum` requirements in any builds
+ * - Remove candidates that do not meet the `minimum` requirements in any builds
  * - Remove top-level nodes whose `minimum` requirements are met by every build
- * - Returns new `minimum` appropriate for the new `state.nodes`
  */
-export function pruneRange(state: State<OP>, numReq: number) {
+export function pruneRange<ID>(state: State<OP, ID>, numReq: number) {
   const { nodeRanges, minimum: oldMin, cat } = state
   const candidates = [...state.candidates]
-  const compRanges = [...state.compRanges]
+  const cndRanges = [...state.cndRanges]
 
   const nodes: NumNode<OP>[] = []
   const minimum: number[] = []
@@ -183,25 +198,84 @@ export function pruneRange(state: State<OP>, numReq: number) {
     }
     nodes.push(n)
   })
-  if (minimum.length != oldMin.length) state.setNodes(nodes, minimum)
+  if (minimum.length != oldMin.length) {
+    state.nodes = nodes
+    state.minimum = minimum
+  }
 
   if (!hasNonTrivialConstraint) return
 
   let progress = false
-  candidates.forEach((comp, i) => {
-    const oldCompRange = compRanges[i]
-    const newComp = comp.filter((c) => {
-      compRanges[i] = computeCompRanges([c])
-      const ranges = computeNodeRanges(nodes, cat, compRanges)
+  candidates.forEach((cnds, i) => {
+    const oldCndRange = cndRanges[i]
+    const newCnds = cnds.filter((c) => {
+      cndRanges[i] = computeCndRanges([c])
+      const ranges = computeNodeRanges(nodes, cat, cndRanges)
       return minimum.every((m, i) => ranges.get(nodes[i])!.max >= m)
     })
-    if (newComp.length != comp.length) {
-      candidates[i] = newComp
-      compRanges[i] = computeCompRanges(newComp)
+    if (newCnds.length != cnds.length) {
+      candidates[i] = newCnds
+      cndRanges[i] = computeCndRanges(newCnds)
       progress = true
-    } else compRanges[i] = oldCompRange
+    } else cndRanges[i] = oldCndRange
   })
-  if (progress) state.setCandidates(candidates, compRanges)
+  if (progress) {
+    state.candidates = candidates
+    state.cndRanges = cndRanges
+  }
+}
+
+/** Remove candidates that are never in the `topN` builds */
+export function pruneBottom<ID>(state: State<OP, ID>, topN: number) {
+  const monotonicities = [...state.monotonicities]
+  type Val = { incomp: number[]; inc: Record<string, number>; c: Candidate<ID> }
+  const vals = state.candidates.map((comp) =>
+    comp.map((c) => {
+      const out: Val = { incomp: [], inc: {}, c }
+      for (const [cat, m] of monotonicities)
+        if (m.inc)
+          out.inc[cat] = c[cat] ?? 0 // increasing
+        else if (m.dec)
+          out.inc[cat] = -(c[cat] ?? 0) // decreasing
+        else out.incomp.push(c[cat] ?? 0) // incomparable
+      return out
+    })
+  )
+  const sample = vals[0][0]
+  if (sample === undefined) return
+  const cats = Object.keys(sample.inc)
+  const revCats = [...cats].reverse()
+  const hasIncomp = !!sample.incomp.length
+
+  const candidates = vals.map((vals) => {
+    const groups = new ArrayMap<number, Val[]>()
+    if (hasIncomp) {
+      vals.forEach((val) => {
+        const ref = groups.ref(val.incomp)
+        if (ref.value) ref.value.push(val)
+        else ref.value = [val]
+      })
+    } else groups.ref([]).value = vals
+
+    return [...groups.values()].flatMap((vals) => {
+      vals.sort(({ inc: a }, { inc: b }) => {
+        const cat = revCats.find((cat) => a[cat] !== b[cat])
+        return cat === undefined ? 0 : b[cat] - a[cat] // assume non-NaN
+      })
+      return vals.filter(({ inc }, i) => {
+        let betterCount = 0
+        for (let j = 0, extra = i - topN; j <= extra + betterCount; j++) {
+          const other = vals[j].inc
+          if (cats.every((cat) => other[cat] >= inc[cat]))
+            if (++betterCount >= topN) return false
+        }
+        return true
+      })
+    })
+  })
+
+  if (candidates.some((cnds, i) => cnds.length != state.candidates[i].length))
+    state.candidates = candidates.map((cnds) => cnds.map((val) => val.c))
 }
 
 const offset = Symbol()
@@ -209,7 +283,7 @@ const offset = Symbol()
  * Replace `read`/`sum`/`prod` combinations with smaller `read` nodes. If changes are made,
  * `candidates` will be replaced with new values with all string keys replaced, maintaining only 'id'.
  */
-export function reaffine(state: State<OP>) {
+export function reaffine<ID>(state: State<OP, ID>) {
   const { nodes, cat, candidates } = state
   type Weight = Record<string | typeof offset, number>
   const weights = new Map<AnyNode<OP>, Weight>()
@@ -233,7 +307,7 @@ export function reaffine(state: State<OP>) {
       case 'prod': {
         const idx = n.x.findIndex((n) => n.op !== 'const')
         if (n.x.find((n, i) => n.op !== 'const' && i !== idx)) return // multiple non-const terms
-        weight = { ...x[idx] }
+        weight = idx !== -1 ? { ...x[idx] } : { [offset]: 1 }
         const factor = x.reduce((f, w, i) => (i === idx ? f : f * w[offset]), 1)
         if (factor != 1) {
           Object.keys(weight).forEach((k) => (weight[k] *= factor))
@@ -264,14 +338,41 @@ export function reaffine(state: State<OP>) {
       n.br.forEach(visit)
     }
   })
+  const shouldChange = [...topWeights.keys()].some((n) => {
+    if (n.op === 'const' || n.op === 'read') return false
+    if (n.op === 'sum' && n.x.length === 2)
+      if (n.x[0].op === 'const' && n.x[1].op === 'read') return false
+      else if (n.x[1].op === 'const' && n.x[0].op === 'read') return false
+    return true
+  })
+  if (!shouldChange) return
 
-  const weightNames = new Map(
-    [...topWeights.values()].map((w, i) => [w, `c${i}`])
+  // { cat1:w1 cat2:w2 .. } => "!cat1:<w1>:cat2:<w2>:.." with PUA chars
+  // instead of `!` and `:` to minimize the chance of them being in some `cat`s
+  let readNames = new Map(
+    [...topWeights.values()].map((w) => {
+      const keys = Object.keys(w).sort()
+      if (keys.length === 1 && w[keys[0]] === 1) return [w, keys[0]]
+      // skip `w[offset]` because it doesn't go into the new `Read` nodes
+      return [w, '\u{F33D}' + keys.flatMap((k) => [k, w[k]]).join('\u{F00D}')]
+    })
   )
-  const newCandidates = candidates.map((comp) =>
-    comp.map((c) => {
-      const result: Component = { id: c['id'] }
-      weightNames.forEach((name, w) => {
+  if (!isDebug('calc')) {
+    // "!cat1:<w1>:cat2:<w2>:.." => "cX" (skipped in debug mode)
+    const map = new Map([...readNames.values()].map((id, i) => [id, `c${i}`]))
+    readNames = new Map([...readNames].map(([w, id]) => [w, map.get(id)!]))
+  }
+
+  const weightNodes = new Map<Weight, NumNode<OP>>()
+  for (const [w, name] of readNames) {
+    const node = read({ [cat]: name })
+    weightNodes.set(w, w[offset] !== 0 ? sum(w[offset], node) : node)
+  }
+  state.candidates = candidates.map((cnds) =>
+    cnds.map((c) => {
+      const result = { id: c['id'] } as Candidate<ID>
+      readNames.forEach((name, w) => {
+        if (name in result) return // same weight, different offsets
         result[name] = Object.entries(w).reduce(
           (acu, [k, v]) => acu + (c[k] ?? 0) * v,
           0
@@ -280,69 +381,32 @@ export function reaffine(state: State<OP>) {
       return result
     })
   )
-
-  let shouldChange = false
-  for (const comp of newCandidates) {
-    for (const [w, name] of weightNames) {
-      const freq = new Map<number, number>()
-      for (const c of comp) freq.set(c[name], (freq.get(c[name]) ?? 0) + 1)
-      let [best, bestFreq] = [0, 0]
-      for (const [v, f] of freq)
-        if (f > bestFreq || (v === 0 && f >= bestFreq))
-          [best, bestFreq] = [v, f]
-      if (best !== 0) {
-        for (const c of comp) c[name] -= best
-        w[offset] += best
-        shouldChange = true
-      }
-      for (const c of comp) if (c[name] === 0) delete c[name]
-    }
-  }
-
-  if (!shouldChange) {
-    for (const n of topWeights.keys()) {
-      if (n.op === 'const' || n.op === 'read') continue
-      if (n.op === 'sum' && n.x.length === 2)
-        if (n.x[0].op === 'const' && n.x[1].op === 'read') continue
-        else if (n.x[1].op === 'const' && n.x[0].op === 'read') continue
-      shouldChange = true
-      break
-    }
-  }
-
-  if (!shouldChange) return
-
-  const weightNodes = new Map<Weight, NumNode<OP>>()
-  for (const [w, name] of weightNames) {
-    let node: NumNode<OP> = read({ [cat]: name }, undefined)
-    if (w[offset] !== 0) node = sum(w[offset], node)
-    weightNodes.set(w, node)
-  }
-
-  state.setCandidates(newCandidates)
-  state.setNodes(
-    mapBottomUp(nodes, (n, o) => {
-      const w = topWeights.get(o)
-      return w ? weightNodes.get(w)! : n
-    })
-  )
+  state.nodes = mapBottomUp(nodes, (n, o) => {
+    const w = topWeights.get(o)
+    return w ? weightNodes.get(w)! : n
+  })
 }
 
-/** Get range assuming any item in `comp` can be selected */
-function computeCompRanges(comp: Component[]): CompRanges[number] {
-  const iter = comp.values()
-  const first: Component | undefined = iter.next().value
+/** Get range assuming any item in `cnds` can be selected */
+function computeCndRanges<ID>(cnds: Candidate<ID>[]): CndRanges[number] {
+  // CAUTION:
+  // This is the only place where `id` is treated as non-opaque (comparable)
+  // objects. If `c1.id < c2.id` may crash, we have to change the algorithm
+  // or exclude `id` specifically. We don't care if the comparison result is
+  // gibberish, though, so long as it succeeds.
+  const iter = (cnds as Candidate[]).values()
+  const first: Candidate | undefined = iter.next().value
   if (!first) return {}
   const result = Object.fromEntries(
     Object.entries(first).map(([k, v]) => [k, { min: v, max: v }])
   )
-  for (const component of iter) {
+  for (const c of iter) {
     for (const [k, r] of Object.entries(result)) {
-      const v = component[k] ?? 0
+      const v = c[k] ?? 0
       if (r.min > v) r.min = v
       if (r.max < v) r.max = v
     }
-    for (const [k, v] of Object.entries(component))
+    for (const [k, v] of Object.entries(c))
       if (!(k in result))
         result[k] = { min: Math.min(0, v), max: Math.max(0, v) }
   }
@@ -353,7 +417,7 @@ function computeCompRanges(comp: Component[]): CompRanges[number] {
 function computeNodeRanges(
   nodes: NumNode<OP>[],
   cat: string,
-  compRanges: CompRanges
+  cndRanges: CndRanges
 ): NodeRanges {
   const result = new Map<AnyNode<OP>, Range>()
   traverse(nodes, (n, visit) => {
@@ -369,10 +433,10 @@ function computeNodeRanges(
     ): Range {
       const calc = arithmetic[op]
       const vals = [
-        calc([x0.min, x1.min], undefined),
-        calc([x0.min, x1.max], undefined),
-        calc([x0.max, x1.min], undefined),
-        calc([x0.max, x1.max], undefined),
+        calc([x0.min, x1.min]),
+        calc([x0.min, x1.max]),
+        calc([x0.max, x1.min]),
+        calc([x0.max, x1.max]),
       ]
       return { min: Math.min(...vals), max: Math.max(...vals) }
     }
@@ -409,7 +473,7 @@ function computeNodeRanges(
         break
       case 'read': {
         r = { min: 0, max: 0 }
-        for (const { [n.tag[cat]!]: range } of compRanges)
+        for (const { [n.tag[cat]!]: range } of cndRanges)
           if (range) {
             r.min += range.min
             r.max += range.max
@@ -516,15 +580,14 @@ function getMonotonicities(
       }
       case 'prod': {
         const r = nodeRanges.get(node)!
-        const pos = r.min > 0
-        if (!pos && r.max >= 0) {
-          // unsupported zero-touching
+        if (r.min < 0 && r.max > 0) {
+          // unsupported zero-crossing
           node.x.forEach((n) => visit(n, true))
           node.x.forEach((n) => visit(n, false))
-        } else
-          node.x.forEach((n) =>
-            visit(n, (pos === inc) === nodeRanges.get(n)!.min > 0)
-          )
+        } else {
+          const absInc = inc === r.max > 0 // |node| is increasing in some regions
+          node.x.forEach((n) => visit(n, absInc === nodeRanges.get(n)!.max > 0))
+        }
         break
       }
       case 'match':

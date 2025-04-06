@@ -1,11 +1,11 @@
 import { isPercentStat, objMap } from '@genshin-optimizer/common/util'
 import type { FactionKey } from '@genshin-optimizer/zzz/consts'
 import {
-  allCharacterKeys,
   type AttributeKey,
   type CharacterKey,
   type CharacterRarityKey,
   type SpecialityKey,
+  allCharacterKeys,
 } from '@genshin-optimizer/zzz/consts'
 import { readHakushinJSON } from '../../util'
 import {
@@ -21,6 +21,7 @@ const FLAT_SCALING = 100
 type CharacterRawData = {
   id: number
   Icon: string
+  Name: string
   Rarity: number
   ElementType: Record<string, string> // index, Attribute
   WeaponType: Record<string, string> // index, Specialty
@@ -153,6 +154,7 @@ type CharacterRawData = {
   >
 }
 export type CharacterData = {
+  id: string
   icon: string
   rarity: CharacterRarityKey
   attribute: AttributeKey
@@ -179,6 +181,7 @@ export type CharacterData = {
   cores: CharacterRawData['Passive']
   mindscapes: CharacterRawData['Talent']
   fullname: string
+  name: string
 }
 export const charactersDetailedJSONData = Object.fromEntries(
   Object.entries(characterIdMap)
@@ -187,13 +190,21 @@ export const charactersDetailedJSONData = Object.fromEntries(
       const raw = JSON.parse(
         readHakushinJSON(`character/${id}.json`)
       ) as CharacterRawData
+      // Not all agents have this info, or it is hidden for some reason
+      const fullname =
+        raw.PartnerInfo.FullName === undefined ||
+        raw.PartnerInfo.FullName === '...'
+          ? raw.Name
+          : raw.PartnerInfo.FullName
       const data: CharacterData = {
+        id: id,
         icon: raw.Icon,
         rarity: characterRarityMap[raw.Rarity],
         attribute: attributeMap[Object.keys(raw.ElementType)[0] as any],
         specialty: specialityMap[Object.keys(raw.WeaponType)[0] as any],
         faction: factionMap[Object.keys(raw.Camp)[0] as any],
-        fullname: raw.PartnerInfo.FullName,
+        fullname,
+        name: raw.Name,
         stats: {
           atk_base: raw.Stats.Attack,
           atk_growth: raw.Stats.AttackGrowth / PERCENT_SCALING,

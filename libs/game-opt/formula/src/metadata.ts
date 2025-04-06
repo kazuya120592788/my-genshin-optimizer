@@ -1,16 +1,12 @@
-import { traverse } from '@genshin-optimizer/pando/engine'
-
 import type {
   IBaseConditionalData,
   IConditionalData,
   IFormulaData,
-} from '@genshin-optimizer/game-opt/engine'
-import type {
-  AnyNode,
-  ReRead,
   Tag,
-  TagMapEntries,
-} from '@genshin-optimizer/pando/engine'
+  TagMapNodeEntries,
+} from '@genshin-optimizer/game-opt/engine'
+import type { AnyNode, ReRead } from '@genshin-optimizer/pando/engine'
+import { traverse } from '@genshin-optimizer/pando/engine'
 
 type Conditionals = Record<string, Record<string, IConditionalData>>
 type Formulas<T> = Record<string, Record<string, IFormulaData<T>>>
@@ -18,7 +14,7 @@ type Formulas<T> = Record<string, Record<string, IFormulaData<T>>>
 const condMeta = Symbol.for('condMeta')
 
 export function extractCondMetadata(
-  data: TagMapEntries<AnyNode | ReRead>,
+  data: TagMapNodeEntries<Tag>,
   extractCond: (tag: Tag) => { sheet: string; name: string }
 ) {
   const result: Conditionals = {}
@@ -41,10 +37,10 @@ export function extractCondMetadata(
   return sortMeta(result)
 }
 
-export function extractFormulaMetadata<T>(
-  data: TagMapEntries<AnyNode | ReRead>,
+export function extractFormulaMetadata<T, GenericTag extends Tag>(
+  data: TagMapNodeEntries<GenericTag>,
   extractFormula: (
-    tag: Tag,
+    tag: GenericTag,
     value: AnyNode | ReRead
   ) => IFormulaData<T> | undefined
 ) {

@@ -1,9 +1,9 @@
 import { getUnitStr, range, valueString } from '@genshin-optimizer/common/util'
 import { AssetData } from '@genshin-optimizer/gi/assets-data'
 import {
+  type WeaponKey,
   weaponMaxAscension,
   weaponMaxLevel,
-  type WeaponKey,
 } from '@genshin-optimizer/gi/consts'
 import { i18nInstance } from '@genshin-optimizer/gi/i18n-node'
 import { allStats, getWeaponStat } from '@genshin-optimizer/gi/stats'
@@ -15,7 +15,7 @@ import {
 } from 'discord.js'
 import { rarityColors } from '../../assets/assets'
 import { giURL } from '../../lib/util'
-import { clean, translate } from '../archive'
+import { clean, slashcommand, translate } from '../archive'
 import { getFixed } from '../go/calculator'
 
 const refinedisplay: Record<string, string> = {
@@ -39,14 +39,14 @@ function getDropdown(id: string, lang: string, refine: string) {
   return [
     new ActionRowBuilder().addComponents(
       new StringSelectMenuBuilder()
-        .setCustomId(`archive weapon ${id} ${lang} ${refine}`)
+        .setCustomId(`${slashcommand.name} weapon ${id} ${lang} ${refine}`)
         .setPlaceholder(`Refinement ${refine}`)
         .addOptions(options)
     ),
   ]
 }
 
-export async function weaponArchive(id: WeaponKey, lang: string, args: string) {
+export async function weaponArchive(id: WeaponKey, args: string, lang: string) {
   const namespace = `weapon_${id}_gen`
   await i18nInstance.loadNamespaces(namespace)
   const msg: any = {}

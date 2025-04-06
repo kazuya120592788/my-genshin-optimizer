@@ -1,23 +1,25 @@
 import { tag } from '@genshin-optimizer/game-opt/engine'
 import {
-  prod,
   type NumNode,
   type StrNode,
+  prod,
 } from '@genshin-optimizer/pando/engine'
 import type { StatKey } from '@genshin-optimizer/sr/consts'
 import type { Read, Tag } from '.'
 import {
+  type TagMapNodeEntries,
+  type TagMapNodeEntry,
   ownBuff,
   percent,
   reader,
+  semiOwnBuff,
   teamBuff,
-  type TagMapNodeEntries,
-  type TagMapNodeEntry,
 } from '.'
 import type { ElementalType, Sheet } from './listing'
 
 export type FormulaArg = {
   team?: boolean // true if applies to every member, and false (default) if applies only to self
+  isSemiOwn?: boolean
   cond?: string | StrNode
 }
 
@@ -44,30 +46,33 @@ export function register(
  * Used for static buffs.
  * Example usage: `register(... , ...registerBuff('ba3_atk_', own.premod.atk_.add(dm.ba3.atk_)))`
  * @param name Unqiue name of buff
- * @param entry Buff to register
+ * @param entries Buff/Buffs to register
  * @param cond Hide this buff behind this check
  * @param team Add to team formula listings if true
  * @returns Listing components to register the buff + the buff itself so it can be passed to `register`.
  */
 export function registerBuff(
   name: string,
-  entry: TagMapNodeEntry,
-  cond: string | StrNode = 'unique',
+  entries: TagMapNodeEntry | TagMapNodeEntry[],
+  cond: string | StrNode = 'infer',
   team = false
 ): TagMapNodeEntries {
-  // Remove unused tags. We cannot use `sheet:null` here because
-  // `namedReader` is also used as a `Tag` inside `listingItem`.
-  const { sheet: _sheet, ...tag } = entry.tag
-  const namedReader = reader.withTag({ ...tag, et: 'display', name }) // register name:<name>
-  const listing = (team ? teamBuff : ownBuff).listing.buffs
-  return [
-    // Add this buff to listing listing
-    listing.add(listingItem(namedReader, cond)),
-    // Hook for listing
-    namedReader.toEntry(entry.value),
-    // Still include the original entry
-    entry,
-  ]
+  if (!Array.isArray(entries)) entries = [entries]
+  return entries.flatMap((entry) => {
+    // Remove unused tags. We cannot use `sheet:null` here because
+    // `namedReader` is also used as a `Tag` inside `listingItem`.
+    const { sheet: _sheet, ...tag } = entry.tag
+    const namedReader = reader.withTag({ ...tag, et: 'display', name }) // register name:<name>
+    const listing = (team ? teamBuff : ownBuff).listing.buffs
+    return [
+      // Add this buff to listing listing
+      listing.add(listingItem(namedReader, cond)),
+      // Hook for listing
+      namedReader.toEntry(entry.value),
+      // Still include the original entry
+      entry,
+    ]
+  })
 }
 
 /**
@@ -82,25 +87,28 @@ export function registerBuff(
  */
 export function registerBuffFormula(
   name: string,
-  entry: TagMapNodeEntry,
+  entries: TagMapNodeEntry | TagMapNodeEntry[],
   cond: string | StrNode = 'unique',
   team = false
 ): TagMapNodeEntries {
-  // Remove unused tags. We cannot use `sheet:null` here because
-  // `namedReader` is also used as a `Tag` inside `listingItem`.
-  const { sheet: _sheet, ...tag } = entry.tag
-  const namedReader = reader.withTag({ ...tag, et: 'display', name }) // register name:<name>
-  const buffListing = (team ? teamBuff : ownBuff).listing.buffs
-  const formulaListing = (team ? teamBuff : ownBuff).listing.formulas
-  return [
-    // Add this buff to listing listing
-    buffListing.add(listingItem(namedReader, cond)),
-    formulaListing.add(listingItem(namedReader, cond)),
-    // Hook for listing
-    namedReader.toEntry(entry.value),
-    // Still include the original entry
-    entry,
-  ]
+  if (!Array.isArray(entries)) entries = [entries]
+  return entries.flatMap((entry) => {
+    // Remove unused tags. We cannot use `sheet:null` here because
+    // `namedReader` is also used as a `Tag` inside `listingItem`.
+    const { sheet: _sheet, ...tag } = entry.tag
+    const namedReader = reader.withTag({ ...tag, et: 'display', name }) // register name:<name>
+    const buffListing = (team ? teamBuff : ownBuff).listing.buffs
+    const formulaListing = (team ? teamBuff : ownBuff).listing.formulas
+    return [
+      // Add this buff to listing listing
+      buffListing.add(listingItem(namedReader, cond)),
+      formulaListing.add(listingItem(namedReader, cond)),
+      // Hook for listing
+      namedReader.toEntry(entry.value),
+      // Still include the original entry
+      entry,
+    ]
+  })
 }
 
 function registerFormula(
@@ -121,7 +129,7 @@ function registerFormula(
 }
 
 export function listingItem(t: Read, cond?: string | StrNode) {
-  return tag(cond ?? t.ex ?? 'unique', t.tag)
+  return tag(cond ?? t.ex ?? 'infer', t.tag)
 }
 
 /**
@@ -141,7 +149,7 @@ export function customDmg(
   dmgTag: DmgTag,
   base: NumNode,
   splits: number[] = [1],
-  { team, cond = 'unique' }: FormulaArg = {},
+  { team, isSemiOwn, cond = 'infer' }: FormulaArg = {},
   ...extra: TagMapNodeEntries
 ): TagMapNodeEntries[] {
   return splits.map((split, index) =>
@@ -150,7 +158,9 @@ export function customDmg(
       team,
       'dmg',
       tag(cond, dmgTag),
-      ownBuff.formula.base.add(prod(base, percent(split))),
+      (isSemiOwn ? semiOwnBuff : ownBuff).formula.base.add(
+        prod(base, percent(split))
+      ),
       ...extra
     )
   )
@@ -169,7 +179,7 @@ export function customDmg(
 export function customShield(
   name: string,
   base: NumNode,
-  { team, cond = 'unique' }: FormulaArg = {},
+  { team, isSemiOwn, cond = 'infer' }: FormulaArg = {},
   ...extra: TagMapNodeEntries
 ): TagMapNodeEntries {
   return registerFormula(
@@ -177,7 +187,7 @@ export function customShield(
     team,
     'shield',
     cond,
-    ownBuff.formula.base.add(base),
+    (isSemiOwn ? semiOwnBuff : ownBuff).formula.base.add(base),
     ...extra
   )
 }
@@ -195,7 +205,7 @@ export function customShield(
 export function customHeal(
   name: string,
   base: NumNode,
-  { team, cond = 'unique' }: FormulaArg = {},
+  { team, isSemiOwn, cond = 'infer' }: FormulaArg = {},
   ...extra: TagMapNodeEntries
 ): TagMapNodeEntries {
   return registerFormula(
@@ -203,7 +213,7 @@ export function customHeal(
     team,
     'heal',
     cond,
-    ownBuff.formula.base.add(base),
+    (isSemiOwn ? semiOwnBuff : ownBuff).formula.base.add(base),
     ...extra
   )
 }
@@ -223,7 +233,7 @@ export function customBreakDmg(
   name: string,
   dmgTag: DmgTag,
   base: NumNode | number,
-  { team, cond = 'unique' }: FormulaArg = {},
+  { team, isSemiOwn, cond = 'infer' }: FormulaArg = {},
   ...extra: TagMapNodeEntries
 ): TagMapNodeEntries {
   return registerFormula(
@@ -231,7 +241,7 @@ export function customBreakDmg(
     team,
     'breakDmg',
     tag(cond, dmgTag),
-    ownBuff.formula.base.add(base),
+    (isSemiOwn ? semiOwnBuff : ownBuff).formula.base.add(base),
     ...extra
   )
 }
@@ -252,6 +262,10 @@ export function getStatFromStatKey(
       return buff.dmg_[
         statKey.substring(0, statKey.indexOf('_')) as ElementalType
       ]
+    case 'baseSpd':
+      throw new Error(
+        'Attempted to use baseSpd to index premod; possibly a mistake?'
+      )
     default:
       return buff[statKey]
   }

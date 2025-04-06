@@ -68,7 +68,7 @@ export function DiscSwapModal({
 
   const [filterOption, filterOptionDispatch]: [
     DiscFilterOption,
-    (action: any) => void
+    (action: any) => void,
   ] = useReducer(filterOptionReducer, {
     ...initialDiscFilterOption(),
     slotKeys: [slotKey],
@@ -183,7 +183,7 @@ export function DiscSwapModal({
           <Box mt={1}>
             <Suspense
               fallback={
-                <Skeleton variant="rectangular" width="100%" height={300} />
+                <Skeleton variant="rectangular" width="100%" height={1000} />
               }
             >
               <Grid container spacing={1} columns={{ xs: 2, md: 3, lg: 4 }}>
@@ -228,7 +228,9 @@ export function DiscSwapModal({
                     sx={(theme) => ({
                       ...(discId === id && {
                         '> .MuiCard-root': {
-                          outline: `solid ${theme.palette.warning.main}`,
+                          outline: `${theme.spacing(0.5)} solid ${
+                            theme.palette.warning.main
+                          }`,
                         },
                       }),
                     })}

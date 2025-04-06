@@ -28,7 +28,7 @@ export class TagMapKeys {
       id[offset] |= word! // non-existent `value` is treated as zero
 
       if (isDebug('tag_db') && word === undefined)
-        throw `NonExistent tag ${category}:${value}`
+        throw `NonExistent tag ${category}:${value} in get(${JSON.stringify(tag)})`
     }
     return id
   }
@@ -51,7 +51,7 @@ export class TagMapKeys {
       maskArr[offset] |= mask
 
       if (isDebug('tag_db') && word === undefined)
-        throw `NonExistent tag ${category}:${value}`
+        throw `NonExistent tag ${category}:${value} in getMask(${JSON.stringify(tag)})`
     }
     return { id, mask: maskArr }
   }
@@ -62,7 +62,6 @@ export class TagMapKeys {
     let firstReplacedByte = this.tagLen
     for (const [category, value] of Object.entries(extra)) {
       const entry = this.data[category]!
-      if (!entry) console.error(category, entry)
       const {
         // Make sure `category` existed during compilation. Otherwise, it
         // would crash here, and this non-shaming text would be visible.
@@ -76,7 +75,7 @@ export class TagMapKeys {
       id[offset] |= word! // non-existent `value` is treated as zero
 
       if (isDebug('tag_db') && word === undefined)
-        throw `NonExistent tag ${category}:${value}`
+        throw `NonExistent tag ${category}:${value} in combine(${JSON.stringify(extra)})`
     }
     return { id, firstReplacedByte }
   }

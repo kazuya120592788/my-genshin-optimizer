@@ -1,12 +1,18 @@
 import { cmpGE, prod } from '@genshin-optimizer/pando/engine'
 import type { DiscSetKey } from '@genshin-optimizer/zzz/consts'
-import { allBoolConditionals, own, ownBuff, registerBuff } from '../../util'
+import {
+  allBoolConditionals,
+  own,
+  ownBuff,
+  percent,
+  registerBuff,
+} from '../../util'
 import { entriesForDisc, registerDisc } from '../util'
 
 const key: DiscSetKey = 'PolarMetal'
 
 const discCount = own.common.count.sheet(key)
-const showCond4Set = cmpGE(discCount, 4, 'unique', '')
+const showCond4Set = cmpGE(discCount, 4, 'infer', '')
 
 const { freeze_shatter } = allBoolConditionals(key)
 
@@ -20,7 +26,7 @@ const sheet = registerDisc(
     'set4_basic_dmg_',
     ownBuff.combat.dmg_.addWithDmgType(
       'basic',
-      cmpGE(discCount, 4, prod(0.2, freeze_shatter.ifOn(2, 1)))
+      cmpGE(discCount, 4, prod(percent(0.2), freeze_shatter.ifOn(2, 1)))
     ),
     showCond4Set
   ),
@@ -28,7 +34,7 @@ const sheet = registerDisc(
     'set4_dash_dmg_',
     ownBuff.combat.dmg_.addWithDmgType(
       'dash',
-      cmpGE(discCount, 4, prod(0.2, freeze_shatter.ifOn(2, 1)))
+      cmpGE(discCount, 4, prod(percent(0.2), freeze_shatter.ifOn(2, 1)))
     ),
     showCond4Set
   )

@@ -1,10 +1,10 @@
 import {
   Read as BaseRead,
+  type Tag as BaseTag,
   reader as baseReader,
   entryTypes,
   presets,
   setReader,
-  type Tag as BaseTag,
 } from '@genshin-optimizer/game-opt/engine'
 import type { AnyNode } from '@genshin-optimizer/pando/engine'
 import type {
@@ -18,6 +18,7 @@ import type {
   TagMapNodeEntry,
 } from '.'
 import {
+  type Sheet,
   attributes,
   damageTypes,
   factions,
@@ -25,7 +26,6 @@ import {
   sheets,
   skillTypes,
   specialties,
-  type Sheet,
 } from './listing'
 
 export const fixedTags = {
@@ -44,17 +44,17 @@ export const fixedTags = {
   specialty: specialties,
   faction: factions,
 }
-export type Tag = BaseTag<Src, Dst, Sheet> & {
-  attribute?: Attribute
-  skillType?: SkillType
-  damageType1?: DamageType
-  damageType2?: DamageType
+export interface Tag extends BaseTag<Sheet, Src, Dst> {
+  attribute?: Attribute | null
+  skillType?: SkillType | null
+  damageType1?: DamageType | null
+  damageType2?: DamageType | null
 
   specialty?: Specialty
   faction?: Faction
 }
 
-export class Read extends BaseRead<Tag, Src, Dst, Sheet> {
+export class Read extends BaseRead<Tag> {
   override add(
     value: number | string | AnyNode,
     force = false
@@ -197,10 +197,10 @@ export class Read extends BaseRead<Tag, Src, Dst, Sheet> {
       super.with('damageType2', 'disorder'),
     ]
   }
-  get additional(): Read[] {
+  get aftershock(): Read[] {
     return [
-      super.with('damageType1', 'additional'),
-      super.with('damageType2', 'additional'),
+      super.with('damageType1', 'aftershock'),
+      super.with('damageType2', 'aftershock'),
     ]
   }
   get elemental(): Read[] {
@@ -223,7 +223,7 @@ export class Read extends BaseRead<Tag, Src, Dst, Sheet> {
 }
 
 // Need to instantiate with zzz-specific reader
-setReader<Tag, Src, Dst, Sheet>(new Read({}, undefined))
+setReader<Tag>(new Read({}, undefined))
 export const reader = baseReader as Read
 
 export function tagStr(tag: Tag, ex?: any): string {

@@ -111,7 +111,7 @@ const langArray = Object.entries(languageMap).map(([langKey, strings]) => {
   crawlObject(
     HashData,
     [],
-    (value) => typeof value === 'string',
+    (value) => typeof value === 'string' && !!value,
     (hash: string, path) =>
       layeredAssignment(data, path, processString(strings[hash]))
   )
@@ -138,9 +138,8 @@ const langArray = Object.entries(languageMap).map(([langKey, strings]) => {
     const pathString = strings[HashData.characters.path[path]]
 
     // Override name to something like 'Trailblazer (Physical • Destruction)'
-    data.char[
-      key
-    ].name = `${data.char[key].name} (${typeString} • ${pathString})`
+    data.char[key].name =
+      `${data.char[key].name} (${typeString} • ${pathString})`
     data.charNames[key] = data.char[key].name
   })
 

@@ -267,7 +267,7 @@ export function ArtifactEditor({
       ): T {
         return value && available.includes(value)
           ? value
-          : prefer ?? available[0]
+          : (prefer ?? available[0])
       }
 
       if (newValue.setKey && newStat) {
@@ -327,7 +327,7 @@ export function ArtifactEditor({
     ? getArtifactEfficiency(cArtifact, allSubstatFilter)
     : {}
   const onClose = useCallback(
-    (e) => {
+    (e: React.MouseEvent<HTMLElement>) => {
       if (
         !artifactIdToEdit &&
         (queueTotal || artifact) &&
@@ -349,7 +349,7 @@ export function ArtifactEditor({
   const element = artifact
     ? allElementWithPhyKeys.find((ele) => artifact.mainStatKey.includes(ele))
     : undefined
-  const color = artifact ? element ?? 'success' : 'primary'
+  const color = artifact ? (element ?? 'success') : 'primary'
 
   const updateSetKey = useCallback(
     (setKey: ArtifactSetKey | '') =>
@@ -528,7 +528,9 @@ export function ArtifactEditor({
                     artifact?.setKey?.startsWith('Prayer')
                   }
                   slotKey={slotKey}
-                  onChange={(slotKey) => update({ slotKey })}
+                  onChange={(slotKey) =>
+                    update({ slotKey: slotKey ? slotKey : undefined })
+                  }
                 />
                 <CardThemed bgt="light" sx={{ p: 1, ml: 1, flexGrow: 1 }}>
                   <Suspense fallback={<Skeleton width="60%" />}>

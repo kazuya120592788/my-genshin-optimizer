@@ -1,12 +1,12 @@
 import { cmpGE } from '@genshin-optimizer/pando/engine'
 import type { DiscSetKey } from '@genshin-optimizer/zzz/consts'
-import { enemyDebuff, own, registerBuff } from '../../util'
+import { enemyDebuff, own, percent, registerBuff } from '../../util'
 import { entriesForDisc, registerDisc } from '../util'
 
 const key: DiscSetKey = 'ShockstarDisco'
 
 const discCount = own.common.count.sheet(key)
-const showCond4Set = cmpGE(discCount, 4, 'unique', '')
+const showCond4Set = cmpGE(discCount, 4, 'infer', '')
 
 const sheet = registerDisc(
   key,
@@ -16,21 +16,12 @@ const sheet = registerDisc(
   // Passives
   registerBuff(
     'set4_basic_daze_',
-    enemyDebuff.common.stun_.addWithDmgType('basic', cmpGE(discCount, 4, 0.2)),
-    showCond4Set
-  ),
-  registerBuff(
-    'set4_dash_daze_',
-    enemyDebuff.common.stun_.addWithDmgType('dash', cmpGE(discCount, 4, 0.2)),
-    showCond4Set
-  ),
-  registerBuff(
-    'set4_dodgeCounter_daze_',
     enemyDebuff.common.stun_.addWithDmgType(
-      'dodgeCounter',
-      cmpGE(discCount, 4, 0.2)
+      'basic',
+      cmpGE(discCount, 4, percent(0.2))
     ),
     showCond4Set
   )
+  // TODO: add daze_
 )
 export default sheet

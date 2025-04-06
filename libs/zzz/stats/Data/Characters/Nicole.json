@@ -1,10 +1,12 @@
 {
+  "id": "1031",
   "icon": "IconRole12",
   "rarity": "A",
   "attribute": "ether",
   "specialty": "support",
   "faction": "CunningHares",
   "fullname": "Nicole Demara",
+  "name": "Nicole",
   "stats": {
     "atk_base": 93,
     "atk_growth": 5.3249,

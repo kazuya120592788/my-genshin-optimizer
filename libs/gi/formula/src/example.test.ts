@@ -1,12 +1,11 @@
 import { allArtifactSetKeys } from '@genshin-optimizer/gi/consts'
 import type { ICharacter, IWeapon } from '@genshin-optimizer/gi/good'
 import {
-  combineConst,
   compile,
   compileTagMapValues,
   detach,
-  flatten,
   setDebugMode,
+  simplify,
 } from '@genshin-optimizer/pando/engine'
 import { entries, keys, values } from './data'
 import type { Tag, TagMapNodeEntries } from './data/util'
@@ -113,7 +112,7 @@ describe('example', () => {
     // NOT `team` since this uses a specific formula, but the value from every member is the same
     expect(mem0.compute(own.common.eleCount).val).toBe(2)
 
-    expect(calc.compute(team.final.eleMas).val).toEqual(
+    expect(calc.compute(team.final.eleMas.sum).val).toEqual(
       mem0.compute(own.final.eleMas).val + mem1.compute(own.final.eleMas).val
     )
   })
@@ -230,15 +229,13 @@ describe('example', () => {
     })
 
     // Step 3: Optimize nodes, as needed
-    detached = flatten(detached)
-    detached = combineConst(detached)
+    detached = simplify(detached)
 
     // Step 4: Compile for quick iteration
     const compiled = compile(
       detached,
       'q', // Tag category for object key
-      2, // Number of slots
-      {} // Initial values
+      2 // Number of slots
     )
 
     // Step 5: Calculate the value

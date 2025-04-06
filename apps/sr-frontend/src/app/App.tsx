@@ -1,4 +1,6 @@
 import { ScrollTop } from '@genshin-optimizer/common/ui'
+import { isDev } from '@genshin-optimizer/common/util'
+import { setDebugMode } from '@genshin-optimizer/pando/engine'
 import { DatabaseProvider } from '@genshin-optimizer/sr/db-ui'
 import '@genshin-optimizer/sr/i18n' // import to load translations
 import { theme } from '@genshin-optimizer/sr/theme'
@@ -12,6 +14,7 @@ import {
 } from '@mui/material'
 import { Suspense, lazy } from 'react'
 import { HashRouter, Route, Routes } from 'react-router-dom'
+import Footer from './Footer'
 import Header from './Header'
 import PageHome from './PageHome'
 
@@ -27,6 +30,9 @@ const PageTeam = lazy(() => import('@genshin-optimizer/sr/page-team'))
 const PageSettings = lazy(() => import('@genshin-optimizer/sr/page-settings'))
 
 const PageOptimize = lazy(() => import('@genshin-optimizer/sr/page-optimize'))
+
+// Enable debug mode for Pando calcs
+setDebugMode(isDev)
 
 export default function App() {
   return (
@@ -78,6 +84,9 @@ function Content() {
           </Routes>
         </Suspense>
       </Container>
+      {/* make sure footer is always at bottom */}
+      <Box flexGrow={1} />
+      <Footer />
     </Box>
   )
 }

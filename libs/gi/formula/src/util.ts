@@ -91,7 +91,9 @@ export function artifactsData(
     agg.reread(art), // Opt-in for artifact buffs, instead of enabling it by default to reduce `read` traffic
 
     // Add `sheet:dyn` between the stat and the buff so that we can `detach` them easily
-    art.with('qt', 'premod').reread(dyn),
+    art
+      .with('qt', 'premod')
+      .reread(dyn),
     ...Object.entries(stats).map(([k, v]) =>
       readStat(premod, k as MainStatKey | SubstatKey)
         .sheet('dyn')
@@ -174,16 +176,8 @@ export function teamData(members: readonly Member[]): TagMapNodeEntries {
     }),
 
     // Total Team Stat
-    //
-    // CAUTION:
-    // This formula only works for queries with default `undefined` or `sum` accumulator.
-    // Using this on queries with other accumulators, e.g., `ampMulti` may results in an
-    // incorrect result. We cannot use `reread` here because the outer `team` query may
-    // use different accumulators from the inner query. Such is the case for maximum team
-    // final eleMas, where the outer query uses a `max` accumulator, while final eleMas
-    // must use `sum` accumulator for a correct result.
     members.map((src) =>
-      teamEntry.add(reader.withTag({ et: 'own', src, dst: null }).sum)
+      teamEntry.add(reader.withTag({ et: 'own', src, dst: null }))
     ),
   ].flat()
 }

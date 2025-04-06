@@ -103,13 +103,7 @@ export default function Header({ anchor }: { anchor: string }) {
   )
 }
 
-const maincontent = [
-  discs,
-  optimize,
-  ...(shouldShowDevComponents ? [characters] : []),
-  ...(shouldShowDevComponents ? [wengines] : []),
-  settings,
-] as const //Todo remove shouldShowDevComponents for characters once it's ready for prod
+const maincontent = [discs, wengines, characters, optimize, settings] as const
 
 function HeaderContent({ anchor }: { anchor: string }) {
   const theme = useTheme()
@@ -211,13 +205,7 @@ function DesktopHeader({
   )
 }
 
-const mobileContent = [
-  discs,
-  optimize,
-  ...(shouldShowDevComponents ? [characters] : []),
-  ...(shouldShowDevComponents ? [wengines] : []),
-  settings,
-] as const //Todo remove shouldShowDevComponents for characters once it's ready for prod
+const mobileContent = [discs, wengines, characters, optimize, settings] as const
 
 function MobileHeader({
   anchor,

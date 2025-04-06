@@ -1,4 +1,5 @@
 import {
+  type Desc as BaseDesc,
   createAllBoolConditionals,
   createAllListConditionals,
   createAllNumConditionals,
@@ -9,7 +10,7 @@ import {
 import type { StatKey } from '@genshin-optimizer/gi/dm'
 import type { NumNode } from '@genshin-optimizer/pando/engine'
 import { constant } from '@genshin-optimizer/pando/engine'
-import type { Dst, Sheet, Src, Stat } from './listing'
+import type { Sheet, Stat } from './listing'
 import type { Read, Tag } from './read'
 import { reader } from './read'
 
@@ -67,15 +68,15 @@ export function priorityTable(
  * only include contributions from character and custom values.
  */
 
-type Desc = { sheet: Sheet | undefined; accu: Read['accu'] }
-const aggStr: Desc = { sheet: 'agg', accu: 'unique' }
+type Desc = BaseDesc<Sheet>
+const aggStr: Desc = { sheet: 'agg' }
 const agg: Desc = { sheet: 'agg', accu: 'sum' }
-const iso: Desc = { sheet: 'iso', accu: 'unique' }
+const iso: Desc = { sheet: 'iso' }
 const isoSum: Desc = { sheet: 'iso', accu: 'sum' }
 /** `sheet:`-agnostic calculation */
-const fixed: Desc = { sheet: 'static', accu: 'unique' }
+const fixed: Desc = { sheet: 'static' }
 /** The calculation must have a matching `sheet:` */
-const prep: Desc = { sheet: undefined, accu: 'unique' }
+const prep: Desc = { sheet: undefined }
 
 const stats: Record<Stat, Desc> = {
   hp: agg,
@@ -166,7 +167,7 @@ export const enemyTag = {
   reaction: { amp: fixed, cata: fixed },
 } as const
 
-export const convert = createConvert<Read, Tag, Src, Dst, Sheet>()
+export const convert = createConvert<Read>()
 
 // Default queries
 const noName = { src: null, name: null }
@@ -183,7 +184,7 @@ export const enemyDebuff = convert(enemyTag, { et: 'enemy' })
 export const userBuff = convert(ownTag, { et: 'own', sheet: 'custom' })
 
 // Custom tags
-const nullTag = {
+const nullTag: Tag = {
   name: null,
   region: null,
   ele: null,

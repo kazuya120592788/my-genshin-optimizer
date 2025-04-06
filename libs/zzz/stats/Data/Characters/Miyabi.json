@@ -1,10 +1,12 @@
 {
+  "id": "1091",
   "icon": "IconRole13",
   "rarity": "S",
   "attribute": "ice",
   "specialty": "anomaly",
   "faction": "HollowSpecialOoperationsSection6",
   "fullname": "Hoshimi Miyabi",
+  "name": "Miyabi",
   "stats": {
     "atk_base": 127,
     "atk_growth": 7.6728,

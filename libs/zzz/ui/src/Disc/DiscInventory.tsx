@@ -10,6 +10,7 @@ import {
 } from '@genshin-optimizer/zzz/db-ui'
 import { discFilterConfigs } from '@genshin-optimizer/zzz/util'
 import AddIcon from '@mui/icons-material/Add'
+import DifferenceIcon from '@mui/icons-material/Difference'
 import {
   Box,
   Button,
@@ -29,9 +30,14 @@ const numToShowMap = { xs: 10, sm: 12, md: 24, lg: 24, xl: 24 }
 export type DiscInventoryProps = {
   onAdd?: () => void
   onEdit?: (id: string) => void
+  onShowDup?: () => void
 }
 
-export function DiscInventory({ onAdd, onEdit }: DiscInventoryProps) {
+export function DiscInventory({
+  onAdd,
+  onEdit,
+  onShowDup,
+}: DiscInventoryProps) {
   const { t } = useTranslation('disc')
   const { database } = useDatabaseContext()
   const [dirtyDatabase, setDirtyDatabase] = useForceUpdate()
@@ -116,6 +122,16 @@ export function DiscInventory({ onAdd, onEdit }: DiscInventoryProps) {
             {t('addNew')}
           </Button>
         </Grid>
+        <Grid item xs={1}>
+          <Button
+            fullWidth
+            onClick={onShowDup}
+            color="info"
+            startIcon={<DifferenceIcon />}
+          >
+            {t('showDupes')}
+          </Button>
+        </Grid>
       </Grid>
       <Suspense
         fallback={
@@ -125,23 +141,25 @@ export function DiscInventory({ onAdd, onEdit }: DiscInventoryProps) {
           />
         }
       >
-        <Grid container columns={columns} spacing={1}>
-          {discsIdsToShow.map((discId) => (
-            <Grid item key={discId} xs={1}>
-              <DiscCard
-                disc={database.discs.get(discId)!}
-                onEdit={() => onEdit?.(discId)}
-                onDelete={() => database.discs.remove(discId)}
-                setLocation={(location) =>
-                  database.discs.set(discId, { location })
-                }
-                onLockToggle={() =>
-                  database.discs.set(discId, ({ lock }) => ({ lock: !lock }))
-                }
-              />
-            </Grid>
-          ))}
-        </Grid>
+        <Box>
+          <Grid container columns={columns} spacing={1}>
+            {discsIdsToShow.map((discId) => (
+              <Grid item key={discId} xs={1}>
+                <DiscCard
+                  disc={database.discs.get(discId)!}
+                  onEdit={() => onEdit?.(discId)}
+                  onDelete={() => database.discs.remove(discId)}
+                  setLocation={(location) =>
+                    database.discs.set(discId, { location })
+                  }
+                  onLockToggle={() =>
+                    database.discs.set(discId, ({ lock }) => ({ lock: !lock }))
+                  }
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
         {discIds.length !== discsIdsToShow.length && (
           <Skeleton
             ref={(node) => {

@@ -14,15 +14,17 @@ const data: TagMapNodeEntries = [
   // convert sheet:<char> to sheet:agg for accumulation
   // sheet:<relic> is reread in src/util.ts:relicTagMapNodeEntries()
   // sheet:<lightCone> is reread in src/util.ts:lightConeTagMapNodeEntries()
-  reader.sheet('agg').reread(reader.sheet('char')),
+  reader
+    .sheet('agg')
+    .reread(reader.sheet('char')),
 
   // Final <= Premod <= Base
   reader
     .withTag({ sheet: 'agg', et: 'own', qt: 'final' })
-    .add(reader.with('qt', 'premod').sum),
+    .add(reader.with('qt', 'premod')),
   reader
     .withTag({ sheet: 'agg', et: 'own', qt: 'premod' })
-    .add(reader.with('qt', 'base').sum),
+    .add(reader.with('qt', 'base').sum), // add `accu` because these aren't in `ownTag`
 
   // premod X += base X * premod X%
   ...(['atk', 'def', 'hp', 'spd'] as const).map((s) =>
@@ -35,6 +37,8 @@ const data: TagMapNodeEntries = [
   ),
 
   // Default conditionals to 0
-  reader.with('qt', 'cond').add(0),
+  reader
+    .with('qt', 'cond')
+    .add(0),
 ]
 export default data

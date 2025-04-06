@@ -1,4 +1,4 @@
-import { dumpPrettyFile } from '@genshin-optimizer/common/pipeline'
+import { dumpFile, dumpPrettyFile } from '@genshin-optimizer/common/pipeline'
 import { workspaceRoot } from '@nx/devkit'
 import type { GenStatsExecutorSchema } from './schema'
 import type {
@@ -37,27 +37,35 @@ export type AllStats = typeof allStat
 
 export default async function runExecutor(_options: GenStatsExecutorSchema) {
   console.log(`Writing character data to ${path}/Characters`)
-  Object.entries(characterDataDump).forEach(([key, data]) =>
-    dumpPrettyFile(`${path}/Characters/${key}.json`, data)
+  await Promise.all(
+    Object.entries(characterDataDump).map(([key, data]) =>
+      dumpPrettyFile(`${path}/Characters/${key}.json`, data)
+    )
   )
 
   console.log(`Writing lightCone data to ${path}/LightCone`)
-  Object.entries(lightConeDataDump).forEach(([key, data]) =>
-    dumpPrettyFile(`${path}/LightCone/${key}.json`, data)
+  await Promise.all(
+    Object.entries(lightConeDataDump).map(([key, data]) =>
+      dumpPrettyFile(`${path}/LightCone/${key}.json`, data)
+    )
   )
 
   console.log(`Writing relic data to ${path}/Relic`)
-  Object.entries(relicDataDump).forEach(([key, data]) =>
-    dumpPrettyFile(`${path}/Relic/${key}.json`, data)
+  await Promise.all(
+    Object.entries(relicDataDump).map(([key, data]) =>
+      dumpPrettyFile(`${path}/Relic/${key}.json`, data)
+    )
   )
 
   console.log(`Writing misc data to ${path}/misc`)
-  Object.entries(miscDataDump).forEach(([key, data]) =>
-    dumpPrettyFile(`${path}/misc/${key}.json`, data)
+  await Promise.all(
+    Object.entries(miscDataDump).map(([key, data]) =>
+      dumpPrettyFile(`${path}/misc/${key}.json`, data)
+    )
   )
 
   console.log(`Writing combined data to ${proj_path}/src/allStat_gen.json`)
-  dumpPrettyFile(`${proj_path}/src/allStat_gen.json`, allStat)
+  dumpFile(`${proj_path}/src/allStat_gen.json`, allStat)
 
   return { success: true }
 }

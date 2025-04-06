@@ -13,12 +13,13 @@ import {
   sum,
   sumfrac,
 } from '../node'
-import { addCustomOperation, type Monotonicity } from '../util'
-import { pruneBranches, pruneRange, reaffine, State } from './prune'
+import { type Monotonicity, addCustomOperation } from '../util'
+import { State, pruneBranches, pruneRange, reaffine } from './prune'
 
-const r0 = read({ q: 'c0' }, undefined)
-const r1 = read({ q: 'c1' }, undefined)
-const r2 = read({ q: 'c2' }, undefined)
+const r0 = read({ q: 'c0' })
+const r1 = read({ q: 'c1' })
+const r2 = read({ q: 'c2' })
+const r4 = read({ q: 'c4' })
 
 addCustomOperation('sqrt', {
   range: ([r]) => {
@@ -47,6 +48,9 @@ describe('pruning', () => {
     const nodes = [
       prod(7, sum(r0, prod(3, r1), 6), sum(r0, r1, 2)),
       constant(11),
+      sum(r0, prod(3, 4, 5)),
+      sum(r0, sum(3, 4, 5)),
+      sum(r0, 77),
     ]
     const state = new State(nodes, [], candidates, 'q')
     state.progress = false
@@ -54,14 +58,20 @@ describe('pruning', () => {
     expect(state.progress).toBe(true)
     // Normally the reaffined keys are unspecified, but since the current
     // algorithm is deterministic, we can just run it and note the keys
+    // [c0, c1, c4] = [c0 + 3c1, c0 + c1, c0]
     expect(state.candidates).toEqual([
-      [{ id: 1 }, { id: 2, c0: 3, c1: 5 }, { id: 3, c0: 4, c1: 8 }],
+      [
+        { id: 1, c0: 9, c1: 3, c4: 0 },
+        { id: 2, c0: 12, c1: 8, c4: 6 },
+        { id: 3, c0: 13, c1: 11, c4: 10 },
+      ],
     ])
-    // reaffine nodes into different keys (c0 and c1, again, with different values)
-    // and leave the constant nodes alone
     expect(state.nodes).toEqual([
-      prod(7, sum(15, r0), sum(5, r1)),
+      prod(7, sum(6, r0), sum(2, r1)),
       constant(11),
+      sum(60, r4),
+      sum(12, r4),
+      sum(77, r4),
     ])
   })
   test('pruneBranches', () => {
@@ -132,15 +142,15 @@ describe('state', () => {
   const state = new State(nodes, [], candidates, 'q')
 
   test('comp ranges', () => {
-    const { compRanges } = state
-    expect(compRanges.length).toEqual(candidates.length)
-    expect(compRanges[0]).toEqual({
+    const { cndRanges } = state
+    expect(cndRanges.length).toEqual(candidates.length)
+    expect(cndRanges[0]).toEqual({
       c0: { min: 0, max: 3 },
       c1: { min: 9, max: 10 },
       c2: { min: 4, max: 4 },
       id: { min: 1, max: 2 },
     })
-    expect(compRanges[1]).toEqual({
+    expect(cndRanges[1]).toEqual({
       c0: { min: 2, max: 4 },
       c1: { min: 0, max: 1 },
       c2: { min: 4, max: 4 },
@@ -244,17 +254,35 @@ describe('state', () => {
           expect(m2.get('c1')?.[inc ? 'inc' : 'dec']).toEqual(false)
           expect(m2.get('c2')?.[inc ? 'dec' : 'inc']).toEqual(false)
 
-          const n3 = prod(sum(r0, -7), sum(r1, -11), sum(r2, -8))
+          const n3 = prod(sum(r0, -4), r1, r2) // r0 can be neg/zero/pos
           const m3 = getMonotonicity(flip(n3, inc))
           expect(m3.get('c0')?.[inc ? 'dec' : 'inc']).toEqual(false)
-          expect(m3.get('c1')?.[inc ? 'dec' : 'inc']).toEqual(false)
-          expect(m3.get('c2')?.[inc ? 'dec' : 'inc']).toEqual(false)
+          expect(m3.get('c1')).toEqual({ inc: false, dec: false })
+          expect(m3.get('c2')).toEqual({ inc: false, dec: false })
 
-          const n4 = prod(sum(r0, -4), r1, r2) // r0 can be neg/zero/pos
+          const n4 = prod(r0, r1, r2) // pos * pos * pos
           const m4 = getMonotonicity(flip(n4, inc))
-          expect(m4.get('c0')?.[inc ? 'dec' : 'inc']).toEqual(false)
-          expect(m4.get('c1')).toEqual({ inc: false, dec: false })
-          expect(m4.get('c2')).toEqual({ inc: false, dec: false })
+          expect(m4.get('c0')).toEqual({ inc, dec: !inc })
+          expect(m4.get('c1')).toEqual({ inc, dec: !inc })
+          expect(m4.get('c2')).toEqual({ inc, dec: !inc })
+
+          const n5 = prod(sum(r0, -7), r1, r2) // neg * pos * pos
+          const m5 = getMonotonicity(flip(n5, inc))
+          expect(m5.get('c0')).toEqual({ inc, dec: !inc })
+          expect(m5.get('c1')).toEqual({ inc: !inc, dec: inc })
+          expect(m5.get('c2')).toEqual({ inc: !inc, dec: inc })
+
+          const n6 = prod(sum(r0, -7), sum(r1, -11), r2) // neg * neg * pos
+          const m6 = getMonotonicity(flip(n6, inc))
+          expect(m6.get('c0')).toEqual({ inc: !inc, dec: inc })
+          expect(m6.get('c1')).toEqual({ inc: !inc, dec: inc })
+          expect(m6.get('c2')).toEqual({ inc, dec: !inc })
+
+          const n7 = prod(sum(r0, -7), sum(r1, -11), sum(r2, -9)) // neg * neg * neg
+          const m7 = getMonotonicity(flip(n7, inc))
+          expect(m7.get('c0')).toEqual({ inc, dec: !inc })
+          expect(m7.get('c1')).toEqual({ inc, dec: !inc })
+          expect(m7.get('c2')).toEqual({ inc, dec: !inc })
         })
     })
     // r0 < r2 < r1

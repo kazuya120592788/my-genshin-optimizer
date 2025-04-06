@@ -1,10 +1,12 @@
 {
+  "id": "1221",
   "icon": "IconRole31",
   "rarity": "S",
   "attribute": "electric",
   "specialty": "anomaly",
   "faction": "HollowSpecialOoperationsSection6",
   "fullname": "Tsukishiro Yanagi",
+  "name": "Yanagi",
   "stats": {
     "atk_base": 126,
     "atk_growth": 7.586,

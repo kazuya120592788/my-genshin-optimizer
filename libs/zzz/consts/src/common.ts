@@ -1,11 +1,5 @@
 import { objKeyMap } from '@genshin-optimizer/common/util'
-import type { DiscCondKey } from './disc'
-import {
-  allDiscCondKeys,
-  allDiscMainStatKeys,
-  allDiscSubStatKeys,
-} from './disc'
-import type { WengineCondKey } from './wengine'
+import { allDiscMainStatKeys, allDiscSubStatKeys } from './disc'
 
 export const otherStatKeys = [
   // Used by calc, likely will be bundled into pando
@@ -22,6 +16,7 @@ export const otherStatKeys = [
   'impact', // flat impact on character
   'anomMas', // flat Anomally Mastery on character
   'shield_', // Shield Effect
+  'enerRegen',
 ] as const
 
 export const unCondKeys = [
@@ -96,6 +91,8 @@ export const statKeyTextMap: Partial<Record<string, string>> = {
   crit_: 'CRIT Rate',
   crit_dmg_: 'CRIT DMG',
   enerRegen_: 'Energy Regen',
+  enerRegen: 'Energy Regen',
+  base_enerRegen: 'Base Energy Regen',
   impact_: 'Impact',
   impact: 'Impact',
   daze_: 'Daze',
@@ -129,9 +126,21 @@ export const statKeyTextMap: Partial<Record<string, string>> = {
   cond_atk_: 'Combat ATK%',
   cond_anomMas_: 'Combat Anomaly Mastery%',
   cond_anomMas: 'Combat Anomaly Mastery',
+
+  // Formula display stuff
+  crit_mult_: 'CRIT Multiplier',
+  dmg_mult_: 'DMG Multiplier',
+  def_mult_: 'DEF Multiplier',
+  res_mult_: 'Resistance Multiplier',
+  base: 'Base Damage',
+  stun_: 'Stun DMG Multiplier',
+  unstun_: 'Unstun DMG Multiplier',
+  defRed_: 'Defense Reduction',
+  res_: 'Resistance',
+  resRed_: 'Resistance Reduction',
 }
 
-const elementalData: Record<AttributeKey, string> = {
+export const elementalData: Record<AttributeKey, string> = {
   electric: 'Electric',
   fire: 'Fire',
   ice: 'Ice',
@@ -142,15 +151,6 @@ const elementalData: Record<AttributeKey, string> = {
 Object.entries(elementalData).forEach(([e, name]) => {
   statKeyTextMap[`${e}_dmg_`] = `${name} DMG Bonus`
 })
-
-export type CondKey = DiscCondKey | WengineCondKey
-export const allCondKeys = Object.keys(allDiscCondKeys) as CondKey[]
-export type CondMeta = {
-  key: CondKey
-  text: string | ((val: number) => string)
-  max: number
-  min: number
-}
 
 export const rarityColor = {
   S: 'rankS',

@@ -1,10 +1,12 @@
 {
+  "id": "1131",
   "icon": "IconRole17",
   "rarity": "A",
   "attribute": "ice",
   "specialty": "support",
   "faction": "HollowSpecialOoperationsSection6",
   "fullname": "Soukaku",
+  "name": "Soukaku",
   "stats": {
     "atk_base": 96,
     "atk_growth": 5.4887,

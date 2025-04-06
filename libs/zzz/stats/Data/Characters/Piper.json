@@ -1,10 +1,12 @@
 {
+  "id": "1281",
   "icon": "IconRole28",
   "rarity": "A",
   "attribute": "physical",
   "specialty": "anomaly",
   "faction": "SonsOfCalydon",
   "fullname": "Piper",
+  "name": "Piper",
   "stats": {
     "atk_base": 109,
     "atk_growth": 6.4308,

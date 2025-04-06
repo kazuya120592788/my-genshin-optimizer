@@ -19,10 +19,11 @@ import {
 import type { ReactNode } from 'react'
 import { createContext, useContext, useMemo, useState } from 'react'
 import { BonusStatsSection } from './BonusStats'
-import { TeamHeaderHeightContext } from './context/TeamHeaderHeightContext'
+import { CharStatsDisplay } from './CharStatsDisplay'
 import { LightConeSheetsDisplay } from './LightConeSheetsDisplay'
 import Optimize from './Optimize'
 import { RelicSheetsDisplay } from './RelicSheetsDisplay'
+import { TeamHeaderHeightContext } from './context/TeamHeaderHeightContext'
 
 const BOT_PX = 0
 const SECTION_SPACING_PX = 33
@@ -107,7 +108,7 @@ function CharacterSection() {
     <Stack spacing={1}>
       <Box sx={{ display: 'flex', gap: 1 }}>
         <Box sx={{ minWidth: '350px' }}>
-          <CharacterCard character={character!} />
+          <CharacterCard character={character!} hideStats />
           <CharacterEditor
             characterKey={editorKey}
             onClose={() => setCharacterKey(undefined)}
@@ -119,6 +120,7 @@ function CharacterSection() {
           >
             Edit Character
           </Button>
+          <CharStatsDisplay />
         </Box>
         <CurrentBuildDisplay />
       </Box>

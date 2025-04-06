@@ -17,6 +17,7 @@ import {
 } from '@genshin-optimizer/sr/stats'
 import type { DmgTag, FormulaArg, Stat } from '../util'
 import {
+  type TagMapNodeEntries,
   customBreakDmg,
   customDmg,
   customHeal,
@@ -27,10 +28,12 @@ import {
   ownBuff,
   percent,
   registerBuff,
-  type TagMapNodeEntries,
 } from '../util'
 
-type AbilityScalingType = Exclude<AbilityKey, 'technique' | 'overworld'>
+type AbilityScalingType = Exclude<
+  AbilityKey,
+  'technique' | 'overworld' | 'servantTalent'
+>
 
 export function getBaseTag(data_gen: CharacterDatum): DmgTag {
   return { elementalType: data_gen.damageType }
@@ -155,6 +158,7 @@ export function entriesForChar(data_gen: CharacterDatum): TagMapNodeEntries {
     ownBuff.char.ele.add(data_gen.damageType),
     ownBuff.char.path.add(data_gen.path),
     ownBuff.common.count.withPath(data_gen.path).add(1),
+    ownBuff.char.maxEnergy.add(data_gen.maxEnergy),
     // Base stats
     ...(['hp', 'atk', 'def'] as const).map((sk) => {
       const basePerAsc = data_gen.ascension.map((p) => p[sk].base)

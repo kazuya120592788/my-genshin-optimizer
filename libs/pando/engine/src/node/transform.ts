@@ -20,8 +20,8 @@ import type {
  */
 type OP = Exclude<TaggedOP, 'tag' | 'dtag' | 'vtag'>
 export type NumTagFree = NumNode<OP>
-type StrTagFree = StrNode<OP>
-type AnyTagFree = AnyNode<OP>
+export type StrTagFree = StrNode<OP>
+export type AnyTagFree = AnyNode<OP>
 
 /**
  * Apply all tag-related nodes from `n` calculation and replace `Read` nodes where
@@ -65,16 +65,10 @@ export function detach(
   }
   function fold(
     x: NumTagFree[],
-    op: Exclude<keyof typeof arithmetic, 'unique'>,
-    ex: any
+    op: Exclude<keyof typeof arithmetic, 'unique'>
   ): NumTagFree {
     if (x.every((x) => x.op === 'const'))
-      return constant(
-        arithmetic[op](
-          x.map((x) => x.ex),
-          ex
-        )
-      )
+      return constant(arithmetic[op](x.map((x) => x.ex)))
     return { op, x, br: [] }
   }
 
@@ -87,9 +81,11 @@ export function detach(
       case 'const':
         return n
       case 'read': {
-        const x = detachRead(cache.with(n.tag), n.ex)
-        if (n.ex === undefined) return x[0] ?? constant(undefined as any)
-        return fold(x as NumTagFree[], n.ex, n.ex)
+        const newCache = cache.with(n.tag)
+        const ex = n.ex ?? calc.defaultAccu(newCache.tag) ?? 'unique'
+        const x = detachRead(newCache, ex)
+        if (ex === 'unique') return x[0] ?? constant(undefined as any)
+        return fold(x as NumTagFree[], ex)
       }
       case 'sum':
       case 'prod':
@@ -97,7 +93,7 @@ export function detach(
       case 'max':
       case 'sumfrac': {
         const x = n.x.map((x) => map(x, cache))
-        return fold(x, op, n.ex)
+        return fold(x, op)
       }
       case 'thres':
       case 'match':
@@ -108,10 +104,8 @@ export function detach(
           map(br, cache)
         ) as unknown as Const<string>[]
         if (br.every((n) => n.op === 'const')) {
-          const branchID = branching[n.op](
-            br.map((br) => br.ex),
-            n.ex
-          )
+          const brV = br.map((br) => br.ex)
+          const branchID = branching[n.op](brV, n.ex)
           return map(n.x[branchID]!, cache)
         }
         return { ...n, x: n.x.map((x) => map(x, cache)), br } as AnyTagFree
@@ -218,7 +212,7 @@ function dedupMapArray<I, O>(x: I[], map: (_: I) => O): O[] {
  * Generates a custom function, "cuz speed".
  *
  * @param n
- * @param dynTagCategory
+ * @param dynTagCat
  * @param slotCount
  * @param initial
  * @param header
@@ -228,92 +222,191 @@ function dedupMapArray<I, O>(x: I[], map: (_: I) => O): O[] {
  */
 export function compile(
   n: NumTagFree[],
-  dynTagCategory: string,
-  slotCount: number,
-  initial: Record<string, number>
+  dynTagCat: string,
+  slotCount: number
 ): (_: Record<string, number>[]) => number[]
 export function compile(
   n: StrTagFree[],
-  dynTagCategory: string,
-  slotCount: number,
-  initial: Record<string, string>
+  dynTagCat: string,
+  slotCount: number
 ): (_: Record<string, string>[]) => string[]
 export function compile(
   n: AnyTagFree[],
-  dynTagCategory: string,
-  slotCount: number,
-  initial: Record<string, any>
+  dynTagCat: string,
+  slotCount: number
 ): (_: Record<string, any>[]) => any[]
 export function compile(
   n: AnyTagFree[],
-  dynTagCategory: string,
-  slotCount: number,
-  initial: Record<string, any>
+  dynTagCat: string,
+  slotCount: number
 ): (_: Record<string, any>[]) => any[] {
-  let i = 1,
-    body = `'use strict';const x0=0` // making sure `const` has at least one entry
-  for (const [name, f] of Object.entries(customOps))
-    body += `,${name}=${f.calc.toString()}`
-  const names = new Map<AnyNode, string>()
-  traverse(n, (n, visit) => {
-    const name = `x${i++}`
-    names.set(n, name)
+  const { str, names } = executionStr(n, 'x', ({ tag }) => {
+    const arr = [...new Array(slotCount)].map(
+      (_, i) => `(b[${i}]['${tag[dynTagCat]}']??0)`
+    )
+    return `+(${arr.join('+')}+0)`
+  })
+  const results = n.map((n) => names.get(n)!)
+  const body = `'use strict';const ${str};return[${results}]`
+  return new Function(`b`, body) as any
+}
 
-    const { op, x, br } = n
-    x.forEach(visit)
-    br.forEach(visit)
-    const argNames = x.map((x) => names.get(x)!),
-      brNames = br.map((n) => names.get(n)!)
+export function compileDiff(
+  n: AnyTagFree,
+  dynTagCat: string,
+  diffTags: string[],
+  slotCount: number
+): (_: Record<string, any>[]) => any[] {
+  const { str, names } = executionStr([n], 'x', ({ tag }) => {
+    const arr = [...new Array(slotCount)].map(
+      (_, i) => `(b[${i}]['${tag[dynTagCat]}']??0)`
+    )
+    return `+(${arr.join('+')}+0)`
+  })
+  let body = `'use strict';const ${str}`
+  for (const [name, f] of Object.entries(customOps))
+    body += `,g${name}=${f.diff?.toString()}`
+  body += `,d=(t)=>{const _=0`
+  const discrete = new Set<string>() // values that must be discrete
+  traverse([n], (n, visit) => {
+    const { op } = n
+    n.x.forEach(visit)
+    n.br.forEach(visit)
+    const x = n.x.map((x) => names.get(x)!)
+    const br = n.br.map((n) => names.get(n)!)
+    const dx = x.map((x) => `d${x}`)
+    const out = names.get(n)
+    const dout = `d${out}`
 
     switch (op) {
       case 'const':
-        names.set(n, typeof n.ex !== 'string' ? `(${n.ex})` : `('${n.ex}')`)
+        body += `,${dout}=0`
         break
       case 'sum':
+        body += `,${dout}=`
+        if (dx.length) body += dx.join('+')
+        else body += 0
+        break
       case 'prod':
-        body += `,${name}=`
-        if (argNames.length) body += argNames.join(op == 'sum' ? '+' : '*')
-        else body += op == 'sum' ? 0 : 1
+        body += `,_0${out}=1`
+        x.forEach((x, i) => (body += `,_${i + 1}${out}=_${i}${out}*${x}`))
+        body += `,${dout}=`
+        // _{i}{out} = prefix product upto (but excluding) x[i]
+        // a_{i+1} = d/dx _{i+1}{out} = (d/dx _{i}{out}) * x[i] + dx[i] * _{i}{out}
+        body += dx.reduce((a, dx, i) => `(${a}*${x[i]}+${dx}*_${i}${out})`, '0')
         break
       case 'min':
       case 'max':
-        body += `,${name}=Math.${op}(${argNames})`
+        body += `,${dout}=[${dx}][[${x}].indexOf(${out})]`
         break
       case 'sumfrac':
-        body += `,${name}=${argNames[0]}/(${argNames[0]} + ${argNames[1]})`
+        // d/dx x/(x+c) = c/(x+c)^2, d/dc x/(x+c) = -x/(x+c)^2
+        body += `,_${dout}=${x[0]}+${x[1]}` // x + c
+        body += `,${dout}=(${x[1]}*${dx[0]}-${x[0]}*${dx[1]})/_${dout}/_${dout}`
         break
       case 'match':
-        body += `,${name}=${brNames[0]}===${brNames[1]}?${argNames[0]}:${argNames[1]}`
+        body += `,${dout}=${br[0]}===${br[1]}?${dx[0]}:${dx[1]}`
+        discrete.add(br[0])
+        discrete.add(br[1])
         break
       case 'thres':
-        body += `,${name}=${brNames[0]}>=${brNames[1]}?${argNames[0]}:${argNames[1]}`
+        body += `,${dout}=${br[0]}>=${br[1]}?${dx[0]}:${dx[1]}`
+        discrete.add(br[0])
+        discrete.add(br[1])
+        break
+      case 'read':
+        body += `,${dout}='${n.tag[dynTagCat]!}'===t?1:0`
         break
       case 'subscript':
-        // `JSON.stringify` on `number[] | string[]`
-        body += `,${name}=${JSON.stringify(n.ex)}[${brNames[0]}]`
+        body += `,${dout}=0`
+        discrete.add(br[0])
         break
-      case 'read': {
-        const key = n.tag[dynTagCategory]!
-        let arr = [...new Array(slotCount)].map(
-          (_, i) => `(b[${i}]['${key}'] ?? 0)`
-        )
-        if (initial[key]) arr = [initial[key]!.toString(), ...arr]
-        body += `,${name}=${arr.join('+')}`
-        break
-      }
       case 'custom':
-        body += `,${name}=${n.ex}([${argNames}])`
+        body += `,${dout}=g${n.ex}([${x}],[${dx}])`
         break
       case 'lookup':
         // `JSON.stringify` on `Record<string, number>`
-        body += `,${name}=([${argNames}])[(${JSON.stringify(n.ex)})[${
-          brNames[0]
-        }] ?? 0]`
+        body += `,${dout}=([${dx}])[(${JSON.stringify(n.ex)})[${br[0]}]??0]`
+        discrete.add(br[0])
         break
       default:
         assertUnreachable(op)
     }
   })
-  body += `;return [${n.map((n) => names.get(n)!)}]`
+  if (discrete.size) {
+    body += `;if (${[...discrete].map((out) => `d${out}`).join('||')})`
+    body += `throw new Error(\`'\${t}' must be discrete\`)`
+  }
+  body += `;return d${names.get(n)}}`
+  body += `;return[${diffTags.map((t) => `d('${t}')`)}]`
   return new Function(`b`, body) as any
+}
+
+/**
+ * Returns a JS code that represents computation of `n`. The value of each
+ * node `n` is written to a variable with the name `names.get(n)`. Variables
+ * prefixed with `prefix`, and read nodes are computed using `readStr`.
+ */
+export function executionStr(
+  n: AnyTagFree[],
+  prefix: string,
+  readStr: (_: BaseRead) => string
+): { str: string; names: Map<AnyTagFree, string> } {
+  let body = `${prefix}=undefined`
+  for (const [name, f] of Object.entries(customOps))
+    body += `,${prefix}_${name}=${f.calc.toString()}`
+  const names = new Map<AnyTagFree, string>()
+  traverse(n, (n, visit) => {
+    const { op } = n
+    n.x.forEach(visit)
+    n.br.forEach(visit)
+    const x = n.x.map((x) => names.get(x)!)
+    const br = n.br.map((n) => names.get(n)!)
+    const out = `${prefix}${names.size}`
+    names.set(n, out)
+    body += `,${out}=`
+
+    switch (op) {
+      case 'const':
+        // TODO: handle cases when `n.ex` contains escaped characters
+        body += typeof n.ex !== 'string' ? n.ex : `'${n.ex}'`
+        break
+      case 'sum':
+      case 'prod':
+        if (x.length) body += x.join(op == 'sum' ? '+' : '*')
+        else body += op == 'sum' ? 0 : 1
+        break
+      case 'min':
+      case 'max':
+        body += `Math.${op}(${x})`
+        break
+      case 'sumfrac':
+        body += `${x[0]}/(${x[0]}+${x[1]})`
+        break
+      case 'match':
+        body += `${br[0]}===${br[1]}?${x[0]}:${x[1]}`
+        break
+      case 'thres':
+        body += `${br[0]}>=${br[1]}?${x[0]}:${x[1]}`
+        break
+      case 'read': {
+        body += `(${readStr(n)})`
+        break
+      }
+      case 'subscript':
+        // `JSON.stringify` on `number[] | string[]`
+        body += `${JSON.stringify(n.ex)}[${br[0]}]`
+        break
+      case 'custom':
+        body += `${prefix}_${n.ex}([${x}])`
+        break
+      case 'lookup':
+        // `JSON.stringify` on `Record<string, number>`
+        body += `([${x}])[(${JSON.stringify(n.ex)})[${br[0]}]??0]`
+        break
+      default:
+        assertUnreachable(op)
+    }
+  })
+  return { str: body, names }
 }

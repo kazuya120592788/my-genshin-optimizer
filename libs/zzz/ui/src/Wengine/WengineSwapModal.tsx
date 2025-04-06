@@ -21,14 +21,9 @@ import type {
   SpecialityKey,
   WengineKey,
 } from '@genshin-optimizer/zzz/consts'
-import { allRaritykeys } from '@genshin-optimizer/zzz/consts'
+import { allRaritykeys, allSpecialityKeys } from '@genshin-optimizer/zzz/consts'
 import { initialWengine } from '@genshin-optimizer/zzz/db'
 import { useDatabaseContext } from '@genshin-optimizer/zzz/db-ui'
-import {
-  wengineFilterConfigs,
-  wengineSortConfigs,
-  wengineSortMap,
-} from '@genshin-optimizer/zzz/util'
 import AddIcon from '@mui/icons-material/Add'
 import CloseIcon from '@mui/icons-material/Close'
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle'
@@ -59,9 +54,15 @@ import { useTranslation } from 'react-i18next'
 import { WengineCard } from './WengineCard'
 import { WengineEditor } from './WengineEditor'
 import { WengineSelectionModal } from './WengineSelectionModal'
+import {
+  wengineFilterConfigs,
+  wengineSortConfigs,
+  wengineSortMap,
+} from './wengineSortUtil'
 
 const numToShowMap = { xs: 2 * 3, sm: 2 * 3, md: 3 * 3, lg: 4 * 3, xl: 4 * 3 }
 const rarityHandler = handleMultiSelect([...allRaritykeys])
+const wengineTypeHandler = handleMultiSelect([...allSpecialityKeys])
 
 export function WengineSwapModal({
   wengineId,
@@ -98,12 +99,15 @@ export function WengineSwapModal({
   const brPt = useMediaQueryUp()
 
   const [rarity, setRarity] = useState<Raritykey[]>(['S', 'A', 'B'])
+  const [speciality, setWengineType] = useState<SpecialityKey[]>([
+    wengineTypeKey,
+  ])
   const [searchTerm, setSearchTerm] = useState('')
   const deferredSearchTerm = useDeferredValue(searchTerm)
 
   const wengineIds = useMemo(() => {
     const filterFunc = filterFunction(
-      { speciality: wengineTypeKey, rarity, name: deferredSearchTerm },
+      { speciality, rarity, name: deferredSearchTerm },
       wengineFilterConfigs()
     )
     const sortFunc = sortFunction(
@@ -122,7 +126,7 @@ export function WengineSwapModal({
     }
     return dbDirty && wengineIds
   }, [
-    wengineTypeKey,
+    speciality,
     rarity,
     deferredSearchTerm,
     database.wengines,
@@ -202,6 +206,28 @@ export function WengineSwapModal({
               <Grid item>
                 <SolidToggleButtonGroup
                   sx={{ height: '100%' }}
+                  value={speciality}
+                >
+                  {allSpecialityKeys.map((sk) => (
+                    <ToggleButton
+                      key={sk}
+                      value={sk}
+                      onClick={() =>
+                        setWengineType(wengineTypeHandler(speciality, sk))
+                      }
+                    >
+                      <ImgIcon
+                        src={specialityDefIcon(sk)}
+                        size={2}
+                        sideMargin
+                      />
+                    </ToggleButton>
+                  ))}
+                </SolidToggleButtonGroup>
+              </Grid>
+              <Grid item>
+                <SolidToggleButtonGroup
+                  sx={{ height: '100%' }}
                   value={rarity}
                   size="small"
                 >
@@ -252,65 +278,77 @@ export function WengineSwapModal({
             >
               {t('page_wengine:addWengine')}
             </Button>
-            <Grid container spacing={1}>
-              {/* only show "unequip" when a wengine is equipped */}
-              {wengineId && (
-                <Grid item xs={6} sm={6} md={4} lg={3}>
-                  <CardThemed
-                    bgt="light"
-                    sx={{ width: '100%', height: '100%' }}
-                  >
-                    <CardActionArea
-                      sx={{
-                        width: '100%',
-                        height: '100%',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}
-                      onClick={() => setSwapWengineId('unequip')}
-                    >
-                      <Box
-                        sx={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'center',
-                        }}
+            <Box mt={1}>
+              <Suspense
+                fallback={
+                  <Skeleton variant="rectangular" width="100%" height={1000} />
+                }
+              >
+                <Grid container spacing={1}>
+                  {/* only show "unequip" when a wengine is equipped */}
+                  {wengineId && (
+                    <Grid item xs={6} sm={6} md={4} lg={3}>
+                      <CardThemed
+                        bgt="light"
+                        sx={{ width: '100%', height: '100%' }}
                       >
-                        <RemoveCircleIcon sx={{ fontSize: '10em' }} />
-                        <Typography>
-                          {t('wengine:button.unequipWengine')}
-                        </Typography>
-                      </Box>
-                    </CardActionArea>
-                  </CardThemed>
+                        <CardActionArea
+                          sx={{
+                            width: '100%',
+                            height: '100%',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                          }}
+                          onClick={() => setSwapWengineId('unequip')}
+                        >
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              flexDirection: 'column',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <RemoveCircleIcon sx={{ fontSize: '10em' }} />
+                            <Typography>
+                              {t('wengine:button.unequipWengine')}
+                            </Typography>
+                          </Box>
+                        </CardActionArea>
+                      </CardThemed>
+                    </Grid>
+                  )}
+                  {wengineIdsToShow.map((id) => (
+                    <Grid
+                      item
+                      key={id}
+                      xs={6}
+                      sm={6}
+                      md={4}
+                      lg={3}
+                      sx={(theme) => ({
+                        ...(wengineId === id && {
+                          '> .MuiCard-root': {
+                            outline: `${theme.spacing(0.5)} solid ${
+                              theme.palette.warning.main
+                            }`,
+                          },
+                        }),
+                      })}
+                    >
+                      <WengineCard
+                        wengineId={id}
+                        onClick={
+                          wengineId === id
+                            ? undefined
+                            : () => setSwapWengineId(id)
+                        }
+                      />
+                    </Grid>
+                  ))}
                 </Grid>
-              )}
-              {wengineIdsToShow.map((id) => (
-                <Grid
-                  item
-                  key={id}
-                  xs={6}
-                  sm={6}
-                  md={4}
-                  lg={3}
-                  sx={(theme) => ({
-                    ...(wengineId === id && {
-                      '> .MuiCard-root': {
-                        outline: `solid ${theme.palette.warning.main}`,
-                      },
-                    }),
-                  })}
-                >
-                  <WengineCard
-                    wengineId={id}
-                    onClick={
-                      wengineId === id ? undefined : () => setSwapWengineId(id)
-                    }
-                  />
-                </Grid>
-              ))}
-            </Grid>
+              </Suspense>
+            </Box>
             {wengineIds.length !== wengineIdsToShow.length && (
               <Skeleton
                 ref={(node) => {

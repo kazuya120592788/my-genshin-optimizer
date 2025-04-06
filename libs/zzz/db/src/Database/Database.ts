@@ -1,11 +1,15 @@
 import type { DBStorage } from '@genshin-optimizer/common/database'
 import { Database, SandboxStorage } from '@genshin-optimizer/common/database'
-import type { IZenlessObjectDescription, IZZZDatabase } from '../Interfaces'
+import type { IZZZDatabase, IZenlessObjectDescription } from '../Interfaces'
 import { zzzSource } from '../Interfaces'
 import { DBMetaEntry, DisplayDiscEntry } from './DataEntries/'
+import { DisplayCharacterEntry } from './DataEntries/DisplayCharacterEntry'
 import { DisplayWengineEntry } from './DataEntries/DisplayWengineEntry'
-import { DiscDataManager } from './DataManagers/'
+import { CharMetaDataManager, DiscDataManager } from './DataManagers/'
 import { CharacterDataManager } from './DataManagers/CharacterDataManager'
+import { CharacterOptManager } from './DataManagers/CharacterOptManager'
+import { GeneratedBuildListDataManager } from './DataManagers/GeneratedBuildListDataManager'
+import { OptConfigDataManager } from './DataManagers/OptConfigDataManager'
 import { WengineDataManager } from './DataManagers/WengineDataManager'
 import type { ImportResult } from './exim'
 import { newImportResult } from './exim'
@@ -13,10 +17,15 @@ import { currentDBVersion, migrateStorage, migrateZOD } from './migrate'
 export class ZzzDatabase extends Database {
   discs: DiscDataManager
   chars: CharacterDataManager
+  charOpts: CharacterOptManager
   wengines: WengineDataManager
+  optConfigs: OptConfigDataManager
+  charMeta: CharMetaDataManager
   dbMeta: DBMetaEntry
   displayDisc: DisplayDiscEntry
+  displayCharacter: DisplayCharacterEntry
   displayWengine: DisplayWengineEntry
+  generatedBuildList: GeneratedBuildListDataManager
   dbIndex: 1 | 2 | 3 | 4
   dbVer: number
 
@@ -33,23 +42,42 @@ export class ZzzDatabase extends Database {
 
     // Handle Datamanagers
     this.chars = new CharacterDataManager(this)
+
+    // discs needs to be instantiated after character to check for relations
     this.discs = new DiscDataManager(this)
 
-    // Wengine needs to be instantiated after character to check for relations
+    // Wengines needs to be instantiated after character to check for relations
     this.wengines = new WengineDataManager(this)
+
+    // Depends on wengines and discs
+    this.generatedBuildList = new GeneratedBuildListDataManager(this)
+
+    // Depends on discs and characters
+    this.optConfigs = new OptConfigDataManager(this)
+
+    // Depends on optConfigs
+    this.charOpts = new CharacterOptManager(this)
+    this.charMeta = new CharMetaDataManager(this)
 
     // Handle DataEntries
     this.dbMeta = new DBMetaEntry(this)
     this.displayDisc = new DisplayDiscEntry(this)
+    this.displayCharacter = new DisplayCharacterEntry(this)
     this.displayWengine = new DisplayWengineEntry(this)
 
     this.discs.followAny(() => {
       this.dbMeta.set({ lastEdit: Date.now() })
     })
+    this.wengines.followAny(() => {
+      this.dbMeta.set({ lastEdit: Date.now() })
+    })
+    this.charMeta.followAny(() => {
+      this.dbMeta.set({ lastEdit: Date.now() })
+    })
     this.displayDisc.follow(() => {
       this.dbMeta.set({ lastEdit: Date.now() })
     })
-    this.wengines.followAny(() => {
+    this.displayCharacter.follow(() => {
       this.dbMeta.set({ lastEdit: Date.now() })
     })
     this.displayWengine.follow(() => {
@@ -58,10 +86,23 @@ export class ZzzDatabase extends Database {
   }
   get dataManagers() {
     // IMPORTANT: it must be chars, wengines, discs in order, to respect import order
-    return [this.chars, this.wengines, this.discs] as const
+    return [
+      this.chars,
+      this.discs,
+      this.wengines,
+      this.charMeta,
+      this.generatedBuildList,
+      this.optConfigs,
+      this.charOpts,
+    ] as const
   }
   get dataEntries() {
-    return [this.dbMeta, this.displayDisc, this.displayWengine] as const
+    return [
+      this.dbMeta,
+      this.displayDisc,
+      this.displayCharacter,
+      this.displayWengine,
+    ] as const
   }
 
   clear() {
@@ -96,7 +137,7 @@ export class ZzzDatabase extends Database {
       ignoreDups
     )
 
-    // Follow updates from char/disc/lightCone to gather import results
+    // Follow updates from char/disc/wengine to gather import results
     const unfollows = [
       // TODO:
       // this.chars.followAny((key, reason, value) => {

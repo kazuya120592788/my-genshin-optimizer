@@ -7,8 +7,8 @@ import {
 import type { ElementalTypeKey, StatKey } from '@genshin-optimizer/sr/consts'
 import { allElementalTypeKeys } from '@genshin-optimizer/sr/consts'
 import {
-  useCharacterContext,
   useCharOpt,
+  useCharacterContext,
   useDatabaseContext,
 } from '@genshin-optimizer/sr/db-ui'
 import type { Member, Tag } from '@genshin-optimizer/sr/formula'
@@ -30,8 +30,8 @@ export function BonusStatsSection() {
   const { key: characterKey } = useCharacterContext()!
   const { bonusStats } = useCharOpt(characterKey)!
   const setStat = useCallback(
-    (tag: Tag, value: number | null) =>
-      database.charOpts.setBonusStat(characterKey, tag, value),
+    (tag: Tag, value: number | null, index?: number) =>
+      database.charOpts.setBonusStat(characterKey, tag, value, index),
     [database, characterKey]
   )
   const newTarget = (q: InitialStats) => {

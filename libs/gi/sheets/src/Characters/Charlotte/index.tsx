@@ -1,5 +1,5 @@
 import { objKeyMap, range } from '@genshin-optimizer/common/util'
-import { allRegionKeys, type CharacterKey } from '@genshin-optimizer/gi/consts'
+import { type CharacterKey, allRegionKeys } from '@genshin-optimizer/gi/consts'
 import { allStats } from '@genshin-optimizer/gi/stats'
 import {
   constant,
@@ -133,7 +133,7 @@ const a4_cryo_dmg_ = greaterEq(
   prod(numNonFontainians, percent(dm.passive2.cryo_dmg_))
 )
 
-const c2HitArr = range(1, 3)
+const c2HitArr = range(1, 3) as Array<1 | 2 | 3>
 const [condC2HitPath, condC2Hit] = cond(key, 'c2Hit')
 const c2Hit_atk_ = greaterEq(
   input.constellation,

@@ -63,7 +63,7 @@ export interface Lookup<Output, PermitOP extends OP = OP>
 /** ex[br0] */
 export interface Subscript<
   Type extends number | string,
-  PermitOP extends OP = OP
+  PermitOP extends OP = OP,
 > extends Base<'subscript' & PermitOP, never, NumNode<PermitOP>> {
   ex: Type[]
 }
@@ -88,7 +88,7 @@ export interface TagValRead<PermitOP extends OP = OP>
 }
 export interface BaseRead extends Base<'read', never> {
   /** Accumulator for multiple matches */
-  ex: (Sum | Prod | Min | Max)['op'] | undefined
+  ex?: (Sum | Prod | Min | Max)['op'] | 'unique' | undefined
   tag: Tag
 }
 export interface ReRead {
