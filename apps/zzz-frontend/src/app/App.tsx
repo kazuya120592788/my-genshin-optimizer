@@ -1,8 +1,3 @@
-import {
-  AdBanner,
-  AdBlockContextWrapper,
-  AdRailSticky,
-} from '@genshin-optimizer/common/ad'
 import { ScrollTop, useRefSize } from '@genshin-optimizer/common/ui'
 import { isDev } from '@genshin-optimizer/common/util'
 import { setDebugMode } from '@genshin-optimizer/pando/engine'
@@ -21,7 +16,6 @@ import {
 import { Suspense, lazy } from 'react'
 import { HashRouter, Route, Routes } from 'react-router-dom'
 import '../styles.scss'
-import { ZOAdWrapper } from '@genshin-optimizer/zzz/ui'
 import Footer from './Footer'
 import Header from './Header'
 const PageDiscs = lazy(() => import('@genshin-optimizer/zzz/page-discs'))
@@ -43,9 +37,7 @@ export default function App() {
         <CssBaseline enableColorScheme />
         <DatabaseProvider>
           <HashRouter basename="/">
-            <AdBlockContextWrapper>
-              <Content />
-            </AdBlockContextWrapper>
+            <Content />
             <ScrollTop />
           </HashRouter>
         </DatabaseProvider>
@@ -55,8 +47,7 @@ export default function App() {
 }
 
 function Content() {
-  const { width, ref } = useRefSize(true)
-  const adWidth = width - (theme.breakpoints.values.xl + 10) //account for the "full width" of container
+  const { ref } = useRefSize(true)
   return (
     <Box
       display="flex"
@@ -65,8 +56,6 @@ function Content() {
       position="relative"
     >
       <Header anchor="back-to-top-anchor" />
-      {/* Top banner ad */}
-      <AdBanner width={width} dataAdSlot="4434533013" Ad={ZOAdWrapper} />
       {/* Main content */}
       <Box
         display="flex"
@@ -74,12 +63,6 @@ function Content() {
         justifyContent="center"
         alignItems="flex-start"
       >
-        {/* left Rail ad */}
-        <AdRailSticky
-          adWidth={adWidth}
-          dataAdSlot="4545087926"
-          Ad={ZOAdWrapper}
-        />
         {/* Content */}
         <Container maxWidth="xl" sx={{ px: { xs: 0.5, sm: 1 } }}>
           <Suspense
@@ -100,20 +83,11 @@ function Content() {
             </Routes>
           </Suspense>
         </Container>
-        {/* right rail ad */}
-        <AdRailSticky
-          adWidth={adWidth}
-          dataAdSlot="4545087926"
-          Ad={ZOAdWrapper}
-          isRightRail
-        />
       </Box>
 
       {/* make sure footer is always at bottom */}
       <Box flexGrow={1} />
 
-      {/* Footer Ad */}
-      <AdBanner width={width} dataAdSlot="3150205650" Ad={ZOAdWrapper} />
       <Footer />
     </Box>
   )

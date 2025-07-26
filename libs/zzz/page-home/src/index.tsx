@@ -1,10 +1,9 @@
 import {
-  AdResponsive,
   ZO_LOOTBAR_LINK,
   zo_lootbar_banner,
 } from '@genshin-optimizer/common/ad'
 import { CardThemed, NextImage } from '@genshin-optimizer/common/ui'
-import { ZCard, ZOAdWrapper } from '@genshin-optimizer/zzz/ui'
+import { ZCard } from '@genshin-optimizer/zzz/ui'
 import DescriptionIcon from '@mui/icons-material/Description'
 import {
   Box,
@@ -57,7 +56,6 @@ export default function PageHome() {
           >
             <QuickLinksCard />
             <TeamCard />
-            <AdResponsive dataAdSlot="2501378510" Ad={ZOAdWrapper} />
           </Grid>
         </Grid>
       </Box>
