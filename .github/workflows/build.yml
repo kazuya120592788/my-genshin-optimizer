@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - master
   workflow_dispatch:
 
 permissions:
@@ -12,7 +15,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  # PR のビルドが master のデプロイをキャンセルしないようにグループを分ける
+  group: ${{ github.event_name == 'pull_request' && format('build-{0}', github.ref) || 'pages' }}
   cancel-in-progress: true
 
 jobs:
@@ -26,10 +30,15 @@ jobs:
           persist-credentials: false
           submodules: true
       - name: Setup Pages
+        if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v5
+      - name: Resolve Node version
+        id: node
+        # フォーク元の .nvmrc があればそれに従う
+        run: echo "version=$(cat .nvmrc 2>/dev/null || echo 20)" >> "$GITHUB_OUTPUT"
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ steps.node.outputs.version }}
           cache: 'yarn'
       - name: Yarn install
         run: |
@@ -37,10 +46,12 @@ jobs:
       - name: Build frontend
         run: yarn run nx run frontend:build:production
       - name: Upload artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: 'dist/apps/frontend'
   deploy:
+    if: github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
