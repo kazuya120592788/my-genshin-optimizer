@@ -1,0 +1,186 @@
+name: Sync upstream
+
+# フォーク元の master を定期的にマージする。
+# - 自動解消できた場合: sync/upstream ブランチに push し、master への PR を作成・更新する
+# - 手動解消が必要な場合: 競合ファイルの一覧と手順を Issue に記録する
+#
+# 必要な設定: リポジトリシークレット SYNC_TOKEN（fine-grained PAT）
+#   Repository access: このリポジトリのみ
+#   Permissions: Contents / Pull requests / Issues / Workflows = Read and write
+#   ※ フォーク元のコミットには .github/workflows の変更が含まれるため、
+#     Workflows 権限のない GITHUB_TOKEN では push できない。
+#     また PAT で作った PR であれば Build ワークフローも起動する。
+
+on:
+  schedule:
+    - cron: '17 21 * * 0' # 毎週月曜 6:17 (JST)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-upstream
+  cancel-in-progress: false
+
+env:
+  UPSTREAM_REPO: frzyc/genshin-optimizer
+  UPSTREAM_BRANCH: master
+  BASE_BRANCH: master
+  SYNC_BRANCH: sync/upstream
+  ISSUE_LABEL: upstream-sync
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ secrets.SYNC_TOKEN }}
+    steps:
+      - name: Check token
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::シークレット SYNC_TOKEN が設定されていません（sync-upstream.yml の先頭コメント参照）"
+            exit 1
+          fi
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ env.BASE_BRANCH }}
+          fetch-depth: 0
+          token: ${{ secrets.SYNC_TOKEN }}
+      - name: Merge upstream
+        id: merge
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git remote add upstream "https://github.com/${UPSTREAM_REPO}.git"
+          git fetch --no-tags upstream "$UPSTREAM_BRANCH"
+          upstream_ref="upstream/$UPSTREAM_BRANCH"
+
+          {
+            echo "upstream_sha=$(git rev-parse "$upstream_ref")"
+            echo "merge_base=$(git merge-base HEAD "$upstream_ref")"
+            echo "commit_count=$(git rev-list --count "HEAD..$upstream_ref")"
+          } >>"$GITHUB_OUTPUT"
+
+          set +e
+          UPSTREAM_REF="$upstream_ref" \
+          CONFLICT_FILE="$RUNNER_TEMP/conflicts.txt" \
+          RESOLVED_FILE="$RUNNER_TEMP/resolved.txt" \
+            bash .github/scripts/sync-upstream.sh
+          code=$?
+          set -e
+          case $code in
+            0) status=merged ;;
+            10) status=up-to-date ;;
+            20) status=conflict ;;
+            *) exit $code ;;
+          esac
+          echo "status=$status" >>"$GITHUB_OUTPUT"
+
+      - name: Close sync issue
+        if: steps.merge.outputs.status != 'conflict'
+        run: |
+          issue=$(gh issue list --label "$ISSUE_LABEL" --state open --json number --jq '.[0].number // empty')
+          if [ -n "$issue" ]; then
+            gh issue close "$issue" --comment "競合が解消されたため閉じます（${{ steps.merge.outputs.status }}）。"
+          fi
+
+      - name: Push and open PR
+        if: steps.merge.outputs.status == 'merged'
+        env:
+          UPSTREAM_SHA: ${{ steps.merge.outputs.upstream_sha }}
+          MERGE_BASE: ${{ steps.merge.outputs.merge_base }}
+          COMMIT_COUNT: ${{ steps.merge.outputs.commit_count }}
+        run: |
+          # 同じ master と upstream から作った sync ブランチが既にあれば、何もしない（無駄な CI を避ける）
+          if git fetch --no-tags origin "$SYNC_BRANCH" 2>/dev/null \
+            && [ "$(git rev-parse FETCH_HEAD^1 2>/dev/null)" = "$(git rev-parse HEAD^1)" ] \
+            && [ "$(git rev-parse FETCH_HEAD^2 2>/dev/null)" = "$UPSTREAM_SHA" ]; then
+            echo "sync ブランチは最新です"
+          else
+            git push --force origin "HEAD:refs/heads/$SYNC_BRANCH"
+          fi
+
+          body="$RUNNER_TEMP/pr-body.md"
+          {
+            echo "## Describe your changes"
+            echo
+            echo "フォーク元 [${UPSTREAM_REPO}](https://github.com/${UPSTREAM_REPO}) の \`${UPSTREAM_BRANCH}\` から ${COMMIT_COUNT} コミットを取り込みます。"
+            echo
+            echo "- 差分: https://github.com/${UPSTREAM_REPO}/compare/${MERGE_BASE::10}...${UPSTREAM_SHA::10}"
+            echo
+            if [ -s "$RUNNER_TEMP/resolved.txt" ]; then
+              echo "### 自動解消した競合"
+              echo
+              sed 's/^/- /' "$RUNNER_TEMP/resolved.txt"
+              echo
+            fi
+            echo "## Testing/validation"
+            echo
+            echo "Build ワークフローの結果を確認してからマージしてください。"
+            echo
+            echo "> [!IMPORTANT]"
+            echo "> **Create a merge commit** でマージしてください。Squash / Rebase だとフォーク元の履歴が残らず、次回の取り込みで同じ競合が再発します。"
+            echo
+            echo "---"
+            echo "_このPRは [Sync upstream](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}) により自動作成されました_"
+          } >"$body"
+
+          title="chore: フォーク元の更新を取り込み (${UPSTREAM_SHA::7})"
+          pr=$(gh pr list --head "$SYNC_BRANCH" --base "$BASE_BRANCH" --state open --json number --jq '.[0].number // empty')
+          if [ -n "$pr" ]; then
+            gh pr edit "$pr" --title "$title" --body-file "$body"
+          else
+            gh pr create --head "$SYNC_BRANCH" --base "$BASE_BRANCH" --title "$title" --body-file "$body"
+          fi
+
+      - name: Report conflicts
+        if: steps.merge.outputs.status == 'conflict'
+        env:
+          UPSTREAM_SHA: ${{ steps.merge.outputs.upstream_sha }}
+          COMMIT_COUNT: ${{ steps.merge.outputs.commit_count }}
+        run: |
+          body="$RUNNER_TEMP/issue-body.md"
+          {
+            echo "フォーク元 \`${UPSTREAM_REPO}@${UPSTREAM_SHA::10}\`（${COMMIT_COUNT} コミット）の取り込みで、手動解消が必要な競合があります。"
+            echo
+            echo "### 手動解消が必要なファイル"
+            echo
+            echo '```'
+            cat "$RUNNER_TEMP/conflicts.txt"
+            echo '```'
+            if [ -s "$RUNNER_TEMP/resolved.txt" ]; then
+              echo
+              echo "<details><summary>自動解消できたファイル</summary>"
+              echo
+              sed 's/^/- /' "$RUNNER_TEMP/resolved.txt"
+              echo
+              echo "</details>"
+            fi
+            echo
+            echo "### 解消手順"
+            echo
+            echo '```bash'
+            echo "git remote add upstream https://github.com/${UPSTREAM_REPO}.git  # 初回のみ"
+            echo "git fetch origin ${BASE_BRANCH} && git fetch upstream ${UPSTREAM_BRANCH}"
+            echo "git switch -c sync/manual-\$(date +%Y%m%d) origin/${BASE_BRANCH}"
+            echo "KEEP_CONFLICTS=1 bash .github/scripts/sync-upstream.sh  # 自動解消できる分だけ解消して止まる"
+            echo "# 残りの競合を解消して git add し、git commit"
+            echo "git push -u origin HEAD  # master への PR を作成"
+            echo '```'
+            echo
+            echo "PR は **Create a merge commit** でマージしてください（Squash / Rebase だと次回も同じ競合が再発します）。マージ後、次回の実行でこの Issue は自動で閉じられます。"
+            echo
+            echo "---"
+            echo "_[Sync upstream](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}) により更新_"
+          } >"$body"
+
+          gh label create "$ISSUE_LABEL" --color FBCA04 --description "フォーク元の取り込み" --force
+          title="フォーク元の取り込みで競合が発生しています"
+          issue=$(gh issue list --label "$ISSUE_LABEL" --state open --json number --jq '.[0].number // empty')
+          if [ -n "$issue" ]; then
+            gh issue edit "$issue" --title "$title" --body-file "$body"
+          else
+            gh issue create --title "$title" --body-file "$body" --label "$ISSUE_LABEL"
+          fi
