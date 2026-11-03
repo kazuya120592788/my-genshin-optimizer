@@ -5,6 +5,8 @@
 
 A repo hosting a few different optimizer websites for different gacha games.
 
+This repository is a fork of [frzyc/genshin-optimizer](https://github.com/frzyc/genshin-optimizer), released under the MIT License.
+
 **Genshin Optimizer** is a helper website for the online action-rpg gacha game [Genshin Impact](https://genshin.hoyoverse.com/). It is intended to assist players with optimizing artifacts to max-min their characters, while providing a clean, structured UI, and provide real-time results.
 
 **Zenless Optimizer** is a helper website for the online action-rpg gacha game [Zenless Zone Zero](https://zenless.hoyoverse.com/). It provides basic disc optimization.
