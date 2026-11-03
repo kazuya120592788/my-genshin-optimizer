@@ -45,13 +45,31 @@ jobs:
             echo "::error::シークレット SYNC_TOKEN が設定されていません（sync-upstream.yml の先頭コメント参照）"
             exit 1
           fi
+      # 取り込む更新がなければ、時間のかかる checkout をせずに終える
+      - name: Check upstream
+        id: check
+        run: |
+          upstream_sha=$(git ls-remote "https://github.com/${UPSTREAM_REPO}.git" "refs/heads/${UPSTREAM_BRANCH}" | cut -f1)
+          # BASE_BRANCH がフォーク元の最新コミットを含んでいれば identical / ahead になる
+          compare=$(gh api "repos/${GITHUB_REPOSITORY}/compare/${upstream_sha}...${BASE_BRANCH}" --jq .status 2>/dev/null || echo unknown)
+          echo "upstream: ${upstream_sha} / compare: ${compare}"
+          if [ "$compare" = identical ] || [ "$compare" = ahead ]; then
+            echo "フォーク元に取り込む更新はありません。" >>"$GITHUB_STEP_SUMMARY"
+            echo "needed=false" >>"$GITHUB_OUTPUT"
+          else
+            echo "needed=true" >>"$GITHUB_OUTPUT"
+          fi
+      # 履歴のファイル内容（blob）は取得せず、マージに必要な分だけ後から取得する
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        if: steps.check.outputs.needed == 'true'
         with:
           ref: ${{ env.BASE_BRANCH }}
           fetch-depth: 0
+          filter: blob:none
           token: ${{ secrets.SYNC_TOKEN }}
       - name: Merge upstream
         id: merge
+        if: steps.check.outputs.needed == 'true'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
