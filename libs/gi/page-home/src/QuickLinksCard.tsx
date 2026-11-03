@@ -1,9 +1,4 @@
-import {
-  DiscordIcon,
-  PatreonIcon,
-  PaypalIcon,
-  TwitchIcon,
-} from '@genshin-optimizer/common/svgicons'
+import { DiscordIcon } from '@genshin-optimizer/common/svgicons'
 import { CardThemed } from '@genshin-optimizer/common/ui'
 import {
   Article,
@@ -12,7 +7,6 @@ import {
   Handshake,
   InsertLink,
   Scanner,
-  Twitter,
   YouTube,
 } from '@mui/icons-material'
 import {
@@ -30,11 +24,6 @@ import { Link as RouterLink } from 'react-router-dom'
 
 const genshin_optimizer_links = [
   {
-    title: () => 'Discord',
-    icon: <DiscordIcon />,
-    url: process.env['NX_URL_DISCORD_GO'],
-  },
-  {
     title: () => 'Github',
     icon: <GitHub />,
     url: process.env['NX_URL_GITHUB_GO'],
@@ -48,29 +37,6 @@ const genshin_optimizer_links = [
     title: (t: TFunction) => t('quickLinksCard.buttons.tyGuide.title'),
     icon: <YouTube />,
     url: process.env['NX_URL_YOUTUBE_TUTPL'],
-  },
-]
-
-const frzyc_links = [
-  {
-    title: () => 'Twitch',
-    icon: <TwitchIcon />,
-    url: process.env['NX_URL_TWITCH_FRZYC'],
-  },
-  {
-    title: () => 'Twitter',
-    icon: <Twitter />,
-    url: process.env['NX_URL_TWITTER_FRZYC'],
-  },
-  {
-    title: () => 'Patreon',
-    icon: <PatreonIcon />,
-    url: process.env['NX_URL_PATREON_FRZYC'],
-  },
-  {
-    title: () => 'PayPal',
-    icon: <PaypalIcon />,
-    url: process.env['NX_URL_PAYPAL_FRZYC'],
   },
 ]
 
@@ -142,35 +108,6 @@ export default function QuickLinksCard() {
                   >
                     {icon}
                     {titleText}
-                  </CardActionArea>
-                )
-              })}
-            </Box>
-          </CardContent>
-        </CardThemed>
-        <CardThemed bgt="light">
-          <CardContent>
-            <Typography marginBottom={1} variant="h6">
-              frzyc
-            </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-              {frzyc_links.map((link, i) => {
-                const { title, icon, url } = link
-                return (
-                  <CardActionArea
-                    component={Link}
-                    href={url}
-                    target="_blank"
-                    rel="noopener"
-                    sx={{
-                      display: 'flex',
-                      gap: 1,
-                      justifyContent: 'flex-start',
-                    }}
-                    key={i}
-                  >
-                    {icon}
-                    {title()}
                   </CardActionArea>
                 )
               })}

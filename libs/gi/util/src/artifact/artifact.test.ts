@@ -127,7 +127,6 @@ describe('Substat Rolls/efficiency', () => {
       // +0 artifact whose 4 known substats are all excluded by the filter.
       // The unactivated 4th line has a known key, so no upgrade can roll into
       // a useful stat: max efficiency should be 0.
-      // https://github.com/frzyc/genshin-optimizer/issues/3152
       const artifact: IArtifact = {
         ...baseArtifact,
         substats: [

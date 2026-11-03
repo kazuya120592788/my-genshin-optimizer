@@ -52,7 +52,7 @@ export function EquipBuildModalLayout({
   onHide,
   ...props
 }: EquipBuildModalProps & { children: ReactNode }) {
-  /* TODO: Dialog Wanted to use a Dialog here, but was having some weird issues with closing out of it https://github.com/frzyc/genshin-optimizer/issues/1498*/
+  /* TODO: Dialog Wanted to use a Dialog here, but was having some weird issues with closing out of it*/
   return (
     <ModalWrapper
       open={show}

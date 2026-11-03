@@ -157,25 +157,17 @@ export function CustomMultiTargetModal({
                   <InfoTooltip
                     title={
                       <Typography>
-                        <Trans t={t} i18nKey="multiTarget.info1">
-                          Note: Community created Multi-Optimization Targets can
-                          be found within the
-                          <a
-                            href={process.env['NX_URL_DISCORD_GO']}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            GO Discord
-                          </a>
-                          or
+                        <Trans t={t} i18nKey="multiTarget.infoKqm">
+                          Note: Community-created Multi-Optimization Targets can
+                          be found within
                           <a
                             href={process.env['NX_URL_KQM_MULTI_GUIDE']}
                             target="_blank"
                             rel="noreferrer"
                           >
-                            KQM Multi-Opt Guide
+                            KQM's Multi-Optimization Guide
                           </a>
-                          , however the validity of such configurations cannot
+                          , however, the validity of such configurations cannot
                           be guaranteed.
                         </Trans>
                         <br />

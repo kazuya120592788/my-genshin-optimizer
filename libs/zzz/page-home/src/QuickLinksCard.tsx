@@ -1,4 +1,3 @@
-import { DiscordIcon } from '@genshin-optimizer/common/svgicons'
 import { ZCard } from '@genshin-optimizer/zzz/ui'
 import { GitHub, InsertLink } from '@mui/icons-material'
 import {
@@ -11,11 +10,6 @@ import {
 import { useTranslation } from 'react-i18next'
 
 const links = [
-  {
-    title: () => 'Gacha Optimizer Discord',
-    icon: <DiscordIcon />,
-    url: process.env['NX_URL_DISCORD_GO'],
-  },
   {
     title: () => 'Github',
     icon: <GitHub />,

@@ -17,7 +17,7 @@ async function read(path: string) {
   }
 }
 
-const base = 'https://github.com/frzyc/genshin-optimizer'
+const base = 'https://github.com/kazuya120592788/my-genshin-optimizer'
 
 export async function run(interaction: ChatInputCommandInteraction) {
   const mainstat = await stat(`${__dirname}/main.js`)

@@ -17,7 +17,6 @@ import remarkGfm from 'remark-gfm'
 import { IntroCard } from './IntroCard'
 import QuickLinksCard from './QuickLinksCard'
 import { Roadmap } from './Roadmap'
-import TeamCard from './TeamCard'
 
 declare const __VERSION__: string
 export default function PageHome() {
@@ -48,7 +47,6 @@ export default function PageHome() {
             sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
           >
             <QuickLinksCard />
-            <TeamCard />
           </Grid>
         </Grid>
       </Box>
@@ -59,7 +57,6 @@ export default function PageHome() {
       <Box my={1} display="flex" flexDirection="column" gap={1}>
         <IntroCard />
         <QuickLinksCard />
-        <TeamCard />
         <Roadmap />
         <PatchNotesCard />
       </Box>
