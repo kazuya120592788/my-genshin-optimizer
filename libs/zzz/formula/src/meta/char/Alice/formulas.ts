@@ -38,6 +38,33 @@ export const formulas = {
       name: 'disorderDmgInst_physical',
     },
   },
+  vortexDmgInst_physical: {
+    sheet: 'Alice',
+    name: 'vortexDmgInst_physical',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Alice',
+      attribute: 'physical',
+      damageType1: 'vortex',
+      name: 'vortexDmgInst_physical',
+    },
+  },
+  abloomDmgInst: {
+    sheet: 'Alice',
+    name: 'abloomDmgInst',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Alice',
+      attribute: 'physical',
+      damageType1: 'anomaly',
+      damageType2: 'abloom',
+      name: 'abloomDmgInst',
+    },
+  },
   anomalyBuildupInst: {
     sheet: 'Alice',
     name: 'anomalyBuildupInst',
@@ -62,9 +89,9 @@ export const formulas = {
       name: 'dazeInst',
     },
   },
-  BasicAttackCelestialOverture_0_dmg: {
+  'BasicAttackCelestialOverture_0:standardDmg': {
     sheet: 'Alice',
-    name: 'BasicAttackCelestialOverture_0_dmg',
+    name: 'BasicAttackCelestialOverture_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -72,13 +99,13 @@ export const formulas = {
       sheet: 'Alice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackCelestialOverture_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackCelestialOverture_0',
     },
   },
-  BasicAttackCelestialOverture_0_daze: {
+  'BasicAttackCelestialOverture_0:dazeBuildup': {
     sheet: 'Alice',
-    name: 'BasicAttackCelestialOverture_0_daze',
+    name: 'BasicAttackCelestialOverture_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -86,13 +113,13 @@ export const formulas = {
       sheet: 'Alice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackCelestialOverture_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackCelestialOverture_0',
     },
   },
-  BasicAttackCelestialOverture_0_anomBuildup: {
+  'BasicAttackCelestialOverture_0:anomBuildup': {
     sheet: 'Alice',
-    name: 'BasicAttackCelestialOverture_0_anomBuildup',
+    name: 'BasicAttackCelestialOverture_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -100,13 +127,13 @@ export const formulas = {
       sheet: 'Alice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackCelestialOverture_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackCelestialOverture_0',
     },
   },
-  BasicAttackCelestialOverture_1_dmg: {
+  'BasicAttackCelestialOverture_1:standardDmg': {
     sheet: 'Alice',
-    name: 'BasicAttackCelestialOverture_1_dmg',
+    name: 'BasicAttackCelestialOverture_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -114,13 +141,13 @@ export const formulas = {
       sheet: 'Alice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackCelestialOverture_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackCelestialOverture_1',
     },
   },
-  BasicAttackCelestialOverture_1_daze: {
+  'BasicAttackCelestialOverture_1:dazeBuildup': {
     sheet: 'Alice',
-    name: 'BasicAttackCelestialOverture_1_daze',
+    name: 'BasicAttackCelestialOverture_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -128,13 +155,13 @@ export const formulas = {
       sheet: 'Alice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackCelestialOverture_1_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackCelestialOverture_1',
     },
   },
-  BasicAttackCelestialOverture_1_anomBuildup: {
+  'BasicAttackCelestialOverture_1:anomBuildup': {
     sheet: 'Alice',
-    name: 'BasicAttackCelestialOverture_1_anomBuildup',
+    name: 'BasicAttackCelestialOverture_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -142,13 +169,13 @@ export const formulas = {
       sheet: 'Alice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackCelestialOverture_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackCelestialOverture_1',
     },
   },
-  BasicAttackCelestialOverture_2_dmg: {
+  'BasicAttackCelestialOverture_2:standardDmg': {
     sheet: 'Alice',
-    name: 'BasicAttackCelestialOverture_2_dmg',
+    name: 'BasicAttackCelestialOverture_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -156,13 +183,13 @@ export const formulas = {
       sheet: 'Alice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackCelestialOverture_2_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackCelestialOverture_2',
     },
   },
-  BasicAttackCelestialOverture_2_daze: {
+  'BasicAttackCelestialOverture_2:dazeBuildup': {
     sheet: 'Alice',
-    name: 'BasicAttackCelestialOverture_2_daze',
+    name: 'BasicAttackCelestialOverture_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -170,13 +197,13 @@ export const formulas = {
       sheet: 'Alice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackCelestialOverture_2_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackCelestialOverture_2',
     },
   },
-  BasicAttackCelestialOverture_2_anomBuildup: {
+  'BasicAttackCelestialOverture_2:anomBuildup': {
     sheet: 'Alice',
-    name: 'BasicAttackCelestialOverture_2_anomBuildup',
+    name: 'BasicAttackCelestialOverture_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -184,13 +211,13 @@ export const formulas = {
       sheet: 'Alice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackCelestialOverture_2_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackCelestialOverture_2',
     },
   },
-  BasicAttackCelestialOverture_3_dmg: {
+  'BasicAttackCelestialOverture_3:standardDmg': {
     sheet: 'Alice',
-    name: 'BasicAttackCelestialOverture_3_dmg',
+    name: 'BasicAttackCelestialOverture_3:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -198,13 +225,13 @@ export const formulas = {
       sheet: 'Alice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackCelestialOverture_3_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackCelestialOverture_3',
     },
   },
-  BasicAttackCelestialOverture_3_daze: {
+  'BasicAttackCelestialOverture_3:dazeBuildup': {
     sheet: 'Alice',
-    name: 'BasicAttackCelestialOverture_3_daze',
+    name: 'BasicAttackCelestialOverture_3:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -212,13 +239,13 @@ export const formulas = {
       sheet: 'Alice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackCelestialOverture_3_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackCelestialOverture_3',
     },
   },
-  BasicAttackCelestialOverture_3_anomBuildup: {
+  'BasicAttackCelestialOverture_3:anomBuildup': {
     sheet: 'Alice',
-    name: 'BasicAttackCelestialOverture_3_anomBuildup',
+    name: 'BasicAttackCelestialOverture_3:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -226,13 +253,13 @@ export const formulas = {
       sheet: 'Alice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackCelestialOverture_3_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackCelestialOverture_3',
     },
   },
-  BasicAttackCelestialOverture_4_dmg: {
+  'BasicAttackCelestialOverture_4:standardDmg': {
     sheet: 'Alice',
-    name: 'BasicAttackCelestialOverture_4_dmg',
+    name: 'BasicAttackCelestialOverture_4:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -240,13 +267,13 @@ export const formulas = {
       sheet: 'Alice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackCelestialOverture_4_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackCelestialOverture_4',
     },
   },
-  BasicAttackCelestialOverture_4_daze: {
+  'BasicAttackCelestialOverture_4:dazeBuildup': {
     sheet: 'Alice',
-    name: 'BasicAttackCelestialOverture_4_daze',
+    name: 'BasicAttackCelestialOverture_4:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -254,13 +281,13 @@ export const formulas = {
       sheet: 'Alice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackCelestialOverture_4_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackCelestialOverture_4',
     },
   },
-  BasicAttackCelestialOverture_4_anomBuildup: {
+  'BasicAttackCelestialOverture_4:anomBuildup': {
     sheet: 'Alice',
-    name: 'BasicAttackCelestialOverture_4_anomBuildup',
+    name: 'BasicAttackCelestialOverture_4:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -268,13 +295,13 @@ export const formulas = {
       sheet: 'Alice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackCelestialOverture_4_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackCelestialOverture_4',
     },
   },
-  BasicAttackCelestialOverture_5_dmg: {
+  'BasicAttackCelestialOverture_5:standardDmg': {
     sheet: 'Alice',
-    name: 'BasicAttackCelestialOverture_5_dmg',
+    name: 'BasicAttackCelestialOverture_5:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -282,13 +309,13 @@ export const formulas = {
       sheet: 'Alice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackCelestialOverture_5_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackCelestialOverture_5',
     },
   },
-  BasicAttackCelestialOverture_5_daze: {
+  'BasicAttackCelestialOverture_5:dazeBuildup': {
     sheet: 'Alice',
-    name: 'BasicAttackCelestialOverture_5_daze',
+    name: 'BasicAttackCelestialOverture_5:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -296,13 +323,13 @@ export const formulas = {
       sheet: 'Alice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackCelestialOverture_5_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackCelestialOverture_5',
     },
   },
-  BasicAttackCelestialOverture_5_anomBuildup: {
+  'BasicAttackCelestialOverture_5:anomBuildup': {
     sheet: 'Alice',
-    name: 'BasicAttackCelestialOverture_5_anomBuildup',
+    name: 'BasicAttackCelestialOverture_5:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -310,13 +337,13 @@ export const formulas = {
       sheet: 'Alice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackCelestialOverture_5_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackCelestialOverture_5',
     },
   },
-  BasicAttackStarshineWaltz_0_dmg: {
+  'BasicAttackStarshineWaltz_0:standardDmg': {
     sheet: 'Alice',
-    name: 'BasicAttackStarshineWaltz_0_dmg',
+    name: 'BasicAttackStarshineWaltz_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -324,13 +351,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackStarshineWaltz_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackStarshineWaltz_0',
     },
   },
-  BasicAttackStarshineWaltz_0_daze: {
+  'BasicAttackStarshineWaltz_0:dazeBuildup': {
     sheet: 'Alice',
-    name: 'BasicAttackStarshineWaltz_0_daze',
+    name: 'BasicAttackStarshineWaltz_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -338,13 +365,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackStarshineWaltz_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackStarshineWaltz_0',
     },
   },
-  BasicAttackStarshineWaltz_0_anomBuildup: {
+  'BasicAttackStarshineWaltz_0:anomBuildup': {
     sheet: 'Alice',
-    name: 'BasicAttackStarshineWaltz_0_anomBuildup',
+    name: 'BasicAttackStarshineWaltz_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -352,13 +379,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackStarshineWaltz_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackStarshineWaltz_0',
     },
   },
-  BasicAttackStarshineWaltz_1_dmg: {
+  'BasicAttackStarshineWaltz_1:standardDmg': {
     sheet: 'Alice',
-    name: 'BasicAttackStarshineWaltz_1_dmg',
+    name: 'BasicAttackStarshineWaltz_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -366,13 +393,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackStarshineWaltz_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackStarshineWaltz_1',
     },
   },
-  BasicAttackStarshineWaltz_1_daze: {
+  'BasicAttackStarshineWaltz_1:dazeBuildup': {
     sheet: 'Alice',
-    name: 'BasicAttackStarshineWaltz_1_daze',
+    name: 'BasicAttackStarshineWaltz_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -380,13 +407,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackStarshineWaltz_1_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackStarshineWaltz_1',
     },
   },
-  BasicAttackStarshineWaltz_1_anomBuildup: {
+  'BasicAttackStarshineWaltz_1:anomBuildup': {
     sheet: 'Alice',
-    name: 'BasicAttackStarshineWaltz_1_anomBuildup',
+    name: 'BasicAttackStarshineWaltz_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -394,13 +421,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackStarshineWaltz_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackStarshineWaltz_1',
     },
   },
-  BasicAttackStarshineWaltz_2_dmg: {
+  'BasicAttackStarshineWaltz_2:standardDmg': {
     sheet: 'Alice',
-    name: 'BasicAttackStarshineWaltz_2_dmg',
+    name: 'BasicAttackStarshineWaltz_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -408,13 +435,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackStarshineWaltz_2_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackStarshineWaltz_2',
     },
   },
-  BasicAttackStarshineWaltz_2_daze: {
+  'BasicAttackStarshineWaltz_2:dazeBuildup': {
     sheet: 'Alice',
-    name: 'BasicAttackStarshineWaltz_2_daze',
+    name: 'BasicAttackStarshineWaltz_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -422,13 +449,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackStarshineWaltz_2_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackStarshineWaltz_2',
     },
   },
-  BasicAttackStarshineWaltz_2_anomBuildup: {
+  'BasicAttackStarshineWaltz_2:anomBuildup': {
     sheet: 'Alice',
-    name: 'BasicAttackStarshineWaltz_2_anomBuildup',
+    name: 'BasicAttackStarshineWaltz_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -436,13 +463,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackStarshineWaltz_2_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackStarshineWaltz_2',
     },
   },
-  DashAttackBladeDancersGale_0_dmg: {
+  'DashAttackBladeDancersGale_0:standardDmg': {
     sheet: 'Alice',
-    name: 'DashAttackBladeDancersGale_0_dmg',
+    name: 'DashAttackBladeDancersGale_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -450,13 +477,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackBladeDancersGale_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackBladeDancersGale_0',
     },
   },
-  DashAttackBladeDancersGale_0_daze: {
+  'DashAttackBladeDancersGale_0:dazeBuildup': {
     sheet: 'Alice',
-    name: 'DashAttackBladeDancersGale_0_daze',
+    name: 'DashAttackBladeDancersGale_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -464,13 +491,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackBladeDancersGale_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackBladeDancersGale_0',
     },
   },
-  DashAttackBladeDancersGale_0_anomBuildup: {
+  'DashAttackBladeDancersGale_0:anomBuildup': {
     sheet: 'Alice',
-    name: 'DashAttackBladeDancersGale_0_anomBuildup',
+    name: 'DashAttackBladeDancersGale_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -478,13 +505,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackBladeDancersGale_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackBladeDancersGale_0',
     },
   },
-  DodgeCounterCeremonyOfSwordlight_0_dmg: {
+  'DodgeCounterCeremonyOfSwordlight_0:standardDmg': {
     sheet: 'Alice',
-    name: 'DodgeCounterCeremonyOfSwordlight_0_dmg',
+    name: 'DodgeCounterCeremonyOfSwordlight_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -492,13 +519,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterCeremonyOfSwordlight_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterCeremonyOfSwordlight_0',
     },
   },
-  DodgeCounterCeremonyOfSwordlight_0_daze: {
+  'DodgeCounterCeremonyOfSwordlight_0:dazeBuildup': {
     sheet: 'Alice',
-    name: 'DodgeCounterCeremonyOfSwordlight_0_daze',
+    name: 'DodgeCounterCeremonyOfSwordlight_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -506,13 +533,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterCeremonyOfSwordlight_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterCeremonyOfSwordlight_0',
     },
   },
-  DodgeCounterCeremonyOfSwordlight_0_anomBuildup: {
+  'DodgeCounterCeremonyOfSwordlight_0:anomBuildup': {
     sheet: 'Alice',
-    name: 'DodgeCounterCeremonyOfSwordlight_0_anomBuildup',
+    name: 'DodgeCounterCeremonyOfSwordlight_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -520,13 +547,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterCeremonyOfSwordlight_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterCeremonyOfSwordlight_0',
     },
   },
-  SpecialAttackPiercingDawn_0_dmg: {
+  'SpecialAttackPiercingDawn_0:standardDmg': {
     sheet: 'Alice',
-    name: 'SpecialAttackPiercingDawn_0_dmg',
+    name: 'SpecialAttackPiercingDawn_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -534,13 +561,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackPiercingDawn_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackPiercingDawn_0',
     },
   },
-  SpecialAttackPiercingDawn_0_daze: {
+  'SpecialAttackPiercingDawn_0:dazeBuildup': {
     sheet: 'Alice',
-    name: 'SpecialAttackPiercingDawn_0_daze',
+    name: 'SpecialAttackPiercingDawn_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -548,13 +575,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackPiercingDawn_0_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackPiercingDawn_0',
     },
   },
-  SpecialAttackPiercingDawn_0_anomBuildup: {
+  'SpecialAttackPiercingDawn_0:anomBuildup': {
     sheet: 'Alice',
-    name: 'SpecialAttackPiercingDawn_0_anomBuildup',
+    name: 'SpecialAttackPiercingDawn_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -562,13 +589,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackPiercingDawn_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackPiercingDawn_0',
     },
   },
-  EXSpecialAttackAuroraThrustNorthernCross_0_dmg: {
+  'EXSpecialAttackAuroraThrustNorthernCross_0:standardDmg': {
     sheet: 'Alice',
-    name: 'EXSpecialAttackAuroraThrustNorthernCross_0_dmg',
+    name: 'EXSpecialAttackAuroraThrustNorthernCross_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -576,13 +603,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackAuroraThrustNorthernCross_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackAuroraThrustNorthernCross_0',
     },
   },
-  EXSpecialAttackAuroraThrustNorthernCross_0_daze: {
+  'EXSpecialAttackAuroraThrustNorthernCross_0:dazeBuildup': {
     sheet: 'Alice',
-    name: 'EXSpecialAttackAuroraThrustNorthernCross_0_daze',
+    name: 'EXSpecialAttackAuroraThrustNorthernCross_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -590,13 +617,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackAuroraThrustNorthernCross_0_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackAuroraThrustNorthernCross_0',
     },
   },
-  EXSpecialAttackAuroraThrustNorthernCross_0_anomBuildup: {
+  'EXSpecialAttackAuroraThrustNorthernCross_0:anomBuildup': {
     sheet: 'Alice',
-    name: 'EXSpecialAttackAuroraThrustNorthernCross_0_anomBuildup',
+    name: 'EXSpecialAttackAuroraThrustNorthernCross_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -604,13 +631,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackAuroraThrustNorthernCross_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackAuroraThrustNorthernCross_0',
     },
   },
-  EXSpecialAttackAuroraThrustSouthernCross_0_dmg: {
+  'EXSpecialAttackAuroraThrustSouthernCross_0:standardDmg': {
     sheet: 'Alice',
-    name: 'EXSpecialAttackAuroraThrustSouthernCross_0_dmg',
+    name: 'EXSpecialAttackAuroraThrustSouthernCross_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -618,13 +645,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackAuroraThrustSouthernCross_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackAuroraThrustSouthernCross_0',
     },
   },
-  EXSpecialAttackAuroraThrustSouthernCross_0_daze: {
+  'EXSpecialAttackAuroraThrustSouthernCross_0:dazeBuildup': {
     sheet: 'Alice',
-    name: 'EXSpecialAttackAuroraThrustSouthernCross_0_daze',
+    name: 'EXSpecialAttackAuroraThrustSouthernCross_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -632,13 +659,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackAuroraThrustSouthernCross_0_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackAuroraThrustSouthernCross_0',
     },
   },
-  EXSpecialAttackAuroraThrustSouthernCross_0_anomBuildup: {
+  'EXSpecialAttackAuroraThrustSouthernCross_0:anomBuildup': {
     sheet: 'Alice',
-    name: 'EXSpecialAttackAuroraThrustSouthernCross_0_anomBuildup',
+    name: 'EXSpecialAttackAuroraThrustSouthernCross_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -646,13 +673,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackAuroraThrustSouthernCross_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackAuroraThrustSouthernCross_0',
     },
   },
-  ChainAttackStarfallIntermission_0_dmg: {
+  'ChainAttackStarfallIntermission_0:standardDmg': {
     sheet: 'Alice',
-    name: 'ChainAttackStarfallIntermission_0_dmg',
+    name: 'ChainAttackStarfallIntermission_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -660,13 +687,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackStarfallIntermission_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackStarfallIntermission_0',
     },
   },
-  ChainAttackStarfallIntermission_0_daze: {
+  'ChainAttackStarfallIntermission_0:dazeBuildup': {
     sheet: 'Alice',
-    name: 'ChainAttackStarfallIntermission_0_daze',
+    name: 'ChainAttackStarfallIntermission_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -674,13 +701,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackStarfallIntermission_0_daze',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackStarfallIntermission_0',
     },
   },
-  ChainAttackStarfallIntermission_0_anomBuildup: {
+  'ChainAttackStarfallIntermission_0:anomBuildup': {
     sheet: 'Alice',
-    name: 'ChainAttackStarfallIntermission_0_anomBuildup',
+    name: 'ChainAttackStarfallIntermission_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -688,13 +715,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackStarfallIntermission_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackStarfallIntermission_0',
     },
   },
-  UltimateStarfallFinale_0_dmg: {
+  'UltimateStarfallFinale_0:standardDmg': {
     sheet: 'Alice',
-    name: 'UltimateStarfallFinale_0_dmg',
+    name: 'UltimateStarfallFinale_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -702,13 +729,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateStarfallFinale_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'UltimateStarfallFinale_0',
     },
   },
-  UltimateStarfallFinale_0_daze: {
+  'UltimateStarfallFinale_0:dazeBuildup': {
     sheet: 'Alice',
-    name: 'UltimateStarfallFinale_0_daze',
+    name: 'UltimateStarfallFinale_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -716,13 +743,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateStarfallFinale_0_daze',
+      skillType1: 'chainSkill',
+      name: 'UltimateStarfallFinale_0',
     },
   },
-  UltimateStarfallFinale_0_anomBuildup: {
+  'UltimateStarfallFinale_0:anomBuildup': {
     sheet: 'Alice',
-    name: 'UltimateStarfallFinale_0_anomBuildup',
+    name: 'UltimateStarfallFinale_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -730,13 +757,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateStarfallFinale_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'UltimateStarfallFinale_0',
     },
   },
-  QuickAssistIntertwinedStab_0_dmg: {
+  'QuickAssistIntertwinedStab_0:standardDmg': {
     sheet: 'Alice',
-    name: 'QuickAssistIntertwinedStab_0_dmg',
+    name: 'QuickAssistIntertwinedStab_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -744,13 +771,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistIntertwinedStab_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistIntertwinedStab_0',
     },
   },
-  QuickAssistIntertwinedStab_0_daze: {
+  'QuickAssistIntertwinedStab_0:dazeBuildup': {
     sheet: 'Alice',
-    name: 'QuickAssistIntertwinedStab_0_daze',
+    name: 'QuickAssistIntertwinedStab_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -758,13 +785,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistIntertwinedStab_0_daze',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistIntertwinedStab_0',
     },
   },
-  QuickAssistIntertwinedStab_0_anomBuildup: {
+  'QuickAssistIntertwinedStab_0:anomBuildup': {
     sheet: 'Alice',
-    name: 'QuickAssistIntertwinedStab_0_anomBuildup',
+    name: 'QuickAssistIntertwinedStab_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -772,13 +799,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistIntertwinedStab_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistIntertwinedStab_0',
     },
   },
-  DefensiveAssistParryGuard_0_dmg: {
+  'DefensiveAssistParryGuard_0:standardDmg': {
     sheet: 'Alice',
-    name: 'DefensiveAssistParryGuard_0_dmg',
+    name: 'DefensiveAssistParryGuard_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -786,13 +813,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistParryGuard_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistParryGuard_0',
     },
   },
-  DefensiveAssistParryGuard_0_daze: {
+  'DefensiveAssistParryGuard_0:dazeBuildup': {
     sheet: 'Alice',
-    name: 'DefensiveAssistParryGuard_0_daze',
+    name: 'DefensiveAssistParryGuard_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -800,13 +827,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistParryGuard_0_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistParryGuard_0',
     },
   },
-  DefensiveAssistParryGuard_0_anomBuildup: {
+  'DefensiveAssistParryGuard_0:anomBuildup': {
     sheet: 'Alice',
-    name: 'DefensiveAssistParryGuard_0_anomBuildup',
+    name: 'DefensiveAssistParryGuard_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -814,13 +841,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistParryGuard_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistParryGuard_0',
     },
   },
-  DefensiveAssistParryGuard_1_dmg: {
+  'DefensiveAssistParryGuard_1:standardDmg': {
     sheet: 'Alice',
-    name: 'DefensiveAssistParryGuard_1_dmg',
+    name: 'DefensiveAssistParryGuard_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -828,13 +855,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistParryGuard_1_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistParryGuard_1',
     },
   },
-  DefensiveAssistParryGuard_1_daze: {
+  'DefensiveAssistParryGuard_1:dazeBuildup': {
     sheet: 'Alice',
-    name: 'DefensiveAssistParryGuard_1_daze',
+    name: 'DefensiveAssistParryGuard_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -842,13 +869,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistParryGuard_1_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistParryGuard_1',
     },
   },
-  DefensiveAssistParryGuard_1_anomBuildup: {
+  'DefensiveAssistParryGuard_1:anomBuildup': {
     sheet: 'Alice',
-    name: 'DefensiveAssistParryGuard_1_anomBuildup',
+    name: 'DefensiveAssistParryGuard_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -856,13 +883,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistParryGuard_1_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistParryGuard_1',
     },
   },
-  DefensiveAssistParryGuard_2_dmg: {
+  'DefensiveAssistParryGuard_2:standardDmg': {
     sheet: 'Alice',
-    name: 'DefensiveAssistParryGuard_2_dmg',
+    name: 'DefensiveAssistParryGuard_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -870,13 +897,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistParryGuard_2_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistParryGuard_2',
     },
   },
-  DefensiveAssistParryGuard_2_daze: {
+  'DefensiveAssistParryGuard_2:dazeBuildup': {
     sheet: 'Alice',
-    name: 'DefensiveAssistParryGuard_2_daze',
+    name: 'DefensiveAssistParryGuard_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -884,13 +911,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistParryGuard_2_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistParryGuard_2',
     },
   },
-  DefensiveAssistParryGuard_2_anomBuildup: {
+  'DefensiveAssistParryGuard_2:anomBuildup': {
     sheet: 'Alice',
-    name: 'DefensiveAssistParryGuard_2_anomBuildup',
+    name: 'DefensiveAssistParryGuard_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -898,13 +925,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistParryGuard_2_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistParryGuard_2',
     },
   },
-  AssistFollowUpCrossRiposte_0_dmg: {
+  'AssistFollowUpCrossRiposte_0:standardDmg': {
     sheet: 'Alice',
-    name: 'AssistFollowUpCrossRiposte_0_dmg',
+    name: 'AssistFollowUpCrossRiposte_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -912,13 +939,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpCrossRiposte_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpCrossRiposte_0',
     },
   },
-  AssistFollowUpCrossRiposte_0_daze: {
+  'AssistFollowUpCrossRiposte_0:dazeBuildup': {
     sheet: 'Alice',
-    name: 'AssistFollowUpCrossRiposte_0_daze',
+    name: 'AssistFollowUpCrossRiposte_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -926,13 +953,13 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpCrossRiposte_0_daze',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpCrossRiposte_0',
     },
   },
-  AssistFollowUpCrossRiposte_0_anomBuildup: {
+  'AssistFollowUpCrossRiposte_0:anomBuildup': {
     sheet: 'Alice',
-    name: 'AssistFollowUpCrossRiposte_0_anomBuildup',
+    name: 'AssistFollowUpCrossRiposte_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -940,8 +967,8 @@ export const formulas = {
       sheet: 'Alice',
       attribute: 'physical',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpCrossRiposte_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpCrossRiposte_0',
     },
   },
   m6_dmg: {

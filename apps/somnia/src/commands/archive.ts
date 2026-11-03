@@ -1,3 +1,12 @@
+import {
+  type ArtifactSetKey,
+  allArtifactSetKeys,
+  allCharacterSheetKeys,
+  allWeaponKeys,
+  type CharacterSheetKey,
+  type WeaponKey,
+} from '@genshin-optimizer/gi/consts'
+import { i18nInstance } from '@genshin-optimizer/gi/i18n-node'
 import type {
   ApplicationCommandOptionChoiceData,
   AutocompleteInteraction,
@@ -12,21 +21,10 @@ import {
   InteractionContextType,
   SlashCommandBuilder,
 } from 'discord.js'
-
 import { error } from '../lib/message'
-
-import {
-  type ArtifactSetKey,
-  type CharacterSheetKey,
-  type WeaponKey,
-  allArtifactSetKeys,
-  allCharacterSheetKeys,
-  allWeaponKeys,
-} from '@genshin-optimizer/gi/consts'
-import { i18nInstance } from '@genshin-optimizer/gi/i18n-node'
 import permissions from '../lib/permissions'
 import { artifactArchive } from './archive/artifact'
-import { charArchive, charReaction } from './archive/char'
+import { charArchive } from './archive/char'
 import { weaponArchive } from './archive/weapon'
 
 export const slashcommand = new SlashCommandBuilder()
@@ -123,8 +121,9 @@ function translate(
     ...options,
   })
 }
-export { translate }
+
 export type { ArchiveSubcommand }
+export { translate }
 export const talentlist = {
   p: { name: 'Character Profile', value: 'p' },
   n: { name: 'Normal/Charged/Plunging Attack', value: 'n' },
@@ -277,14 +276,12 @@ export async function selectmenu(
 
 export async function reaction(
   reaction: MessageReaction,
-  user: User | PartialUser,
-  arg: string[]
+  user: User | PartialUser
 ) {
   if (
     reaction.emoji.name === '❌' &&
     permissions.sender(user, reaction.message.interactionMetadata)
   )
     return reaction.message.delete()
-
-  if (arg[1] == 'char') return charReaction(reaction)
+  return true
 }

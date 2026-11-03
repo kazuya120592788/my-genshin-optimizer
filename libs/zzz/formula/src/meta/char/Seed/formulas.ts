@@ -38,6 +38,33 @@ export const formulas = {
       name: 'disorderDmgInst_electric',
     },
   },
+  vortexDmgInst_electric: {
+    sheet: 'Seed',
+    name: 'vortexDmgInst_electric',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Seed',
+      attribute: 'electric',
+      damageType1: 'vortex',
+      name: 'vortexDmgInst_electric',
+    },
+  },
+  abloomDmgInst: {
+    sheet: 'Seed',
+    name: 'abloomDmgInst',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Seed',
+      attribute: 'electric',
+      damageType1: 'anomaly',
+      damageType2: 'abloom',
+      name: 'abloomDmgInst',
+    },
+  },
   anomalyBuildupInst: {
     sheet: 'Seed',
     name: 'anomalyBuildupInst',
@@ -62,9 +89,9 @@ export const formulas = {
       name: 'dazeInst',
     },
   },
-  BasicAttackChrysanthemumWheelDance_0_dmg: {
+  'BasicAttackChrysanthemumWheelDance_0:standardDmg': {
     sheet: 'Seed',
-    name: 'BasicAttackChrysanthemumWheelDance_0_dmg',
+    name: 'BasicAttackChrysanthemumWheelDance_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -72,13 +99,13 @@ export const formulas = {
       sheet: 'Seed',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackChrysanthemumWheelDance_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackChrysanthemumWheelDance_0',
     },
   },
-  BasicAttackChrysanthemumWheelDance_0_daze: {
+  'BasicAttackChrysanthemumWheelDance_0:dazeBuildup': {
     sheet: 'Seed',
-    name: 'BasicAttackChrysanthemumWheelDance_0_daze',
+    name: 'BasicAttackChrysanthemumWheelDance_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -86,13 +113,13 @@ export const formulas = {
       sheet: 'Seed',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackChrysanthemumWheelDance_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackChrysanthemumWheelDance_0',
     },
   },
-  BasicAttackChrysanthemumWheelDance_0_anomBuildup: {
+  'BasicAttackChrysanthemumWheelDance_0:anomBuildup': {
     sheet: 'Seed',
-    name: 'BasicAttackChrysanthemumWheelDance_0_anomBuildup',
+    name: 'BasicAttackChrysanthemumWheelDance_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -100,13 +127,13 @@ export const formulas = {
       sheet: 'Seed',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackChrysanthemumWheelDance_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackChrysanthemumWheelDance_0',
     },
   },
-  BasicAttackChrysanthemumWheelDance_1_dmg: {
+  'BasicAttackChrysanthemumWheelDance_1:standardDmg': {
     sheet: 'Seed',
-    name: 'BasicAttackChrysanthemumWheelDance_1_dmg',
+    name: 'BasicAttackChrysanthemumWheelDance_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -114,13 +141,13 @@ export const formulas = {
       sheet: 'Seed',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackChrysanthemumWheelDance_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackChrysanthemumWheelDance_1',
     },
   },
-  BasicAttackChrysanthemumWheelDance_1_daze: {
+  'BasicAttackChrysanthemumWheelDance_1:dazeBuildup': {
     sheet: 'Seed',
-    name: 'BasicAttackChrysanthemumWheelDance_1_daze',
+    name: 'BasicAttackChrysanthemumWheelDance_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -128,13 +155,13 @@ export const formulas = {
       sheet: 'Seed',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackChrysanthemumWheelDance_1_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackChrysanthemumWheelDance_1',
     },
   },
-  BasicAttackChrysanthemumWheelDance_1_anomBuildup: {
+  'BasicAttackChrysanthemumWheelDance_1:anomBuildup': {
     sheet: 'Seed',
-    name: 'BasicAttackChrysanthemumWheelDance_1_anomBuildup',
+    name: 'BasicAttackChrysanthemumWheelDance_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -142,13 +169,13 @@ export const formulas = {
       sheet: 'Seed',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackChrysanthemumWheelDance_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackChrysanthemumWheelDance_1',
     },
   },
-  BasicAttackChrysanthemumWheelDance_2_dmg: {
+  'BasicAttackChrysanthemumWheelDance_2:standardDmg': {
     sheet: 'Seed',
-    name: 'BasicAttackChrysanthemumWheelDance_2_dmg',
+    name: 'BasicAttackChrysanthemumWheelDance_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -156,13 +183,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackChrysanthemumWheelDance_2_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackChrysanthemumWheelDance_2',
     },
   },
-  BasicAttackChrysanthemumWheelDance_2_daze: {
+  'BasicAttackChrysanthemumWheelDance_2:dazeBuildup': {
     sheet: 'Seed',
-    name: 'BasicAttackChrysanthemumWheelDance_2_daze',
+    name: 'BasicAttackChrysanthemumWheelDance_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -170,13 +197,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackChrysanthemumWheelDance_2_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackChrysanthemumWheelDance_2',
     },
   },
-  BasicAttackChrysanthemumWheelDance_2_anomBuildup: {
+  'BasicAttackChrysanthemumWheelDance_2:anomBuildup': {
     sheet: 'Seed',
-    name: 'BasicAttackChrysanthemumWheelDance_2_anomBuildup',
+    name: 'BasicAttackChrysanthemumWheelDance_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -184,13 +211,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackChrysanthemumWheelDance_2_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackChrysanthemumWheelDance_2',
     },
   },
-  BasicAttackChrysanthemumWheelDance_3_dmg: {
+  'BasicAttackChrysanthemumWheelDance_3:standardDmg': {
     sheet: 'Seed',
-    name: 'BasicAttackChrysanthemumWheelDance_3_dmg',
+    name: 'BasicAttackChrysanthemumWheelDance_3:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -198,13 +225,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackChrysanthemumWheelDance_3_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackChrysanthemumWheelDance_3',
     },
   },
-  BasicAttackChrysanthemumWheelDance_3_daze: {
+  'BasicAttackChrysanthemumWheelDance_3:dazeBuildup': {
     sheet: 'Seed',
-    name: 'BasicAttackChrysanthemumWheelDance_3_daze',
+    name: 'BasicAttackChrysanthemumWheelDance_3:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -212,13 +239,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackChrysanthemumWheelDance_3_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackChrysanthemumWheelDance_3',
     },
   },
-  BasicAttackChrysanthemumWheelDance_3_anomBuildup: {
+  'BasicAttackChrysanthemumWheelDance_3:anomBuildup': {
     sheet: 'Seed',
-    name: 'BasicAttackChrysanthemumWheelDance_3_anomBuildup',
+    name: 'BasicAttackChrysanthemumWheelDance_3:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -226,13 +253,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackChrysanthemumWheelDance_3_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackChrysanthemumWheelDance_3',
     },
   },
-  BasicAttackFallingPetalsSlaughter_0_dmg: {
+  'BasicAttackFallingPetalsSlaughter_0:standardDmg': {
     sheet: 'Seed',
-    name: 'BasicAttackFallingPetalsSlaughter_0_dmg',
+    name: 'BasicAttackFallingPetalsSlaughter_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -240,13 +267,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackFallingPetalsSlaughter_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackFallingPetalsSlaughter_0',
     },
   },
-  BasicAttackFallingPetalsSlaughter_0_daze: {
+  'BasicAttackFallingPetalsSlaughter_0:dazeBuildup': {
     sheet: 'Seed',
-    name: 'BasicAttackFallingPetalsSlaughter_0_daze',
+    name: 'BasicAttackFallingPetalsSlaughter_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -254,13 +281,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackFallingPetalsSlaughter_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackFallingPetalsSlaughter_0',
     },
   },
-  BasicAttackFallingPetalsSlaughter_0_anomBuildup: {
+  'BasicAttackFallingPetalsSlaughter_0:anomBuildup': {
     sheet: 'Seed',
-    name: 'BasicAttackFallingPetalsSlaughter_0_anomBuildup',
+    name: 'BasicAttackFallingPetalsSlaughter_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -268,13 +295,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackFallingPetalsSlaughter_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackFallingPetalsSlaughter_0',
     },
   },
-  BasicAttackFallingPetalsDownfallFirstForm_0_dmg: {
+  'BasicAttackFallingPetalsDownfallFirstForm_0:standardDmg': {
     sheet: 'Seed',
-    name: 'BasicAttackFallingPetalsDownfallFirstForm_0_dmg',
+    name: 'BasicAttackFallingPetalsDownfallFirstForm_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -282,13 +309,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackFallingPetalsDownfallFirstForm_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackFallingPetalsDownfallFirstForm_0',
     },
   },
-  BasicAttackFallingPetalsDownfallFirstForm_0_daze: {
+  'BasicAttackFallingPetalsDownfallFirstForm_0:dazeBuildup': {
     sheet: 'Seed',
-    name: 'BasicAttackFallingPetalsDownfallFirstForm_0_daze',
+    name: 'BasicAttackFallingPetalsDownfallFirstForm_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -296,13 +323,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackFallingPetalsDownfallFirstForm_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackFallingPetalsDownfallFirstForm_0',
     },
   },
-  BasicAttackFallingPetalsDownfallFirstForm_0_anomBuildup: {
+  'BasicAttackFallingPetalsDownfallFirstForm_0:anomBuildup': {
     sheet: 'Seed',
-    name: 'BasicAttackFallingPetalsDownfallFirstForm_0_anomBuildup',
+    name: 'BasicAttackFallingPetalsDownfallFirstForm_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -310,13 +337,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackFallingPetalsDownfallFirstForm_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackFallingPetalsDownfallFirstForm_0',
     },
   },
-  BasicAttackFallingPetalsDownfallSecondForm_0_dmg: {
+  'BasicAttackFallingPetalsDownfallSecondForm_0:standardDmg': {
     sheet: 'Seed',
-    name: 'BasicAttackFallingPetalsDownfallSecondForm_0_dmg',
+    name: 'BasicAttackFallingPetalsDownfallSecondForm_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -324,13 +351,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackFallingPetalsDownfallSecondForm_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackFallingPetalsDownfallSecondForm_0',
     },
   },
-  BasicAttackFallingPetalsDownfallSecondForm_0_daze: {
+  'BasicAttackFallingPetalsDownfallSecondForm_0:dazeBuildup': {
     sheet: 'Seed',
-    name: 'BasicAttackFallingPetalsDownfallSecondForm_0_daze',
+    name: 'BasicAttackFallingPetalsDownfallSecondForm_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -338,13 +365,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackFallingPetalsDownfallSecondForm_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackFallingPetalsDownfallSecondForm_0',
     },
   },
-  BasicAttackFallingPetalsDownfallSecondForm_0_anomBuildup: {
+  'BasicAttackFallingPetalsDownfallSecondForm_0:anomBuildup': {
     sheet: 'Seed',
-    name: 'BasicAttackFallingPetalsDownfallSecondForm_0_anomBuildup',
+    name: 'BasicAttackFallingPetalsDownfallSecondForm_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -352,13 +379,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackFallingPetalsDownfallSecondForm_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackFallingPetalsDownfallSecondForm_0',
     },
   },
-  DashAttackMagneticWheelDance_0_dmg: {
+  'DashAttackMagneticWheelDance_0:standardDmg': {
     sheet: 'Seed',
-    name: 'DashAttackMagneticWheelDance_0_dmg',
+    name: 'DashAttackMagneticWheelDance_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -366,13 +393,13 @@ export const formulas = {
       sheet: 'Seed',
       damageType1: 'dash',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackMagneticWheelDance_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackMagneticWheelDance_0',
     },
   },
-  DashAttackMagneticWheelDance_0_daze: {
+  'DashAttackMagneticWheelDance_0:dazeBuildup': {
     sheet: 'Seed',
-    name: 'DashAttackMagneticWheelDance_0_daze',
+    name: 'DashAttackMagneticWheelDance_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -380,13 +407,13 @@ export const formulas = {
       sheet: 'Seed',
       damageType1: 'dash',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackMagneticWheelDance_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackMagneticWheelDance_0',
     },
   },
-  DashAttackMagneticWheelDance_0_anomBuildup: {
+  'DashAttackMagneticWheelDance_0:anomBuildup': {
     sheet: 'Seed',
-    name: 'DashAttackMagneticWheelDance_0_anomBuildup',
+    name: 'DashAttackMagneticWheelDance_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -394,13 +421,13 @@ export const formulas = {
       sheet: 'Seed',
       damageType1: 'dash',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackMagneticWheelDance_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackMagneticWheelDance_0',
     },
   },
-  DodgeCounterBlossomBurst_0_dmg: {
+  'DodgeCounterBlossomBurst_0:standardDmg': {
     sheet: 'Seed',
-    name: 'DodgeCounterBlossomBurst_0_dmg',
+    name: 'DodgeCounterBlossomBurst_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -408,13 +435,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterBlossomBurst_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterBlossomBurst_0',
     },
   },
-  DodgeCounterBlossomBurst_0_daze: {
+  'DodgeCounterBlossomBurst_0:dazeBuildup': {
     sheet: 'Seed',
-    name: 'DodgeCounterBlossomBurst_0_daze',
+    name: 'DodgeCounterBlossomBurst_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -422,13 +449,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterBlossomBurst_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterBlossomBurst_0',
     },
   },
-  DodgeCounterBlossomBurst_0_anomBuildup: {
+  'DodgeCounterBlossomBurst_0:anomBuildup': {
     sheet: 'Seed',
-    name: 'DodgeCounterBlossomBurst_0_anomBuildup',
+    name: 'DodgeCounterBlossomBurst_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -436,13 +463,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterBlossomBurst_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterBlossomBurst_0',
     },
   },
-  SpecialAttackWitheredInFrost_0_dmg: {
+  'SpecialAttackWitheredInFrost_0:standardDmg': {
     sheet: 'Seed',
-    name: 'SpecialAttackWitheredInFrost_0_dmg',
+    name: 'SpecialAttackWitheredInFrost_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -450,13 +477,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackWitheredInFrost_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackWitheredInFrost_0',
     },
   },
-  SpecialAttackWitheredInFrost_0_daze: {
+  'SpecialAttackWitheredInFrost_0:dazeBuildup': {
     sheet: 'Seed',
-    name: 'SpecialAttackWitheredInFrost_0_daze',
+    name: 'SpecialAttackWitheredInFrost_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -464,13 +491,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackWitheredInFrost_0_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackWitheredInFrost_0',
     },
   },
-  SpecialAttackWitheredInFrost_0_anomBuildup: {
+  'SpecialAttackWitheredInFrost_0:anomBuildup': {
     sheet: 'Seed',
-    name: 'SpecialAttackWitheredInFrost_0_anomBuildup',
+    name: 'SpecialAttackWitheredInFrost_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -478,13 +505,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackWitheredInFrost_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackWitheredInFrost_0',
     },
   },
-  EXSpecialAttackRainingIronPetals_0_dmg: {
+  'EXSpecialAttackRainingIronPetals_0:standardDmg': {
     sheet: 'Seed',
-    name: 'EXSpecialAttackRainingIronPetals_0_dmg',
+    name: 'EXSpecialAttackRainingIronPetals_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -492,13 +519,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackRainingIronPetals_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackRainingIronPetals_0',
     },
   },
-  EXSpecialAttackRainingIronPetals_0_daze: {
+  'EXSpecialAttackRainingIronPetals_0:dazeBuildup': {
     sheet: 'Seed',
-    name: 'EXSpecialAttackRainingIronPetals_0_daze',
+    name: 'EXSpecialAttackRainingIronPetals_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -506,13 +533,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackRainingIronPetals_0_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackRainingIronPetals_0',
     },
   },
-  EXSpecialAttackRainingIronPetals_0_anomBuildup: {
+  'EXSpecialAttackRainingIronPetals_0:anomBuildup': {
     sheet: 'Seed',
-    name: 'EXSpecialAttackRainingIronPetals_0_anomBuildup',
+    name: 'EXSpecialAttackRainingIronPetals_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -520,13 +547,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackRainingIronPetals_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackRainingIronPetals_0',
     },
   },
-  EXSpecialAttackRainingIronPetalsAway_0_dmg: {
+  'EXSpecialAttackRainingIronPetalsAway_0:standardDmg': {
     sheet: 'Seed',
-    name: 'EXSpecialAttackRainingIronPetalsAway_0_dmg',
+    name: 'EXSpecialAttackRainingIronPetalsAway_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -534,13 +561,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackRainingIronPetalsAway_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackRainingIronPetalsAway_0',
     },
   },
-  EXSpecialAttackRainingIronPetalsAway_0_daze: {
+  'EXSpecialAttackRainingIronPetalsAway_0:dazeBuildup': {
     sheet: 'Seed',
-    name: 'EXSpecialAttackRainingIronPetalsAway_0_daze',
+    name: 'EXSpecialAttackRainingIronPetalsAway_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -548,13 +575,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackRainingIronPetalsAway_0_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackRainingIronPetalsAway_0',
     },
   },
-  EXSpecialAttackRainingIronPetalsAway_0_anomBuildup: {
+  'EXSpecialAttackRainingIronPetalsAway_0:anomBuildup': {
     sheet: 'Seed',
-    name: 'EXSpecialAttackRainingIronPetalsAway_0_anomBuildup',
+    name: 'EXSpecialAttackRainingIronPetalsAway_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -562,13 +589,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackRainingIronPetalsAway_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackRainingIronPetalsAway_0',
     },
   },
-  ChainAttackTempestOfFrostyPetals_0_dmg: {
+  'ChainAttackTempestOfFrostyPetals_0:standardDmg': {
     sheet: 'Seed',
-    name: 'ChainAttackTempestOfFrostyPetals_0_dmg',
+    name: 'ChainAttackTempestOfFrostyPetals_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -576,13 +603,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackTempestOfFrostyPetals_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackTempestOfFrostyPetals_0',
     },
   },
-  ChainAttackTempestOfFrostyPetals_0_daze: {
+  'ChainAttackTempestOfFrostyPetals_0:dazeBuildup': {
     sheet: 'Seed',
-    name: 'ChainAttackTempestOfFrostyPetals_0_daze',
+    name: 'ChainAttackTempestOfFrostyPetals_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -590,13 +617,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackTempestOfFrostyPetals_0_daze',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackTempestOfFrostyPetals_0',
     },
   },
-  ChainAttackTempestOfFrostyPetals_0_anomBuildup: {
+  'ChainAttackTempestOfFrostyPetals_0:anomBuildup': {
     sheet: 'Seed',
-    name: 'ChainAttackTempestOfFrostyPetals_0_anomBuildup',
+    name: 'ChainAttackTempestOfFrostyPetals_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -604,13 +631,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackTempestOfFrostyPetals_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackTempestOfFrostyPetals_0',
     },
   },
-  UltimateClockworkGardenBloom_0_dmg: {
+  'UltimateClockworkGardenBloom_0:standardDmg': {
     sheet: 'Seed',
-    name: 'UltimateClockworkGardenBloom_0_dmg',
+    name: 'UltimateClockworkGardenBloom_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -618,13 +645,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateClockworkGardenBloom_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'UltimateClockworkGardenBloom_0',
     },
   },
-  UltimateClockworkGardenBloom_0_daze: {
+  'UltimateClockworkGardenBloom_0:dazeBuildup': {
     sheet: 'Seed',
-    name: 'UltimateClockworkGardenBloom_0_daze',
+    name: 'UltimateClockworkGardenBloom_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -632,13 +659,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateClockworkGardenBloom_0_daze',
+      skillType1: 'chainSkill',
+      name: 'UltimateClockworkGardenBloom_0',
     },
   },
-  UltimateClockworkGardenBloom_0_anomBuildup: {
+  'UltimateClockworkGardenBloom_0:anomBuildup': {
     sheet: 'Seed',
-    name: 'UltimateClockworkGardenBloom_0_anomBuildup',
+    name: 'UltimateClockworkGardenBloom_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -646,13 +673,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateClockworkGardenBloom_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'UltimateClockworkGardenBloom_0',
     },
   },
-  QuickAssistBarrageOfRainingFlowers_0_dmg: {
+  'QuickAssistBarrageOfRainingFlowers_0:standardDmg': {
     sheet: 'Seed',
-    name: 'QuickAssistBarrageOfRainingFlowers_0_dmg',
+    name: 'QuickAssistBarrageOfRainingFlowers_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -660,13 +687,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistBarrageOfRainingFlowers_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistBarrageOfRainingFlowers_0',
     },
   },
-  QuickAssistBarrageOfRainingFlowers_0_daze: {
+  'QuickAssistBarrageOfRainingFlowers_0:dazeBuildup': {
     sheet: 'Seed',
-    name: 'QuickAssistBarrageOfRainingFlowers_0_daze',
+    name: 'QuickAssistBarrageOfRainingFlowers_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -674,13 +701,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistBarrageOfRainingFlowers_0_daze',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistBarrageOfRainingFlowers_0',
     },
   },
-  QuickAssistBarrageOfRainingFlowers_0_anomBuildup: {
+  'QuickAssistBarrageOfRainingFlowers_0:anomBuildup': {
     sheet: 'Seed',
-    name: 'QuickAssistBarrageOfRainingFlowers_0_anomBuildup',
+    name: 'QuickAssistBarrageOfRainingFlowers_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -688,13 +715,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistBarrageOfRainingFlowers_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistBarrageOfRainingFlowers_0',
     },
   },
-  DefensiveAssistSproutingBarrier_0_dmg: {
+  'DefensiveAssistSproutingBarrier_0:standardDmg': {
     sheet: 'Seed',
-    name: 'DefensiveAssistSproutingBarrier_0_dmg',
+    name: 'DefensiveAssistSproutingBarrier_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -702,13 +729,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSproutingBarrier_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSproutingBarrier_0',
     },
   },
-  DefensiveAssistSproutingBarrier_0_daze: {
+  'DefensiveAssistSproutingBarrier_0:dazeBuildup': {
     sheet: 'Seed',
-    name: 'DefensiveAssistSproutingBarrier_0_daze',
+    name: 'DefensiveAssistSproutingBarrier_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -716,13 +743,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSproutingBarrier_0_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSproutingBarrier_0',
     },
   },
-  DefensiveAssistSproutingBarrier_0_anomBuildup: {
+  'DefensiveAssistSproutingBarrier_0:anomBuildup': {
     sheet: 'Seed',
-    name: 'DefensiveAssistSproutingBarrier_0_anomBuildup',
+    name: 'DefensiveAssistSproutingBarrier_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -730,13 +757,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSproutingBarrier_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSproutingBarrier_0',
     },
   },
-  DefensiveAssistSproutingBarrier_1_dmg: {
+  'DefensiveAssistSproutingBarrier_1:standardDmg': {
     sheet: 'Seed',
-    name: 'DefensiveAssistSproutingBarrier_1_dmg',
+    name: 'DefensiveAssistSproutingBarrier_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -744,13 +771,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSproutingBarrier_1_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSproutingBarrier_1',
     },
   },
-  DefensiveAssistSproutingBarrier_1_daze: {
+  'DefensiveAssistSproutingBarrier_1:dazeBuildup': {
     sheet: 'Seed',
-    name: 'DefensiveAssistSproutingBarrier_1_daze',
+    name: 'DefensiveAssistSproutingBarrier_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -758,13 +785,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSproutingBarrier_1_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSproutingBarrier_1',
     },
   },
-  DefensiveAssistSproutingBarrier_1_anomBuildup: {
+  'DefensiveAssistSproutingBarrier_1:anomBuildup': {
     sheet: 'Seed',
-    name: 'DefensiveAssistSproutingBarrier_1_anomBuildup',
+    name: 'DefensiveAssistSproutingBarrier_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -772,13 +799,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSproutingBarrier_1_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSproutingBarrier_1',
     },
   },
-  DefensiveAssistSproutingBarrier_2_dmg: {
+  'DefensiveAssistSproutingBarrier_2:standardDmg': {
     sheet: 'Seed',
-    name: 'DefensiveAssistSproutingBarrier_2_dmg',
+    name: 'DefensiveAssistSproutingBarrier_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -786,13 +813,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSproutingBarrier_2_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSproutingBarrier_2',
     },
   },
-  DefensiveAssistSproutingBarrier_2_daze: {
+  'DefensiveAssistSproutingBarrier_2:dazeBuildup': {
     sheet: 'Seed',
-    name: 'DefensiveAssistSproutingBarrier_2_daze',
+    name: 'DefensiveAssistSproutingBarrier_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -800,13 +827,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSproutingBarrier_2_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSproutingBarrier_2',
     },
   },
-  DefensiveAssistSproutingBarrier_2_anomBuildup: {
+  'DefensiveAssistSproutingBarrier_2:anomBuildup': {
     sheet: 'Seed',
-    name: 'DefensiveAssistSproutingBarrier_2_anomBuildup',
+    name: 'DefensiveAssistSproutingBarrier_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -814,13 +841,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSproutingBarrier_2_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSproutingBarrier_2',
     },
   },
-  AssistFollowUpCrimsonCoreBurst_0_dmg: {
+  'AssistFollowUpCrimsonCoreBurst_0:standardDmg': {
     sheet: 'Seed',
-    name: 'AssistFollowUpCrimsonCoreBurst_0_dmg',
+    name: 'AssistFollowUpCrimsonCoreBurst_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -828,13 +855,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpCrimsonCoreBurst_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpCrimsonCoreBurst_0',
     },
   },
-  AssistFollowUpCrimsonCoreBurst_0_daze: {
+  'AssistFollowUpCrimsonCoreBurst_0:dazeBuildup': {
     sheet: 'Seed',
-    name: 'AssistFollowUpCrimsonCoreBurst_0_daze',
+    name: 'AssistFollowUpCrimsonCoreBurst_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -842,13 +869,13 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpCrimsonCoreBurst_0_daze',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpCrimsonCoreBurst_0',
     },
   },
-  AssistFollowUpCrimsonCoreBurst_0_anomBuildup: {
+  'AssistFollowUpCrimsonCoreBurst_0:anomBuildup': {
     sheet: 'Seed',
-    name: 'AssistFollowUpCrimsonCoreBurst_0_anomBuildup',
+    name: 'AssistFollowUpCrimsonCoreBurst_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -856,8 +883,8 @@ export const formulas = {
       sheet: 'Seed',
       attribute: 'electric',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpCrimsonCoreBurst_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpCrimsonCoreBurst_0',
     },
   },
   m6_dmg: {

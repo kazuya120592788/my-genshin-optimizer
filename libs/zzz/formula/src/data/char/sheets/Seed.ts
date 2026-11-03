@@ -6,7 +6,7 @@ import {
   subscript,
   sum,
 } from '@genshin-optimizer/pando/engine'
-import { type CharacterKey } from '@genshin-optimizer/zzz/consts'
+import type { CharacterKey } from '@genshin-optimizer/zzz/consts'
 import { allStats, mappedStats } from '@genshin-optimizer/zzz/stats'
 import {
   allBoolConditionals,
@@ -44,6 +44,15 @@ const { energy_consumed } = allNumConditionals(
   dm.m2.max_energy_consumed - dm.m2.energy_consumed
 )
 
+// TODO(Seed kit correctness):
+// - Vanguard is the Attack teammate with the highest initial ATK, excluding Seed.
+//   `team.initial.atk.max` is wrong when Seed's ATK is highest (nobody gets Vanguard).
+//   Rank member0/1/2 (Attack + not Seed) by initial ATK, then match target.char.key.
+//   If using member* sum stats, Calculator.defaultAccu must treat member0/1/2 (and
+//   prev/nextMember) like own/target — otherwise unique accu Ill-form reads in dev.
+// - Seed is never Vanguard; gate ATK/CRIT DMG and m2_vanguard_defIgn_ accordingly.
+// - Besiege DMG%: Seed keeps ownBuff; Vanguard needs a separate notOwnBuff. Drop the
+//   `true` team-listing override on core_dmg_. Direct Strike UI should not be targeted.
 const directStrikeCheck = (node: NumNode | number) =>
   cmpGE(
     sum(
@@ -172,9 +181,7 @@ const sheet = register(
       directStrike.ifOn(
         directStrikeCheck(subscript(char.core, dm.core.direct_strike_atk))
       )
-    ),
-    undefined,
-    true
+    )
   ),
   registerBuff(
     'core_vanguard_crit_dmg_',
@@ -184,9 +191,7 @@ const sheet = register(
           percent(subscript(char.core, dm.core.direct_strike_crit_dmg_))
         )
       )
-    ),
-    undefined,
-    true
+    )
   ),
   registerBuff(
     'core_dmg_',
@@ -241,9 +246,7 @@ const sheet = register(
     'm2_vanguard_defIgn_',
     notOwnBuff.combat.defIgn_.add(
       cmpGE(char.mindscape, 2, besiegeDisplay(percent(dm.m2.besiege_defIgn_)))
-    ),
-    undefined,
-    true
+    )
   ),
   registerBuff(
     'm2_basic_dmg_',

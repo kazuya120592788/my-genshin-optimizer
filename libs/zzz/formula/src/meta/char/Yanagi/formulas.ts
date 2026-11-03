@@ -38,6 +38,33 @@ export const formulas = {
       name: 'disorderDmgInst_electric',
     },
   },
+  vortexDmgInst_electric: {
+    sheet: 'Yanagi',
+    name: 'vortexDmgInst_electric',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Yanagi',
+      attribute: 'electric',
+      damageType1: 'vortex',
+      name: 'vortexDmgInst_electric',
+    },
+  },
+  abloomDmgInst: {
+    sheet: 'Yanagi',
+    name: 'abloomDmgInst',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Yanagi',
+      attribute: 'electric',
+      damageType1: 'anomaly',
+      damageType2: 'abloom',
+      name: 'abloomDmgInst',
+    },
+  },
   anomalyBuildupInst: {
     sheet: 'Yanagi',
     name: 'anomalyBuildupInst',
@@ -62,9 +89,9 @@ export const formulas = {
       name: 'dazeInst',
     },
   },
-  StanceJougen_0_dmg: {
+  'StanceJougen_0:standardDmg': {
     sheet: 'Yanagi',
-    name: 'StanceJougen_0_dmg',
+    name: 'StanceJougen_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -72,13 +99,13 @@ export const formulas = {
       sheet: 'Yanagi',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'StanceJougen_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'StanceJougen_0',
     },
   },
-  StanceJougen_0_daze: {
+  'StanceJougen_0:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceJougen_0_daze',
+    name: 'StanceJougen_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -86,13 +113,13 @@ export const formulas = {
       sheet: 'Yanagi',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'StanceJougen_0_daze',
+      skillType1: 'basicSkill',
+      name: 'StanceJougen_0',
     },
   },
-  StanceJougen_0_anomBuildup: {
+  'StanceJougen_0:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceJougen_0_anomBuildup',
+    name: 'StanceJougen_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -100,13 +127,13 @@ export const formulas = {
       sheet: 'Yanagi',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'StanceJougen_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'StanceJougen_0',
     },
   },
-  StanceJougen_1_dmg: {
+  'StanceJougen_1:standardDmg': {
     sheet: 'Yanagi',
-    name: 'StanceJougen_1_dmg',
+    name: 'StanceJougen_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -114,13 +141,13 @@ export const formulas = {
       sheet: 'Yanagi',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'StanceJougen_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'StanceJougen_1',
     },
   },
-  StanceJougen_1_daze: {
+  'StanceJougen_1:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceJougen_1_daze',
+    name: 'StanceJougen_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -128,13 +155,13 @@ export const formulas = {
       sheet: 'Yanagi',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'StanceJougen_1_daze',
+      skillType1: 'basicSkill',
+      name: 'StanceJougen_1',
     },
   },
-  StanceJougen_1_anomBuildup: {
+  'StanceJougen_1:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceJougen_1_anomBuildup',
+    name: 'StanceJougen_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -142,13 +169,13 @@ export const formulas = {
       sheet: 'Yanagi',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'StanceJougen_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'StanceJougen_1',
     },
   },
-  StanceJougen_2_dmg: {
+  'StanceJougen_2:standardDmg': {
     sheet: 'Yanagi',
-    name: 'StanceJougen_2_dmg',
+    name: 'StanceJougen_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -156,13 +183,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'StanceJougen_2_dmg',
+      skillType1: 'basicSkill',
+      name: 'StanceJougen_2',
     },
   },
-  StanceJougen_2_daze: {
+  'StanceJougen_2:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceJougen_2_daze',
+    name: 'StanceJougen_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -170,13 +197,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'StanceJougen_2_daze',
+      skillType1: 'basicSkill',
+      name: 'StanceJougen_2',
     },
   },
-  StanceJougen_2_anomBuildup: {
+  'StanceJougen_2:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceJougen_2_anomBuildup',
+    name: 'StanceJougen_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -184,13 +211,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'StanceJougen_2_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'StanceJougen_2',
     },
   },
-  StanceJougen_3_dmg: {
+  'StanceJougen_3:standardDmg': {
     sheet: 'Yanagi',
-    name: 'StanceJougen_3_dmg',
+    name: 'StanceJougen_3:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -198,13 +225,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'StanceJougen_3_dmg',
+      skillType1: 'basicSkill',
+      name: 'StanceJougen_3',
     },
   },
-  StanceJougen_3_daze: {
+  'StanceJougen_3:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceJougen_3_daze',
+    name: 'StanceJougen_3:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -212,13 +239,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'StanceJougen_3_daze',
+      skillType1: 'basicSkill',
+      name: 'StanceJougen_3',
     },
   },
-  StanceJougen_3_anomBuildup: {
+  'StanceJougen_3:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceJougen_3_anomBuildup',
+    name: 'StanceJougen_3:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -226,13 +253,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'StanceJougen_3_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'StanceJougen_3',
     },
   },
-  StanceJougen_4_dmg: {
+  'StanceJougen_4:standardDmg': {
     sheet: 'Yanagi',
-    name: 'StanceJougen_4_dmg',
+    name: 'StanceJougen_4:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -240,13 +267,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'StanceJougen_4_dmg',
+      skillType1: 'basicSkill',
+      name: 'StanceJougen_4',
     },
   },
-  StanceJougen_4_daze: {
+  'StanceJougen_4:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceJougen_4_daze',
+    name: 'StanceJougen_4:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -254,13 +281,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'StanceJougen_4_daze',
+      skillType1: 'basicSkill',
+      name: 'StanceJougen_4',
     },
   },
-  StanceJougen_4_anomBuildup: {
+  'StanceJougen_4:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceJougen_4_anomBuildup',
+    name: 'StanceJougen_4:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -268,13 +295,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'StanceJougen_4_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'StanceJougen_4',
     },
   },
-  StanceKagen_0_dmg: {
+  'StanceKagen_0:standardDmg': {
     sheet: 'Yanagi',
-    name: 'StanceKagen_0_dmg',
+    name: 'StanceKagen_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -282,13 +309,13 @@ export const formulas = {
       sheet: 'Yanagi',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'StanceKagen_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'StanceKagen_0',
     },
   },
-  StanceKagen_0_daze: {
+  'StanceKagen_0:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceKagen_0_daze',
+    name: 'StanceKagen_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -296,13 +323,13 @@ export const formulas = {
       sheet: 'Yanagi',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'StanceKagen_0_daze',
+      skillType1: 'basicSkill',
+      name: 'StanceKagen_0',
     },
   },
-  StanceKagen_0_anomBuildup: {
+  'StanceKagen_0:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceKagen_0_anomBuildup',
+    name: 'StanceKagen_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -310,13 +337,13 @@ export const formulas = {
       sheet: 'Yanagi',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'StanceKagen_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'StanceKagen_0',
     },
   },
-  StanceKagen_1_dmg: {
+  'StanceKagen_1:standardDmg': {
     sheet: 'Yanagi',
-    name: 'StanceKagen_1_dmg',
+    name: 'StanceKagen_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -324,13 +351,13 @@ export const formulas = {
       sheet: 'Yanagi',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'StanceKagen_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'StanceKagen_1',
     },
   },
-  StanceKagen_1_daze: {
+  'StanceKagen_1:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceKagen_1_daze',
+    name: 'StanceKagen_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -338,13 +365,13 @@ export const formulas = {
       sheet: 'Yanagi',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'StanceKagen_1_daze',
+      skillType1: 'basicSkill',
+      name: 'StanceKagen_1',
     },
   },
-  StanceKagen_1_anomBuildup: {
+  'StanceKagen_1:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceKagen_1_anomBuildup',
+    name: 'StanceKagen_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -352,13 +379,13 @@ export const formulas = {
       sheet: 'Yanagi',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'StanceKagen_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'StanceKagen_1',
     },
   },
-  StanceKagen_2_dmg: {
+  'StanceKagen_2:standardDmg': {
     sheet: 'Yanagi',
-    name: 'StanceKagen_2_dmg',
+    name: 'StanceKagen_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -366,13 +393,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'StanceKagen_2_dmg',
+      skillType1: 'basicSkill',
+      name: 'StanceKagen_2',
     },
   },
-  StanceKagen_2_daze: {
+  'StanceKagen_2:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceKagen_2_daze',
+    name: 'StanceKagen_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -380,13 +407,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'StanceKagen_2_daze',
+      skillType1: 'basicSkill',
+      name: 'StanceKagen_2',
     },
   },
-  StanceKagen_2_anomBuildup: {
+  'StanceKagen_2:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceKagen_2_anomBuildup',
+    name: 'StanceKagen_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -394,13 +421,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'StanceKagen_2_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'StanceKagen_2',
     },
   },
-  StanceKagen_3_dmg: {
+  'StanceKagen_3:standardDmg': {
     sheet: 'Yanagi',
-    name: 'StanceKagen_3_dmg',
+    name: 'StanceKagen_3:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -408,13 +435,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'StanceKagen_3_dmg',
+      skillType1: 'basicSkill',
+      name: 'StanceKagen_3',
     },
   },
-  StanceKagen_3_daze: {
+  'StanceKagen_3:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceKagen_3_daze',
+    name: 'StanceKagen_3:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -422,13 +449,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'StanceKagen_3_daze',
+      skillType1: 'basicSkill',
+      name: 'StanceKagen_3',
     },
   },
-  StanceKagen_3_anomBuildup: {
+  'StanceKagen_3:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceKagen_3_anomBuildup',
+    name: 'StanceKagen_3:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -436,13 +463,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'StanceKagen_3_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'StanceKagen_3',
     },
   },
-  StanceKagen_4_dmg: {
+  'StanceKagen_4:standardDmg': {
     sheet: 'Yanagi',
-    name: 'StanceKagen_4_dmg',
+    name: 'StanceKagen_4:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -450,13 +477,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'StanceKagen_4_dmg',
+      skillType1: 'basicSkill',
+      name: 'StanceKagen_4',
     },
   },
-  StanceKagen_4_daze: {
+  'StanceKagen_4:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceKagen_4_daze',
+    name: 'StanceKagen_4:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -464,13 +491,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'StanceKagen_4_daze',
+      skillType1: 'basicSkill',
+      name: 'StanceKagen_4',
     },
   },
-  StanceKagen_4_anomBuildup: {
+  'StanceKagen_4:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'StanceKagen_4_anomBuildup',
+    name: 'StanceKagen_4:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -478,13 +505,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'StanceKagen_4_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'StanceKagen_4',
     },
   },
-  DashAttackFleetingFlight_0_dmg: {
+  'DashAttackFleetingFlight_0:standardDmg': {
     sheet: 'Yanagi',
-    name: 'DashAttackFleetingFlight_0_dmg',
+    name: 'DashAttackFleetingFlight_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -492,13 +519,13 @@ export const formulas = {
       sheet: 'Yanagi',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackFleetingFlight_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackFleetingFlight_0',
     },
   },
-  DashAttackFleetingFlight_0_daze: {
+  'DashAttackFleetingFlight_0:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'DashAttackFleetingFlight_0_daze',
+    name: 'DashAttackFleetingFlight_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -506,13 +533,13 @@ export const formulas = {
       sheet: 'Yanagi',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackFleetingFlight_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackFleetingFlight_0',
     },
   },
-  DashAttackFleetingFlight_0_anomBuildup: {
+  'DashAttackFleetingFlight_0:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'DashAttackFleetingFlight_0_anomBuildup',
+    name: 'DashAttackFleetingFlight_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -520,13 +547,13 @@ export const formulas = {
       sheet: 'Yanagi',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackFleetingFlight_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackFleetingFlight_0',
     },
   },
-  DodgeCounterRapidRetaliation_0_dmg: {
+  'DodgeCounterRapidRetaliation_0:standardDmg': {
     sheet: 'Yanagi',
-    name: 'DodgeCounterRapidRetaliation_0_dmg',
+    name: 'DodgeCounterRapidRetaliation_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -534,13 +561,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterRapidRetaliation_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterRapidRetaliation_0',
     },
   },
-  DodgeCounterRapidRetaliation_0_daze: {
+  'DodgeCounterRapidRetaliation_0:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'DodgeCounterRapidRetaliation_0_daze',
+    name: 'DodgeCounterRapidRetaliation_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -548,13 +575,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterRapidRetaliation_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterRapidRetaliation_0',
     },
   },
-  DodgeCounterRapidRetaliation_0_anomBuildup: {
+  'DodgeCounterRapidRetaliation_0:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'DodgeCounterRapidRetaliation_0_anomBuildup',
+    name: 'DodgeCounterRapidRetaliation_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -562,13 +589,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterRapidRetaliation_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterRapidRetaliation_0',
     },
   },
-  SpecialAttackRuten_0_dmg: {
+  'SpecialAttackRuten_0:standardDmg': {
     sheet: 'Yanagi',
-    name: 'SpecialAttackRuten_0_dmg',
+    name: 'SpecialAttackRuten_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -576,13 +603,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRuten_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRuten_0',
     },
   },
-  SpecialAttackRuten_0_daze: {
+  'SpecialAttackRuten_0:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'SpecialAttackRuten_0_daze',
+    name: 'SpecialAttackRuten_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -590,13 +617,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRuten_0_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRuten_0',
     },
   },
-  SpecialAttackRuten_0_anomBuildup: {
+  'SpecialAttackRuten_0:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'SpecialAttackRuten_0_anomBuildup',
+    name: 'SpecialAttackRuten_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -604,13 +631,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRuten_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRuten_0',
     },
   },
-  EXSpecialAttackGekkaRuten_0_dmg: {
+  'EXSpecialAttackGekkaRuten_0:standardDmg': {
     sheet: 'Yanagi',
-    name: 'EXSpecialAttackGekkaRuten_0_dmg',
+    name: 'EXSpecialAttackGekkaRuten_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -618,13 +645,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackGekkaRuten_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackGekkaRuten_0',
     },
   },
-  EXSpecialAttackGekkaRuten_0_daze: {
+  'EXSpecialAttackGekkaRuten_0:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'EXSpecialAttackGekkaRuten_0_daze',
+    name: 'EXSpecialAttackGekkaRuten_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -632,13 +659,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackGekkaRuten_0_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackGekkaRuten_0',
     },
   },
-  EXSpecialAttackGekkaRuten_0_anomBuildup: {
+  'EXSpecialAttackGekkaRuten_0:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'EXSpecialAttackGekkaRuten_0_anomBuildup',
+    name: 'EXSpecialAttackGekkaRuten_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -646,13 +673,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackGekkaRuten_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackGekkaRuten_0',
     },
   },
-  EXSpecialAttackGekkaRuten_1_dmg: {
+  'EXSpecialAttackGekkaRuten_1:standardDmg': {
     sheet: 'Yanagi',
-    name: 'EXSpecialAttackGekkaRuten_1_dmg',
+    name: 'EXSpecialAttackGekkaRuten_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -660,13 +687,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackGekkaRuten_1_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackGekkaRuten_1',
     },
   },
-  EXSpecialAttackGekkaRuten_1_daze: {
+  'EXSpecialAttackGekkaRuten_1:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'EXSpecialAttackGekkaRuten_1_daze',
+    name: 'EXSpecialAttackGekkaRuten_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -674,13 +701,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackGekkaRuten_1_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackGekkaRuten_1',
     },
   },
-  EXSpecialAttackGekkaRuten_1_anomBuildup: {
+  'EXSpecialAttackGekkaRuten_1:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'EXSpecialAttackGekkaRuten_1_anomBuildup',
+    name: 'EXSpecialAttackGekkaRuten_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -688,13 +715,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackGekkaRuten_1_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackGekkaRuten_1',
     },
   },
-  ChainAttackCelestialHarmony_0_dmg: {
+  'ChainAttackCelestialHarmony_0:standardDmg': {
     sheet: 'Yanagi',
-    name: 'ChainAttackCelestialHarmony_0_dmg',
+    name: 'ChainAttackCelestialHarmony_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -702,13 +729,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackCelestialHarmony_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackCelestialHarmony_0',
     },
   },
-  ChainAttackCelestialHarmony_0_daze: {
+  'ChainAttackCelestialHarmony_0:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'ChainAttackCelestialHarmony_0_daze',
+    name: 'ChainAttackCelestialHarmony_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -716,13 +743,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackCelestialHarmony_0_daze',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackCelestialHarmony_0',
     },
   },
-  ChainAttackCelestialHarmony_0_anomBuildup: {
+  'ChainAttackCelestialHarmony_0:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'ChainAttackCelestialHarmony_0_anomBuildup',
+    name: 'ChainAttackCelestialHarmony_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -730,13 +757,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackCelestialHarmony_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackCelestialHarmony_0',
     },
   },
-  UltimateRaieiTenge_0_dmg: {
+  'UltimateRaieiTenge_0:standardDmg': {
     sheet: 'Yanagi',
-    name: 'UltimateRaieiTenge_0_dmg',
+    name: 'UltimateRaieiTenge_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -744,13 +771,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateRaieiTenge_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'UltimateRaieiTenge_0',
     },
   },
-  UltimateRaieiTenge_0_daze: {
+  'UltimateRaieiTenge_0:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'UltimateRaieiTenge_0_daze',
+    name: 'UltimateRaieiTenge_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -758,13 +785,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateRaieiTenge_0_daze',
+      skillType1: 'chainSkill',
+      name: 'UltimateRaieiTenge_0',
     },
   },
-  UltimateRaieiTenge_0_anomBuildup: {
+  'UltimateRaieiTenge_0:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'UltimateRaieiTenge_0_anomBuildup',
+    name: 'UltimateRaieiTenge_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -772,13 +799,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateRaieiTenge_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'UltimateRaieiTenge_0',
     },
   },
-  QuickAssistBladeOfElegance_0_dmg: {
+  'QuickAssistBladeOfElegance_0:standardDmg': {
     sheet: 'Yanagi',
-    name: 'QuickAssistBladeOfElegance_0_dmg',
+    name: 'QuickAssistBladeOfElegance_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -786,13 +813,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistBladeOfElegance_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistBladeOfElegance_0',
     },
   },
-  QuickAssistBladeOfElegance_0_daze: {
+  'QuickAssistBladeOfElegance_0:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'QuickAssistBladeOfElegance_0_daze',
+    name: 'QuickAssistBladeOfElegance_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -800,13 +827,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistBladeOfElegance_0_daze',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistBladeOfElegance_0',
     },
   },
-  QuickAssistBladeOfElegance_0_anomBuildup: {
+  'QuickAssistBladeOfElegance_0:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'QuickAssistBladeOfElegance_0_anomBuildup',
+    name: 'QuickAssistBladeOfElegance_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -814,13 +841,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistBladeOfElegance_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistBladeOfElegance_0',
     },
   },
-  DefensiveAssistRadiantReversal_0_dmg: {
+  'DefensiveAssistRadiantReversal_0:standardDmg': {
     sheet: 'Yanagi',
-    name: 'DefensiveAssistRadiantReversal_0_dmg',
+    name: 'DefensiveAssistRadiantReversal_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -828,13 +855,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistRadiantReversal_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistRadiantReversal_0',
     },
   },
-  DefensiveAssistRadiantReversal_0_daze: {
+  'DefensiveAssistRadiantReversal_0:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'DefensiveAssistRadiantReversal_0_daze',
+    name: 'DefensiveAssistRadiantReversal_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -842,13 +869,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistRadiantReversal_0_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistRadiantReversal_0',
     },
   },
-  DefensiveAssistRadiantReversal_0_anomBuildup: {
+  'DefensiveAssistRadiantReversal_0:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'DefensiveAssistRadiantReversal_0_anomBuildup',
+    name: 'DefensiveAssistRadiantReversal_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -856,13 +883,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistRadiantReversal_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistRadiantReversal_0',
     },
   },
-  DefensiveAssistRadiantReversal_1_dmg: {
+  'DefensiveAssistRadiantReversal_1:standardDmg': {
     sheet: 'Yanagi',
-    name: 'DefensiveAssistRadiantReversal_1_dmg',
+    name: 'DefensiveAssistRadiantReversal_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -870,13 +897,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistRadiantReversal_1_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistRadiantReversal_1',
     },
   },
-  DefensiveAssistRadiantReversal_1_daze: {
+  'DefensiveAssistRadiantReversal_1:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'DefensiveAssistRadiantReversal_1_daze',
+    name: 'DefensiveAssistRadiantReversal_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -884,13 +911,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistRadiantReversal_1_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistRadiantReversal_1',
     },
   },
-  DefensiveAssistRadiantReversal_1_anomBuildup: {
+  'DefensiveAssistRadiantReversal_1:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'DefensiveAssistRadiantReversal_1_anomBuildup',
+    name: 'DefensiveAssistRadiantReversal_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -898,13 +925,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistRadiantReversal_1_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistRadiantReversal_1',
     },
   },
-  DefensiveAssistRadiantReversal_2_dmg: {
+  'DefensiveAssistRadiantReversal_2:standardDmg': {
     sheet: 'Yanagi',
-    name: 'DefensiveAssistRadiantReversal_2_dmg',
+    name: 'DefensiveAssistRadiantReversal_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -912,13 +939,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistRadiantReversal_2_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistRadiantReversal_2',
     },
   },
-  DefensiveAssistRadiantReversal_2_daze: {
+  'DefensiveAssistRadiantReversal_2:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'DefensiveAssistRadiantReversal_2_daze',
+    name: 'DefensiveAssistRadiantReversal_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -926,13 +953,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistRadiantReversal_2_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistRadiantReversal_2',
     },
   },
-  DefensiveAssistRadiantReversal_2_anomBuildup: {
+  'DefensiveAssistRadiantReversal_2:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'DefensiveAssistRadiantReversal_2_anomBuildup',
+    name: 'DefensiveAssistRadiantReversal_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -940,13 +967,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistRadiantReversal_2_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistRadiantReversal_2',
     },
   },
-  AssistFollowUpWeepingWillowStab_0_dmg: {
+  'AssistFollowUpWeepingWillowStab_0:standardDmg': {
     sheet: 'Yanagi',
-    name: 'AssistFollowUpWeepingWillowStab_0_dmg',
+    name: 'AssistFollowUpWeepingWillowStab_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -954,13 +981,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpWeepingWillowStab_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpWeepingWillowStab_0',
     },
   },
-  AssistFollowUpWeepingWillowStab_0_daze: {
+  'AssistFollowUpWeepingWillowStab_0:dazeBuildup': {
     sheet: 'Yanagi',
-    name: 'AssistFollowUpWeepingWillowStab_0_daze',
+    name: 'AssistFollowUpWeepingWillowStab_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -968,13 +995,13 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpWeepingWillowStab_0_daze',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpWeepingWillowStab_0',
     },
   },
-  AssistFollowUpWeepingWillowStab_0_anomBuildup: {
+  'AssistFollowUpWeepingWillowStab_0:anomBuildup': {
     sheet: 'Yanagi',
-    name: 'AssistFollowUpWeepingWillowStab_0_anomBuildup',
+    name: 'AssistFollowUpWeepingWillowStab_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -982,8 +1009,8 @@ export const formulas = {
       sheet: 'Yanagi',
       attribute: 'electric',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpWeepingWillowStab_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpWeepingWillowStab_0',
     },
   },
 } as const

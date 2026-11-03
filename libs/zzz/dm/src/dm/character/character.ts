@@ -2,10 +2,10 @@ import { isPercentStat, objMap } from '@genshin-optimizer/common/util'
 import type { FactionKey } from '@genshin-optimizer/zzz/consts'
 import {
   type AttributeKey,
+  allCharacterKeys,
   type CharacterKey,
   type CharacterRarityKey,
-  type SpecialityKey,
-  allCharacterKeys,
+  type SpecialtyKey,
 } from '@genshin-optimizer/zzz/consts'
 import { readHakushinJSON } from '../../util'
 import type { HakushinSkillKey } from './consts'
@@ -15,8 +15,9 @@ import {
   characterRarityMap,
   coreStatMap,
   factionMap,
-  specialityMap,
+  specialtyMap,
 } from './consts'
+
 const PERCENT_SCALING = 10000
 const FLAT_SCALING = 100
 type CharacterRawData = {
@@ -167,7 +168,7 @@ export type CharacterData = {
   icon: string
   rarity: CharacterRarityKey
   attribute: AttributeKey
-  specialty: SpecialityKey
+  specialty: SpecialtyKey
   faction: FactionKey
   stats: {
     atk_base: number
@@ -211,7 +212,7 @@ export const charactersDetailedJSONData = Object.fromEntries(
         icon: raw.Icon,
         rarity: characterRarityMap[raw.Rarity],
         attribute: attributeMap[Object.keys(raw.ElementType)[0] as any],
-        specialty: specialityMap[Object.keys(raw.WeaponType)[0] as any],
+        specialty: specialtyMap[Object.keys(raw.WeaponType)[0] as any],
         faction: factionMap[Object.keys(raw.Camp)[0] as any],
         fullname,
         name: raw.Name,

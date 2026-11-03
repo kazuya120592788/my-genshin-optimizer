@@ -38,6 +38,33 @@ export const formulas = {
       name: 'disorderDmgInst_fire',
     },
   },
+  vortexDmgInst_fire: {
+    sheet: 'Evelyn',
+    name: 'vortexDmgInst_fire',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Evelyn',
+      attribute: 'fire',
+      damageType1: 'vortex',
+      name: 'vortexDmgInst_fire',
+    },
+  },
+  abloomDmgInst: {
+    sheet: 'Evelyn',
+    name: 'abloomDmgInst',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Evelyn',
+      attribute: 'fire',
+      damageType1: 'anomaly',
+      damageType2: 'abloom',
+      name: 'abloomDmgInst',
+    },
+  },
   anomalyBuildupInst: {
     sheet: 'Evelyn',
     name: 'anomalyBuildupInst',
@@ -62,9 +89,9 @@ export const formulas = {
       name: 'dazeInst',
     },
   },
-  BasicAttackRazorWire_0_dmg: {
+  'BasicAttackRazorWire_0:standardDmg': {
     sheet: 'Evelyn',
-    name: 'BasicAttackRazorWire_0_dmg',
+    name: 'BasicAttackRazorWire_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -72,13 +99,13 @@ export const formulas = {
       sheet: 'Evelyn',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackRazorWire_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackRazorWire_0',
     },
   },
-  BasicAttackRazorWire_0_daze: {
+  'BasicAttackRazorWire_0:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'BasicAttackRazorWire_0_daze',
+    name: 'BasicAttackRazorWire_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -86,13 +113,13 @@ export const formulas = {
       sheet: 'Evelyn',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackRazorWire_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackRazorWire_0',
     },
   },
-  BasicAttackRazorWire_0_anomBuildup: {
+  'BasicAttackRazorWire_0:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'BasicAttackRazorWire_0_anomBuildup',
+    name: 'BasicAttackRazorWire_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -100,13 +127,13 @@ export const formulas = {
       sheet: 'Evelyn',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackRazorWire_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackRazorWire_0',
     },
   },
-  BasicAttackRazorWire_1_dmg: {
+  'BasicAttackRazorWire_1:standardDmg': {
     sheet: 'Evelyn',
-    name: 'BasicAttackRazorWire_1_dmg',
+    name: 'BasicAttackRazorWire_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -114,13 +141,13 @@ export const formulas = {
       sheet: 'Evelyn',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackRazorWire_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackRazorWire_1',
     },
   },
-  BasicAttackRazorWire_1_daze: {
+  'BasicAttackRazorWire_1:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'BasicAttackRazorWire_1_daze',
+    name: 'BasicAttackRazorWire_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -128,13 +155,13 @@ export const formulas = {
       sheet: 'Evelyn',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackRazorWire_1_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackRazorWire_1',
     },
   },
-  BasicAttackRazorWire_1_anomBuildup: {
+  'BasicAttackRazorWire_1:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'BasicAttackRazorWire_1_anomBuildup',
+    name: 'BasicAttackRazorWire_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -142,13 +169,13 @@ export const formulas = {
       sheet: 'Evelyn',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackRazorWire_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackRazorWire_1',
     },
   },
-  BasicAttackRazorWire_2_dmg: {
+  'BasicAttackRazorWire_2:standardDmg': {
     sheet: 'Evelyn',
-    name: 'BasicAttackRazorWire_2_dmg',
+    name: 'BasicAttackRazorWire_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -156,13 +183,13 @@ export const formulas = {
       sheet: 'Evelyn',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackRazorWire_2_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackRazorWire_2',
     },
   },
-  BasicAttackRazorWire_2_daze: {
+  'BasicAttackRazorWire_2:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'BasicAttackRazorWire_2_daze',
+    name: 'BasicAttackRazorWire_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -170,13 +197,13 @@ export const formulas = {
       sheet: 'Evelyn',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackRazorWire_2_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackRazorWire_2',
     },
   },
-  BasicAttackRazorWire_2_anomBuildup: {
+  'BasicAttackRazorWire_2:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'BasicAttackRazorWire_2_anomBuildup',
+    name: 'BasicAttackRazorWire_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -184,13 +211,13 @@ export const formulas = {
       sheet: 'Evelyn',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackRazorWire_2_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackRazorWire_2',
     },
   },
-  BasicAttackRazorWire_3_dmg: {
+  'BasicAttackRazorWire_3:standardDmg': {
     sheet: 'Evelyn',
-    name: 'BasicAttackRazorWire_3_dmg',
+    name: 'BasicAttackRazorWire_3:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -198,13 +225,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackRazorWire_3_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackRazorWire_3',
     },
   },
-  BasicAttackRazorWire_3_daze: {
+  'BasicAttackRazorWire_3:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'BasicAttackRazorWire_3_daze',
+    name: 'BasicAttackRazorWire_3:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -212,13 +239,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackRazorWire_3_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackRazorWire_3',
     },
   },
-  BasicAttackRazorWire_3_anomBuildup: {
+  'BasicAttackRazorWire_3:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'BasicAttackRazorWire_3_anomBuildup',
+    name: 'BasicAttackRazorWire_3:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -226,13 +253,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackRazorWire_3_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackRazorWire_3',
     },
   },
-  BasicAttackRazorWire_4_dmg: {
+  'BasicAttackRazorWire_4:standardDmg': {
     sheet: 'Evelyn',
-    name: 'BasicAttackRazorWire_4_dmg',
+    name: 'BasicAttackRazorWire_4:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -240,13 +267,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackRazorWire_4_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackRazorWire_4',
     },
   },
-  BasicAttackRazorWire_4_daze: {
+  'BasicAttackRazorWire_4:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'BasicAttackRazorWire_4_daze',
+    name: 'BasicAttackRazorWire_4:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -254,13 +281,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackRazorWire_4_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackRazorWire_4',
     },
   },
-  BasicAttackRazorWire_4_anomBuildup: {
+  'BasicAttackRazorWire_4:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'BasicAttackRazorWire_4_anomBuildup',
+    name: 'BasicAttackRazorWire_4:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -268,13 +295,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackRazorWire_4_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackRazorWire_4',
     },
   },
-  BasicAttackGarroteFirstForm_0_dmg: {
+  'BasicAttackGarroteFirstForm_0:standardDmg': {
     sheet: 'Evelyn',
-    name: 'BasicAttackGarroteFirstForm_0_dmg',
+    name: 'BasicAttackGarroteFirstForm_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -282,13 +309,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGarroteFirstForm_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackGarroteFirstForm_0',
     },
   },
-  BasicAttackGarroteFirstForm_0_daze: {
+  'BasicAttackGarroteFirstForm_0:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'BasicAttackGarroteFirstForm_0_daze',
+    name: 'BasicAttackGarroteFirstForm_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -296,13 +323,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGarroteFirstForm_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackGarroteFirstForm_0',
     },
   },
-  BasicAttackGarroteFirstForm_0_anomBuildup: {
+  'BasicAttackGarroteFirstForm_0:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'BasicAttackGarroteFirstForm_0_anomBuildup',
+    name: 'BasicAttackGarroteFirstForm_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -310,13 +337,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGarroteFirstForm_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackGarroteFirstForm_0',
     },
   },
-  BasicAttackGarroteSecondForm_0_dmg: {
+  'BasicAttackGarroteSecondForm_0:standardDmg': {
     sheet: 'Evelyn',
-    name: 'BasicAttackGarroteSecondForm_0_dmg',
+    name: 'BasicAttackGarroteSecondForm_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -324,13 +351,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGarroteSecondForm_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackGarroteSecondForm_0',
     },
   },
-  BasicAttackGarroteSecondForm_0_daze: {
+  'BasicAttackGarroteSecondForm_0:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'BasicAttackGarroteSecondForm_0_daze',
+    name: 'BasicAttackGarroteSecondForm_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -338,13 +365,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGarroteSecondForm_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackGarroteSecondForm_0',
     },
   },
-  BasicAttackGarroteSecondForm_0_anomBuildup: {
+  'BasicAttackGarroteSecondForm_0:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'BasicAttackGarroteSecondForm_0_anomBuildup',
+    name: 'BasicAttackGarroteSecondForm_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -352,13 +379,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGarroteSecondForm_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackGarroteSecondForm_0',
     },
   },
-  DashAttackPiercingAmbush_0_dmg: {
+  'DashAttackPiercingAmbush_0:standardDmg': {
     sheet: 'Evelyn',
-    name: 'DashAttackPiercingAmbush_0_dmg',
+    name: 'DashAttackPiercingAmbush_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -366,13 +393,13 @@ export const formulas = {
       sheet: 'Evelyn',
       damageType1: 'dash',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackPiercingAmbush_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackPiercingAmbush_0',
     },
   },
-  DashAttackPiercingAmbush_0_daze: {
+  'DashAttackPiercingAmbush_0:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'DashAttackPiercingAmbush_0_daze',
+    name: 'DashAttackPiercingAmbush_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -380,13 +407,13 @@ export const formulas = {
       sheet: 'Evelyn',
       damageType1: 'dash',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackPiercingAmbush_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackPiercingAmbush_0',
     },
   },
-  DashAttackPiercingAmbush_0_anomBuildup: {
+  'DashAttackPiercingAmbush_0:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'DashAttackPiercingAmbush_0_anomBuildup',
+    name: 'DashAttackPiercingAmbush_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -394,13 +421,13 @@ export const formulas = {
       sheet: 'Evelyn',
       damageType1: 'dash',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackPiercingAmbush_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackPiercingAmbush_0',
     },
   },
-  DodgeCounterStranglingReversal_0_dmg: {
+  'DodgeCounterStranglingReversal_0:standardDmg': {
     sheet: 'Evelyn',
-    name: 'DodgeCounterStranglingReversal_0_dmg',
+    name: 'DodgeCounterStranglingReversal_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -408,13 +435,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterStranglingReversal_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterStranglingReversal_0',
     },
   },
-  DodgeCounterStranglingReversal_0_daze: {
+  'DodgeCounterStranglingReversal_0:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'DodgeCounterStranglingReversal_0_daze',
+    name: 'DodgeCounterStranglingReversal_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -422,13 +449,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterStranglingReversal_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterStranglingReversal_0',
     },
   },
-  DodgeCounterStranglingReversal_0_anomBuildup: {
+  'DodgeCounterStranglingReversal_0:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'DodgeCounterStranglingReversal_0_anomBuildup',
+    name: 'DodgeCounterStranglingReversal_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -436,13 +463,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterStranglingReversal_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterStranglingReversal_0',
     },
   },
-  SpecialAttackLockedPosition_0_dmg: {
+  'SpecialAttackLockedPosition_0:standardDmg': {
     sheet: 'Evelyn',
-    name: 'SpecialAttackLockedPosition_0_dmg',
+    name: 'SpecialAttackLockedPosition_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -450,13 +477,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackLockedPosition_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackLockedPosition_0',
     },
   },
-  SpecialAttackLockedPosition_0_daze: {
+  'SpecialAttackLockedPosition_0:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'SpecialAttackLockedPosition_0_daze',
+    name: 'SpecialAttackLockedPosition_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -464,13 +491,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackLockedPosition_0_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackLockedPosition_0',
     },
   },
-  SpecialAttackLockedPosition_0_anomBuildup: {
+  'SpecialAttackLockedPosition_0:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'SpecialAttackLockedPosition_0_anomBuildup',
+    name: 'SpecialAttackLockedPosition_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -478,13 +505,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackLockedPosition_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackLockedPosition_0',
     },
   },
-  SpecialAttackBindingSunderFirstForm_0_dmg: {
+  'SpecialAttackBindingSunderFirstForm_0:standardDmg': {
     sheet: 'Evelyn',
-    name: 'SpecialAttackBindingSunderFirstForm_0_dmg',
+    name: 'SpecialAttackBindingSunderFirstForm_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -492,13 +519,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackBindingSunderFirstForm_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackBindingSunderFirstForm_0',
     },
   },
-  SpecialAttackBindingSunderFirstForm_0_daze: {
+  'SpecialAttackBindingSunderFirstForm_0:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'SpecialAttackBindingSunderFirstForm_0_daze',
+    name: 'SpecialAttackBindingSunderFirstForm_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -506,13 +533,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackBindingSunderFirstForm_0_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackBindingSunderFirstForm_0',
     },
   },
-  SpecialAttackBindingSunderFirstForm_0_anomBuildup: {
+  'SpecialAttackBindingSunderFirstForm_0:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'SpecialAttackBindingSunderFirstForm_0_anomBuildup',
+    name: 'SpecialAttackBindingSunderFirstForm_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -520,13 +547,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackBindingSunderFirstForm_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackBindingSunderFirstForm_0',
     },
   },
-  SpecialAttackBindingSunderFirstForm_1_dmg: {
+  'SpecialAttackBindingSunderFirstForm_1:standardDmg': {
     sheet: 'Evelyn',
-    name: 'SpecialAttackBindingSunderFirstForm_1_dmg',
+    name: 'SpecialAttackBindingSunderFirstForm_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -534,13 +561,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackBindingSunderFirstForm_1_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackBindingSunderFirstForm_1',
     },
   },
-  SpecialAttackBindingSunderFirstForm_1_daze: {
+  'SpecialAttackBindingSunderFirstForm_1:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'SpecialAttackBindingSunderFirstForm_1_daze',
+    name: 'SpecialAttackBindingSunderFirstForm_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -548,13 +575,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackBindingSunderFirstForm_1_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackBindingSunderFirstForm_1',
     },
   },
-  SpecialAttackBindingSunderFirstForm_1_anomBuildup: {
+  'SpecialAttackBindingSunderFirstForm_1:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'SpecialAttackBindingSunderFirstForm_1_anomBuildup',
+    name: 'SpecialAttackBindingSunderFirstForm_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -562,13 +589,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackBindingSunderFirstForm_1_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackBindingSunderFirstForm_1',
     },
   },
-  EXSpecialAttackBindingSunderFinalForm_0_dmg: {
+  'EXSpecialAttackBindingSunderFinalForm_0:standardDmg': {
     sheet: 'Evelyn',
-    name: 'EXSpecialAttackBindingSunderFinalForm_0_dmg',
+    name: 'EXSpecialAttackBindingSunderFinalForm_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -576,13 +603,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackBindingSunderFinalForm_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackBindingSunderFinalForm_0',
     },
   },
-  EXSpecialAttackBindingSunderFinalForm_0_daze: {
+  'EXSpecialAttackBindingSunderFinalForm_0:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'EXSpecialAttackBindingSunderFinalForm_0_daze',
+    name: 'EXSpecialAttackBindingSunderFinalForm_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -590,13 +617,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackBindingSunderFinalForm_0_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackBindingSunderFinalForm_0',
     },
   },
-  EXSpecialAttackBindingSunderFinalForm_0_anomBuildup: {
+  'EXSpecialAttackBindingSunderFinalForm_0:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'EXSpecialAttackBindingSunderFinalForm_0_anomBuildup',
+    name: 'EXSpecialAttackBindingSunderFinalForm_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -604,13 +631,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackBindingSunderFinalForm_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackBindingSunderFinalForm_0',
     },
   },
-  EXSpecialAttackBindingSunderFinalForm_1_dmg: {
+  'EXSpecialAttackBindingSunderFinalForm_1:standardDmg': {
     sheet: 'Evelyn',
-    name: 'EXSpecialAttackBindingSunderFinalForm_1_dmg',
+    name: 'EXSpecialAttackBindingSunderFinalForm_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -618,13 +645,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackBindingSunderFinalForm_1_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackBindingSunderFinalForm_1',
     },
   },
-  EXSpecialAttackBindingSunderFinalForm_1_daze: {
+  'EXSpecialAttackBindingSunderFinalForm_1:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'EXSpecialAttackBindingSunderFinalForm_1_daze',
+    name: 'EXSpecialAttackBindingSunderFinalForm_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -632,13 +659,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackBindingSunderFinalForm_1_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackBindingSunderFinalForm_1',
     },
   },
-  EXSpecialAttackBindingSunderFinalForm_1_anomBuildup: {
+  'EXSpecialAttackBindingSunderFinalForm_1:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'EXSpecialAttackBindingSunderFinalForm_1_anomBuildup',
+    name: 'EXSpecialAttackBindingSunderFinalForm_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -646,13 +673,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackBindingSunderFinalForm_1_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackBindingSunderFinalForm_1',
     },
   },
-  ChainAttackLunaluxSnare_0_dmg: {
+  'ChainAttackLunaluxSnare_0:standardDmg': {
     sheet: 'Evelyn',
-    name: 'ChainAttackLunaluxSnare_0_dmg',
+    name: 'ChainAttackLunaluxSnare_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -660,13 +687,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackLunaluxSnare_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackLunaluxSnare_0',
     },
   },
-  ChainAttackLunaluxSnare_0_daze: {
+  'ChainAttackLunaluxSnare_0:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'ChainAttackLunaluxSnare_0_daze',
+    name: 'ChainAttackLunaluxSnare_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -674,13 +701,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackLunaluxSnare_0_daze',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackLunaluxSnare_0',
     },
   },
-  ChainAttackLunaluxSnare_0_anomBuildup: {
+  'ChainAttackLunaluxSnare_0:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'ChainAttackLunaluxSnare_0_anomBuildup',
+    name: 'ChainAttackLunaluxSnare_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -688,13 +715,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackLunaluxSnare_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackLunaluxSnare_0',
     },
   },
-  UltimateLunaluxGarroteTimbre_0_dmg: {
+  'UltimateLunaluxGarroteTimbre_0:standardDmg': {
     sheet: 'Evelyn',
-    name: 'UltimateLunaluxGarroteTimbre_0_dmg',
+    name: 'UltimateLunaluxGarroteTimbre_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -702,13 +729,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateLunaluxGarroteTimbre_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'UltimateLunaluxGarroteTimbre_0',
     },
   },
-  UltimateLunaluxGarroteTimbre_0_daze: {
+  'UltimateLunaluxGarroteTimbre_0:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'UltimateLunaluxGarroteTimbre_0_daze',
+    name: 'UltimateLunaluxGarroteTimbre_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -716,13 +743,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateLunaluxGarroteTimbre_0_daze',
+      skillType1: 'chainSkill',
+      name: 'UltimateLunaluxGarroteTimbre_0',
     },
   },
-  UltimateLunaluxGarroteTimbre_0_anomBuildup: {
+  'UltimateLunaluxGarroteTimbre_0:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'UltimateLunaluxGarroteTimbre_0_anomBuildup',
+    name: 'UltimateLunaluxGarroteTimbre_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -730,13 +757,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateLunaluxGarroteTimbre_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'UltimateLunaluxGarroteTimbre_0',
     },
   },
-  UltimateLunaluxGarroteShadow_0_dmg: {
+  'UltimateLunaluxGarroteShadow_0:standardDmg': {
     sheet: 'Evelyn',
-    name: 'UltimateLunaluxGarroteShadow_0_dmg',
+    name: 'UltimateLunaluxGarroteShadow_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -744,13 +771,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateLunaluxGarroteShadow_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'UltimateLunaluxGarroteShadow_0',
     },
   },
-  UltimateLunaluxGarroteShadow_0_daze: {
+  'UltimateLunaluxGarroteShadow_0:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'UltimateLunaluxGarroteShadow_0_daze',
+    name: 'UltimateLunaluxGarroteShadow_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -758,13 +785,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateLunaluxGarroteShadow_0_daze',
+      skillType1: 'chainSkill',
+      name: 'UltimateLunaluxGarroteShadow_0',
     },
   },
-  UltimateLunaluxGarroteShadow_0_anomBuildup: {
+  'UltimateLunaluxGarroteShadow_0:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'UltimateLunaluxGarroteShadow_0_anomBuildup',
+    name: 'UltimateLunaluxGarroteShadow_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -772,13 +799,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateLunaluxGarroteShadow_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'UltimateLunaluxGarroteShadow_0',
     },
   },
-  QuickAssistFierceBlade_0_dmg: {
+  'QuickAssistFierceBlade_0:standardDmg': {
     sheet: 'Evelyn',
-    name: 'QuickAssistFierceBlade_0_dmg',
+    name: 'QuickAssistFierceBlade_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -786,13 +813,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistFierceBlade_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistFierceBlade_0',
     },
   },
-  QuickAssistFierceBlade_0_daze: {
+  'QuickAssistFierceBlade_0:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'QuickAssistFierceBlade_0_daze',
+    name: 'QuickAssistFierceBlade_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -800,13 +827,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistFierceBlade_0_daze',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistFierceBlade_0',
     },
   },
-  QuickAssistFierceBlade_0_anomBuildup: {
+  'QuickAssistFierceBlade_0:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'QuickAssistFierceBlade_0_anomBuildup',
+    name: 'QuickAssistFierceBlade_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -814,13 +841,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistFierceBlade_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistFierceBlade_0',
     },
   },
-  DefensiveAssistSilentProtection_0_dmg: {
+  'DefensiveAssistSilentProtection_0:standardDmg': {
     sheet: 'Evelyn',
-    name: 'DefensiveAssistSilentProtection_0_dmg',
+    name: 'DefensiveAssistSilentProtection_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -828,13 +855,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSilentProtection_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSilentProtection_0',
     },
   },
-  DefensiveAssistSilentProtection_0_daze: {
+  'DefensiveAssistSilentProtection_0:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'DefensiveAssistSilentProtection_0_daze',
+    name: 'DefensiveAssistSilentProtection_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -842,13 +869,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSilentProtection_0_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSilentProtection_0',
     },
   },
-  DefensiveAssistSilentProtection_0_anomBuildup: {
+  'DefensiveAssistSilentProtection_0:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'DefensiveAssistSilentProtection_0_anomBuildup',
+    name: 'DefensiveAssistSilentProtection_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -856,13 +883,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSilentProtection_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSilentProtection_0',
     },
   },
-  DefensiveAssistSilentProtection_1_dmg: {
+  'DefensiveAssistSilentProtection_1:standardDmg': {
     sheet: 'Evelyn',
-    name: 'DefensiveAssistSilentProtection_1_dmg',
+    name: 'DefensiveAssistSilentProtection_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -870,13 +897,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSilentProtection_1_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSilentProtection_1',
     },
   },
-  DefensiveAssistSilentProtection_1_daze: {
+  'DefensiveAssistSilentProtection_1:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'DefensiveAssistSilentProtection_1_daze',
+    name: 'DefensiveAssistSilentProtection_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -884,13 +911,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSilentProtection_1_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSilentProtection_1',
     },
   },
-  DefensiveAssistSilentProtection_1_anomBuildup: {
+  'DefensiveAssistSilentProtection_1:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'DefensiveAssistSilentProtection_1_anomBuildup',
+    name: 'DefensiveAssistSilentProtection_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -898,13 +925,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSilentProtection_1_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSilentProtection_1',
     },
   },
-  DefensiveAssistSilentProtection_2_dmg: {
+  'DefensiveAssistSilentProtection_2:standardDmg': {
     sheet: 'Evelyn',
-    name: 'DefensiveAssistSilentProtection_2_dmg',
+    name: 'DefensiveAssistSilentProtection_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -912,13 +939,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSilentProtection_2_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSilentProtection_2',
     },
   },
-  DefensiveAssistSilentProtection_2_daze: {
+  'DefensiveAssistSilentProtection_2:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'DefensiveAssistSilentProtection_2_daze',
+    name: 'DefensiveAssistSilentProtection_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -926,13 +953,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSilentProtection_2_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSilentProtection_2',
     },
   },
-  DefensiveAssistSilentProtection_2_anomBuildup: {
+  'DefensiveAssistSilentProtection_2:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'DefensiveAssistSilentProtection_2_anomBuildup',
+    name: 'DefensiveAssistSilentProtection_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -940,13 +967,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSilentProtection_2_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSilentProtection_2',
     },
   },
-  AssistFollowUpCourseDisruption_0_dmg: {
+  'AssistFollowUpCourseDisruption_0:standardDmg': {
     sheet: 'Evelyn',
-    name: 'AssistFollowUpCourseDisruption_0_dmg',
+    name: 'AssistFollowUpCourseDisruption_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -954,13 +981,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpCourseDisruption_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpCourseDisruption_0',
     },
   },
-  AssistFollowUpCourseDisruption_0_daze: {
+  'AssistFollowUpCourseDisruption_0:dazeBuildup': {
     sheet: 'Evelyn',
-    name: 'AssistFollowUpCourseDisruption_0_daze',
+    name: 'AssistFollowUpCourseDisruption_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -968,13 +995,13 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpCourseDisruption_0_daze',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpCourseDisruption_0',
     },
   },
-  AssistFollowUpCourseDisruption_0_anomBuildup: {
+  'AssistFollowUpCourseDisruption_0:anomBuildup': {
     sheet: 'Evelyn',
-    name: 'AssistFollowUpCourseDisruption_0_anomBuildup',
+    name: 'AssistFollowUpCourseDisruption_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -982,8 +1009,8 @@ export const formulas = {
       sheet: 'Evelyn',
       attribute: 'fire',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpCourseDisruption_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpCourseDisruption_0',
     },
   },
   m4_shield: {
@@ -1006,7 +1033,7 @@ export const formulas = {
       q: 'standardDmg',
       sheet: 'Evelyn',
       attribute: 'fire',
-      skillType: 'chainSkill',
+      skillType1: 'chainSkill',
       name: 'm6_follow_up_dmg_',
     },
   },

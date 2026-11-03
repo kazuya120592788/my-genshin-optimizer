@@ -2,7 +2,6 @@ import {
   Read as BaseRead,
   type Tag as BaseTag,
   reader as baseReader,
-  entryTypes,
   presets,
   setReader,
 } from '@genshin-optimizer/game-opt/engine'
@@ -11,6 +10,7 @@ import type {
   Attribute,
   DamageType,
   Dst,
+  EntryType,
   Faction,
   SkillType,
   Specialty,
@@ -18,11 +18,12 @@ import type {
   TagMapNodeEntry,
 } from '.'
 import {
-  type Sheet,
   attributes,
   damageTypes,
+  entryTypes,
   factions,
   members,
+  type Sheet,
   sheets,
   skillTypes,
   specialties,
@@ -36,7 +37,8 @@ export const fixedTags = {
   sheet: sheets,
 
   attribute: attributes,
-  skillType: skillTypes,
+  skillType1: skillTypes,
+  skillType2: skillTypes,
   damageType1: damageTypes,
   damageType2: damageTypes,
 
@@ -44,9 +46,10 @@ export const fixedTags = {
   specialty: specialties,
   faction: factions,
 }
-export interface Tag extends BaseTag<Sheet, Src, Dst> {
+export interface Tag extends BaseTag<Sheet, Src, Dst, EntryType> {
   attribute?: Attribute | null
-  skillType?: SkillType | null
+  skillType1?: SkillType | null
+  skillType2?: SkillType | null
   damageType1?: DamageType | null
   damageType2?: DamageType | null
 
@@ -63,7 +66,8 @@ export class Read extends BaseRead<Tag> {
       !force &&
       this.tag.q === 'dmg_' &&
       !this.tag.attribute &&
-      !this.tag.skillType &&
+      !this.tag.skillType1 &&
+      !this.tag.skillType2 &&
       !this.tag.damageType1 &&
       !this.tag.damageType2
     ) {
@@ -79,6 +83,13 @@ export class Read extends BaseRead<Tag> {
     val: number | string | AnyNode
   ): TagMapNodeEntry[] {
     return this[dmgType].map((r) => r.add(val))
+  }
+
+  addWithSkillType(
+    skillType: SkillType,
+    val: number | string | AnyNode
+  ): TagMapNodeEntry[] {
+    return this[skillType].map((r) => r.add(val))
   }
 
   override toString(): string {
@@ -103,22 +114,43 @@ export class Read extends BaseRead<Tag> {
   get ether(): Read {
     return super.with('attribute', 'ether')
   }
+  get wind(): Read {
+    return super.with('attribute', 'wind')
+  }
+  get lumiflux(): Read {
+    return super.with('attribute', 'lumiflux')
+  }
 
   // Skill type
-  get basicSkill(): Read {
-    return super.with('skillType', 'basicSkill')
+  get basicSkill(): Read[] {
+    return [
+      super.with('skillType1', 'basicSkill'),
+      super.with('skillType2', 'basicSkill'),
+    ]
   }
-  get dodgeSkill(): Read {
-    return super.with('skillType', 'dodgeSkill')
+  get dodgeSkill(): Read[] {
+    return [
+      super.with('skillType1', 'dodgeSkill'),
+      super.with('skillType2', 'dodgeSkill'),
+    ]
   }
-  get specialSkill(): Read {
-    return super.with('skillType', 'specialSkill')
+  get specialSkill(): Read[] {
+    return [
+      super.with('skillType1', 'specialSkill'),
+      super.with('skillType2', 'specialSkill'),
+    ]
   }
-  get chainSkill(): Read {
-    return super.with('skillType', 'chainSkill')
+  get chainSkill(): Read[] {
+    return [
+      super.with('skillType1', 'chainSkill'),
+      super.with('skillType2', 'chainSkill'),
+    ]
   }
-  get assistSkill(): Read {
-    return super.with('skillType', 'assistSkill')
+  get assistSkill(): Read[] {
+    return [
+      super.with('skillType1', 'assistSkill'),
+      super.with('skillType2', 'assistSkill'),
+    ]
   }
 
   // Damage type
@@ -185,6 +217,12 @@ export class Read extends BaseRead<Tag> {
       super.with('damageType2', 'evasiveAssist'),
     ]
   }
+  get counterAssist(): Read[] {
+    return [
+      super.with('damageType1', 'counterAssist'),
+      super.with('damageType2', 'counterAssist'),
+    ]
+  }
   get assistFollowUp(): Read[] {
     return [
       super.with('damageType1', 'assistFollowUp'),
@@ -219,6 +257,30 @@ export class Read extends BaseRead<Tag> {
     return [
       super.with('damageType1', 'sheer'),
       super.with('damageType2', 'sheer'),
+    ]
+  }
+  get abloom(): Read[] {
+    return [
+      super.with('damageType1', 'abloom'),
+      super.with('damageType2', 'abloom'),
+    ]
+  }
+  get vortex(): Read[] {
+    return [
+      super.with('damageType1', 'vortex'),
+      super.with('damageType2', 'vortex'),
+    ]
+  }
+  get sharp(): Read[] {
+    return [
+      super.with('damageType1', 'sharp'),
+      super.with('damageType2', 'sharp'),
+    ]
+  }
+  get maim(): Read[] {
+    return [
+      super.with('damageType1', 'maim'),
+      super.with('damageType2', 'maim'),
     ]
   }
 
@@ -261,7 +323,7 @@ export function tagStr(tag: Tag, ex?: any): string {
     includedBar = false
   function required(str: string | undefined | null, name: string) {
     if (!str && str !== null) return
-    result += str === null ? `!${name} ` : str + ' '
+    result += str === null ? `!${name} ` : `${str} `
     includedRequired = true
   }
   function optional(str: string | undefined | null, name: string) {
@@ -270,7 +332,7 @@ export function tagStr(tag: Tag, ex?: any): string {
       includedBar = true
       result += '| '
     }
-    result += str === null ? `!${name} ` : str + ' '
+    result += str === null ? `!${name} ` : `${str} `
   }
   required(name && `#${name}`, 'name')
   required(preset, 'preset')
@@ -289,5 +351,5 @@ export function tagStr(tag: Tag, ex?: any): string {
   optional(faction, 'fac')
   if (ex) result += `[${ex}] `
   if (Object.keys(remaining).length) result += `${JSON.stringify(remaining)} `
-  return result + '}'
+  return `${result}}`
 }

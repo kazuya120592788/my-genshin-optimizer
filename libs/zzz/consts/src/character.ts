@@ -11,6 +11,7 @@ export const allCharacterKeys = [
   'Burnice',
   'Caesar',
   'Cissia',
+  'Claret',
   'Corin',
   'Dialyn',
   'Ellen',
@@ -30,19 +31,27 @@ export const allCharacterKeys = [
   'NangongYu',
   'Nekomata',
   'Nicole',
+  'Norma',
   'OrphieMagus',
   'PanYinhu',
   'Piper',
+  'Promeia',
   'Pulchra',
+  'Pyrois',
   'Qingyi',
+  'Remielle',
   'Rina',
+  'Roxy',
   'Seed',
   'Seth',
+  'Sigrid',
   'Soldier0Anby',
   'Soldier11',
   'Soukaku',
+  'StarlightBilly',
   'Sunna',
   'Trigger',
+  'Velina',
   'Vivian',
   'Yanagi',
   'YeShunguang',
@@ -57,15 +66,16 @@ export type CharacterKey = (typeof allCharacterKeys)[number]
 export const allLocationKeys = [...allCharacterKeys, ''] as const
 export type LocationKey = (typeof allLocationKeys)[number]
 
-export const allSpecialityKeys = [
+export const allSpecialtyKeys = [
   'attack',
   'stun',
   'anomaly',
   'support',
   'defense',
   'rupture',
+  'armorer',
 ] as const
-export type SpecialityKey = (typeof allSpecialityKeys)[number]
+export type SpecialtyKey = (typeof allSpecialtyKeys)[number]
 
 export const allFactionKeys = [
   'RandomPlay',
@@ -82,6 +92,9 @@ export const allFactionKeys = [
   'SpookShack',
   'KrampusComplianceAuthority',
   'AngelsOfDelusion',
+  'RoscaeliferExternalStrategyDepartment',
+  'Phaethon',
+  'CovenantOfDayat',
 ] as const
 export type FactionKey = (typeof allFactionKeys)[number]
 

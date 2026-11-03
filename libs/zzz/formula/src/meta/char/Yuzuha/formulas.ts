@@ -38,6 +38,33 @@ export const formulas = {
       name: 'disorderDmgInst_physical',
     },
   },
+  vortexDmgInst_physical: {
+    sheet: 'Yuzuha',
+    name: 'vortexDmgInst_physical',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Yuzuha',
+      attribute: 'physical',
+      damageType1: 'vortex',
+      name: 'vortexDmgInst_physical',
+    },
+  },
+  abloomDmgInst: {
+    sheet: 'Yuzuha',
+    name: 'abloomDmgInst',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Yuzuha',
+      attribute: 'physical',
+      damageType1: 'anomaly',
+      damageType2: 'abloom',
+      name: 'abloomDmgInst',
+    },
+  },
   anomalyBuildupInst: {
     sheet: 'Yuzuha',
     name: 'anomalyBuildupInst',
@@ -62,9 +89,9 @@ export const formulas = {
       name: 'dazeInst',
     },
   },
-  BasicAttackTanukiClaws_0_dmg: {
+  'BasicAttackTanukiClaws_0:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiClaws_0_dmg',
+    name: 'BasicAttackTanukiClaws_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -72,13 +99,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiClaws_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiClaws_0',
     },
   },
-  BasicAttackTanukiClaws_0_daze: {
+  'BasicAttackTanukiClaws_0:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiClaws_0_daze',
+    name: 'BasicAttackTanukiClaws_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -86,13 +113,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiClaws_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiClaws_0',
     },
   },
-  BasicAttackTanukiClaws_0_anomBuildup: {
+  'BasicAttackTanukiClaws_0:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiClaws_0_anomBuildup',
+    name: 'BasicAttackTanukiClaws_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -100,13 +127,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiClaws_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiClaws_0',
     },
   },
-  BasicAttackTanukiClaws_1_dmg: {
+  'BasicAttackTanukiClaws_1:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiClaws_1_dmg',
+    name: 'BasicAttackTanukiClaws_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -114,13 +141,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiClaws_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiClaws_1',
     },
   },
-  BasicAttackTanukiClaws_1_daze: {
+  'BasicAttackTanukiClaws_1:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiClaws_1_daze',
+    name: 'BasicAttackTanukiClaws_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -128,13 +155,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiClaws_1_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiClaws_1',
     },
   },
-  BasicAttackTanukiClaws_1_anomBuildup: {
+  'BasicAttackTanukiClaws_1:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiClaws_1_anomBuildup',
+    name: 'BasicAttackTanukiClaws_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -142,13 +169,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiClaws_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiClaws_1',
     },
   },
-  BasicAttackTanukiClaws_2_dmg: {
+  'BasicAttackTanukiClaws_2:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiClaws_2_dmg',
+    name: 'BasicAttackTanukiClaws_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -156,13 +183,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiClaws_2_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiClaws_2',
     },
   },
-  BasicAttackTanukiClaws_2_daze: {
+  'BasicAttackTanukiClaws_2:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiClaws_2_daze',
+    name: 'BasicAttackTanukiClaws_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -170,13 +197,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiClaws_2_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiClaws_2',
     },
   },
-  BasicAttackTanukiClaws_2_anomBuildup: {
+  'BasicAttackTanukiClaws_2:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiClaws_2_anomBuildup',
+    name: 'BasicAttackTanukiClaws_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -184,13 +211,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiClaws_2_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiClaws_2',
     },
   },
-  BasicAttackTanukiClaws_3_dmg: {
+  'BasicAttackTanukiClaws_3:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiClaws_3_dmg',
+    name: 'BasicAttackTanukiClaws_3:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -198,13 +225,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiClaws_3_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiClaws_3',
     },
   },
-  BasicAttackTanukiClaws_3_daze: {
+  'BasicAttackTanukiClaws_3:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiClaws_3_daze',
+    name: 'BasicAttackTanukiClaws_3:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -212,13 +239,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiClaws_3_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiClaws_3',
     },
   },
-  BasicAttackTanukiClaws_3_anomBuildup: {
+  'BasicAttackTanukiClaws_3:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiClaws_3_anomBuildup',
+    name: 'BasicAttackTanukiClaws_3:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -226,13 +253,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiClaws_3_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiClaws_3',
     },
   },
-  BasicAttackTanukiClaws_4_dmg: {
+  'BasicAttackTanukiClaws_4:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiClaws_4_dmg',
+    name: 'BasicAttackTanukiClaws_4:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -240,13 +267,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiClaws_4_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiClaws_4',
     },
   },
-  BasicAttackTanukiClaws_4_daze: {
+  'BasicAttackTanukiClaws_4:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiClaws_4_daze',
+    name: 'BasicAttackTanukiClaws_4:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -254,13 +281,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiClaws_4_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiClaws_4',
     },
   },
-  BasicAttackTanukiClaws_4_anomBuildup: {
+  'BasicAttackTanukiClaws_4:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiClaws_4_anomBuildup',
+    name: 'BasicAttackTanukiClaws_4:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -268,13 +295,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiClaws_4_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiClaws_4',
     },
   },
-  BasicAttackTanukiCloak_0_dmg: {
+  'BasicAttackTanukiCloak_0:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiCloak_0_dmg',
+    name: 'BasicAttackTanukiCloak_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -282,13 +309,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiCloak_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiCloak_0',
     },
   },
-  BasicAttackTanukiCloak_0_daze: {
+  'BasicAttackTanukiCloak_0:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiCloak_0_daze',
+    name: 'BasicAttackTanukiCloak_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -296,13 +323,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiCloak_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiCloak_0',
     },
   },
-  BasicAttackTanukiCloak_0_anomBuildup: {
+  'BasicAttackTanukiCloak_0:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiCloak_0_anomBuildup',
+    name: 'BasicAttackTanukiCloak_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -310,13 +337,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiCloak_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiCloak_0',
     },
   },
-  BasicAttackHardCandyShot_0_dmg: {
+  'BasicAttackHardCandyShot_0:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackHardCandyShot_0_dmg',
+    name: 'BasicAttackHardCandyShot_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -325,13 +352,13 @@ export const formulas = {
       damageType1: 'basic',
       damageType2: 'aftershock',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackHardCandyShot_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackHardCandyShot_0',
     },
   },
-  BasicAttackHardCandyShot_0_daze: {
+  'BasicAttackHardCandyShot_0:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackHardCandyShot_0_daze',
+    name: 'BasicAttackHardCandyShot_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -340,13 +367,13 @@ export const formulas = {
       damageType1: 'basic',
       damageType2: 'aftershock',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackHardCandyShot_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackHardCandyShot_0',
     },
   },
-  BasicAttackHardCandyShot_0_anomBuildup: {
+  'BasicAttackHardCandyShot_0:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackHardCandyShot_0_anomBuildup',
+    name: 'BasicAttackHardCandyShot_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -355,13 +382,13 @@ export const formulas = {
       damageType1: 'basic',
       damageType2: 'aftershock',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackHardCandyShot_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackHardCandyShot_0',
     },
   },
-  BasicAttackSugarburstSparkles_0_dmg: {
+  'BasicAttackSugarburstSparkles_0:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackSugarburstSparkles_0_dmg',
+    name: 'BasicAttackSugarburstSparkles_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -369,13 +396,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSugarburstSparkles_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSugarburstSparkles_0',
     },
   },
-  BasicAttackSugarburstSparkles_0_daze: {
+  'BasicAttackSugarburstSparkles_0:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackSugarburstSparkles_0_daze',
+    name: 'BasicAttackSugarburstSparkles_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -383,13 +410,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSugarburstSparkles_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSugarburstSparkles_0',
     },
   },
-  BasicAttackSugarburstSparkles_0_anomBuildup: {
+  'BasicAttackSugarburstSparkles_0:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackSugarburstSparkles_0_anomBuildup',
+    name: 'BasicAttackSugarburstSparkles_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -397,13 +424,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSugarburstSparkles_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSugarburstSparkles_0',
     },
   },
-  BasicAttackSugarburstSparklesMax_0_dmg: {
+  'BasicAttackSugarburstSparklesMax_0:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackSugarburstSparklesMax_0_dmg',
+    name: 'BasicAttackSugarburstSparklesMax_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -411,13 +438,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSugarburstSparklesMax_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSugarburstSparklesMax_0',
     },
   },
-  BasicAttackSugarburstSparklesMax_0_daze: {
+  'BasicAttackSugarburstSparklesMax_0:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackSugarburstSparklesMax_0_daze',
+    name: 'BasicAttackSugarburstSparklesMax_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -425,13 +452,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSugarburstSparklesMax_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSugarburstSparklesMax_0',
     },
   },
-  BasicAttackSugarburstSparklesMax_0_anomBuildup: {
+  'BasicAttackSugarburstSparklesMax_0:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackSugarburstSparklesMax_0_anomBuildup',
+    name: 'BasicAttackSugarburstSparklesMax_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -439,13 +466,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSugarburstSparklesMax_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSugarburstSparklesMax_0',
     },
   },
-  BasicAttackTanukiHelper_0_dmg: {
+  'BasicAttackTanukiHelper_0:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiHelper_0_dmg',
+    name: 'BasicAttackTanukiHelper_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -453,13 +480,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiHelper_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiHelper_0',
     },
   },
-  BasicAttackTanukiHelper_0_daze: {
+  'BasicAttackTanukiHelper_0:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiHelper_0_daze',
+    name: 'BasicAttackTanukiHelper_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -467,13 +494,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiHelper_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiHelper_0',
     },
   },
-  BasicAttackTanukiHelper_0_anomBuildup: {
+  'BasicAttackTanukiHelper_0:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiHelper_0_anomBuildup',
+    name: 'BasicAttackTanukiHelper_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -481,13 +508,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiHelper_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiHelper_0',
     },
   },
-  BasicAttackTanukiHelper_1_dmg: {
+  'BasicAttackTanukiHelper_1:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiHelper_1_dmg',
+    name: 'BasicAttackTanukiHelper_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -495,13 +522,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiHelper_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiHelper_1',
     },
   },
-  BasicAttackTanukiHelper_1_daze: {
+  'BasicAttackTanukiHelper_1:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiHelper_1_daze',
+    name: 'BasicAttackTanukiHelper_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -509,13 +536,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiHelper_1_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiHelper_1',
     },
   },
-  BasicAttackTanukiHelper_1_anomBuildup: {
+  'BasicAttackTanukiHelper_1:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'BasicAttackTanukiHelper_1_anomBuildup',
+    name: 'BasicAttackTanukiHelper_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -523,13 +550,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackTanukiHelper_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackTanukiHelper_1',
     },
   },
-  DashAttackYoureOuttaLuck_0_dmg: {
+  'DashAttackYoureOuttaLuck_0:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'DashAttackYoureOuttaLuck_0_dmg',
+    name: 'DashAttackYoureOuttaLuck_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -537,13 +564,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackYoureOuttaLuck_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackYoureOuttaLuck_0',
     },
   },
-  DashAttackYoureOuttaLuck_0_daze: {
+  'DashAttackYoureOuttaLuck_0:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'DashAttackYoureOuttaLuck_0_daze',
+    name: 'DashAttackYoureOuttaLuck_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -551,13 +578,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackYoureOuttaLuck_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackYoureOuttaLuck_0',
     },
   },
-  DashAttackYoureOuttaLuck_0_anomBuildup: {
+  'DashAttackYoureOuttaLuck_0:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'DashAttackYoureOuttaLuck_0_anomBuildup',
+    name: 'DashAttackYoureOuttaLuck_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -565,13 +592,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackYoureOuttaLuck_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackYoureOuttaLuck_0',
     },
   },
-  DodgeCounterTimeForPayback_0_dmg: {
+  'DodgeCounterTimeForPayback_0:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'DodgeCounterTimeForPayback_0_dmg',
+    name: 'DodgeCounterTimeForPayback_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -579,13 +606,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterTimeForPayback_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterTimeForPayback_0',
     },
   },
-  DodgeCounterTimeForPayback_0_daze: {
+  'DodgeCounterTimeForPayback_0:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'DodgeCounterTimeForPayback_0_daze',
+    name: 'DodgeCounterTimeForPayback_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -593,13 +620,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterTimeForPayback_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterTimeForPayback_0',
     },
   },
-  DodgeCounterTimeForPayback_0_anomBuildup: {
+  'DodgeCounterTimeForPayback_0:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'DodgeCounterTimeForPayback_0_anomBuildup',
+    name: 'DodgeCounterTimeForPayback_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -607,13 +634,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterTimeForPayback_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterTimeForPayback_0',
     },
   },
-  SpecialAttackGummyBombardment_0_dmg: {
+  'SpecialAttackGummyBombardment_0:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'SpecialAttackGummyBombardment_0_dmg',
+    name: 'SpecialAttackGummyBombardment_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -621,13 +648,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackGummyBombardment_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackGummyBombardment_0',
     },
   },
-  SpecialAttackGummyBombardment_0_daze: {
+  'SpecialAttackGummyBombardment_0:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'SpecialAttackGummyBombardment_0_daze',
+    name: 'SpecialAttackGummyBombardment_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -635,13 +662,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackGummyBombardment_0_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackGummyBombardment_0',
     },
   },
-  SpecialAttackGummyBombardment_0_anomBuildup: {
+  'SpecialAttackGummyBombardment_0:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'SpecialAttackGummyBombardment_0_anomBuildup',
+    name: 'SpecialAttackGummyBombardment_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -649,13 +676,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackGummyBombardment_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackGummyBombardment_0',
     },
   },
-  EXSpecialAttackCavityAlert_0_dmg: {
+  'EXSpecialAttackCavityAlert_0:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'EXSpecialAttackCavityAlert_0_dmg',
+    name: 'EXSpecialAttackCavityAlert_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -663,13 +690,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackCavityAlert_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackCavityAlert_0',
     },
   },
-  EXSpecialAttackCavityAlert_0_daze: {
+  'EXSpecialAttackCavityAlert_0:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'EXSpecialAttackCavityAlert_0_daze',
+    name: 'EXSpecialAttackCavityAlert_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -677,13 +704,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackCavityAlert_0_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackCavityAlert_0',
     },
   },
-  EXSpecialAttackCavityAlert_0_anomBuildup: {
+  'EXSpecialAttackCavityAlert_0:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'EXSpecialAttackCavityAlert_0_anomBuildup',
+    name: 'EXSpecialAttackCavityAlert_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -691,13 +718,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackCavityAlert_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackCavityAlert_0',
     },
   },
-  EXSpecialAttackCavityAlertRightNow_0_dmg: {
+  'EXSpecialAttackCavityAlertRightNow_0:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'EXSpecialAttackCavityAlertRightNow_0_dmg',
+    name: 'EXSpecialAttackCavityAlertRightNow_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -705,13 +732,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackCavityAlertRightNow_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackCavityAlertRightNow_0',
     },
   },
-  EXSpecialAttackCavityAlertRightNow_0_daze: {
+  'EXSpecialAttackCavityAlertRightNow_0:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'EXSpecialAttackCavityAlertRightNow_0_daze',
+    name: 'EXSpecialAttackCavityAlertRightNow_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -719,13 +746,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackCavityAlertRightNow_0_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackCavityAlertRightNow_0',
     },
   },
-  EXSpecialAttackCavityAlertRightNow_0_anomBuildup: {
+  'EXSpecialAttackCavityAlertRightNow_0:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'EXSpecialAttackCavityAlertRightNow_0_anomBuildup',
+    name: 'EXSpecialAttackCavityAlertRightNow_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -733,13 +760,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackCavityAlertRightNow_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackCavityAlertRightNow_0',
     },
   },
-  ChainAttackPrankAssault_0_dmg: {
+  'ChainAttackPrankAssault_0:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'ChainAttackPrankAssault_0_dmg',
+    name: 'ChainAttackPrankAssault_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -747,13 +774,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackPrankAssault_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackPrankAssault_0',
     },
   },
-  ChainAttackPrankAssault_0_daze: {
+  'ChainAttackPrankAssault_0:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'ChainAttackPrankAssault_0_daze',
+    name: 'ChainAttackPrankAssault_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -761,13 +788,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackPrankAssault_0_daze',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackPrankAssault_0',
     },
   },
-  ChainAttackPrankAssault_0_anomBuildup: {
+  'ChainAttackPrankAssault_0:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'ChainAttackPrankAssault_0_anomBuildup',
+    name: 'ChainAttackPrankAssault_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -775,13 +802,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackPrankAssault_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackPrankAssault_0',
     },
   },
-  UltimateSurrenderOrSufferTheMischief_0_dmg: {
+  'UltimateSurrenderOrSufferTheMischief_0:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'UltimateSurrenderOrSufferTheMischief_0_dmg',
+    name: 'UltimateSurrenderOrSufferTheMischief_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -789,13 +816,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateSurrenderOrSufferTheMischief_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'UltimateSurrenderOrSufferTheMischief_0',
     },
   },
-  UltimateSurrenderOrSufferTheMischief_0_daze: {
+  'UltimateSurrenderOrSufferTheMischief_0:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'UltimateSurrenderOrSufferTheMischief_0_daze',
+    name: 'UltimateSurrenderOrSufferTheMischief_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -803,13 +830,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateSurrenderOrSufferTheMischief_0_daze',
+      skillType1: 'chainSkill',
+      name: 'UltimateSurrenderOrSufferTheMischief_0',
     },
   },
-  UltimateSurrenderOrSufferTheMischief_0_anomBuildup: {
+  'UltimateSurrenderOrSufferTheMischief_0:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'UltimateSurrenderOrSufferTheMischief_0_anomBuildup',
+    name: 'UltimateSurrenderOrSufferTheMischief_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -817,13 +844,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateSurrenderOrSufferTheMischief_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'UltimateSurrenderOrSufferTheMischief_0',
     },
   },
-  QuickAssistDessertTime_0_dmg: {
+  'QuickAssistDessertTime_0:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'QuickAssistDessertTime_0_dmg',
+    name: 'QuickAssistDessertTime_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -831,13 +858,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistDessertTime_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistDessertTime_0',
     },
   },
-  QuickAssistDessertTime_0_daze: {
+  'QuickAssistDessertTime_0:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'QuickAssistDessertTime_0_daze',
+    name: 'QuickAssistDessertTime_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -845,13 +872,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistDessertTime_0_daze',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistDessertTime_0',
     },
   },
-  QuickAssistDessertTime_0_anomBuildup: {
+  'QuickAssistDessertTime_0:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'QuickAssistDessertTime_0_anomBuildup',
+    name: 'QuickAssistDessertTime_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -859,13 +886,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistDessertTime_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistDessertTime_0',
     },
   },
-  DefensiveAssistReplenishYourFun_0_dmg: {
+  'DefensiveAssistReplenishYourFun_0:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'DefensiveAssistReplenishYourFun_0_dmg',
+    name: 'DefensiveAssistReplenishYourFun_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -873,13 +900,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistReplenishYourFun_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistReplenishYourFun_0',
     },
   },
-  DefensiveAssistReplenishYourFun_0_daze: {
+  'DefensiveAssistReplenishYourFun_0:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'DefensiveAssistReplenishYourFun_0_daze',
+    name: 'DefensiveAssistReplenishYourFun_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -887,13 +914,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistReplenishYourFun_0_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistReplenishYourFun_0',
     },
   },
-  DefensiveAssistReplenishYourFun_0_anomBuildup: {
+  'DefensiveAssistReplenishYourFun_0:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'DefensiveAssistReplenishYourFun_0_anomBuildup',
+    name: 'DefensiveAssistReplenishYourFun_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -901,13 +928,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistReplenishYourFun_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistReplenishYourFun_0',
     },
   },
-  DefensiveAssistReplenishYourFun_1_dmg: {
+  'DefensiveAssistReplenishYourFun_1:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'DefensiveAssistReplenishYourFun_1_dmg',
+    name: 'DefensiveAssistReplenishYourFun_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -915,13 +942,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistReplenishYourFun_1_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistReplenishYourFun_1',
     },
   },
-  DefensiveAssistReplenishYourFun_1_daze: {
+  'DefensiveAssistReplenishYourFun_1:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'DefensiveAssistReplenishYourFun_1_daze',
+    name: 'DefensiveAssistReplenishYourFun_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -929,13 +956,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistReplenishYourFun_1_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistReplenishYourFun_1',
     },
   },
-  DefensiveAssistReplenishYourFun_1_anomBuildup: {
+  'DefensiveAssistReplenishYourFun_1:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'DefensiveAssistReplenishYourFun_1_anomBuildup',
+    name: 'DefensiveAssistReplenishYourFun_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -943,13 +970,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistReplenishYourFun_1_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistReplenishYourFun_1',
     },
   },
-  DefensiveAssistReplenishYourFun_2_dmg: {
+  'DefensiveAssistReplenishYourFun_2:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'DefensiveAssistReplenishYourFun_2_dmg',
+    name: 'DefensiveAssistReplenishYourFun_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -957,13 +984,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistReplenishYourFun_2_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistReplenishYourFun_2',
     },
   },
-  DefensiveAssistReplenishYourFun_2_daze: {
+  'DefensiveAssistReplenishYourFun_2:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'DefensiveAssistReplenishYourFun_2_daze',
+    name: 'DefensiveAssistReplenishYourFun_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -971,13 +998,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistReplenishYourFun_2_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistReplenishYourFun_2',
     },
   },
-  DefensiveAssistReplenishYourFun_2_anomBuildup: {
+  'DefensiveAssistReplenishYourFun_2:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'DefensiveAssistReplenishYourFun_2_anomBuildup',
+    name: 'DefensiveAssistReplenishYourFun_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -985,13 +1012,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistReplenishYourFun_2_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistReplenishYourFun_2',
     },
   },
-  AssistFollowUpWeHaveCookies_0_dmg: {
+  'AssistFollowUpWeHaveCookies_0:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'AssistFollowUpWeHaveCookies_0_dmg',
+    name: 'AssistFollowUpWeHaveCookies_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -999,13 +1026,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpWeHaveCookies_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpWeHaveCookies_0',
     },
   },
-  AssistFollowUpWeHaveCookies_0_daze: {
+  'AssistFollowUpWeHaveCookies_0:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'AssistFollowUpWeHaveCookies_0_daze',
+    name: 'AssistFollowUpWeHaveCookies_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -1013,13 +1040,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpWeHaveCookies_0_daze',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpWeHaveCookies_0',
     },
   },
-  AssistFollowUpWeHaveCookies_0_anomBuildup: {
+  'AssistFollowUpWeHaveCookies_0:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'AssistFollowUpWeHaveCookies_0_anomBuildup',
+    name: 'AssistFollowUpWeHaveCookies_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -1027,13 +1054,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpWeHaveCookies_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpWeHaveCookies_0',
     },
   },
-  AssistFollowUpStuffedHardCandyShot_0_dmg: {
+  'AssistFollowUpStuffedHardCandyShot_0:standardDmg': {
     sheet: 'Yuzuha',
-    name: 'AssistFollowUpStuffedHardCandyShot_0_dmg',
+    name: 'AssistFollowUpStuffedHardCandyShot_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -1041,13 +1068,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpStuffedHardCandyShot_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpStuffedHardCandyShot_0',
     },
   },
-  AssistFollowUpStuffedHardCandyShot_0_daze: {
+  'AssistFollowUpStuffedHardCandyShot_0:dazeBuildup': {
     sheet: 'Yuzuha',
-    name: 'AssistFollowUpStuffedHardCandyShot_0_daze',
+    name: 'AssistFollowUpStuffedHardCandyShot_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -1055,13 +1082,13 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpStuffedHardCandyShot_0_daze',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpStuffedHardCandyShot_0',
     },
   },
-  AssistFollowUpStuffedHardCandyShot_0_anomBuildup: {
+  'AssistFollowUpStuffedHardCandyShot_0:anomBuildup': {
     sheet: 'Yuzuha',
-    name: 'AssistFollowUpStuffedHardCandyShot_0_anomBuildup',
+    name: 'AssistFollowUpStuffedHardCandyShot_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -1069,8 +1096,8 @@ export const formulas = {
       sheet: 'Yuzuha',
       attribute: 'physical',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpStuffedHardCandyShot_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpStuffedHardCandyShot_0',
     },
   },
   m6_dmg: {

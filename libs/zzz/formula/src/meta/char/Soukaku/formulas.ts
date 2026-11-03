@@ -38,6 +38,33 @@ export const formulas = {
       name: 'disorderDmgInst_ice',
     },
   },
+  vortexDmgInst_ice: {
+    sheet: 'Soukaku',
+    name: 'vortexDmgInst_ice',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Soukaku',
+      attribute: 'ice',
+      damageType1: 'vortex',
+      name: 'vortexDmgInst_ice',
+    },
+  },
+  abloomDmgInst: {
+    sheet: 'Soukaku',
+    name: 'abloomDmgInst',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Soukaku',
+      attribute: 'ice',
+      damageType1: 'anomaly',
+      damageType2: 'abloom',
+      name: 'abloomDmgInst',
+    },
+  },
   anomalyBuildupInst: {
     sheet: 'Soukaku',
     name: 'anomalyBuildupInst',
@@ -62,9 +89,9 @@ export const formulas = {
       name: 'dazeInst',
     },
   },
-  BasicAttackMakingRiceCakes_0_dmg: {
+  'BasicAttackMakingRiceCakes_0:standardDmg': {
     sheet: 'Soukaku',
-    name: 'BasicAttackMakingRiceCakes_0_dmg',
+    name: 'BasicAttackMakingRiceCakes_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -72,13 +99,13 @@ export const formulas = {
       sheet: 'Soukaku',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMakingRiceCakes_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackMakingRiceCakes_0',
     },
   },
-  BasicAttackMakingRiceCakes_0_daze: {
+  'BasicAttackMakingRiceCakes_0:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'BasicAttackMakingRiceCakes_0_daze',
+    name: 'BasicAttackMakingRiceCakes_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -86,13 +113,13 @@ export const formulas = {
       sheet: 'Soukaku',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMakingRiceCakes_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackMakingRiceCakes_0',
     },
   },
-  BasicAttackMakingRiceCakes_0_anomBuildup: {
+  'BasicAttackMakingRiceCakes_0:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'BasicAttackMakingRiceCakes_0_anomBuildup',
+    name: 'BasicAttackMakingRiceCakes_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -100,13 +127,13 @@ export const formulas = {
       sheet: 'Soukaku',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMakingRiceCakes_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackMakingRiceCakes_0',
     },
   },
-  BasicAttackMakingRiceCakes_1_dmg: {
+  'BasicAttackMakingRiceCakes_1:standardDmg': {
     sheet: 'Soukaku',
-    name: 'BasicAttackMakingRiceCakes_1_dmg',
+    name: 'BasicAttackMakingRiceCakes_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -114,13 +141,13 @@ export const formulas = {
       sheet: 'Soukaku',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMakingRiceCakes_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackMakingRiceCakes_1',
     },
   },
-  BasicAttackMakingRiceCakes_1_daze: {
+  'BasicAttackMakingRiceCakes_1:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'BasicAttackMakingRiceCakes_1_daze',
+    name: 'BasicAttackMakingRiceCakes_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -128,13 +155,13 @@ export const formulas = {
       sheet: 'Soukaku',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMakingRiceCakes_1_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackMakingRiceCakes_1',
     },
   },
-  BasicAttackMakingRiceCakes_1_anomBuildup: {
+  'BasicAttackMakingRiceCakes_1:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'BasicAttackMakingRiceCakes_1_anomBuildup',
+    name: 'BasicAttackMakingRiceCakes_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -142,13 +169,13 @@ export const formulas = {
       sheet: 'Soukaku',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMakingRiceCakes_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackMakingRiceCakes_1',
     },
   },
-  BasicAttackMakingRiceCakes_2_dmg: {
+  'BasicAttackMakingRiceCakes_2:standardDmg': {
     sheet: 'Soukaku',
-    name: 'BasicAttackMakingRiceCakes_2_dmg',
+    name: 'BasicAttackMakingRiceCakes_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -156,13 +183,13 @@ export const formulas = {
       sheet: 'Soukaku',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMakingRiceCakes_2_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackMakingRiceCakes_2',
     },
   },
-  BasicAttackMakingRiceCakes_2_daze: {
+  'BasicAttackMakingRiceCakes_2:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'BasicAttackMakingRiceCakes_2_daze',
+    name: 'BasicAttackMakingRiceCakes_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -170,13 +197,13 @@ export const formulas = {
       sheet: 'Soukaku',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMakingRiceCakes_2_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackMakingRiceCakes_2',
     },
   },
-  BasicAttackMakingRiceCakes_2_anomBuildup: {
+  'BasicAttackMakingRiceCakes_2:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'BasicAttackMakingRiceCakes_2_anomBuildup',
+    name: 'BasicAttackMakingRiceCakes_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -184,13 +211,13 @@ export const formulas = {
       sheet: 'Soukaku',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMakingRiceCakes_2_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackMakingRiceCakes_2',
     },
   },
-  BasicAttackMakingRiceCakesFrostedBanner_0_dmg: {
+  'BasicAttackMakingRiceCakesFrostedBanner_0:standardDmg': {
     sheet: 'Soukaku',
-    name: 'BasicAttackMakingRiceCakesFrostedBanner_0_dmg',
+    name: 'BasicAttackMakingRiceCakesFrostedBanner_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -198,13 +225,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMakingRiceCakesFrostedBanner_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackMakingRiceCakesFrostedBanner_0',
     },
   },
-  BasicAttackMakingRiceCakesFrostedBanner_0_daze: {
+  'BasicAttackMakingRiceCakesFrostedBanner_0:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'BasicAttackMakingRiceCakesFrostedBanner_0_daze',
+    name: 'BasicAttackMakingRiceCakesFrostedBanner_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -212,13 +239,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMakingRiceCakesFrostedBanner_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackMakingRiceCakesFrostedBanner_0',
     },
   },
-  BasicAttackMakingRiceCakesFrostedBanner_0_anomBuildup: {
+  'BasicAttackMakingRiceCakesFrostedBanner_0:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'BasicAttackMakingRiceCakesFrostedBanner_0_anomBuildup',
+    name: 'BasicAttackMakingRiceCakesFrostedBanner_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -226,13 +253,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMakingRiceCakesFrostedBanner_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackMakingRiceCakesFrostedBanner_0',
     },
   },
-  BasicAttackMakingRiceCakesFrostedBanner_1_dmg: {
+  'BasicAttackMakingRiceCakesFrostedBanner_1:standardDmg': {
     sheet: 'Soukaku',
-    name: 'BasicAttackMakingRiceCakesFrostedBanner_1_dmg',
+    name: 'BasicAttackMakingRiceCakesFrostedBanner_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -240,13 +267,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMakingRiceCakesFrostedBanner_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackMakingRiceCakesFrostedBanner_1',
     },
   },
-  BasicAttackMakingRiceCakesFrostedBanner_1_daze: {
+  'BasicAttackMakingRiceCakesFrostedBanner_1:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'BasicAttackMakingRiceCakesFrostedBanner_1_daze',
+    name: 'BasicAttackMakingRiceCakesFrostedBanner_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -254,13 +281,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMakingRiceCakesFrostedBanner_1_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackMakingRiceCakesFrostedBanner_1',
     },
   },
-  BasicAttackMakingRiceCakesFrostedBanner_1_anomBuildup: {
+  'BasicAttackMakingRiceCakesFrostedBanner_1:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'BasicAttackMakingRiceCakesFrostedBanner_1_anomBuildup',
+    name: 'BasicAttackMakingRiceCakesFrostedBanner_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -268,13 +295,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMakingRiceCakesFrostedBanner_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackMakingRiceCakesFrostedBanner_1',
     },
   },
-  BasicAttackMakingRiceCakesFrostedBanner_2_dmg: {
+  'BasicAttackMakingRiceCakesFrostedBanner_2:standardDmg': {
     sheet: 'Soukaku',
-    name: 'BasicAttackMakingRiceCakesFrostedBanner_2_dmg',
+    name: 'BasicAttackMakingRiceCakesFrostedBanner_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -282,13 +309,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMakingRiceCakesFrostedBanner_2_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackMakingRiceCakesFrostedBanner_2',
     },
   },
-  BasicAttackMakingRiceCakesFrostedBanner_2_daze: {
+  'BasicAttackMakingRiceCakesFrostedBanner_2:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'BasicAttackMakingRiceCakesFrostedBanner_2_daze',
+    name: 'BasicAttackMakingRiceCakesFrostedBanner_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -296,13 +323,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMakingRiceCakesFrostedBanner_2_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackMakingRiceCakesFrostedBanner_2',
     },
   },
-  BasicAttackMakingRiceCakesFrostedBanner_2_anomBuildup: {
+  'BasicAttackMakingRiceCakesFrostedBanner_2:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'BasicAttackMakingRiceCakesFrostedBanner_2_anomBuildup',
+    name: 'BasicAttackMakingRiceCakesFrostedBanner_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -310,13 +337,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMakingRiceCakesFrostedBanner_2_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackMakingRiceCakesFrostedBanner_2',
     },
   },
-  DashAttack5050_0_dmg: {
+  'DashAttack5050_0:standardDmg': {
     sheet: 'Soukaku',
-    name: 'DashAttack5050_0_dmg',
+    name: 'DashAttack5050_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -324,13 +351,13 @@ export const formulas = {
       sheet: 'Soukaku',
       damageType1: 'dash',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttack5050_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttack5050_0',
     },
   },
-  DashAttack5050_0_daze: {
+  'DashAttack5050_0:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'DashAttack5050_0_daze',
+    name: 'DashAttack5050_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -338,13 +365,13 @@ export const formulas = {
       sheet: 'Soukaku',
       damageType1: 'dash',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttack5050_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttack5050_0',
     },
   },
-  DashAttack5050_0_anomBuildup: {
+  'DashAttack5050_0:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'DashAttack5050_0_anomBuildup',
+    name: 'DashAttack5050_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -352,13 +379,13 @@ export const formulas = {
       sheet: 'Soukaku',
       damageType1: 'dash',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttack5050_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttack5050_0',
     },
   },
-  DashAttack5050FrostedBanner_0_dmg: {
+  'DashAttack5050FrostedBanner_0:standardDmg': {
     sheet: 'Soukaku',
-    name: 'DashAttack5050FrostedBanner_0_dmg',
+    name: 'DashAttack5050FrostedBanner_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -366,13 +393,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttack5050FrostedBanner_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttack5050FrostedBanner_0',
     },
   },
-  DashAttack5050FrostedBanner_0_daze: {
+  'DashAttack5050FrostedBanner_0:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'DashAttack5050FrostedBanner_0_daze',
+    name: 'DashAttack5050FrostedBanner_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -380,13 +407,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttack5050FrostedBanner_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttack5050FrostedBanner_0',
     },
   },
-  DashAttack5050FrostedBanner_0_anomBuildup: {
+  'DashAttack5050FrostedBanner_0:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'DashAttack5050FrostedBanner_0_anomBuildup',
+    name: 'DashAttack5050FrostedBanner_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -394,13 +421,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttack5050FrostedBanner_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttack5050FrostedBanner_0',
     },
   },
-  DodgeCounterAwayFromMySnacks_0_dmg: {
+  'DodgeCounterAwayFromMySnacks_0:standardDmg': {
     sheet: 'Soukaku',
-    name: 'DodgeCounterAwayFromMySnacks_0_dmg',
+    name: 'DodgeCounterAwayFromMySnacks_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -408,13 +435,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterAwayFromMySnacks_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterAwayFromMySnacks_0',
     },
   },
-  DodgeCounterAwayFromMySnacks_0_daze: {
+  'DodgeCounterAwayFromMySnacks_0:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'DodgeCounterAwayFromMySnacks_0_daze',
+    name: 'DodgeCounterAwayFromMySnacks_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -422,13 +449,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterAwayFromMySnacks_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterAwayFromMySnacks_0',
     },
   },
-  DodgeCounterAwayFromMySnacks_0_anomBuildup: {
+  'DodgeCounterAwayFromMySnacks_0:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'DodgeCounterAwayFromMySnacks_0_anomBuildup',
+    name: 'DodgeCounterAwayFromMySnacks_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -436,13 +463,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterAwayFromMySnacks_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterAwayFromMySnacks_0',
     },
   },
-  SpecialAttackCoolingBento_0_dmg: {
+  'SpecialAttackCoolingBento_0:standardDmg': {
     sheet: 'Soukaku',
-    name: 'SpecialAttackCoolingBento_0_dmg',
+    name: 'SpecialAttackCoolingBento_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -450,13 +477,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackCoolingBento_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackCoolingBento_0',
     },
   },
-  SpecialAttackCoolingBento_0_daze: {
+  'SpecialAttackCoolingBento_0:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'SpecialAttackCoolingBento_0_daze',
+    name: 'SpecialAttackCoolingBento_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -464,13 +491,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackCoolingBento_0_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackCoolingBento_0',
     },
   },
-  SpecialAttackCoolingBento_0_anomBuildup: {
+  'SpecialAttackCoolingBento_0:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'SpecialAttackCoolingBento_0_anomBuildup',
+    name: 'SpecialAttackCoolingBento_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -478,13 +505,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackCoolingBento_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackCoolingBento_0',
     },
   },
-  SpecialAttackCoolingBento_1_dmg: {
+  'SpecialAttackCoolingBento_1:standardDmg': {
     sheet: 'Soukaku',
-    name: 'SpecialAttackCoolingBento_1_dmg',
+    name: 'SpecialAttackCoolingBento_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -492,13 +519,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackCoolingBento_1_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackCoolingBento_1',
     },
   },
-  SpecialAttackCoolingBento_1_daze: {
+  'SpecialAttackCoolingBento_1:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'SpecialAttackCoolingBento_1_daze',
+    name: 'SpecialAttackCoolingBento_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -506,13 +533,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackCoolingBento_1_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackCoolingBento_1',
     },
   },
-  SpecialAttackCoolingBento_1_anomBuildup: {
+  'SpecialAttackCoolingBento_1:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'SpecialAttackCoolingBento_1_anomBuildup',
+    name: 'SpecialAttackCoolingBento_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -520,55 +547,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackCoolingBento_1_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackCoolingBento_1',
     },
   },
-  EXSpecialAttackFanningMosquitoes_0_dmg: {
+  'EXSpecialAttackFanningMosquitoes_0:standardDmg': {
     sheet: 'Soukaku',
-    name: 'EXSpecialAttackFanningMosquitoes_0_dmg',
-    tag: {
-      et: 'own',
-      qt: 'formula',
-      q: 'standardDmg',
-      sheet: 'Soukaku',
-      attribute: 'ice',
-      damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackFanningMosquitoes_0_dmg',
-    },
-  },
-  EXSpecialAttackFanningMosquitoes_0_daze: {
-    sheet: 'Soukaku',
-    name: 'EXSpecialAttackFanningMosquitoes_0_daze',
-    tag: {
-      et: 'own',
-      qt: 'formula',
-      q: 'dazeBuildup',
-      sheet: 'Soukaku',
-      attribute: 'ice',
-      damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackFanningMosquitoes_0_daze',
-    },
-  },
-  EXSpecialAttackFanningMosquitoes_0_anomBuildup: {
-    sheet: 'Soukaku',
-    name: 'EXSpecialAttackFanningMosquitoes_0_anomBuildup',
-    tag: {
-      et: 'own',
-      qt: 'formula',
-      q: 'anomBuildup',
-      sheet: 'Soukaku',
-      attribute: 'ice',
-      damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackFanningMosquitoes_0_anomBuildup',
-    },
-  },
-  EXSpecialAttackFanningMosquitoes_1_dmg: {
-    sheet: 'Soukaku',
-    name: 'EXSpecialAttackFanningMosquitoes_1_dmg',
+    name: 'EXSpecialAttackFanningMosquitoes_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -576,13 +561,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackFanningMosquitoes_1_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackFanningMosquitoes_0',
     },
   },
-  EXSpecialAttackFanningMosquitoes_1_daze: {
+  'EXSpecialAttackFanningMosquitoes_0:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'EXSpecialAttackFanningMosquitoes_1_daze',
+    name: 'EXSpecialAttackFanningMosquitoes_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -590,13 +575,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackFanningMosquitoes_1_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackFanningMosquitoes_0',
     },
   },
-  EXSpecialAttackFanningMosquitoes_1_anomBuildup: {
+  'EXSpecialAttackFanningMosquitoes_0:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'EXSpecialAttackFanningMosquitoes_1_anomBuildup',
+    name: 'EXSpecialAttackFanningMosquitoes_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -604,13 +589,55 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackFanningMosquitoes_1_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackFanningMosquitoes_0',
     },
   },
-  SpecialAttackRally_0_dmg: {
+  'EXSpecialAttackFanningMosquitoes_1:standardDmg': {
     sheet: 'Soukaku',
-    name: 'SpecialAttackRally_0_dmg',
+    name: 'EXSpecialAttackFanningMosquitoes_1:standardDmg',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'standardDmg',
+      sheet: 'Soukaku',
+      attribute: 'ice',
+      damageType1: 'exSpecial',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackFanningMosquitoes_1',
+    },
+  },
+  'EXSpecialAttackFanningMosquitoes_1:dazeBuildup': {
+    sheet: 'Soukaku',
+    name: 'EXSpecialAttackFanningMosquitoes_1:dazeBuildup',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'dazeBuildup',
+      sheet: 'Soukaku',
+      attribute: 'ice',
+      damageType1: 'exSpecial',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackFanningMosquitoes_1',
+    },
+  },
+  'EXSpecialAttackFanningMosquitoes_1:anomBuildup': {
+    sheet: 'Soukaku',
+    name: 'EXSpecialAttackFanningMosquitoes_1:anomBuildup',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomBuildup',
+      sheet: 'Soukaku',
+      attribute: 'ice',
+      damageType1: 'exSpecial',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackFanningMosquitoes_1',
+    },
+  },
+  'SpecialAttackRally_0:standardDmg': {
+    sheet: 'Soukaku',
+    name: 'SpecialAttackRally_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -618,13 +645,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRally_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRally_0',
     },
   },
-  SpecialAttackRally_0_daze: {
+  'SpecialAttackRally_0:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'SpecialAttackRally_0_daze',
+    name: 'SpecialAttackRally_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -632,13 +659,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRally_0_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRally_0',
     },
   },
-  SpecialAttackRally_0_anomBuildup: {
+  'SpecialAttackRally_0:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'SpecialAttackRally_0_anomBuildup',
+    name: 'SpecialAttackRally_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -646,13 +673,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRally_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRally_0',
     },
   },
-  SpecialAttackRally_1_dmg: {
+  'SpecialAttackRally_1:standardDmg': {
     sheet: 'Soukaku',
-    name: 'SpecialAttackRally_1_dmg',
+    name: 'SpecialAttackRally_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -660,13 +687,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRally_1_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRally_1',
     },
   },
-  SpecialAttackRally_1_daze: {
+  'SpecialAttackRally_1:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'SpecialAttackRally_1_daze',
+    name: 'SpecialAttackRally_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -674,13 +701,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRally_1_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRally_1',
     },
   },
-  SpecialAttackRally_1_anomBuildup: {
+  'SpecialAttackRally_1:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'SpecialAttackRally_1_anomBuildup',
+    name: 'SpecialAttackRally_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -688,13 +715,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRally_1_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRally_1',
     },
   },
-  SpecialAttackRally_2_dmg: {
+  'SpecialAttackRally_2:standardDmg': {
     sheet: 'Soukaku',
-    name: 'SpecialAttackRally_2_dmg',
+    name: 'SpecialAttackRally_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -702,13 +729,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRally_2_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRally_2',
     },
   },
-  SpecialAttackRally_2_daze: {
+  'SpecialAttackRally_2:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'SpecialAttackRally_2_daze',
+    name: 'SpecialAttackRally_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -716,13 +743,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRally_2_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRally_2',
     },
   },
-  SpecialAttackRally_2_anomBuildup: {
+  'SpecialAttackRally_2:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'SpecialAttackRally_2_anomBuildup',
+    name: 'SpecialAttackRally_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -730,13 +757,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRally_2_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRally_2',
     },
   },
-  ChainAttackPuddingSlash_0_dmg: {
+  'ChainAttackPuddingSlash_0:standardDmg': {
     sheet: 'Soukaku',
-    name: 'ChainAttackPuddingSlash_0_dmg',
+    name: 'ChainAttackPuddingSlash_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -744,13 +771,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackPuddingSlash_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackPuddingSlash_0',
     },
   },
-  ChainAttackPuddingSlash_0_daze: {
+  'ChainAttackPuddingSlash_0:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'ChainAttackPuddingSlash_0_daze',
+    name: 'ChainAttackPuddingSlash_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -758,13 +785,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackPuddingSlash_0_daze',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackPuddingSlash_0',
     },
   },
-  ChainAttackPuddingSlash_0_anomBuildup: {
+  'ChainAttackPuddingSlash_0:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'ChainAttackPuddingSlash_0_anomBuildup',
+    name: 'ChainAttackPuddingSlash_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -772,13 +799,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackPuddingSlash_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackPuddingSlash_0',
     },
   },
-  UltimateJumboPuddingSlash_0_dmg: {
+  'UltimateJumboPuddingSlash_0:standardDmg': {
     sheet: 'Soukaku',
-    name: 'UltimateJumboPuddingSlash_0_dmg',
+    name: 'UltimateJumboPuddingSlash_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -786,13 +813,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateJumboPuddingSlash_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'UltimateJumboPuddingSlash_0',
     },
   },
-  UltimateJumboPuddingSlash_0_daze: {
+  'UltimateJumboPuddingSlash_0:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'UltimateJumboPuddingSlash_0_daze',
+    name: 'UltimateJumboPuddingSlash_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -800,13 +827,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateJumboPuddingSlash_0_daze',
+      skillType1: 'chainSkill',
+      name: 'UltimateJumboPuddingSlash_0',
     },
   },
-  UltimateJumboPuddingSlash_0_anomBuildup: {
+  'UltimateJumboPuddingSlash_0:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'UltimateJumboPuddingSlash_0_anomBuildup',
+    name: 'UltimateJumboPuddingSlash_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -814,13 +841,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateJumboPuddingSlash_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'UltimateJumboPuddingSlash_0',
     },
   },
-  QuickAssistASetForTwo_0_dmg: {
+  'QuickAssistASetForTwo_0:standardDmg': {
     sheet: 'Soukaku',
-    name: 'QuickAssistASetForTwo_0_dmg',
+    name: 'QuickAssistASetForTwo_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -828,13 +855,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistASetForTwo_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistASetForTwo_0',
     },
   },
-  QuickAssistASetForTwo_0_daze: {
+  'QuickAssistASetForTwo_0:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'QuickAssistASetForTwo_0_daze',
+    name: 'QuickAssistASetForTwo_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -842,13 +869,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistASetForTwo_0_daze',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistASetForTwo_0',
     },
   },
-  QuickAssistASetForTwo_0_anomBuildup: {
+  'QuickAssistASetForTwo_0:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'QuickAssistASetForTwo_0_anomBuildup',
+    name: 'QuickAssistASetForTwo_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -856,13 +883,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistASetForTwo_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistASetForTwo_0',
     },
   },
-  DefensiveAssistGuardingTactics_0_dmg: {
+  'DefensiveAssistGuardingTactics_0:standardDmg': {
     sheet: 'Soukaku',
-    name: 'DefensiveAssistGuardingTactics_0_dmg',
+    name: 'DefensiveAssistGuardingTactics_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -870,13 +897,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistGuardingTactics_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistGuardingTactics_0',
     },
   },
-  DefensiveAssistGuardingTactics_0_daze: {
+  'DefensiveAssistGuardingTactics_0:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'DefensiveAssistGuardingTactics_0_daze',
+    name: 'DefensiveAssistGuardingTactics_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -884,13 +911,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistGuardingTactics_0_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistGuardingTactics_0',
     },
   },
-  DefensiveAssistGuardingTactics_0_anomBuildup: {
+  'DefensiveAssistGuardingTactics_0:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'DefensiveAssistGuardingTactics_0_anomBuildup',
+    name: 'DefensiveAssistGuardingTactics_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -898,13 +925,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistGuardingTactics_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistGuardingTactics_0',
     },
   },
-  DefensiveAssistGuardingTactics_1_dmg: {
+  'DefensiveAssistGuardingTactics_1:standardDmg': {
     sheet: 'Soukaku',
-    name: 'DefensiveAssistGuardingTactics_1_dmg',
+    name: 'DefensiveAssistGuardingTactics_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -912,13 +939,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistGuardingTactics_1_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistGuardingTactics_1',
     },
   },
-  DefensiveAssistGuardingTactics_1_daze: {
+  'DefensiveAssistGuardingTactics_1:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'DefensiveAssistGuardingTactics_1_daze',
+    name: 'DefensiveAssistGuardingTactics_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -926,13 +953,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistGuardingTactics_1_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistGuardingTactics_1',
     },
   },
-  DefensiveAssistGuardingTactics_1_anomBuildup: {
+  'DefensiveAssistGuardingTactics_1:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'DefensiveAssistGuardingTactics_1_anomBuildup',
+    name: 'DefensiveAssistGuardingTactics_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -940,13 +967,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistGuardingTactics_1_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistGuardingTactics_1',
     },
   },
-  DefensiveAssistGuardingTactics_2_dmg: {
+  'DefensiveAssistGuardingTactics_2:standardDmg': {
     sheet: 'Soukaku',
-    name: 'DefensiveAssistGuardingTactics_2_dmg',
+    name: 'DefensiveAssistGuardingTactics_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -954,13 +981,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistGuardingTactics_2_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistGuardingTactics_2',
     },
   },
-  DefensiveAssistGuardingTactics_2_daze: {
+  'DefensiveAssistGuardingTactics_2:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'DefensiveAssistGuardingTactics_2_daze',
+    name: 'DefensiveAssistGuardingTactics_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -968,13 +995,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistGuardingTactics_2_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistGuardingTactics_2',
     },
   },
-  DefensiveAssistGuardingTactics_2_anomBuildup: {
+  'DefensiveAssistGuardingTactics_2:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'DefensiveAssistGuardingTactics_2_anomBuildup',
+    name: 'DefensiveAssistGuardingTactics_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -982,13 +1009,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistGuardingTactics_2_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistGuardingTactics_2',
     },
   },
-  AssistFollowUpSweepingStrike_0_dmg: {
+  'AssistFollowUpSweepingStrike_0:standardDmg': {
     sheet: 'Soukaku',
-    name: 'AssistFollowUpSweepingStrike_0_dmg',
+    name: 'AssistFollowUpSweepingStrike_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -996,13 +1023,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpSweepingStrike_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpSweepingStrike_0',
     },
   },
-  AssistFollowUpSweepingStrike_0_daze: {
+  'AssistFollowUpSweepingStrike_0:dazeBuildup': {
     sheet: 'Soukaku',
-    name: 'AssistFollowUpSweepingStrike_0_daze',
+    name: 'AssistFollowUpSweepingStrike_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -1010,13 +1037,13 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpSweepingStrike_0_daze',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpSweepingStrike_0',
     },
   },
-  AssistFollowUpSweepingStrike_0_anomBuildup: {
+  'AssistFollowUpSweepingStrike_0:anomBuildup': {
     sheet: 'Soukaku',
-    name: 'AssistFollowUpSweepingStrike_0_anomBuildup',
+    name: 'AssistFollowUpSweepingStrike_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -1024,8 +1051,8 @@ export const formulas = {
       sheet: 'Soukaku',
       attribute: 'ice',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpSweepingStrike_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpSweepingStrike_0',
     },
   },
 } as const

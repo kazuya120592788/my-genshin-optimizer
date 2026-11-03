@@ -38,6 +38,33 @@ export const formulas = {
       name: 'disorderDmgInst_ice',
     },
   },
+  vortexDmgInst_ice: {
+    sheet: 'Zhao',
+    name: 'vortexDmgInst_ice',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Zhao',
+      attribute: 'ice',
+      damageType1: 'vortex',
+      name: 'vortexDmgInst_ice',
+    },
+  },
+  abloomDmgInst: {
+    sheet: 'Zhao',
+    name: 'abloomDmgInst',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Zhao',
+      attribute: 'ice',
+      damageType1: 'anomaly',
+      damageType2: 'abloom',
+      name: 'abloomDmgInst',
+    },
+  },
   anomalyBuildupInst: {
     sheet: 'Zhao',
     name: 'anomalyBuildupInst',
@@ -62,9 +89,51 @@ export const formulas = {
       name: 'dazeInst',
     },
   },
-  BasicAttackGlacialJudgment_0_dmg: {
+  'BasicAttackGlacialJudgment_0:standardDmg': {
     sheet: 'Zhao',
-    name: 'BasicAttackGlacialJudgment_0_dmg',
+    name: 'BasicAttackGlacialJudgment_0:standardDmg',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'standardDmg',
+      sheet: 'Zhao',
+      damageType1: 'basic',
+      skillType1: 'basicSkill',
+      attribute: 'physical',
+      name: 'BasicAttackGlacialJudgment_0',
+    },
+  },
+  'BasicAttackGlacialJudgment_0:dazeBuildup': {
+    sheet: 'Zhao',
+    name: 'BasicAttackGlacialJudgment_0:dazeBuildup',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'dazeBuildup',
+      sheet: 'Zhao',
+      damageType1: 'basic',
+      skillType1: 'basicSkill',
+      attribute: 'physical',
+      name: 'BasicAttackGlacialJudgment_0',
+    },
+  },
+  'BasicAttackGlacialJudgment_0:anomBuildup': {
+    sheet: 'Zhao',
+    name: 'BasicAttackGlacialJudgment_0:anomBuildup',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomBuildup',
+      sheet: 'Zhao',
+      damageType1: 'basic',
+      skillType1: 'basicSkill',
+      attribute: 'physical',
+      name: 'BasicAttackGlacialJudgment_0',
+    },
+  },
+  'BasicAttackGlacialJudgment_1:standardDmg': {
+    sheet: 'Zhao',
+    name: 'BasicAttackGlacialJudgment_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -72,13 +141,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGlacialJudgment_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackGlacialJudgment_1',
     },
   },
-  BasicAttackGlacialJudgment_0_daze: {
+  'BasicAttackGlacialJudgment_1:dazeBuildup': {
     sheet: 'Zhao',
-    name: 'BasicAttackGlacialJudgment_0_daze',
+    name: 'BasicAttackGlacialJudgment_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -86,13 +155,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGlacialJudgment_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackGlacialJudgment_1',
     },
   },
-  BasicAttackGlacialJudgment_0_anomBuildup: {
+  'BasicAttackGlacialJudgment_1:anomBuildup': {
     sheet: 'Zhao',
-    name: 'BasicAttackGlacialJudgment_0_anomBuildup',
+    name: 'BasicAttackGlacialJudgment_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -100,13 +169,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGlacialJudgment_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackGlacialJudgment_1',
     },
   },
-  BasicAttackGlacialJudgment_1_dmg: {
+  'BasicAttackGlacialJudgment_2:standardDmg': {
     sheet: 'Zhao',
-    name: 'BasicAttackGlacialJudgment_1_dmg',
+    name: 'BasicAttackGlacialJudgment_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -114,13 +183,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGlacialJudgment_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackGlacialJudgment_2',
     },
   },
-  BasicAttackGlacialJudgment_1_daze: {
+  'BasicAttackGlacialJudgment_2:dazeBuildup': {
     sheet: 'Zhao',
-    name: 'BasicAttackGlacialJudgment_1_daze',
+    name: 'BasicAttackGlacialJudgment_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -128,13 +197,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGlacialJudgment_1_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackGlacialJudgment_2',
     },
   },
-  BasicAttackGlacialJudgment_1_anomBuildup: {
+  'BasicAttackGlacialJudgment_2:anomBuildup': {
     sheet: 'Zhao',
-    name: 'BasicAttackGlacialJudgment_1_anomBuildup',
+    name: 'BasicAttackGlacialJudgment_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -142,13 +211,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGlacialJudgment_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackGlacialJudgment_2',
     },
   },
-  BasicAttackGlacialJudgment_2_dmg: {
+  'BasicAttackGlacialJudgment_3:standardDmg': {
     sheet: 'Zhao',
-    name: 'BasicAttackGlacialJudgment_2_dmg',
+    name: 'BasicAttackGlacialJudgment_3:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -156,13 +225,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGlacialJudgment_2_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackGlacialJudgment_3',
     },
   },
-  BasicAttackGlacialJudgment_2_daze: {
+  'BasicAttackGlacialJudgment_3:dazeBuildup': {
     sheet: 'Zhao',
-    name: 'BasicAttackGlacialJudgment_2_daze',
+    name: 'BasicAttackGlacialJudgment_3:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -170,13 +239,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGlacialJudgment_2_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackGlacialJudgment_3',
     },
   },
-  BasicAttackGlacialJudgment_2_anomBuildup: {
+  'BasicAttackGlacialJudgment_3:anomBuildup': {
     sheet: 'Zhao',
-    name: 'BasicAttackGlacialJudgment_2_anomBuildup',
+    name: 'BasicAttackGlacialJudgment_3:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -184,13 +253,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGlacialJudgment_2_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackGlacialJudgment_3',
     },
   },
-  BasicAttackGlacialJudgment_3_dmg: {
+  'BasicAttackGlacialJudgment_4:standardDmg': {
     sheet: 'Zhao',
-    name: 'BasicAttackGlacialJudgment_3_dmg',
+    name: 'BasicAttackGlacialJudgment_4:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -198,13 +267,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGlacialJudgment_3_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackGlacialJudgment_4',
     },
   },
-  BasicAttackGlacialJudgment_3_daze: {
+  'BasicAttackGlacialJudgment_4:dazeBuildup': {
     sheet: 'Zhao',
-    name: 'BasicAttackGlacialJudgment_3_daze',
+    name: 'BasicAttackGlacialJudgment_4:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -212,13 +281,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGlacialJudgment_3_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackGlacialJudgment_4',
     },
   },
-  BasicAttackGlacialJudgment_3_anomBuildup: {
+  'BasicAttackGlacialJudgment_4:anomBuildup': {
     sheet: 'Zhao',
-    name: 'BasicAttackGlacialJudgment_3_anomBuildup',
+    name: 'BasicAttackGlacialJudgment_4:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -226,13 +295,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGlacialJudgment_3_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackGlacialJudgment_4',
     },
   },
-  BasicAttackGlacialJudgment_4_dmg: {
+  'BasicAttackFinalVerdict_0:standardDmg': {
     sheet: 'Zhao',
-    name: 'BasicAttackGlacialJudgment_4_dmg',
+    name: 'BasicAttackFinalVerdict_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -240,13 +309,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGlacialJudgment_4_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackFinalVerdict_0',
     },
   },
-  BasicAttackGlacialJudgment_4_daze: {
+  'BasicAttackFinalVerdict_0:dazeBuildup': {
     sheet: 'Zhao',
-    name: 'BasicAttackGlacialJudgment_4_daze',
+    name: 'BasicAttackFinalVerdict_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -254,13 +323,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGlacialJudgment_4_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackFinalVerdict_0',
     },
   },
-  BasicAttackGlacialJudgment_4_anomBuildup: {
+  'BasicAttackFinalVerdict_0:anomBuildup': {
     sheet: 'Zhao',
-    name: 'BasicAttackGlacialJudgment_4_anomBuildup',
+    name: 'BasicAttackFinalVerdict_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -268,97 +337,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGlacialJudgment_4_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackFinalVerdict_0',
     },
   },
-  BasicAttackGlacialJudgment_5_dmg: {
+  'DashAttackBouncingDash_0:standardDmg': {
     sheet: 'Zhao',
-    name: 'BasicAttackGlacialJudgment_5_dmg',
-    tag: {
-      et: 'own',
-      qt: 'formula',
-      q: 'standardDmg',
-      sheet: 'Zhao',
-      attribute: 'ice',
-      damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGlacialJudgment_5_dmg',
-    },
-  },
-  BasicAttackGlacialJudgment_5_daze: {
-    sheet: 'Zhao',
-    name: 'BasicAttackGlacialJudgment_5_daze',
-    tag: {
-      et: 'own',
-      qt: 'formula',
-      q: 'dazeBuildup',
-      sheet: 'Zhao',
-      attribute: 'ice',
-      damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGlacialJudgment_5_daze',
-    },
-  },
-  BasicAttackGlacialJudgment_5_anomBuildup: {
-    sheet: 'Zhao',
-    name: 'BasicAttackGlacialJudgment_5_anomBuildup',
-    tag: {
-      et: 'own',
-      qt: 'formula',
-      q: 'anomBuildup',
-      sheet: 'Zhao',
-      attribute: 'ice',
-      damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackGlacialJudgment_5_anomBuildup',
-    },
-  },
-  BasicAttackFinalVerdict_0_dmg: {
-    sheet: 'Zhao',
-    name: 'BasicAttackFinalVerdict_0_dmg',
-    tag: {
-      et: 'own',
-      qt: 'formula',
-      q: 'standardDmg',
-      sheet: 'Zhao',
-      attribute: 'ice',
-      damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackFinalVerdict_0_dmg',
-    },
-  },
-  BasicAttackFinalVerdict_0_daze: {
-    sheet: 'Zhao',
-    name: 'BasicAttackFinalVerdict_0_daze',
-    tag: {
-      et: 'own',
-      qt: 'formula',
-      q: 'dazeBuildup',
-      sheet: 'Zhao',
-      attribute: 'ice',
-      damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackFinalVerdict_0_daze',
-    },
-  },
-  BasicAttackFinalVerdict_0_anomBuildup: {
-    sheet: 'Zhao',
-    name: 'BasicAttackFinalVerdict_0_anomBuildup',
-    tag: {
-      et: 'own',
-      qt: 'formula',
-      q: 'anomBuildup',
-      sheet: 'Zhao',
-      attribute: 'ice',
-      damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackFinalVerdict_0_anomBuildup',
-    },
-  },
-  DashAttackBouncingDash_0_dmg: {
-    sheet: 'Zhao',
-    name: 'DashAttackBouncingDash_0_dmg',
+    name: 'DashAttackBouncingDash_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -366,13 +351,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackBouncingDash_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackBouncingDash_0',
     },
   },
-  DashAttackBouncingDash_0_daze: {
+  'DashAttackBouncingDash_0:dazeBuildup': {
     sheet: 'Zhao',
-    name: 'DashAttackBouncingDash_0_daze',
+    name: 'DashAttackBouncingDash_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -380,13 +365,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackBouncingDash_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackBouncingDash_0',
     },
   },
-  DashAttackBouncingDash_0_anomBuildup: {
+  'DashAttackBouncingDash_0:anomBuildup': {
     sheet: 'Zhao',
-    name: 'DashAttackBouncingDash_0_anomBuildup',
+    name: 'DashAttackBouncingDash_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -394,13 +379,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackBouncingDash_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackBouncingDash_0',
     },
   },
-  DodgeCounterSwiftBlink_0_dmg: {
+  'DodgeCounterSwiftBlink_0:standardDmg': {
     sheet: 'Zhao',
-    name: 'DodgeCounterSwiftBlink_0_dmg',
+    name: 'DodgeCounterSwiftBlink_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -408,13 +393,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterSwiftBlink_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterSwiftBlink_0',
     },
   },
-  DodgeCounterSwiftBlink_0_daze: {
+  'DodgeCounterSwiftBlink_0:dazeBuildup': {
     sheet: 'Zhao',
-    name: 'DodgeCounterSwiftBlink_0_daze',
+    name: 'DodgeCounterSwiftBlink_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -422,13 +407,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterSwiftBlink_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterSwiftBlink_0',
     },
   },
-  DodgeCounterSwiftBlink_0_anomBuildup: {
+  'DodgeCounterSwiftBlink_0:anomBuildup': {
     sheet: 'Zhao',
-    name: 'DodgeCounterSwiftBlink_0_anomBuildup',
+    name: 'DodgeCounterSwiftBlink_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -436,13 +421,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterSwiftBlink_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterSwiftBlink_0',
     },
   },
-  SpecialAttackShatterfrostSurge_0_dmg: {
+  'SpecialAttackShatterfrostSurge_0:standardDmg': {
     sheet: 'Zhao',
-    name: 'SpecialAttackShatterfrostSurge_0_dmg',
+    name: 'SpecialAttackShatterfrostSurge_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -450,13 +435,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackShatterfrostSurge_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackShatterfrostSurge_0',
     },
   },
-  SpecialAttackShatterfrostSurge_0_daze: {
+  'SpecialAttackShatterfrostSurge_0:dazeBuildup': {
     sheet: 'Zhao',
-    name: 'SpecialAttackShatterfrostSurge_0_daze',
+    name: 'SpecialAttackShatterfrostSurge_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -464,13 +449,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackShatterfrostSurge_0_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackShatterfrostSurge_0',
     },
   },
-  SpecialAttackShatterfrostSurge_0_anomBuildup: {
+  'SpecialAttackShatterfrostSurge_0:anomBuildup': {
     sheet: 'Zhao',
-    name: 'SpecialAttackShatterfrostSurge_0_anomBuildup',
+    name: 'SpecialAttackShatterfrostSurge_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -478,13 +463,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackShatterfrostSurge_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackShatterfrostSurge_0',
     },
   },
-  EXSpecialAttackFrostflowTundra_0_dmg: {
+  'EXSpecialAttackFrostflowTundra_0:standardDmg': {
     sheet: 'Zhao',
-    name: 'EXSpecialAttackFrostflowTundra_0_dmg',
+    name: 'EXSpecialAttackFrostflowTundra_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -492,13 +477,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackFrostflowTundra_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackFrostflowTundra_0',
     },
   },
-  EXSpecialAttackFrostflowTundra_0_daze: {
+  'EXSpecialAttackFrostflowTundra_0:dazeBuildup': {
     sheet: 'Zhao',
-    name: 'EXSpecialAttackFrostflowTundra_0_daze',
+    name: 'EXSpecialAttackFrostflowTundra_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -506,13 +491,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackFrostflowTundra_0_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackFrostflowTundra_0',
     },
   },
-  EXSpecialAttackFrostflowTundra_0_anomBuildup: {
+  'EXSpecialAttackFrostflowTundra_0:anomBuildup': {
     sheet: 'Zhao',
-    name: 'EXSpecialAttackFrostflowTundra_0_anomBuildup',
+    name: 'EXSpecialAttackFrostflowTundra_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -520,13 +505,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackFrostflowTundra_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackFrostflowTundra_0',
     },
   },
-  ChainAttackTemporaryAlliance_0_dmg: {
+  'ChainAttackTemporaryAlliance_0:standardDmg': {
     sheet: 'Zhao',
-    name: 'ChainAttackTemporaryAlliance_0_dmg',
+    name: 'ChainAttackTemporaryAlliance_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -534,13 +519,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackTemporaryAlliance_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackTemporaryAlliance_0',
     },
   },
-  ChainAttackTemporaryAlliance_0_daze: {
+  'ChainAttackTemporaryAlliance_0:dazeBuildup': {
     sheet: 'Zhao',
-    name: 'ChainAttackTemporaryAlliance_0_daze',
+    name: 'ChainAttackTemporaryAlliance_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -548,13 +533,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackTemporaryAlliance_0_daze',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackTemporaryAlliance_0',
     },
   },
-  ChainAttackTemporaryAlliance_0_anomBuildup: {
+  'ChainAttackTemporaryAlliance_0:anomBuildup': {
     sheet: 'Zhao',
-    name: 'ChainAttackTemporaryAlliance_0_anomBuildup',
+    name: 'ChainAttackTemporaryAlliance_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -562,13 +547,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackTemporaryAlliance_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackTemporaryAlliance_0',
     },
   },
-  UltimateBunnyBarrage_0_dmg: {
+  'UltimateBunnyBarrage_0:standardDmg': {
     sheet: 'Zhao',
-    name: 'UltimateBunnyBarrage_0_dmg',
+    name: 'UltimateBunnyBarrage_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -576,13 +561,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateBunnyBarrage_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'UltimateBunnyBarrage_0',
     },
   },
-  UltimateBunnyBarrage_0_daze: {
+  'UltimateBunnyBarrage_0:dazeBuildup': {
     sheet: 'Zhao',
-    name: 'UltimateBunnyBarrage_0_daze',
+    name: 'UltimateBunnyBarrage_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -590,13 +575,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateBunnyBarrage_0_daze',
+      skillType1: 'chainSkill',
+      name: 'UltimateBunnyBarrage_0',
     },
   },
-  UltimateBunnyBarrage_0_anomBuildup: {
+  'UltimateBunnyBarrage_0:anomBuildup': {
     sheet: 'Zhao',
-    name: 'UltimateBunnyBarrage_0_anomBuildup',
+    name: 'UltimateBunnyBarrage_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -604,55 +589,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateBunnyBarrage_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'UltimateBunnyBarrage_0',
     },
   },
-  UltimateBunnyBarrage_1_dmg: {
+  'EntrySkillBurstOfFrost_0:standardDmg': {
     sheet: 'Zhao',
-    name: 'UltimateBunnyBarrage_1_dmg',
-    tag: {
-      et: 'own',
-      qt: 'formula',
-      q: 'standardDmg',
-      sheet: 'Zhao',
-      attribute: 'ice',
-      damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateBunnyBarrage_1_dmg',
-    },
-  },
-  UltimateBunnyBarrage_1_daze: {
-    sheet: 'Zhao',
-    name: 'UltimateBunnyBarrage_1_daze',
-    tag: {
-      et: 'own',
-      qt: 'formula',
-      q: 'dazeBuildup',
-      sheet: 'Zhao',
-      attribute: 'ice',
-      damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateBunnyBarrage_1_daze',
-    },
-  },
-  UltimateBunnyBarrage_1_anomBuildup: {
-    sheet: 'Zhao',
-    name: 'UltimateBunnyBarrage_1_anomBuildup',
-    tag: {
-      et: 'own',
-      qt: 'formula',
-      q: 'anomBuildup',
-      sheet: 'Zhao',
-      attribute: 'ice',
-      damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateBunnyBarrage_1_anomBuildup',
-    },
-  },
-  EntrySkillBurstOfFrost_0_dmg: {
-    sheet: 'Zhao',
-    name: 'EntrySkillBurstOfFrost_0_dmg',
+    name: 'EntrySkillBurstOfFrost_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -660,13 +603,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'entrySkill',
-      skillType: 'assistSkill',
-      name: 'EntrySkillBurstOfFrost_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'EntrySkillBurstOfFrost_0',
     },
   },
-  EntrySkillBurstOfFrost_0_daze: {
+  'EntrySkillBurstOfFrost_0:dazeBuildup': {
     sheet: 'Zhao',
-    name: 'EntrySkillBurstOfFrost_0_daze',
+    name: 'EntrySkillBurstOfFrost_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -674,13 +617,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'entrySkill',
-      skillType: 'assistSkill',
-      name: 'EntrySkillBurstOfFrost_0_daze',
+      skillType1: 'assistSkill',
+      name: 'EntrySkillBurstOfFrost_0',
     },
   },
-  EntrySkillBurstOfFrost_0_anomBuildup: {
+  'EntrySkillBurstOfFrost_0:anomBuildup': {
     sheet: 'Zhao',
-    name: 'EntrySkillBurstOfFrost_0_anomBuildup',
+    name: 'EntrySkillBurstOfFrost_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -688,13 +631,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'entrySkill',
-      skillType: 'assistSkill',
-      name: 'EntrySkillBurstOfFrost_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'EntrySkillBurstOfFrost_0',
     },
   },
-  QuickAssistPatchTheGaps_0_dmg: {
+  'QuickAssistPatchTheGaps_0:standardDmg': {
     sheet: 'Zhao',
-    name: 'QuickAssistPatchTheGaps_0_dmg',
+    name: 'QuickAssistPatchTheGaps_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -702,13 +645,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistPatchTheGaps_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistPatchTheGaps_0',
     },
   },
-  QuickAssistPatchTheGaps_0_daze: {
+  'QuickAssistPatchTheGaps_0:dazeBuildup': {
     sheet: 'Zhao',
-    name: 'QuickAssistPatchTheGaps_0_daze',
+    name: 'QuickAssistPatchTheGaps_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -716,13 +659,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistPatchTheGaps_0_daze',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistPatchTheGaps_0',
     },
   },
-  QuickAssistPatchTheGaps_0_anomBuildup: {
+  'QuickAssistPatchTheGaps_0:anomBuildup': {
     sheet: 'Zhao',
-    name: 'QuickAssistPatchTheGaps_0_anomBuildup',
+    name: 'QuickAssistPatchTheGaps_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -730,13 +673,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistPatchTheGaps_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistPatchTheGaps_0',
     },
   },
-  DefensiveAssistFrostveilSuppression_0_dmg: {
+  'DefensiveAssistFrostveilSuppression_0:standardDmg': {
     sheet: 'Zhao',
-    name: 'DefensiveAssistFrostveilSuppression_0_dmg',
+    name: 'DefensiveAssistFrostveilSuppression_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -744,13 +687,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistFrostveilSuppression_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistFrostveilSuppression_0',
     },
   },
-  DefensiveAssistFrostveilSuppression_0_daze: {
+  'DefensiveAssistFrostveilSuppression_0:dazeBuildup': {
     sheet: 'Zhao',
-    name: 'DefensiveAssistFrostveilSuppression_0_daze',
+    name: 'DefensiveAssistFrostveilSuppression_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -758,13 +701,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistFrostveilSuppression_0_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistFrostveilSuppression_0',
     },
   },
-  DefensiveAssistFrostveilSuppression_0_anomBuildup: {
+  'DefensiveAssistFrostveilSuppression_0:anomBuildup': {
     sheet: 'Zhao',
-    name: 'DefensiveAssistFrostveilSuppression_0_anomBuildup',
+    name: 'DefensiveAssistFrostveilSuppression_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -772,13 +715,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistFrostveilSuppression_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistFrostveilSuppression_0',
     },
   },
-  DefensiveAssistFrostveilSuppression_1_dmg: {
+  'DefensiveAssistFrostveilSuppression_1:standardDmg': {
     sheet: 'Zhao',
-    name: 'DefensiveAssistFrostveilSuppression_1_dmg',
+    name: 'DefensiveAssistFrostveilSuppression_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -786,13 +729,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistFrostveilSuppression_1_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistFrostveilSuppression_1',
     },
   },
-  DefensiveAssistFrostveilSuppression_1_daze: {
+  'DefensiveAssistFrostveilSuppression_1:dazeBuildup': {
     sheet: 'Zhao',
-    name: 'DefensiveAssistFrostveilSuppression_1_daze',
+    name: 'DefensiveAssistFrostveilSuppression_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -800,13 +743,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistFrostveilSuppression_1_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistFrostveilSuppression_1',
     },
   },
-  DefensiveAssistFrostveilSuppression_1_anomBuildup: {
+  'DefensiveAssistFrostveilSuppression_1:anomBuildup': {
     sheet: 'Zhao',
-    name: 'DefensiveAssistFrostveilSuppression_1_anomBuildup',
+    name: 'DefensiveAssistFrostveilSuppression_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -814,13 +757,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistFrostveilSuppression_1_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistFrostveilSuppression_1',
     },
   },
-  DefensiveAssistFrostveilSuppression_2_dmg: {
+  'DefensiveAssistFrostveilSuppression_2:standardDmg': {
     sheet: 'Zhao',
-    name: 'DefensiveAssistFrostveilSuppression_2_dmg',
+    name: 'DefensiveAssistFrostveilSuppression_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -828,13 +771,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistFrostveilSuppression_2_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistFrostveilSuppression_2',
     },
   },
-  DefensiveAssistFrostveilSuppression_2_daze: {
+  'DefensiveAssistFrostveilSuppression_2:dazeBuildup': {
     sheet: 'Zhao',
-    name: 'DefensiveAssistFrostveilSuppression_2_daze',
+    name: 'DefensiveAssistFrostveilSuppression_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -842,13 +785,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistFrostveilSuppression_2_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistFrostveilSuppression_2',
     },
   },
-  DefensiveAssistFrostveilSuppression_2_anomBuildup: {
+  'DefensiveAssistFrostveilSuppression_2:anomBuildup': {
     sheet: 'Zhao',
-    name: 'DefensiveAssistFrostveilSuppression_2_anomBuildup',
+    name: 'DefensiveAssistFrostveilSuppression_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -856,13 +799,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistFrostveilSuppression_2_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistFrostveilSuppression_2',
     },
   },
-  AssistFollowUpFrostlightReflection_0_dmg: {
+  'AssistFollowUpFrostlightReflection_0:standardDmg': {
     sheet: 'Zhao',
-    name: 'AssistFollowUpFrostlightReflection_0_dmg',
+    name: 'AssistFollowUpFrostlightReflection_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -870,13 +813,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpFrostlightReflection_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpFrostlightReflection_0',
     },
   },
-  AssistFollowUpFrostlightReflection_0_daze: {
+  'AssistFollowUpFrostlightReflection_0:dazeBuildup': {
     sheet: 'Zhao',
-    name: 'AssistFollowUpFrostlightReflection_0_daze',
+    name: 'AssistFollowUpFrostlightReflection_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -884,13 +827,13 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpFrostlightReflection_0_daze',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpFrostlightReflection_0',
     },
   },
-  AssistFollowUpFrostlightReflection_0_anomBuildup: {
+  'AssistFollowUpFrostlightReflection_0:anomBuildup': {
     sheet: 'Zhao',
-    name: 'AssistFollowUpFrostlightReflection_0_anomBuildup',
+    name: 'AssistFollowUpFrostlightReflection_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -898,8 +841,30 @@ export const formulas = {
       sheet: 'Zhao',
       attribute: 'ice',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpFrostlightReflection_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpFrostlightReflection_0',
+    },
+  },
+  special_heal: {
+    sheet: 'Zhao',
+    name: 'special_heal',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'heal',
+      sheet: 'Zhao',
+      name: 'special_heal',
+    },
+  },
+  exSpecial_heal: {
+    sheet: 'Zhao',
+    name: 'exSpecial_heal',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'heal',
+      sheet: 'Zhao',
+      name: 'exSpecial_heal',
     },
   },
 } as const

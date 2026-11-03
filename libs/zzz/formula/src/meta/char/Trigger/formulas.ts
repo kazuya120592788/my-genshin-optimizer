@@ -38,6 +38,33 @@ export const formulas = {
       name: 'disorderDmgInst_electric',
     },
   },
+  vortexDmgInst_electric: {
+    sheet: 'Trigger',
+    name: 'vortexDmgInst_electric',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Trigger',
+      attribute: 'electric',
+      damageType1: 'vortex',
+      name: 'vortexDmgInst_electric',
+    },
+  },
+  abloomDmgInst: {
+    sheet: 'Trigger',
+    name: 'abloomDmgInst',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Trigger',
+      attribute: 'electric',
+      damageType1: 'anomaly',
+      damageType2: 'abloom',
+      name: 'abloomDmgInst',
+    },
+  },
   anomalyBuildupInst: {
     sheet: 'Trigger',
     name: 'anomalyBuildupInst',
@@ -62,9 +89,9 @@ export const formulas = {
       name: 'dazeInst',
     },
   },
-  BasicAttackColdBoreShot_0_dmg: {
+  'BasicAttackColdBoreShot_0:standardDmg': {
     sheet: 'Trigger',
-    name: 'BasicAttackColdBoreShot_0_dmg',
+    name: 'BasicAttackColdBoreShot_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -72,13 +99,13 @@ export const formulas = {
       sheet: 'Trigger',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackColdBoreShot_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackColdBoreShot_0',
     },
   },
-  BasicAttackColdBoreShot_0_daze: {
+  'BasicAttackColdBoreShot_0:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackColdBoreShot_0_daze',
+    name: 'BasicAttackColdBoreShot_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -86,13 +113,13 @@ export const formulas = {
       sheet: 'Trigger',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackColdBoreShot_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackColdBoreShot_0',
     },
   },
-  BasicAttackColdBoreShot_0_anomBuildup: {
+  'BasicAttackColdBoreShot_0:anomBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackColdBoreShot_0_anomBuildup',
+    name: 'BasicAttackColdBoreShot_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -100,13 +127,13 @@ export const formulas = {
       sheet: 'Trigger',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackColdBoreShot_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackColdBoreShot_0',
     },
   },
-  BasicAttackColdBoreShot_1_dmg: {
+  'BasicAttackColdBoreShot_1:standardDmg': {
     sheet: 'Trigger',
-    name: 'BasicAttackColdBoreShot_1_dmg',
+    name: 'BasicAttackColdBoreShot_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -114,13 +141,13 @@ export const formulas = {
       sheet: 'Trigger',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackColdBoreShot_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackColdBoreShot_1',
     },
   },
-  BasicAttackColdBoreShot_1_daze: {
+  'BasicAttackColdBoreShot_1:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackColdBoreShot_1_daze',
+    name: 'BasicAttackColdBoreShot_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -128,13 +155,13 @@ export const formulas = {
       sheet: 'Trigger',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackColdBoreShot_1_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackColdBoreShot_1',
     },
   },
-  BasicAttackColdBoreShot_1_anomBuildup: {
+  'BasicAttackColdBoreShot_1:anomBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackColdBoreShot_1_anomBuildup',
+    name: 'BasicAttackColdBoreShot_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -142,13 +169,13 @@ export const formulas = {
       sheet: 'Trigger',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackColdBoreShot_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackColdBoreShot_1',
     },
   },
-  BasicAttackColdBoreShot_2_dmg: {
+  'BasicAttackColdBoreShot_2:standardDmg': {
     sheet: 'Trigger',
-    name: 'BasicAttackColdBoreShot_2_dmg',
+    name: 'BasicAttackColdBoreShot_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -156,13 +183,13 @@ export const formulas = {
       sheet: 'Trigger',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackColdBoreShot_2_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackColdBoreShot_2',
     },
   },
-  BasicAttackColdBoreShot_2_daze: {
+  'BasicAttackColdBoreShot_2:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackColdBoreShot_2_daze',
+    name: 'BasicAttackColdBoreShot_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -170,13 +197,13 @@ export const formulas = {
       sheet: 'Trigger',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackColdBoreShot_2_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackColdBoreShot_2',
     },
   },
-  BasicAttackColdBoreShot_2_anomBuildup: {
+  'BasicAttackColdBoreShot_2:anomBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackColdBoreShot_2_anomBuildup',
+    name: 'BasicAttackColdBoreShot_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -184,13 +211,13 @@ export const formulas = {
       sheet: 'Trigger',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackColdBoreShot_2_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackColdBoreShot_2',
     },
   },
-  BasicAttackColdBoreShot_3_dmg: {
+  'BasicAttackColdBoreShot_3:standardDmg': {
     sheet: 'Trigger',
-    name: 'BasicAttackColdBoreShot_3_dmg',
+    name: 'BasicAttackColdBoreShot_3:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -198,13 +225,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackColdBoreShot_3_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackColdBoreShot_3',
     },
   },
-  BasicAttackColdBoreShot_3_daze: {
+  'BasicAttackColdBoreShot_3:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackColdBoreShot_3_daze',
+    name: 'BasicAttackColdBoreShot_3:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -212,13 +239,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackColdBoreShot_3_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackColdBoreShot_3',
     },
   },
-  BasicAttackColdBoreShot_3_anomBuildup: {
+  'BasicAttackColdBoreShot_3:anomBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackColdBoreShot_3_anomBuildup',
+    name: 'BasicAttackColdBoreShot_3:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -226,13 +253,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackColdBoreShot_3_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackColdBoreShot_3',
     },
   },
-  BasicAttackSilencedShot_0_dmg: {
+  'BasicAttackSilencedShot_0:standardDmg': {
     sheet: 'Trigger',
-    name: 'BasicAttackSilencedShot_0_dmg',
+    name: 'BasicAttackSilencedShot_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -240,13 +267,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSilencedShot_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSilencedShot_0',
     },
   },
-  BasicAttackSilencedShot_0_daze: {
+  'BasicAttackSilencedShot_0:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackSilencedShot_0_daze',
+    name: 'BasicAttackSilencedShot_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -254,13 +281,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSilencedShot_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSilencedShot_0',
     },
   },
-  BasicAttackSilencedShot_0_anomBuildup: {
+  'BasicAttackSilencedShot_0:anomBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackSilencedShot_0_anomBuildup',
+    name: 'BasicAttackSilencedShot_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -268,13 +295,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSilencedShot_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSilencedShot_0',
     },
   },
-  BasicAttackSilencedShot_1_dmg: {
+  'BasicAttackSilencedShot_1:standardDmg': {
     sheet: 'Trigger',
-    name: 'BasicAttackSilencedShot_1_dmg',
+    name: 'BasicAttackSilencedShot_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -282,13 +309,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSilencedShot_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSilencedShot_1',
     },
   },
-  BasicAttackSilencedShot_1_daze: {
+  'BasicAttackSilencedShot_1:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackSilencedShot_1_daze',
+    name: 'BasicAttackSilencedShot_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -296,13 +323,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSilencedShot_1_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSilencedShot_1',
     },
   },
-  BasicAttackSilencedShot_1_anomBuildup: {
+  'BasicAttackSilencedShot_1:anomBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackSilencedShot_1_anomBuildup',
+    name: 'BasicAttackSilencedShot_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -310,13 +337,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSilencedShot_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSilencedShot_1',
     },
   },
-  BasicAttackSilencedShot_2_dmg: {
+  'BasicAttackSilencedShot_2:standardDmg': {
     sheet: 'Trigger',
-    name: 'BasicAttackSilencedShot_2_dmg',
+    name: 'BasicAttackSilencedShot_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -324,13 +351,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSilencedShot_2_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSilencedShot_2',
     },
   },
-  BasicAttackSilencedShot_2_daze: {
+  'BasicAttackSilencedShot_2:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackSilencedShot_2_daze',
+    name: 'BasicAttackSilencedShot_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -338,13 +365,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSilencedShot_2_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSilencedShot_2',
     },
   },
-  BasicAttackSilencedShot_2_anomBuildup: {
+  'BasicAttackSilencedShot_2:anomBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackSilencedShot_2_anomBuildup',
+    name: 'BasicAttackSilencedShot_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -352,13 +379,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSilencedShot_2_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSilencedShot_2',
     },
   },
-  BasicAttackHarmonizingShot_0_dmg: {
+  'BasicAttackHarmonizingShot_0:standardDmg': {
     sheet: 'Trigger',
-    name: 'BasicAttackHarmonizingShot_0_dmg',
+    name: 'BasicAttackHarmonizingShot_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -367,13 +394,13 @@ export const formulas = {
       attribute: 'electric',
       damageType1: 'basic',
       damageType2: 'aftershock',
-      skillType: 'basicSkill',
-      name: 'BasicAttackHarmonizingShot_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackHarmonizingShot_0',
     },
   },
-  BasicAttackHarmonizingShot_0_daze: {
+  'BasicAttackHarmonizingShot_0:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackHarmonizingShot_0_daze',
+    name: 'BasicAttackHarmonizingShot_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -382,13 +409,13 @@ export const formulas = {
       attribute: 'electric',
       damageType1: 'basic',
       damageType2: 'aftershock',
-      skillType: 'basicSkill',
-      name: 'BasicAttackHarmonizingShot_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackHarmonizingShot_0',
     },
   },
-  BasicAttackHarmonizingShot_0_anomBuildup: {
+  'BasicAttackHarmonizingShot_0:anomBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackHarmonizingShot_0_anomBuildup',
+    name: 'BasicAttackHarmonizingShot_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -397,13 +424,13 @@ export const formulas = {
       attribute: 'electric',
       damageType1: 'basic',
       damageType2: 'aftershock',
-      skillType: 'basicSkill',
-      name: 'BasicAttackHarmonizingShot_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackHarmonizingShot_0',
     },
   },
-  BasicAttackHarmonizingShotTartarus_0_dmg: {
+  'BasicAttackHarmonizingShotTartarus_0:standardDmg': {
     sheet: 'Trigger',
-    name: 'BasicAttackHarmonizingShotTartarus_0_dmg',
+    name: 'BasicAttackHarmonizingShotTartarus_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -412,13 +439,13 @@ export const formulas = {
       attribute: 'electric',
       damageType1: 'basic',
       damageType2: 'aftershock',
-      skillType: 'basicSkill',
-      name: 'BasicAttackHarmonizingShotTartarus_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackHarmonizingShotTartarus_0',
     },
   },
-  BasicAttackHarmonizingShotTartarus_0_daze: {
+  'BasicAttackHarmonizingShotTartarus_0:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackHarmonizingShotTartarus_0_daze',
+    name: 'BasicAttackHarmonizingShotTartarus_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -427,13 +454,13 @@ export const formulas = {
       attribute: 'electric',
       damageType1: 'basic',
       damageType2: 'aftershock',
-      skillType: 'basicSkill',
-      name: 'BasicAttackHarmonizingShotTartarus_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackHarmonizingShotTartarus_0',
     },
   },
-  BasicAttackHarmonizingShotTartarus_0_anomBuildup: {
+  'BasicAttackHarmonizingShotTartarus_0:anomBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackHarmonizingShotTartarus_0_anomBuildup',
+    name: 'BasicAttackHarmonizingShotTartarus_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -442,13 +469,13 @@ export const formulas = {
       attribute: 'electric',
       damageType1: 'basic',
       damageType2: 'aftershock',
-      skillType: 'basicSkill',
-      name: 'BasicAttackHarmonizingShotTartarus_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackHarmonizingShotTartarus_0',
     },
   },
-  BasicAttackHarmonizingShotTartarus_1_dmg: {
+  'BasicAttackHarmonizingShotTartarus_1:standardDmg': {
     sheet: 'Trigger',
-    name: 'BasicAttackHarmonizingShotTartarus_1_dmg',
+    name: 'BasicAttackHarmonizingShotTartarus_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -457,13 +484,13 @@ export const formulas = {
       attribute: 'electric',
       damageType1: 'basic',
       damageType2: 'aftershock',
-      skillType: 'basicSkill',
-      name: 'BasicAttackHarmonizingShotTartarus_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackHarmonizingShotTartarus_1',
     },
   },
-  BasicAttackHarmonizingShotTartarus_1_daze: {
+  'BasicAttackHarmonizingShotTartarus_1:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackHarmonizingShotTartarus_1_daze',
+    name: 'BasicAttackHarmonizingShotTartarus_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -472,13 +499,13 @@ export const formulas = {
       attribute: 'electric',
       damageType1: 'basic',
       damageType2: 'aftershock',
-      skillType: 'basicSkill',
-      name: 'BasicAttackHarmonizingShotTartarus_1_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackHarmonizingShotTartarus_1',
     },
   },
-  BasicAttackHarmonizingShotTartarus_1_anomBuildup: {
+  'BasicAttackHarmonizingShotTartarus_1:anomBuildup': {
     sheet: 'Trigger',
-    name: 'BasicAttackHarmonizingShotTartarus_1_anomBuildup',
+    name: 'BasicAttackHarmonizingShotTartarus_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -487,13 +514,13 @@ export const formulas = {
       attribute: 'electric',
       damageType1: 'basic',
       damageType2: 'aftershock',
-      skillType: 'basicSkill',
-      name: 'BasicAttackHarmonizingShotTartarus_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackHarmonizingShotTartarus_1',
     },
   },
-  DashAttackVengefulSpecter_0_dmg: {
+  'DashAttackVengefulSpecter_0:standardDmg': {
     sheet: 'Trigger',
-    name: 'DashAttackVengefulSpecter_0_dmg',
+    name: 'DashAttackVengefulSpecter_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -501,13 +528,13 @@ export const formulas = {
       sheet: 'Trigger',
       damageType1: 'dash',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackVengefulSpecter_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackVengefulSpecter_0',
     },
   },
-  DashAttackVengefulSpecter_0_daze: {
+  'DashAttackVengefulSpecter_0:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'DashAttackVengefulSpecter_0_daze',
+    name: 'DashAttackVengefulSpecter_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -515,13 +542,13 @@ export const formulas = {
       sheet: 'Trigger',
       damageType1: 'dash',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackVengefulSpecter_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackVengefulSpecter_0',
     },
   },
-  DashAttackVengefulSpecter_0_anomBuildup: {
+  'DashAttackVengefulSpecter_0:anomBuildup': {
     sheet: 'Trigger',
-    name: 'DashAttackVengefulSpecter_0_anomBuildup',
+    name: 'DashAttackVengefulSpecter_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -529,13 +556,13 @@ export const formulas = {
       sheet: 'Trigger',
       damageType1: 'dash',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackVengefulSpecter_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackVengefulSpecter_0',
     },
   },
-  DodgeCounterCondemnedSoul_0_dmg: {
+  'DodgeCounterCondemnedSoul_0:standardDmg': {
     sheet: 'Trigger',
-    name: 'DodgeCounterCondemnedSoul_0_dmg',
+    name: 'DodgeCounterCondemnedSoul_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -543,13 +570,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterCondemnedSoul_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterCondemnedSoul_0',
     },
   },
-  DodgeCounterCondemnedSoul_0_daze: {
+  'DodgeCounterCondemnedSoul_0:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'DodgeCounterCondemnedSoul_0_daze',
+    name: 'DodgeCounterCondemnedSoul_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -557,13 +584,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterCondemnedSoul_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterCondemnedSoul_0',
     },
   },
-  DodgeCounterCondemnedSoul_0_anomBuildup: {
+  'DodgeCounterCondemnedSoul_0:anomBuildup': {
     sheet: 'Trigger',
-    name: 'DodgeCounterCondemnedSoul_0_anomBuildup',
+    name: 'DodgeCounterCondemnedSoul_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -571,13 +598,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterCondemnedSoul_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterCondemnedSoul_0',
     },
   },
-  SpecialAttackSpectralFlash_0_dmg: {
+  'SpecialAttackSpectralFlash_0:standardDmg': {
     sheet: 'Trigger',
-    name: 'SpecialAttackSpectralFlash_0_dmg',
+    name: 'SpecialAttackSpectralFlash_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -585,13 +612,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackSpectralFlash_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackSpectralFlash_0',
     },
   },
-  SpecialAttackSpectralFlash_0_daze: {
+  'SpecialAttackSpectralFlash_0:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'SpecialAttackSpectralFlash_0_daze',
+    name: 'SpecialAttackSpectralFlash_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -599,13 +626,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackSpectralFlash_0_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackSpectralFlash_0',
     },
   },
-  SpecialAttackSpectralFlash_0_anomBuildup: {
+  'SpecialAttackSpectralFlash_0:anomBuildup': {
     sheet: 'Trigger',
-    name: 'SpecialAttackSpectralFlash_0_anomBuildup',
+    name: 'SpecialAttackSpectralFlash_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -613,13 +640,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackSpectralFlash_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackSpectralFlash_0',
     },
   },
-  EXSpecialAttackFlashBurial_0_dmg: {
+  'EXSpecialAttackFlashBurial_0:standardDmg': {
     sheet: 'Trigger',
-    name: 'EXSpecialAttackFlashBurial_0_dmg',
+    name: 'EXSpecialAttackFlashBurial_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -627,13 +654,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackFlashBurial_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackFlashBurial_0',
     },
   },
-  EXSpecialAttackFlashBurial_0_daze: {
+  'EXSpecialAttackFlashBurial_0:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'EXSpecialAttackFlashBurial_0_daze',
+    name: 'EXSpecialAttackFlashBurial_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -641,13 +668,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackFlashBurial_0_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackFlashBurial_0',
     },
   },
-  EXSpecialAttackFlashBurial_0_anomBuildup: {
+  'EXSpecialAttackFlashBurial_0:anomBuildup': {
     sheet: 'Trigger',
-    name: 'EXSpecialAttackFlashBurial_0_anomBuildup',
+    name: 'EXSpecialAttackFlashBurial_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -655,13 +682,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackFlashBurial_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackFlashBurial_0',
     },
   },
-  ChainAttackStygianGuide_0_dmg: {
+  'ChainAttackStygianGuide_0:standardDmg': {
     sheet: 'Trigger',
-    name: 'ChainAttackStygianGuide_0_dmg',
+    name: 'ChainAttackStygianGuide_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -669,13 +696,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackStygianGuide_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackStygianGuide_0',
     },
   },
-  ChainAttackStygianGuide_0_daze: {
+  'ChainAttackStygianGuide_0:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'ChainAttackStygianGuide_0_daze',
+    name: 'ChainAttackStygianGuide_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -683,13 +710,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackStygianGuide_0_daze',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackStygianGuide_0',
     },
   },
-  ChainAttackStygianGuide_0_anomBuildup: {
+  'ChainAttackStygianGuide_0:anomBuildup': {
     sheet: 'Trigger',
-    name: 'ChainAttackStygianGuide_0_anomBuildup',
+    name: 'ChainAttackStygianGuide_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -697,13 +724,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackStygianGuide_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackStygianGuide_0',
     },
   },
-  UltimateUnderworldRequiem_0_dmg: {
+  'UltimateUnderworldRequiem_0:standardDmg': {
     sheet: 'Trigger',
-    name: 'UltimateUnderworldRequiem_0_dmg',
+    name: 'UltimateUnderworldRequiem_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -711,13 +738,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateUnderworldRequiem_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'UltimateUnderworldRequiem_0',
     },
   },
-  UltimateUnderworldRequiem_0_daze: {
+  'UltimateUnderworldRequiem_0:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'UltimateUnderworldRequiem_0_daze',
+    name: 'UltimateUnderworldRequiem_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -725,13 +752,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateUnderworldRequiem_0_daze',
+      skillType1: 'chainSkill',
+      name: 'UltimateUnderworldRequiem_0',
     },
   },
-  UltimateUnderworldRequiem_0_anomBuildup: {
+  'UltimateUnderworldRequiem_0:anomBuildup': {
     sheet: 'Trigger',
-    name: 'UltimateUnderworldRequiem_0_anomBuildup',
+    name: 'UltimateUnderworldRequiem_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -739,13 +766,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateUnderworldRequiem_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'UltimateUnderworldRequiem_0',
     },
   },
-  QuickAssistColdBoreCoverFire_0_dmg: {
+  'QuickAssistColdBoreCoverFire_0:standardDmg': {
     sheet: 'Trigger',
-    name: 'QuickAssistColdBoreCoverFire_0_dmg',
+    name: 'QuickAssistColdBoreCoverFire_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -753,13 +780,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistColdBoreCoverFire_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistColdBoreCoverFire_0',
     },
   },
-  QuickAssistColdBoreCoverFire_0_daze: {
+  'QuickAssistColdBoreCoverFire_0:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'QuickAssistColdBoreCoverFire_0_daze',
+    name: 'QuickAssistColdBoreCoverFire_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -767,13 +794,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistColdBoreCoverFire_0_daze',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistColdBoreCoverFire_0',
     },
   },
-  QuickAssistColdBoreCoverFire_0_anomBuildup: {
+  'QuickAssistColdBoreCoverFire_0:anomBuildup': {
     sheet: 'Trigger',
-    name: 'QuickAssistColdBoreCoverFire_0_anomBuildup',
+    name: 'QuickAssistColdBoreCoverFire_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -781,13 +808,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistColdBoreCoverFire_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistColdBoreCoverFire_0',
     },
   },
-  DefensiveAssistDelayingDemise_0_dmg: {
+  'DefensiveAssistDelayingDemise_0:standardDmg': {
     sheet: 'Trigger',
-    name: 'DefensiveAssistDelayingDemise_0_dmg',
+    name: 'DefensiveAssistDelayingDemise_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -795,13 +822,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistDelayingDemise_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistDelayingDemise_0',
     },
   },
-  DefensiveAssistDelayingDemise_0_daze: {
+  'DefensiveAssistDelayingDemise_0:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'DefensiveAssistDelayingDemise_0_daze',
+    name: 'DefensiveAssistDelayingDemise_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -809,13 +836,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistDelayingDemise_0_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistDelayingDemise_0',
     },
   },
-  DefensiveAssistDelayingDemise_0_anomBuildup: {
+  'DefensiveAssistDelayingDemise_0:anomBuildup': {
     sheet: 'Trigger',
-    name: 'DefensiveAssistDelayingDemise_0_anomBuildup',
+    name: 'DefensiveAssistDelayingDemise_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -823,13 +850,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistDelayingDemise_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistDelayingDemise_0',
     },
   },
-  DefensiveAssistDelayingDemise_1_dmg: {
+  'DefensiveAssistDelayingDemise_1:standardDmg': {
     sheet: 'Trigger',
-    name: 'DefensiveAssistDelayingDemise_1_dmg',
+    name: 'DefensiveAssistDelayingDemise_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -837,13 +864,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistDelayingDemise_1_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistDelayingDemise_1',
     },
   },
-  DefensiveAssistDelayingDemise_1_daze: {
+  'DefensiveAssistDelayingDemise_1:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'DefensiveAssistDelayingDemise_1_daze',
+    name: 'DefensiveAssistDelayingDemise_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -851,13 +878,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistDelayingDemise_1_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistDelayingDemise_1',
     },
   },
-  DefensiveAssistDelayingDemise_1_anomBuildup: {
+  'DefensiveAssistDelayingDemise_1:anomBuildup': {
     sheet: 'Trigger',
-    name: 'DefensiveAssistDelayingDemise_1_anomBuildup',
+    name: 'DefensiveAssistDelayingDemise_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -865,13 +892,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistDelayingDemise_1_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistDelayingDemise_1',
     },
   },
-  DefensiveAssistDelayingDemise_2_dmg: {
+  'DefensiveAssistDelayingDemise_2:standardDmg': {
     sheet: 'Trigger',
-    name: 'DefensiveAssistDelayingDemise_2_dmg',
+    name: 'DefensiveAssistDelayingDemise_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -879,13 +906,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistDelayingDemise_2_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistDelayingDemise_2',
     },
   },
-  DefensiveAssistDelayingDemise_2_daze: {
+  'DefensiveAssistDelayingDemise_2:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'DefensiveAssistDelayingDemise_2_daze',
+    name: 'DefensiveAssistDelayingDemise_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -893,13 +920,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistDelayingDemise_2_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistDelayingDemise_2',
     },
   },
-  DefensiveAssistDelayingDemise_2_anomBuildup: {
+  'DefensiveAssistDelayingDemise_2:anomBuildup': {
     sheet: 'Trigger',
-    name: 'DefensiveAssistDelayingDemise_2_anomBuildup',
+    name: 'DefensiveAssistDelayingDemise_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -907,13 +934,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistDelayingDemise_2_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistDelayingDemise_2',
     },
   },
-  AssistFollowUpPiercingThunder_0_dmg: {
+  'AssistFollowUpPiercingThunder_0:standardDmg': {
     sheet: 'Trigger',
-    name: 'AssistFollowUpPiercingThunder_0_dmg',
+    name: 'AssistFollowUpPiercingThunder_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -921,13 +948,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpPiercingThunder_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpPiercingThunder_0',
     },
   },
-  AssistFollowUpPiercingThunder_0_daze: {
+  'AssistFollowUpPiercingThunder_0:dazeBuildup': {
     sheet: 'Trigger',
-    name: 'AssistFollowUpPiercingThunder_0_daze',
+    name: 'AssistFollowUpPiercingThunder_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -935,13 +962,13 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpPiercingThunder_0_daze',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpPiercingThunder_0',
     },
   },
-  AssistFollowUpPiercingThunder_0_anomBuildup: {
+  'AssistFollowUpPiercingThunder_0:anomBuildup': {
     sheet: 'Trigger',
-    name: 'AssistFollowUpPiercingThunder_0_anomBuildup',
+    name: 'AssistFollowUpPiercingThunder_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -949,8 +976,8 @@ export const formulas = {
       sheet: 'Trigger',
       attribute: 'electric',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpPiercingThunder_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpPiercingThunder_0',
     },
   },
   m4_disconnect_dmg: {

@@ -1,63 +1,68 @@
 // WARNING: Generated file, do not modify
 export const buffs = {
-  core_ether_abloom: {
+  core_ether_anom_mv_mult_: {
     sheet: 'Vivian',
-    name: 'core_ether_abloom',
+    name: 'core_ether_anom_mv_mult_',
     tag: {
       et: 'display',
-      qt: 'dmg',
+      qt: 'combat',
       q: 'anom_mv_mult_',
       sheet: 'Vivian',
       attribute: 'ether',
-      name: 'core_ether_abloom',
+      damageType1: 'abloom',
+      name: 'core_ether_anom_mv_mult_',
     },
   },
-  core_electric_abloom: {
+  core_electric_anom_mv_mult_: {
     sheet: 'Vivian',
-    name: 'core_electric_abloom',
+    name: 'core_electric_anom_mv_mult_',
     tag: {
       et: 'display',
-      qt: 'dmg',
+      qt: 'combat',
       q: 'anom_mv_mult_',
       sheet: 'Vivian',
       attribute: 'electric',
-      name: 'core_electric_abloom',
+      damageType1: 'abloom',
+      name: 'core_electric_anom_mv_mult_',
     },
   },
-  core_fire_abloom: {
+  core_fire_anom_mv_mult_: {
     sheet: 'Vivian',
-    name: 'core_fire_abloom',
+    name: 'core_fire_anom_mv_mult_',
     tag: {
       et: 'display',
-      qt: 'dmg',
+      qt: 'combat',
       q: 'anom_mv_mult_',
       sheet: 'Vivian',
       attribute: 'fire',
-      name: 'core_fire_abloom',
+      damageType1: 'abloom',
+      name: 'core_fire_anom_mv_mult_',
     },
   },
-  core_physical_abloom: {
+  core_physical_anom_mv_mult_: {
     sheet: 'Vivian',
-    name: 'core_physical_abloom',
+    name: 'core_physical_anom_mv_mult_',
     tag: {
       et: 'display',
-      qt: 'dmg',
+      qt: 'combat',
       q: 'anom_mv_mult_',
       sheet: 'Vivian',
       attribute: 'physical',
-      name: 'core_physical_abloom',
+      damageType1: 'abloom',
+      name: 'core_physical_anom_mv_mult_',
     },
   },
-  core_ice_abloom: {
+  core_ice_anom_mv_mult_: {
     sheet: 'Vivian',
-    name: 'core_ice_abloom',
+    name: 'core_ice_anom_mv_mult_',
     tag: {
       et: 'display',
-      qt: 'dmg',
+      qt: 'combat',
       q: 'anom_mv_mult_',
       sheet: 'Vivian',
       attribute: 'ice',
-      name: 'core_ice_abloom',
+      damageType1: 'abloom',
+      name: 'core_ice_anom_mv_mult_',
     },
   },
   ability_corruption_dmg_: {
@@ -127,9 +132,10 @@ export const buffs = {
     name: 'm2_anom_mv_mult_',
     tag: {
       et: 'display',
-      qt: 'dmg',
+      qt: 'combat',
       q: 'anom_mv_mult_',
       sheet: 'Vivian',
+      damageType1: 'abloom',
       name: 'm2_anom_mv_mult_',
     },
   },
