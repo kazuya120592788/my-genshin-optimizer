@@ -36,6 +36,8 @@ jobs:
     timeout-minutes: 15
     env:
       GH_TOKEN: ${{ secrets.SYNC_TOKEN }}
+      # gh は upstream という名前のリモートを優先して操作対象にするため、明示的に固定する
+      GH_REPO: ${{ github.repository }}
     steps:
       - name: Check token
         run: |
