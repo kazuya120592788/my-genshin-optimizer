@@ -1,7 +1,9 @@
 name: Sync upstream
 
 # フォーク元の master を定期的にマージする。
-# - 自動解消できた場合: sync/upstream ブランチに push し、master への PR を作成・更新する
+# - 自動解消できた場合: sync/upstream ブランチに push し、master への PR を作成・更新して
+#   自動マージを有効にする（Build が通るとマージコミットでマージされる）
+#   ※ sync/upstream に手で追加したコミットがあれば上書きせず、ジョブを失敗させる
 # - 手動解消が必要な場合: ジョブを失敗させ（GitHub から失敗通知が届く）、
 #   競合ファイルの一覧と手順を実行結果のサマリーに書く
 #
@@ -11,6 +13,12 @@ name: Sync upstream
 #   ※ フォーク元のコミットには .github/workflows の変更が含まれるため、
 #     Workflows 権限のない GITHUB_TOKEN では push できない。
 #     また PAT で作った PR であれば Build ワークフローも起動する。
+#
+# 自動マージに必要なリポジトリ設定:
+#   - Settings → General → Pull Requests → Allow auto-merge を有効にする
+#   - Settings → Rules → Rulesets で master に「Require status checks to pass」を設定し、
+#     必須チェックに build を追加する（バイパスは設定しない）
+#   必須チェックが見つからない場合は、Build 前にマージされるのを防ぐため自動マージを有効にしない。
 
 on:
   schedule:
@@ -29,6 +37,8 @@ env:
   UPSTREAM_BRANCH: master
   BASE_BRANCH: master
   SYNC_BRANCH: sync/upstream
+  BOT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+  REQUIRED_CHECK: build
 
 jobs:
   sync:
@@ -72,7 +82,7 @@ jobs:
         if: steps.check.outputs.needed == 'true'
         run: |
           git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config user.email "$BOT_EMAIL"
           git remote add upstream "https://github.com/${UPSTREAM_REPO}.git"
           git fetch --no-tags upstream "$UPSTREAM_BRANCH"
           upstream_ref="upstream/$UPSTREAM_BRANCH"
@@ -109,13 +119,38 @@ jobs:
           MERGE_BASE: ${{ steps.merge.outputs.merge_base }}
           COMMIT_COUNT: ${{ steps.merge.outputs.commit_count }}
         run: |
-          # 同じ master と upstream から作った sync ブランチが既にあれば、何もしない（無駄な CI を避ける）
-          if git fetch --no-tags origin "$SYNC_BRANCH" 2>/dev/null \
-            && [ "$(git rev-parse FETCH_HEAD^1 2>/dev/null)" = "$(git rev-parse HEAD^1)" ] \
-            && [ "$(git rev-parse FETCH_HEAD^2 2>/dev/null)" = "$UPSTREAM_SHA" ]; then
-            echo "sync ブランチは最新です"
-          else
-            git push --force origin "HEAD:refs/heads/$SYNC_BRANCH"
+          base_sha=$(git rev-parse HEAD^1)
+          remote_sha=""
+          push=true
+          if git fetch --no-tags origin "$SYNC_BRANCH" 2>/dev/null; then
+            remote_sha=$(git rev-parse FETCH_HEAD)
+            if git merge-base --is-ancestor "$base_sha" "$remote_sha" \
+              && git merge-base --is-ancestor "$UPSTREAM_SHA" "$remote_sha"; then
+              # 既に最新の master とフォーク元を含んでいる（手で追加した修正があればそれも残す）
+              echo "sync ブランチは最新です"
+              push=false
+            else
+              # master にもフォーク元にもまだ入っていない、ワークフロー以外が作ったコミット
+              manual_commits=$(git log --format='%ae%x09%h %an: %s' "$remote_sha" --not "$base_sha" "$UPSTREAM_SHA" \
+                | awk -F '\t' -v bot="$BOT_EMAIL" '$1 != bot { print $2 }')
+              if [ -n "$manual_commits" ]; then
+                {
+                  echo "## sync ブランチに手で追加したコミットがあります"
+                  echo
+                  echo "\`${SYNC_BRANCH}\` を作り直すと次のコミットが消えるため、更新を止めました。"
+                  echo "PR をマージ（または不要なら \`${SYNC_BRANCH}\` ブランチを削除）してから、再実行してください。"
+                  echo
+                  echo '```'
+                  echo "$manual_commits"
+                  echo '```'
+                } >>"$GITHUB_STEP_SUMMARY"
+                echo "::error::${SYNC_BRANCH} に手で追加したコミットがあるため、上書きせずに終了しました。詳細は実行結果のサマリーを参照してください。"
+                exit 1
+              fi
+            fi
+          fi
+          if [ "$push" = true ]; then
+            git push --force-with-lease="refs/heads/${SYNC_BRANCH}:${remote_sha}" origin "HEAD:refs/heads/${SYNC_BRANCH}"
           fi
 
           body="$RUNNER_TEMP/pr-body.md"
@@ -134,7 +169,8 @@ jobs:
             fi
             echo "## Testing/validation"
             echo
-            echo "Build ワークフローの結果を確認してからマージしてください。"
+            echo "自動マージが有効な場合、Build が通るとマージコミットで自動的にマージされます。"
+            echo "Build が失敗した場合は、このブランチ（\`${SYNC_BRANCH}\`）に修正をコミットしてください。手で追加したコミットは次回の実行で上書きされません。"
             echo
             echo "> [!IMPORTANT]"
             echo "> **Create a merge commit** でマージしてください。Squash / Rebase だとフォーク元の履歴が残らず、次回の取り込みで同じ競合が再発します。"
@@ -151,6 +187,17 @@ jobs:
             pr=$(gh pr create --head "$SYNC_BRANCH" --base "$BASE_BRANCH" --title "$title" --body-file "$body")
           fi
           echo "フォーク元の ${COMMIT_COUNT} コミットを取り込む PR を作成・更新しました: ${pr}" >>"$GITHUB_STEP_SUMMARY"
+
+          # 必須チェックがないと自動マージが Build を待たずにマージしてしまうため、確認してから有効にする
+          required=$(gh api "repos/${GITHUB_REPOSITORY}/rules/branches/${BASE_BRANCH}" \
+            --jq '[.[] | select(.type == "required_status_checks") | .parameters.required_status_checks[].context] | join(",")' 2>/dev/null || true)
+          if [[ ",${required}," == *",${REQUIRED_CHECK},"* ]]; then
+            gh pr merge "$pr" --auto --merge
+            echo "自動マージを有効にしました（${REQUIRED_CHECK} が通るとマージされます）。" >>"$GITHUB_STEP_SUMMARY"
+          else
+            echo "::warning::${BASE_BRANCH} の Ruleset に必須チェック ${REQUIRED_CHECK} がないため、自動マージを有効にしませんでした（sync-upstream.yml の先頭コメント参照）。"
+            echo "${BASE_BRANCH} の Ruleset に必須チェック \`${REQUIRED_CHECK}\` がないため、自動マージは有効にしていません。手動でマージしてください。" >>"$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Report conflicts
         if: steps.merge.outputs.status == 'conflict'
