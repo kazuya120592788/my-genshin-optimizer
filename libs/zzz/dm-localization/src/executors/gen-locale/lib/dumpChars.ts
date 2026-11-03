@@ -35,6 +35,11 @@ function getSkillStrings(data: CharacterData['skills']) {
     'BasicAttackFallingPetalsDownfallFirstForm',
     'BasicAttackFallingPetalsDownfallSecondForm',
     'ChasingThunder',
+    'SweepingCyclone',
+    'CondensedCyclone',
+    'BasicAttackConvergingSpear1stStage',
+    'BasicAttackConvergingSpear2ndStage',
+    'BasicAttackConvergingSpear3rdStage',
   ])
   return Object.fromEntries(
     Object.entries(data).map(([key, skill]) => [
@@ -73,7 +78,7 @@ function getSkillStrings(data: CharacterData['skills']) {
 }
 
 function processParamText(text: string) {
-  return text.replace(/\s*(DMG Multiplier|Daze Multiplier)/, '').trim() + ' '
+  return `${text.replace(/\s*(DMG Multiplier|Daze Multiplier)/, '').trim()} `
 }
 
 function getCoreStrings(data: CharacterData['cores']) {
@@ -111,8 +116,10 @@ function getPotentialStrings(data: CharacterData['potential']) {
   if (Object.keys(data).length === 0) {
     return {}
   }
+  const desc = Object.values(data).map((pot) => processText(pot.Desc))
+  desc.unshift('')
   return {
     name: Object.values(data).filter((_, i) => i > 0)[0].Name,
-    desc: Object.values(data).map((pot) => processText(pot.Desc)),
+    desc,
   }
 }

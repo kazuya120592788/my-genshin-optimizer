@@ -7,13 +7,13 @@ import {
   removeUndefinedFields,
   validateValue,
 } from '@genshin-optimizer/common/util'
-import type { AttributeKey, SpecialityKey } from '@genshin-optimizer/zzz/consts'
+import type { AttributeKey, SpecialtyKey } from '@genshin-optimizer/zzz/consts'
 import {
-  type DiscMainStatKey,
-  type DiscSetKey,
   allAttributeKeys,
   allDiscSetKeys,
-  allSpecialityKeys,
+  allSpecialtyKeys,
+  type DiscMainStatKey,
+  type DiscSetKey,
   discMaxLevel,
   discSlotToMainStatKeys,
   wengineMaxLevel,
@@ -95,13 +95,14 @@ const optConfigSchema = z.object({
   ]) as z.ZodType<DiscMainStatKey[]>,
   setFilter2: zodFilteredArray(allDiscSetKeys, []) as z.ZodType<DiscSetKey[]>,
   setFilter4: zodFilteredArray(allDiscSetKeys, []) as z.ZodType<DiscSetKey[]>,
+  allowRainbow: zodBoolean(),
   useEquipped: zodBoolean(),
 
   optWengine: zodBoolean(),
   wlevelLow: z.number().int().min(0).max(60).catch(wengineMaxLevel),
   wlevelHigh: z.number().int().min(0).max(60).catch(wengineMaxLevel),
-  wEngineTypes: zodFilteredArray(allSpecialityKeys, []) as z.ZodType<
-    SpecialityKey[]
+  wEngineTypes: zodFilteredArray(allSpecialtyKeys, []) as z.ZodType<
+    SpecialtyKey[]
   >,
   useEquippedWengine: zodBoolean(),
 
@@ -194,10 +195,9 @@ export class OptConfigDataManager extends DataManager<
       listId && this.database.generatedBuildList.get(listId)
     if (listId && generatedBuildList)
       return this.database.generatedBuildList.set(listId, list)
-    else
-      return this.database.optConfigs.set(optConfigId, {
-        generatedBuildListId: this.database.generatedBuildList.new(list),
-      })
+    return this.set(optConfigId, {
+      generatedBuildListId: this.database.generatedBuildList.new(list),
+    })
   }
 }
 

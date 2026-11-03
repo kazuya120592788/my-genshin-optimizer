@@ -38,6 +38,33 @@ export const formulas = {
       name: 'disorderDmgInst_fire',
     },
   },
+  vortexDmgInst_fire: {
+    sheet: 'Burnice',
+    name: 'vortexDmgInst_fire',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Burnice',
+      attribute: 'fire',
+      damageType1: 'vortex',
+      name: 'vortexDmgInst_fire',
+    },
+  },
+  abloomDmgInst: {
+    sheet: 'Burnice',
+    name: 'abloomDmgInst',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Burnice',
+      attribute: 'fire',
+      damageType1: 'anomaly',
+      damageType2: 'abloom',
+      name: 'abloomDmgInst',
+    },
+  },
   anomalyBuildupInst: {
     sheet: 'Burnice',
     name: 'anomalyBuildupInst',
@@ -62,9 +89,9 @@ export const formulas = {
       name: 'dazeInst',
     },
   },
-  BasicAttackDirectFlameBlend_0_dmg: {
+  'BasicAttackDirectFlameBlend_0:standardDmg': {
     sheet: 'Burnice',
-    name: 'BasicAttackDirectFlameBlend_0_dmg',
+    name: 'BasicAttackDirectFlameBlend_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -72,13 +99,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDirectFlameBlend_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDirectFlameBlend_0',
     },
   },
-  BasicAttackDirectFlameBlend_0_daze: {
+  'BasicAttackDirectFlameBlend_0:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'BasicAttackDirectFlameBlend_0_daze',
+    name: 'BasicAttackDirectFlameBlend_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -86,13 +113,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDirectFlameBlend_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDirectFlameBlend_0',
     },
   },
-  BasicAttackDirectFlameBlend_0_anomBuildup: {
+  'BasicAttackDirectFlameBlend_0:anomBuildup': {
     sheet: 'Burnice',
-    name: 'BasicAttackDirectFlameBlend_0_anomBuildup',
+    name: 'BasicAttackDirectFlameBlend_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -100,13 +127,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDirectFlameBlend_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDirectFlameBlend_0',
     },
   },
-  BasicAttackDirectFlameBlend_1_dmg: {
+  'BasicAttackDirectFlameBlend_1:standardDmg': {
     sheet: 'Burnice',
-    name: 'BasicAttackDirectFlameBlend_1_dmg',
+    name: 'BasicAttackDirectFlameBlend_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -114,13 +141,13 @@ export const formulas = {
       sheet: 'Burnice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDirectFlameBlend_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDirectFlameBlend_1',
     },
   },
-  BasicAttackDirectFlameBlend_1_daze: {
+  'BasicAttackDirectFlameBlend_1:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'BasicAttackDirectFlameBlend_1_daze',
+    name: 'BasicAttackDirectFlameBlend_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -128,13 +155,13 @@ export const formulas = {
       sheet: 'Burnice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDirectFlameBlend_1_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDirectFlameBlend_1',
     },
   },
-  BasicAttackDirectFlameBlend_1_anomBuildup: {
+  'BasicAttackDirectFlameBlend_1:anomBuildup': {
     sheet: 'Burnice',
-    name: 'BasicAttackDirectFlameBlend_1_anomBuildup',
+    name: 'BasicAttackDirectFlameBlend_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -142,13 +169,13 @@ export const formulas = {
       sheet: 'Burnice',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDirectFlameBlend_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDirectFlameBlend_1',
     },
   },
-  BasicAttackDirectFlameBlend_2_dmg: {
+  'BasicAttackDirectFlameBlend_2:standardDmg': {
     sheet: 'Burnice',
-    name: 'BasicAttackDirectFlameBlend_2_dmg',
+    name: 'BasicAttackDirectFlameBlend_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -156,13 +183,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDirectFlameBlend_2_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDirectFlameBlend_2',
     },
   },
-  BasicAttackDirectFlameBlend_2_daze: {
+  'BasicAttackDirectFlameBlend_2:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'BasicAttackDirectFlameBlend_2_daze',
+    name: 'BasicAttackDirectFlameBlend_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -170,13 +197,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDirectFlameBlend_2_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDirectFlameBlend_2',
     },
   },
-  BasicAttackDirectFlameBlend_2_anomBuildup: {
+  'BasicAttackDirectFlameBlend_2:anomBuildup': {
     sheet: 'Burnice',
-    name: 'BasicAttackDirectFlameBlend_2_anomBuildup',
+    name: 'BasicAttackDirectFlameBlend_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -184,13 +211,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDirectFlameBlend_2_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDirectFlameBlend_2',
     },
   },
-  BasicAttackDirectFlameBlend_3_dmg: {
+  'BasicAttackDirectFlameBlend_3:standardDmg': {
     sheet: 'Burnice',
-    name: 'BasicAttackDirectFlameBlend_3_dmg',
+    name: 'BasicAttackDirectFlameBlend_3:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -198,13 +225,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDirectFlameBlend_3_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDirectFlameBlend_3',
     },
   },
-  BasicAttackDirectFlameBlend_3_daze: {
+  'BasicAttackDirectFlameBlend_3:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'BasicAttackDirectFlameBlend_3_daze',
+    name: 'BasicAttackDirectFlameBlend_3:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -212,13 +239,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDirectFlameBlend_3_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDirectFlameBlend_3',
     },
   },
-  BasicAttackDirectFlameBlend_3_anomBuildup: {
+  'BasicAttackDirectFlameBlend_3:anomBuildup': {
     sheet: 'Burnice',
-    name: 'BasicAttackDirectFlameBlend_3_anomBuildup',
+    name: 'BasicAttackDirectFlameBlend_3:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -226,13 +253,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDirectFlameBlend_3_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDirectFlameBlend_3',
     },
   },
-  BasicAttackDirectFlameBlend_4_dmg: {
+  'BasicAttackDirectFlameBlend_4:standardDmg': {
     sheet: 'Burnice',
-    name: 'BasicAttackDirectFlameBlend_4_dmg',
+    name: 'BasicAttackDirectFlameBlend_4:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -240,13 +267,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDirectFlameBlend_4_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDirectFlameBlend_4',
     },
   },
-  BasicAttackDirectFlameBlend_4_daze: {
+  'BasicAttackDirectFlameBlend_4:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'BasicAttackDirectFlameBlend_4_daze',
+    name: 'BasicAttackDirectFlameBlend_4:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -254,13 +281,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDirectFlameBlend_4_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDirectFlameBlend_4',
     },
   },
-  BasicAttackDirectFlameBlend_4_anomBuildup: {
+  'BasicAttackDirectFlameBlend_4:anomBuildup': {
     sheet: 'Burnice',
-    name: 'BasicAttackDirectFlameBlend_4_anomBuildup',
+    name: 'BasicAttackDirectFlameBlend_4:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -268,13 +295,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDirectFlameBlend_4_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDirectFlameBlend_4',
     },
   },
-  BasicAttackMixedFlameBlend_0_dmg: {
+  'BasicAttackMixedFlameBlend_0:standardDmg': {
     sheet: 'Burnice',
-    name: 'BasicAttackMixedFlameBlend_0_dmg',
+    name: 'BasicAttackMixedFlameBlend_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -282,13 +309,14 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMixedFlameBlend_0_dmg',
+      skillType1: 'basicSkill',
+      skillType2: 'assistSkill',
+      name: 'BasicAttackMixedFlameBlend_0',
     },
   },
-  BasicAttackMixedFlameBlend_0_daze: {
+  'BasicAttackMixedFlameBlend_0:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'BasicAttackMixedFlameBlend_0_daze',
+    name: 'BasicAttackMixedFlameBlend_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -296,13 +324,14 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMixedFlameBlend_0_daze',
+      skillType1: 'basicSkill',
+      skillType2: 'assistSkill',
+      name: 'BasicAttackMixedFlameBlend_0',
     },
   },
-  BasicAttackMixedFlameBlend_0_anomBuildup: {
+  'BasicAttackMixedFlameBlend_0:anomBuildup': {
     sheet: 'Burnice',
-    name: 'BasicAttackMixedFlameBlend_0_anomBuildup',
+    name: 'BasicAttackMixedFlameBlend_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -310,13 +339,14 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMixedFlameBlend_0_anomBuildup',
+      skillType1: 'basicSkill',
+      skillType2: 'assistSkill',
+      name: 'BasicAttackMixedFlameBlend_0',
     },
   },
-  BasicAttackMixedFlameBlend_1_dmg: {
+  'BasicAttackMixedFlameBlend_1:standardDmg': {
     sheet: 'Burnice',
-    name: 'BasicAttackMixedFlameBlend_1_dmg',
+    name: 'BasicAttackMixedFlameBlend_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -324,13 +354,14 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMixedFlameBlend_1_dmg',
+      skillType1: 'basicSkill',
+      skillType2: 'assistSkill',
+      name: 'BasicAttackMixedFlameBlend_1',
     },
   },
-  BasicAttackMixedFlameBlend_1_daze: {
+  'BasicAttackMixedFlameBlend_1:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'BasicAttackMixedFlameBlend_1_daze',
+    name: 'BasicAttackMixedFlameBlend_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -338,13 +369,14 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMixedFlameBlend_1_daze',
+      skillType1: 'basicSkill',
+      skillType2: 'assistSkill',
+      name: 'BasicAttackMixedFlameBlend_1',
     },
   },
-  BasicAttackMixedFlameBlend_1_anomBuildup: {
+  'BasicAttackMixedFlameBlend_1:anomBuildup': {
     sheet: 'Burnice',
-    name: 'BasicAttackMixedFlameBlend_1_anomBuildup',
+    name: 'BasicAttackMixedFlameBlend_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -352,13 +384,14 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackMixedFlameBlend_1_anomBuildup',
+      skillType1: 'basicSkill',
+      skillType2: 'assistSkill',
+      name: 'BasicAttackMixedFlameBlend_1',
     },
   },
-  DashAttackDangerousFermentation_0_dmg: {
+  'DashAttackDangerousFermentation_0:standardDmg': {
     sheet: 'Burnice',
-    name: 'DashAttackDangerousFermentation_0_dmg',
+    name: 'DashAttackDangerousFermentation_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -366,13 +399,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackDangerousFermentation_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackDangerousFermentation_0',
     },
   },
-  DashAttackDangerousFermentation_0_daze: {
+  'DashAttackDangerousFermentation_0:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'DashAttackDangerousFermentation_0_daze',
+    name: 'DashAttackDangerousFermentation_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -380,13 +413,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackDangerousFermentation_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackDangerousFermentation_0',
     },
   },
-  DashAttackDangerousFermentation_0_anomBuildup: {
+  'DashAttackDangerousFermentation_0:anomBuildup': {
     sheet: 'Burnice',
-    name: 'DashAttackDangerousFermentation_0_anomBuildup',
+    name: 'DashAttackDangerousFermentation_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -394,13 +427,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackDangerousFermentation_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackDangerousFermentation_0',
     },
   },
-  DodgeCounterFlutteringSteps_0_dmg: {
+  'DodgeCounterFlutteringSteps_0:standardDmg': {
     sheet: 'Burnice',
-    name: 'DodgeCounterFlutteringSteps_0_dmg',
+    name: 'DodgeCounterFlutteringSteps_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -408,13 +441,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterFlutteringSteps_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterFlutteringSteps_0',
     },
   },
-  DodgeCounterFlutteringSteps_0_daze: {
+  'DodgeCounterFlutteringSteps_0:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'DodgeCounterFlutteringSteps_0_daze',
+    name: 'DodgeCounterFlutteringSteps_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -422,13 +455,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterFlutteringSteps_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterFlutteringSteps_0',
     },
   },
-  DodgeCounterFlutteringSteps_0_anomBuildup: {
+  'DodgeCounterFlutteringSteps_0:anomBuildup': {
     sheet: 'Burnice',
-    name: 'DodgeCounterFlutteringSteps_0_anomBuildup',
+    name: 'DodgeCounterFlutteringSteps_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -436,13 +469,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterFlutteringSteps_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterFlutteringSteps_0',
     },
   },
-  SpecialAttackIntenseHeatAgingMethod_0_dmg: {
+  'SpecialAttackIntenseHeatAgingMethod_0:standardDmg': {
     sheet: 'Burnice',
-    name: 'SpecialAttackIntenseHeatAgingMethod_0_dmg',
+    name: 'SpecialAttackIntenseHeatAgingMethod_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -450,13 +483,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackIntenseHeatAgingMethod_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackIntenseHeatAgingMethod_0',
     },
   },
-  SpecialAttackIntenseHeatAgingMethod_0_daze: {
+  'SpecialAttackIntenseHeatAgingMethod_0:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'SpecialAttackIntenseHeatAgingMethod_0_daze',
+    name: 'SpecialAttackIntenseHeatAgingMethod_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -464,13 +497,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackIntenseHeatAgingMethod_0_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackIntenseHeatAgingMethod_0',
     },
   },
-  SpecialAttackIntenseHeatAgingMethod_0_anomBuildup: {
+  'SpecialAttackIntenseHeatAgingMethod_0:anomBuildup': {
     sheet: 'Burnice',
-    name: 'SpecialAttackIntenseHeatAgingMethod_0_anomBuildup',
+    name: 'SpecialAttackIntenseHeatAgingMethod_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -478,13 +511,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackIntenseHeatAgingMethod_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackIntenseHeatAgingMethod_0',
     },
   },
-  SpecialAttackIntenseHeatAgingMethod_1_dmg: {
+  'SpecialAttackIntenseHeatAgingMethod_1:standardDmg': {
     sheet: 'Burnice',
-    name: 'SpecialAttackIntenseHeatAgingMethod_1_dmg',
+    name: 'SpecialAttackIntenseHeatAgingMethod_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -492,13 +525,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackIntenseHeatAgingMethod_1_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackIntenseHeatAgingMethod_1',
     },
   },
-  SpecialAttackIntenseHeatAgingMethod_1_daze: {
+  'SpecialAttackIntenseHeatAgingMethod_1:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'SpecialAttackIntenseHeatAgingMethod_1_daze',
+    name: 'SpecialAttackIntenseHeatAgingMethod_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -506,13 +539,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackIntenseHeatAgingMethod_1_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackIntenseHeatAgingMethod_1',
     },
   },
-  SpecialAttackIntenseHeatAgingMethod_1_anomBuildup: {
+  'SpecialAttackIntenseHeatAgingMethod_1:anomBuildup': {
     sheet: 'Burnice',
-    name: 'SpecialAttackIntenseHeatAgingMethod_1_anomBuildup',
+    name: 'SpecialAttackIntenseHeatAgingMethod_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -520,13 +553,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackIntenseHeatAgingMethod_1_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackIntenseHeatAgingMethod_1',
     },
   },
-  EXSpecialAttackIntenseHeatStirringMethod_0_dmg: {
+  'EXSpecialAttackIntenseHeatStirringMethod_0:standardDmg': {
     sheet: 'Burnice',
-    name: 'EXSpecialAttackIntenseHeatStirringMethod_0_dmg',
+    name: 'EXSpecialAttackIntenseHeatStirringMethod_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -534,13 +567,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackIntenseHeatStirringMethod_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackIntenseHeatStirringMethod_0',
     },
   },
-  EXSpecialAttackIntenseHeatStirringMethod_0_daze: {
+  'EXSpecialAttackIntenseHeatStirringMethod_0:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'EXSpecialAttackIntenseHeatStirringMethod_0_daze',
+    name: 'EXSpecialAttackIntenseHeatStirringMethod_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -548,13 +581,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackIntenseHeatStirringMethod_0_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackIntenseHeatStirringMethod_0',
     },
   },
-  EXSpecialAttackIntenseHeatStirringMethod_0_anomBuildup: {
+  'EXSpecialAttackIntenseHeatStirringMethod_0:anomBuildup': {
     sheet: 'Burnice',
-    name: 'EXSpecialAttackIntenseHeatStirringMethod_0_anomBuildup',
+    name: 'EXSpecialAttackIntenseHeatStirringMethod_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -562,13 +595,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackIntenseHeatStirringMethod_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackIntenseHeatStirringMethod_0',
     },
   },
-  EXSpecialAttackIntenseHeatStirringMethod_1_dmg: {
+  'EXSpecialAttackIntenseHeatStirringMethod_1:standardDmg': {
     sheet: 'Burnice',
-    name: 'EXSpecialAttackIntenseHeatStirringMethod_1_dmg',
+    name: 'EXSpecialAttackIntenseHeatStirringMethod_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -576,13 +609,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackIntenseHeatStirringMethod_1_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackIntenseHeatStirringMethod_1',
     },
   },
-  EXSpecialAttackIntenseHeatStirringMethod_1_daze: {
+  'EXSpecialAttackIntenseHeatStirringMethod_1:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'EXSpecialAttackIntenseHeatStirringMethod_1_daze',
+    name: 'EXSpecialAttackIntenseHeatStirringMethod_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -590,13 +623,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackIntenseHeatStirringMethod_1_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackIntenseHeatStirringMethod_1',
     },
   },
-  EXSpecialAttackIntenseHeatStirringMethod_1_anomBuildup: {
+  'EXSpecialAttackIntenseHeatStirringMethod_1:anomBuildup': {
     sheet: 'Burnice',
-    name: 'EXSpecialAttackIntenseHeatStirringMethod_1_anomBuildup',
+    name: 'EXSpecialAttackIntenseHeatStirringMethod_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -604,13 +637,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackIntenseHeatStirringMethod_1_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackIntenseHeatStirringMethod_1',
     },
   },
-  EXSpecialAttackIntenseHeatStirringMethodDoubleShot_0_dmg: {
+  'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_0:standardDmg': {
     sheet: 'Burnice',
-    name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_0_dmg',
+    name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -618,13 +651,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_0',
     },
   },
-  EXSpecialAttackIntenseHeatStirringMethodDoubleShot_0_daze: {
+  'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_0:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_0_daze',
+    name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -632,13 +665,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_0_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_0',
     },
   },
-  EXSpecialAttackIntenseHeatStirringMethodDoubleShot_0_anomBuildup: {
+  'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_0:anomBuildup': {
     sheet: 'Burnice',
-    name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_0_anomBuildup',
+    name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -646,13 +679,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_0',
     },
   },
-  EXSpecialAttackIntenseHeatStirringMethodDoubleShot_1_dmg: {
+  'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_1:standardDmg': {
     sheet: 'Burnice',
-    name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_1_dmg',
+    name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -660,13 +693,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_1_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_1',
     },
   },
-  EXSpecialAttackIntenseHeatStirringMethodDoubleShot_1_daze: {
+  'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_1:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_1_daze',
+    name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -674,13 +707,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_1_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_1',
     },
   },
-  EXSpecialAttackIntenseHeatStirringMethodDoubleShot_1_anomBuildup: {
+  'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_1:anomBuildup': {
     sheet: 'Burnice',
-    name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_1_anomBuildup',
+    name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -688,13 +721,55 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_1_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackIntenseHeatStirringMethodDoubleShot_1',
     },
   },
-  ChainAttackFuelFedFlame_0_dmg: {
+  'EXSpecialAttackIntenseHeatTossingMethod_0:standardDmg': {
     sheet: 'Burnice',
-    name: 'ChainAttackFuelFedFlame_0_dmg',
+    name: 'EXSpecialAttackIntenseHeatTossingMethod_0:standardDmg',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'standardDmg',
+      sheet: 'Burnice',
+      attribute: 'fire',
+      damageType1: 'exSpecial',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackIntenseHeatTossingMethod_0',
+    },
+  },
+  'EXSpecialAttackIntenseHeatTossingMethod_0:dazeBuildup': {
+    sheet: 'Burnice',
+    name: 'EXSpecialAttackIntenseHeatTossingMethod_0:dazeBuildup',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'dazeBuildup',
+      sheet: 'Burnice',
+      attribute: 'fire',
+      damageType1: 'exSpecial',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackIntenseHeatTossingMethod_0',
+    },
+  },
+  'EXSpecialAttackIntenseHeatTossingMethod_0:anomBuildup': {
+    sheet: 'Burnice',
+    name: 'EXSpecialAttackIntenseHeatTossingMethod_0:anomBuildup',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomBuildup',
+      sheet: 'Burnice',
+      attribute: 'fire',
+      damageType1: 'exSpecial',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackIntenseHeatTossingMethod_0',
+    },
+  },
+  'ChainAttackFuelFedFlame_0:standardDmg': {
+    sheet: 'Burnice',
+    name: 'ChainAttackFuelFedFlame_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -702,13 +777,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackFuelFedFlame_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackFuelFedFlame_0',
     },
   },
-  ChainAttackFuelFedFlame_0_daze: {
+  'ChainAttackFuelFedFlame_0:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'ChainAttackFuelFedFlame_0_daze',
+    name: 'ChainAttackFuelFedFlame_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -716,13 +791,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackFuelFedFlame_0_daze',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackFuelFedFlame_0',
     },
   },
-  ChainAttackFuelFedFlame_0_anomBuildup: {
+  'ChainAttackFuelFedFlame_0:anomBuildup': {
     sheet: 'Burnice',
-    name: 'ChainAttackFuelFedFlame_0_anomBuildup',
+    name: 'ChainAttackFuelFedFlame_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -730,13 +805,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackFuelFedFlame_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackFuelFedFlame_0',
     },
   },
-  UltimateGloriousInferno_0_dmg: {
+  'UltimateGloriousInferno_0:standardDmg': {
     sheet: 'Burnice',
-    name: 'UltimateGloriousInferno_0_dmg',
+    name: 'UltimateGloriousInferno_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -744,13 +819,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateGloriousInferno_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'UltimateGloriousInferno_0',
     },
   },
-  UltimateGloriousInferno_0_daze: {
+  'UltimateGloriousInferno_0:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'UltimateGloriousInferno_0_daze',
+    name: 'UltimateGloriousInferno_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -758,13 +833,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateGloriousInferno_0_daze',
+      skillType1: 'chainSkill',
+      name: 'UltimateGloriousInferno_0',
     },
   },
-  UltimateGloriousInferno_0_anomBuildup: {
+  'UltimateGloriousInferno_0:anomBuildup': {
     sheet: 'Burnice',
-    name: 'UltimateGloriousInferno_0_anomBuildup',
+    name: 'UltimateGloriousInferno_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -772,13 +847,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateGloriousInferno_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'UltimateGloriousInferno_0',
     },
   },
-  QuickAssistEnergizingSpecialtyDrink_0_dmg: {
+  'QuickAssistEnergizingSpecialtyDrink_0:standardDmg': {
     sheet: 'Burnice',
-    name: 'QuickAssistEnergizingSpecialtyDrink_0_dmg',
+    name: 'QuickAssistEnergizingSpecialtyDrink_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -786,13 +861,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistEnergizingSpecialtyDrink_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistEnergizingSpecialtyDrink_0',
     },
   },
-  QuickAssistEnergizingSpecialtyDrink_0_daze: {
+  'QuickAssistEnergizingSpecialtyDrink_0:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'QuickAssistEnergizingSpecialtyDrink_0_daze',
+    name: 'QuickAssistEnergizingSpecialtyDrink_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -800,13 +875,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistEnergizingSpecialtyDrink_0_daze',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistEnergizingSpecialtyDrink_0',
     },
   },
-  QuickAssistEnergizingSpecialtyDrink_0_anomBuildup: {
+  'QuickAssistEnergizingSpecialtyDrink_0:anomBuildup': {
     sheet: 'Burnice',
-    name: 'QuickAssistEnergizingSpecialtyDrink_0_anomBuildup',
+    name: 'QuickAssistEnergizingSpecialtyDrink_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -814,13 +889,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistEnergizingSpecialtyDrink_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistEnergizingSpecialtyDrink_0',
     },
   },
-  DefensiveAssistSmokyCauldron_0_dmg: {
+  'DefensiveAssistSmokyCauldron_0:standardDmg': {
     sheet: 'Burnice',
-    name: 'DefensiveAssistSmokyCauldron_0_dmg',
+    name: 'DefensiveAssistSmokyCauldron_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -828,13 +903,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSmokyCauldron_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSmokyCauldron_0',
     },
   },
-  DefensiveAssistSmokyCauldron_0_daze: {
+  'DefensiveAssistSmokyCauldron_0:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'DefensiveAssistSmokyCauldron_0_daze',
+    name: 'DefensiveAssistSmokyCauldron_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -842,13 +917,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSmokyCauldron_0_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSmokyCauldron_0',
     },
   },
-  DefensiveAssistSmokyCauldron_0_anomBuildup: {
+  'DefensiveAssistSmokyCauldron_0:anomBuildup': {
     sheet: 'Burnice',
-    name: 'DefensiveAssistSmokyCauldron_0_anomBuildup',
+    name: 'DefensiveAssistSmokyCauldron_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -856,13 +931,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSmokyCauldron_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSmokyCauldron_0',
     },
   },
-  DefensiveAssistSmokyCauldron_1_dmg: {
+  'DefensiveAssistSmokyCauldron_1:standardDmg': {
     sheet: 'Burnice',
-    name: 'DefensiveAssistSmokyCauldron_1_dmg',
+    name: 'DefensiveAssistSmokyCauldron_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -870,13 +945,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSmokyCauldron_1_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSmokyCauldron_1',
     },
   },
-  DefensiveAssistSmokyCauldron_1_daze: {
+  'DefensiveAssistSmokyCauldron_1:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'DefensiveAssistSmokyCauldron_1_daze',
+    name: 'DefensiveAssistSmokyCauldron_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -884,13 +959,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSmokyCauldron_1_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSmokyCauldron_1',
     },
   },
-  DefensiveAssistSmokyCauldron_1_anomBuildup: {
+  'DefensiveAssistSmokyCauldron_1:anomBuildup': {
     sheet: 'Burnice',
-    name: 'DefensiveAssistSmokyCauldron_1_anomBuildup',
+    name: 'DefensiveAssistSmokyCauldron_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -898,13 +973,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSmokyCauldron_1_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSmokyCauldron_1',
     },
   },
-  DefensiveAssistSmokyCauldron_2_dmg: {
+  'DefensiveAssistSmokyCauldron_2:standardDmg': {
     sheet: 'Burnice',
-    name: 'DefensiveAssistSmokyCauldron_2_dmg',
+    name: 'DefensiveAssistSmokyCauldron_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -912,13 +987,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSmokyCauldron_2_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSmokyCauldron_2',
     },
   },
-  DefensiveAssistSmokyCauldron_2_daze: {
+  'DefensiveAssistSmokyCauldron_2:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'DefensiveAssistSmokyCauldron_2_daze',
+    name: 'DefensiveAssistSmokyCauldron_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -926,13 +1001,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSmokyCauldron_2_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSmokyCauldron_2',
     },
   },
-  DefensiveAssistSmokyCauldron_2_anomBuildup: {
+  'DefensiveAssistSmokyCauldron_2:anomBuildup': {
     sheet: 'Burnice',
-    name: 'DefensiveAssistSmokyCauldron_2_anomBuildup',
+    name: 'DefensiveAssistSmokyCauldron_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -940,13 +1015,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistSmokyCauldron_2_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistSmokyCauldron_2',
     },
   },
-  AssistFollowUpScorchingDew_0_dmg: {
+  'AssistFollowUpScorchingDew_0:standardDmg': {
     sheet: 'Burnice',
-    name: 'AssistFollowUpScorchingDew_0_dmg',
+    name: 'AssistFollowUpScorchingDew_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -954,13 +1029,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpScorchingDew_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpScorchingDew_0',
     },
   },
-  AssistFollowUpScorchingDew_0_daze: {
+  'AssistFollowUpScorchingDew_0:dazeBuildup': {
     sheet: 'Burnice',
-    name: 'AssistFollowUpScorchingDew_0_daze',
+    name: 'AssistFollowUpScorchingDew_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -968,13 +1043,13 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpScorchingDew_0_daze',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpScorchingDew_0',
     },
   },
-  AssistFollowUpScorchingDew_0_anomBuildup: {
+  'AssistFollowUpScorchingDew_0:anomBuildup': {
     sheet: 'Burnice',
-    name: 'AssistFollowUpScorchingDew_0_anomBuildup',
+    name: 'AssistFollowUpScorchingDew_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -982,8 +1057,8 @@ export const formulas = {
       sheet: 'Burnice',
       attribute: 'fire',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpScorchingDew_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpScorchingDew_0',
     },
   },
   core_afterburn_dmg: {
@@ -995,7 +1070,7 @@ export const formulas = {
       q: 'standardDmg',
       sheet: 'Burnice',
       attribute: 'fire',
-      skillType: 'assistSkill',
+      skillType1: 'assistSkill',
       name: 'core_afterburn_dmg',
     },
   },
@@ -1008,7 +1083,7 @@ export const formulas = {
       q: 'anomBuildup',
       sheet: 'Burnice',
       attribute: 'fire',
-      skillType: 'assistSkill',
+      skillType1: 'assistSkill',
       name: 'core_afterburn_anomBuildup',
     },
   },
@@ -1021,7 +1096,7 @@ export const formulas = {
       q: 'standardDmg',
       sheet: 'Burnice',
       attribute: 'fire',
-      skillType: 'assistSkill',
+      skillType1: 'assistSkill',
       name: 'm6_additional_afterburn_dmg',
     },
   },

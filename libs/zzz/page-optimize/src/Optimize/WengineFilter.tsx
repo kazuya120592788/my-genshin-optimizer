@@ -1,18 +1,15 @@
 import { useDataManagerValues } from '@genshin-optimizer/common/database-ui'
 import { useBoolState } from '@genshin-optimizer/common/react-util'
 import { CardThemed, ModalWrapper, SqBadge } from '@genshin-optimizer/common/ui'
-import { objKeyMap } from '@genshin-optimizer/common/util'
+import { objKeyMap, stableArr } from '@genshin-optimizer/common/util'
 import type { WengineKey } from '@genshin-optimizer/zzz/consts'
-import {
-  allSpecialityKeys,
-  allWengineKeys,
-} from '@genshin-optimizer/zzz/consts'
-import type { ICachedWengine } from '@genshin-optimizer/zzz/db'
+import { allSpecialtyKeys, allWengineKeys } from '@genshin-optimizer/zzz/consts'
+import type { ICachedWengine, TeamConditional } from '@genshin-optimizer/zzz/db'
 import {
   OptConfigContext,
-  useCharOpt,
   useCharacterContext,
   useDatabaseContext,
+  useTeam,
 } from '@genshin-optimizer/zzz/db-ui'
 import {
   CharCalcMockCountProvider,
@@ -136,7 +133,7 @@ function WengineFilterModal({
           <Suspense fallback={<Skeleton width="100%" height={'500px'} />}>
             <Stack spacing={1}>
               <WengineLevelFilter disabled={disabled} />
-              <SpecialitySelector disabled={disabled} />
+              <SpecialtySelector disabled={disabled} />
               <Button
                 disabled={disabled}
                 onClick={() =>
@@ -157,7 +154,7 @@ function WengineFilterModal({
   )
 }
 
-function SpecialitySelector({ disabled }: { disabled?: boolean }) {
+function SpecialtySelector({ disabled }: { disabled?: boolean }) {
   const { database } = useDatabaseContext()
   const { optConfigId, optConfig } = useContext(OptConfigContext)
   const { wEngineTypes } = optConfig
@@ -180,9 +177,9 @@ function SpecialitySelector({ disabled }: { disabled?: boolean }) {
             totals[type]++
             return totals
           },
-          objKeyMap(allSpecialityKeys, () => 0)
+          objKeyMap(allSpecialtyKeys, () => 0)
         )
-      : objKeyMap(allSpecialityKeys, () => 0)
+      : objKeyMap(allSpecialtyKeys, () => 0)
   }, [
     characterKey,
     wengines,
@@ -206,7 +203,9 @@ function SpecialitySelector({ disabled }: { disabled?: boolean }) {
 
 function WengineCondSelector({ wengines }: { wengines: ICachedWengine[] }) {
   const character = useCharacterContext()
-  const charOpt = useCharOpt(character?.key)
+  const team = useTeam(character?.key)
+  const conditionals =
+    team?.frames[0]?.conditionals ?? stableArr<TeamConditional>()
   const { optConfig } = useContext(OptConfigContext)
   const { wEngineTypes } = optConfig
   const wengineKeys = useMemo(
@@ -225,10 +224,10 @@ function WengineCondSelector({ wengines }: { wengines: ICachedWengine[] }) {
         Wengine stats are displayed to be Lvl 60/60, P1, actual level/phase of
         wengine will be used in the solver.
       </Typography>
-      {character && charOpt && (
+      {character && (
         <CharCalcMockCountProvider
           character={character}
-          conditionals={charOpt.conditionals}
+          conditionals={conditionals}
         >
           <Grid container spacing={1} columns={{ xs: 2, md: 3, lg: 4 }}>
             {wengineKeys.map((d) => (
@@ -258,7 +257,10 @@ function getWengine(key: WengineKey): IWengine {
 function WengineCondCard({
   wengineKey,
   count,
-}: { wengineKey: WengineKey; count: number }) {
+}: {
+  wengineKey: WengineKey
+  count: number
+}) {
   const wengine = useMemo(() => getWengine(wengineKey), [wengineKey])
   return (
     <WengineSheetDisplay

@@ -15,17 +15,17 @@ import {
   characterAsset,
   factionDefIcon,
   rarityDefIcon,
-  specialityDefIcon,
+  specialtyDefIcon,
 } from '@genshin-optimizer/zzz/assets'
 import type {
   AttributeKey,
   CharacterKey,
-  SpecialityKey,
+  SpecialtyKey,
 } from '@genshin-optimizer/zzz/consts'
 import {
   allAttributeKeys,
   allCharacterKeys,
-  allSpecialityKeys,
+  allSpecialtyKeys,
   milestoneMaxLevel,
 } from '@genshin-optimizer/zzz/consts'
 import { useCharacter, useDatabaseContext } from '@genshin-optimizer/zzz/db-ui'
@@ -45,8 +45,9 @@ import {
   Typography,
   useTheme,
 } from '@mui/material'
+import type React from 'react'
 import type { ChangeEvent } from 'react'
-import React, { Suspense, useDeferredValue, useMemo, useState } from 'react'
+import { Suspense, useDeferredValue, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { CharSpecialtyToggle, ElementToggle } from '../toggles'
 import {
@@ -62,12 +63,14 @@ export function CharacterSingleSelectionModal({
   onSelect,
   newFirst = false,
   showNone = false,
+  characterFilter,
 }: {
   show: boolean
   onHide: () => void
   onSelect: (cKey: CharacterKey | null) => void
   newFirst?: boolean
   showNone?: boolean
+  characterFilter?: (ck: CharacterKey) => boolean
 }) {
   const { database } = useDatabaseContext()
   const displayCharacter = useDataEntryBase(database.displayCharacter)
@@ -87,13 +90,14 @@ export function CharacterSingleSelectionModal({
           characterFilterConfigs(database)
         )
       )
+      .filter((ck) => (characterFilter ? characterFilter(ck) : true))
       .sort(
         sortFunction(sortByKeys, ascending, characterSortConfigs(database), [
           'new',
         ])
       )
     return filteredKeys
-  }, [deferredState, newFirst, deferredSearchTerm, database])
+  }, [deferredState, newFirst, deferredSearchTerm, database, characterFilter])
 
   const onClose = () => {
     setSearchTerm('')
@@ -102,7 +106,7 @@ export function CharacterSingleSelectionModal({
 
   const filterSearchSortProps = {
     searchTerm: searchTerm,
-    onChangeSpecialtyFilter: (specialtyType: SpecialityKey[]) => {
+    onChangeSpecialtyFilter: (specialtyType: SpecialtyKey[]) => {
       database.displayCharacter.set({ specialtyType })
     },
     onChangeAttributeFilter: (attribute: AttributeKey[]) => {
@@ -165,7 +169,10 @@ export function CharacterSingleSelectionModal({
 function CharacterCard({
   characterKey,
   onClick,
-}: { characterKey: CharacterKey | undefined; onClick: () => void }) {
+}: {
+  characterKey: CharacterKey | undefined
+  onClick: () => void
+}) {
   return (
     <CardThemed
       bgt="light"
@@ -185,7 +192,7 @@ function CharacterCard({
 
 type FilterSearchSortProps = {
   searchTerm: string
-  onChangeSpecialtyFilter: (weaps: SpecialityKey[]) => void
+  onChangeSpecialtyFilter: (weaps: SpecialtyKey[]) => void
   onChangeAttributeFilter: (elements: AttributeKey[]) => void
   onChangeSearch: (e: ChangeEvent<HTMLTextAreaElement>) => void
   onChangeSort: (sortType: CharacterSortKey) => void
@@ -214,7 +221,7 @@ function CharacterSelectionModalBase({
 
   const charSpecialtyTotals = useMemo(
     () =>
-      catTotal(allSpecialityKeys, (sk) =>
+      catTotal(allSpecialtyKeys, (sk) =>
         database.chars.entries.forEach(([id, char]) => {
           const specialty = getCharStat(char.key).specialty
           sk[specialty].total++
@@ -419,7 +426,7 @@ function SelectionCard({
                 />
                 <ImgIcon
                   size={1.5}
-                  src={specialityDefIcon(specialty ?? 'anomaly')}
+                  src={specialtyDefIcon(specialty ?? 'anomaly')}
                 />
               </Box>
 

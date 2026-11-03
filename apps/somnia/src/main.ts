@@ -1,5 +1,5 @@
-import { readFileSync } from 'fs'
-import * as http from 'http'
+import { readFileSync } from 'node:fs'
+import * as http from 'node:http'
 import {
   Client,
   Collection,
@@ -18,17 +18,16 @@ const { clientid, token } = JSON.parse(
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMembers,
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.GuildMessageReactions,
     GatewayIntentBits.DirectMessages,
     GatewayIntentBits.DirectMessageReactions,
-    GatewayIntentBits.MessageContent,
   ],
   partials: [Partials.Message, Partials.Channel, Partials.Reaction],
 })
 
 import * as events from './lib/events'
+
 //ready
 client.on(Events.ClientReady, (...args) => events.ready(...args))
 //interactions
@@ -72,7 +71,7 @@ client.login(token)
 
 // Listen on port 8080 for Azure Web App alive check
 http
-  .createServer(function (_req, res) {
+  .createServer((_req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/plain' })
     res.write('Alive')
     res.end()

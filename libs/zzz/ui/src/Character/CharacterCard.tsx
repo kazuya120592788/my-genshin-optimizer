@@ -2,12 +2,12 @@ import { ConditionalWrapper, ImgIcon } from '@genshin-optimizer/common/ui'
 import {
   commonDefIcon,
   rarityDefIcon,
-  specialityDefIcon,
+  specialtyDefIcon,
 } from '@genshin-optimizer/zzz/assets'
 import {
+  allSkillKeys,
   type CharacterKey,
   type MilestoneKey,
-  allSkillKeys,
   milestoneMaxLevel,
 } from '@genshin-optimizer/zzz/consts'
 import { useCharacter } from '@genshin-optimizer/zzz/db-ui'
@@ -150,7 +150,7 @@ function CharImage({
         height="auto"
         position="relative"
         zIndex="2"
-      ></Box>
+      />
     </Box>
   )
 }
@@ -220,7 +220,7 @@ function CharInformation({
           />
           <ImgIcon
             size={charCardConfig.iconsSize}
-            src={specialityDefIcon(specialty)}
+            src={specialtyDefIcon(specialty)}
           />
           {!charCardConfig.isEditing ? (
             <Typography

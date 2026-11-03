@@ -38,6 +38,33 @@ export const formulas = {
       name: 'disorderDmgInst_electric',
     },
   },
+  vortexDmgInst_electric: {
+    sheet: 'Seth',
+    name: 'vortexDmgInst_electric',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Seth',
+      attribute: 'electric',
+      damageType1: 'vortex',
+      name: 'vortexDmgInst_electric',
+    },
+  },
+  abloomDmgInst: {
+    sheet: 'Seth',
+    name: 'abloomDmgInst',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Seth',
+      attribute: 'electric',
+      damageType1: 'anomaly',
+      damageType2: 'abloom',
+      name: 'abloomDmgInst',
+    },
+  },
   anomalyBuildupInst: {
     sheet: 'Seth',
     name: 'anomalyBuildupInst',
@@ -62,9 +89,9 @@ export const formulas = {
       name: 'dazeInst',
     },
   },
-  BasicAttackLightningStrike_0_dmg: {
+  'BasicAttackLightningStrike_0:standardDmg': {
     sheet: 'Seth',
-    name: 'BasicAttackLightningStrike_0_dmg',
+    name: 'BasicAttackLightningStrike_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -72,13 +99,13 @@ export const formulas = {
       sheet: 'Seth',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLightningStrike_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLightningStrike_0',
     },
   },
-  BasicAttackLightningStrike_0_daze: {
+  'BasicAttackLightningStrike_0:dazeBuildup': {
     sheet: 'Seth',
-    name: 'BasicAttackLightningStrike_0_daze',
+    name: 'BasicAttackLightningStrike_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -86,13 +113,13 @@ export const formulas = {
       sheet: 'Seth',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLightningStrike_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLightningStrike_0',
     },
   },
-  BasicAttackLightningStrike_0_anomBuildup: {
+  'BasicAttackLightningStrike_0:anomBuildup': {
     sheet: 'Seth',
-    name: 'BasicAttackLightningStrike_0_anomBuildup',
+    name: 'BasicAttackLightningStrike_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -100,13 +127,13 @@ export const formulas = {
       sheet: 'Seth',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLightningStrike_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLightningStrike_0',
     },
   },
-  BasicAttackLightningStrike_1_dmg: {
+  'BasicAttackLightningStrike_1:standardDmg': {
     sheet: 'Seth',
-    name: 'BasicAttackLightningStrike_1_dmg',
+    name: 'BasicAttackLightningStrike_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -114,13 +141,13 @@ export const formulas = {
       sheet: 'Seth',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLightningStrike_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLightningStrike_1',
     },
   },
-  BasicAttackLightningStrike_1_daze: {
+  'BasicAttackLightningStrike_1:dazeBuildup': {
     sheet: 'Seth',
-    name: 'BasicAttackLightningStrike_1_daze',
+    name: 'BasicAttackLightningStrike_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -128,13 +155,13 @@ export const formulas = {
       sheet: 'Seth',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLightningStrike_1_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLightningStrike_1',
     },
   },
-  BasicAttackLightningStrike_1_anomBuildup: {
+  'BasicAttackLightningStrike_1:anomBuildup': {
     sheet: 'Seth',
-    name: 'BasicAttackLightningStrike_1_anomBuildup',
+    name: 'BasicAttackLightningStrike_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -142,13 +169,13 @@ export const formulas = {
       sheet: 'Seth',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLightningStrike_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLightningStrike_1',
     },
   },
-  BasicAttackLightningStrike_2_dmg: {
+  'BasicAttackLightningStrike_2:standardDmg': {
     sheet: 'Seth',
-    name: 'BasicAttackLightningStrike_2_dmg',
+    name: 'BasicAttackLightningStrike_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -156,13 +183,13 @@ export const formulas = {
       sheet: 'Seth',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLightningStrike_2_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLightningStrike_2',
     },
   },
-  BasicAttackLightningStrike_2_daze: {
+  'BasicAttackLightningStrike_2:dazeBuildup': {
     sheet: 'Seth',
-    name: 'BasicAttackLightningStrike_2_daze',
+    name: 'BasicAttackLightningStrike_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -170,13 +197,13 @@ export const formulas = {
       sheet: 'Seth',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLightningStrike_2_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLightningStrike_2',
     },
   },
-  BasicAttackLightningStrike_2_anomBuildup: {
+  'BasicAttackLightningStrike_2:anomBuildup': {
     sheet: 'Seth',
-    name: 'BasicAttackLightningStrike_2_anomBuildup',
+    name: 'BasicAttackLightningStrike_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -184,13 +211,13 @@ export const formulas = {
       sheet: 'Seth',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLightningStrike_2_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLightningStrike_2',
     },
   },
-  BasicAttackLightningStrike_3_dmg: {
+  'BasicAttackLightningStrike_3:standardDmg': {
     sheet: 'Seth',
-    name: 'BasicAttackLightningStrike_3_dmg',
+    name: 'BasicAttackLightningStrike_3:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -198,13 +225,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLightningStrike_3_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLightningStrike_3',
     },
   },
-  BasicAttackLightningStrike_3_daze: {
+  'BasicAttackLightningStrike_3:dazeBuildup': {
     sheet: 'Seth',
-    name: 'BasicAttackLightningStrike_3_daze',
+    name: 'BasicAttackLightningStrike_3:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -212,13 +239,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLightningStrike_3_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLightningStrike_3',
     },
   },
-  BasicAttackLightningStrike_3_anomBuildup: {
+  'BasicAttackLightningStrike_3:anomBuildup': {
     sheet: 'Seth',
-    name: 'BasicAttackLightningStrike_3_anomBuildup',
+    name: 'BasicAttackLightningStrike_3:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -226,13 +253,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLightningStrike_3_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLightningStrike_3',
     },
   },
-  BasicAttackLightningStrikeElectrified_0_dmg: {
+  'BasicAttackLightningStrikeElectrified_0:standardDmg': {
     sheet: 'Seth',
-    name: 'BasicAttackLightningStrikeElectrified_0_dmg',
+    name: 'BasicAttackLightningStrikeElectrified_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -240,13 +267,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLightningStrikeElectrified_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLightningStrikeElectrified_0',
     },
   },
-  BasicAttackLightningStrikeElectrified_0_daze: {
+  'BasicAttackLightningStrikeElectrified_0:dazeBuildup': {
     sheet: 'Seth',
-    name: 'BasicAttackLightningStrikeElectrified_0_daze',
+    name: 'BasicAttackLightningStrikeElectrified_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -254,13 +281,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLightningStrikeElectrified_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLightningStrikeElectrified_0',
     },
   },
-  BasicAttackLightningStrikeElectrified_0_anomBuildup: {
+  'BasicAttackLightningStrikeElectrified_0:anomBuildup': {
     sheet: 'Seth',
-    name: 'BasicAttackLightningStrikeElectrified_0_anomBuildup',
+    name: 'BasicAttackLightningStrikeElectrified_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -268,13 +295,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLightningStrikeElectrified_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLightningStrikeElectrified_0',
     },
   },
-  BasicAttackLightningStrikeElectrified_1_dmg: {
+  'BasicAttackLightningStrikeElectrified_1:standardDmg': {
     sheet: 'Seth',
-    name: 'BasicAttackLightningStrikeElectrified_1_dmg',
+    name: 'BasicAttackLightningStrikeElectrified_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -282,13 +309,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLightningStrikeElectrified_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLightningStrikeElectrified_1',
     },
   },
-  BasicAttackLightningStrikeElectrified_1_daze: {
+  'BasicAttackLightningStrikeElectrified_1:dazeBuildup': {
     sheet: 'Seth',
-    name: 'BasicAttackLightningStrikeElectrified_1_daze',
+    name: 'BasicAttackLightningStrikeElectrified_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -296,13 +323,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLightningStrikeElectrified_1_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLightningStrikeElectrified_1',
     },
   },
-  BasicAttackLightningStrikeElectrified_1_anomBuildup: {
+  'BasicAttackLightningStrikeElectrified_1:anomBuildup': {
     sheet: 'Seth',
-    name: 'BasicAttackLightningStrikeElectrified_1_anomBuildup',
+    name: 'BasicAttackLightningStrikeElectrified_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -310,13 +337,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLightningStrikeElectrified_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLightningStrikeElectrified_1',
     },
   },
-  DashAttackThunderAssault_0_dmg: {
+  'DashAttackThunderAssault_0:standardDmg': {
     sheet: 'Seth',
-    name: 'DashAttackThunderAssault_0_dmg',
+    name: 'DashAttackThunderAssault_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -324,13 +351,13 @@ export const formulas = {
       sheet: 'Seth',
       damageType1: 'dash',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackThunderAssault_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackThunderAssault_0',
     },
   },
-  DashAttackThunderAssault_0_daze: {
+  'DashAttackThunderAssault_0:dazeBuildup': {
     sheet: 'Seth',
-    name: 'DashAttackThunderAssault_0_daze',
+    name: 'DashAttackThunderAssault_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -338,13 +365,13 @@ export const formulas = {
       sheet: 'Seth',
       damageType1: 'dash',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackThunderAssault_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackThunderAssault_0',
     },
   },
-  DashAttackThunderAssault_0_anomBuildup: {
+  'DashAttackThunderAssault_0:anomBuildup': {
     sheet: 'Seth',
-    name: 'DashAttackThunderAssault_0_anomBuildup',
+    name: 'DashAttackThunderAssault_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -352,13 +379,13 @@ export const formulas = {
       sheet: 'Seth',
       damageType1: 'dash',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackThunderAssault_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackThunderAssault_0',
     },
   },
-  DodgeCounterRetreatToAdvance_0_dmg: {
+  'DodgeCounterRetreatToAdvance_0:standardDmg': {
     sheet: 'Seth',
-    name: 'DodgeCounterRetreatToAdvance_0_dmg',
+    name: 'DodgeCounterRetreatToAdvance_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -366,13 +393,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterRetreatToAdvance_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterRetreatToAdvance_0',
     },
   },
-  DodgeCounterRetreatToAdvance_0_daze: {
+  'DodgeCounterRetreatToAdvance_0:dazeBuildup': {
     sheet: 'Seth',
-    name: 'DodgeCounterRetreatToAdvance_0_daze',
+    name: 'DodgeCounterRetreatToAdvance_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -380,13 +407,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterRetreatToAdvance_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterRetreatToAdvance_0',
     },
   },
-  DodgeCounterRetreatToAdvance_0_anomBuildup: {
+  'DodgeCounterRetreatToAdvance_0:anomBuildup': {
     sheet: 'Seth',
-    name: 'DodgeCounterRetreatToAdvance_0_anomBuildup',
+    name: 'DodgeCounterRetreatToAdvance_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -394,13 +421,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterRetreatToAdvance_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterRetreatToAdvance_0',
     },
   },
-  SpecialAttackThunderShieldRush_0_dmg: {
+  'SpecialAttackThunderShieldRush_0:standardDmg': {
     sheet: 'Seth',
-    name: 'SpecialAttackThunderShieldRush_0_dmg',
+    name: 'SpecialAttackThunderShieldRush_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -408,13 +435,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackThunderShieldRush_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackThunderShieldRush_0',
     },
   },
-  SpecialAttackThunderShieldRush_0_daze: {
+  'SpecialAttackThunderShieldRush_0:dazeBuildup': {
     sheet: 'Seth',
-    name: 'SpecialAttackThunderShieldRush_0_daze',
+    name: 'SpecialAttackThunderShieldRush_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -422,13 +449,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackThunderShieldRush_0_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackThunderShieldRush_0',
     },
   },
-  SpecialAttackThunderShieldRush_0_anomBuildup: {
+  'SpecialAttackThunderShieldRush_0:anomBuildup': {
     sheet: 'Seth',
-    name: 'SpecialAttackThunderShieldRush_0_anomBuildup',
+    name: 'SpecialAttackThunderShieldRush_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -436,13 +463,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackThunderShieldRush_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackThunderShieldRush_0',
     },
   },
-  EXSpecialAttackThunderShieldRushHighVoltage_0_dmg: {
+  'EXSpecialAttackThunderShieldRushHighVoltage_0:standardDmg': {
     sheet: 'Seth',
-    name: 'EXSpecialAttackThunderShieldRushHighVoltage_0_dmg',
+    name: 'EXSpecialAttackThunderShieldRushHighVoltage_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -450,13 +477,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackThunderShieldRushHighVoltage_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackThunderShieldRushHighVoltage_0',
     },
   },
-  EXSpecialAttackThunderShieldRushHighVoltage_0_daze: {
+  'EXSpecialAttackThunderShieldRushHighVoltage_0:dazeBuildup': {
     sheet: 'Seth',
-    name: 'EXSpecialAttackThunderShieldRushHighVoltage_0_daze',
+    name: 'EXSpecialAttackThunderShieldRushHighVoltage_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -464,13 +491,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackThunderShieldRushHighVoltage_0_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackThunderShieldRushHighVoltage_0',
     },
   },
-  EXSpecialAttackThunderShieldRushHighVoltage_0_anomBuildup: {
+  'EXSpecialAttackThunderShieldRushHighVoltage_0:anomBuildup': {
     sheet: 'Seth',
-    name: 'EXSpecialAttackThunderShieldRushHighVoltage_0_anomBuildup',
+    name: 'EXSpecialAttackThunderShieldRushHighVoltage_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -478,13 +505,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackThunderShieldRushHighVoltage_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackThunderShieldRushHighVoltage_0',
     },
   },
-  EXSpecialAttackThunderShieldRushHighVoltage_1_dmg: {
+  'EXSpecialAttackThunderShieldRushHighVoltage_1:standardDmg': {
     sheet: 'Seth',
-    name: 'EXSpecialAttackThunderShieldRushHighVoltage_1_dmg',
+    name: 'EXSpecialAttackThunderShieldRushHighVoltage_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -492,13 +519,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackThunderShieldRushHighVoltage_1_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackThunderShieldRushHighVoltage_1',
     },
   },
-  EXSpecialAttackThunderShieldRushHighVoltage_1_daze: {
+  'EXSpecialAttackThunderShieldRushHighVoltage_1:dazeBuildup': {
     sheet: 'Seth',
-    name: 'EXSpecialAttackThunderShieldRushHighVoltage_1_daze',
+    name: 'EXSpecialAttackThunderShieldRushHighVoltage_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -506,13 +533,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackThunderShieldRushHighVoltage_1_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackThunderShieldRushHighVoltage_1',
     },
   },
-  EXSpecialAttackThunderShieldRushHighVoltage_1_anomBuildup: {
+  'EXSpecialAttackThunderShieldRushHighVoltage_1:anomBuildup': {
     sheet: 'Seth',
-    name: 'EXSpecialAttackThunderShieldRushHighVoltage_1_anomBuildup',
+    name: 'EXSpecialAttackThunderShieldRushHighVoltage_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -520,13 +547,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackThunderShieldRushHighVoltage_1_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackThunderShieldRushHighVoltage_1',
     },
   },
-  ChainAttackFinalJudgment_0_dmg: {
+  'ChainAttackFinalJudgment_0:standardDmg': {
     sheet: 'Seth',
-    name: 'ChainAttackFinalJudgment_0_dmg',
+    name: 'ChainAttackFinalJudgment_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -534,13 +561,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackFinalJudgment_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackFinalJudgment_0',
     },
   },
-  ChainAttackFinalJudgment_0_daze: {
+  'ChainAttackFinalJudgment_0:dazeBuildup': {
     sheet: 'Seth',
-    name: 'ChainAttackFinalJudgment_0_daze',
+    name: 'ChainAttackFinalJudgment_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -548,13 +575,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackFinalJudgment_0_daze',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackFinalJudgment_0',
     },
   },
-  ChainAttackFinalJudgment_0_anomBuildup: {
+  'ChainAttackFinalJudgment_0:anomBuildup': {
     sheet: 'Seth',
-    name: 'ChainAttackFinalJudgment_0_anomBuildup',
+    name: 'ChainAttackFinalJudgment_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -562,13 +589,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackFinalJudgment_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackFinalJudgment_0',
     },
   },
-  UltimateJusticePrevails_0_dmg: {
+  'UltimateJusticePrevails_0:standardDmg': {
     sheet: 'Seth',
-    name: 'UltimateJusticePrevails_0_dmg',
+    name: 'UltimateJusticePrevails_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -576,13 +603,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateJusticePrevails_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'UltimateJusticePrevails_0',
     },
   },
-  UltimateJusticePrevails_0_daze: {
+  'UltimateJusticePrevails_0:dazeBuildup': {
     sheet: 'Seth',
-    name: 'UltimateJusticePrevails_0_daze',
+    name: 'UltimateJusticePrevails_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -590,13 +617,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateJusticePrevails_0_daze',
+      skillType1: 'chainSkill',
+      name: 'UltimateJusticePrevails_0',
     },
   },
-  UltimateJusticePrevails_0_anomBuildup: {
+  'UltimateJusticePrevails_0:anomBuildup': {
     sheet: 'Seth',
-    name: 'UltimateJusticePrevails_0_anomBuildup',
+    name: 'UltimateJusticePrevails_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -604,13 +631,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateJusticePrevails_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'UltimateJusticePrevails_0',
     },
   },
-  QuickAssistArmedSupport_0_dmg: {
+  'QuickAssistArmedSupport_0:standardDmg': {
     sheet: 'Seth',
-    name: 'QuickAssistArmedSupport_0_dmg',
+    name: 'QuickAssistArmedSupport_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -618,13 +645,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistArmedSupport_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistArmedSupport_0',
     },
   },
-  QuickAssistArmedSupport_0_daze: {
+  'QuickAssistArmedSupport_0:dazeBuildup': {
     sheet: 'Seth',
-    name: 'QuickAssistArmedSupport_0_daze',
+    name: 'QuickAssistArmedSupport_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -632,13 +659,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistArmedSupport_0_daze',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistArmedSupport_0',
     },
   },
-  QuickAssistArmedSupport_0_anomBuildup: {
+  'QuickAssistArmedSupport_0:anomBuildup': {
     sheet: 'Seth',
-    name: 'QuickAssistArmedSupport_0_anomBuildup',
+    name: 'QuickAssistArmedSupport_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -646,13 +673,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistArmedSupport_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistArmedSupport_0',
     },
   },
-  DefensiveAssistThundershield_0_dmg: {
+  'DefensiveAssistThundershield_0:standardDmg': {
     sheet: 'Seth',
-    name: 'DefensiveAssistThundershield_0_dmg',
+    name: 'DefensiveAssistThundershield_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -660,13 +687,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistThundershield_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistThundershield_0',
     },
   },
-  DefensiveAssistThundershield_0_daze: {
+  'DefensiveAssistThundershield_0:dazeBuildup': {
     sheet: 'Seth',
-    name: 'DefensiveAssistThundershield_0_daze',
+    name: 'DefensiveAssistThundershield_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -674,13 +701,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistThundershield_0_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistThundershield_0',
     },
   },
-  DefensiveAssistThundershield_0_anomBuildup: {
+  'DefensiveAssistThundershield_0:anomBuildup': {
     sheet: 'Seth',
-    name: 'DefensiveAssistThundershield_0_anomBuildup',
+    name: 'DefensiveAssistThundershield_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -688,13 +715,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistThundershield_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistThundershield_0',
     },
   },
-  DefensiveAssistThundershield_1_dmg: {
+  'DefensiveAssistThundershield_1:standardDmg': {
     sheet: 'Seth',
-    name: 'DefensiveAssistThundershield_1_dmg',
+    name: 'DefensiveAssistThundershield_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -702,13 +729,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistThundershield_1_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistThundershield_1',
     },
   },
-  DefensiveAssistThundershield_1_daze: {
+  'DefensiveAssistThundershield_1:dazeBuildup': {
     sheet: 'Seth',
-    name: 'DefensiveAssistThundershield_1_daze',
+    name: 'DefensiveAssistThundershield_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -716,13 +743,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistThundershield_1_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistThundershield_1',
     },
   },
-  DefensiveAssistThundershield_1_anomBuildup: {
+  'DefensiveAssistThundershield_1:anomBuildup': {
     sheet: 'Seth',
-    name: 'DefensiveAssistThundershield_1_anomBuildup',
+    name: 'DefensiveAssistThundershield_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -730,13 +757,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistThundershield_1_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistThundershield_1',
     },
   },
-  DefensiveAssistThundershield_2_dmg: {
+  'DefensiveAssistThundershield_2:standardDmg': {
     sheet: 'Seth',
-    name: 'DefensiveAssistThundershield_2_dmg',
+    name: 'DefensiveAssistThundershield_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -744,13 +771,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistThundershield_2_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistThundershield_2',
     },
   },
-  DefensiveAssistThundershield_2_daze: {
+  'DefensiveAssistThundershield_2:dazeBuildup': {
     sheet: 'Seth',
-    name: 'DefensiveAssistThundershield_2_daze',
+    name: 'DefensiveAssistThundershield_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -758,13 +785,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistThundershield_2_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistThundershield_2',
     },
   },
-  DefensiveAssistThundershield_2_anomBuildup: {
+  'DefensiveAssistThundershield_2:anomBuildup': {
     sheet: 'Seth',
-    name: 'DefensiveAssistThundershield_2_anomBuildup',
+    name: 'DefensiveAssistThundershield_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -772,13 +799,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistThundershield_2_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistThundershield_2',
     },
   },
-  AssistFollowUpPublicSecurityRuling_0_dmg: {
+  'AssistFollowUpPublicSecurityRuling_0:standardDmg': {
     sheet: 'Seth',
-    name: 'AssistFollowUpPublicSecurityRuling_0_dmg',
+    name: 'AssistFollowUpPublicSecurityRuling_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -786,13 +813,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpPublicSecurityRuling_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpPublicSecurityRuling_0',
     },
   },
-  AssistFollowUpPublicSecurityRuling_0_daze: {
+  'AssistFollowUpPublicSecurityRuling_0:dazeBuildup': {
     sheet: 'Seth',
-    name: 'AssistFollowUpPublicSecurityRuling_0_daze',
+    name: 'AssistFollowUpPublicSecurityRuling_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -800,13 +827,13 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpPublicSecurityRuling_0_daze',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpPublicSecurityRuling_0',
     },
   },
-  AssistFollowUpPublicSecurityRuling_0_anomBuildup: {
+  'AssistFollowUpPublicSecurityRuling_0:anomBuildup': {
     sheet: 'Seth',
-    name: 'AssistFollowUpPublicSecurityRuling_0_anomBuildup',
+    name: 'AssistFollowUpPublicSecurityRuling_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -814,8 +841,8 @@ export const formulas = {
       sheet: 'Seth',
       attribute: 'electric',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpPublicSecurityRuling_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpPublicSecurityRuling_0',
     },
   },
   core_shield: {

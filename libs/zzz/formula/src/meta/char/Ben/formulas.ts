@@ -38,6 +38,33 @@ export const formulas = {
       name: 'disorderDmgInst_fire',
     },
   },
+  vortexDmgInst_fire: {
+    sheet: 'Ben',
+    name: 'vortexDmgInst_fire',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Ben',
+      attribute: 'fire',
+      damageType1: 'vortex',
+      name: 'vortexDmgInst_fire',
+    },
+  },
+  abloomDmgInst: {
+    sheet: 'Ben',
+    name: 'abloomDmgInst',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Ben',
+      attribute: 'fire',
+      damageType1: 'anomaly',
+      damageType2: 'abloom',
+      name: 'abloomDmgInst',
+    },
+  },
   anomalyBuildupInst: {
     sheet: 'Ben',
     name: 'anomalyBuildupInst',
@@ -62,9 +89,9 @@ export const formulas = {
       name: 'dazeInst',
     },
   },
-  BasicAttackDebtReconciliation_0_dmg: {
+  'BasicAttackDebtReconciliation_0:standardDmg': {
     sheet: 'Ben',
-    name: 'BasicAttackDebtReconciliation_0_dmg',
+    name: 'BasicAttackDebtReconciliation_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -72,13 +99,13 @@ export const formulas = {
       sheet: 'Ben',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDebtReconciliation_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDebtReconciliation_0',
     },
   },
-  BasicAttackDebtReconciliation_0_daze: {
+  'BasicAttackDebtReconciliation_0:dazeBuildup': {
     sheet: 'Ben',
-    name: 'BasicAttackDebtReconciliation_0_daze',
+    name: 'BasicAttackDebtReconciliation_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -86,13 +113,13 @@ export const formulas = {
       sheet: 'Ben',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDebtReconciliation_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDebtReconciliation_0',
     },
   },
-  BasicAttackDebtReconciliation_0_anomBuildup: {
+  'BasicAttackDebtReconciliation_0:anomBuildup': {
     sheet: 'Ben',
-    name: 'BasicAttackDebtReconciliation_0_anomBuildup',
+    name: 'BasicAttackDebtReconciliation_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -100,13 +127,13 @@ export const formulas = {
       sheet: 'Ben',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDebtReconciliation_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDebtReconciliation_0',
     },
   },
-  BasicAttackDebtReconciliation_1_dmg: {
+  'BasicAttackDebtReconciliation_1:standardDmg': {
     sheet: 'Ben',
-    name: 'BasicAttackDebtReconciliation_1_dmg',
+    name: 'BasicAttackDebtReconciliation_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -114,13 +141,13 @@ export const formulas = {
       sheet: 'Ben',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDebtReconciliation_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDebtReconciliation_1',
     },
   },
-  BasicAttackDebtReconciliation_1_daze: {
+  'BasicAttackDebtReconciliation_1:dazeBuildup': {
     sheet: 'Ben',
-    name: 'BasicAttackDebtReconciliation_1_daze',
+    name: 'BasicAttackDebtReconciliation_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -128,13 +155,13 @@ export const formulas = {
       sheet: 'Ben',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDebtReconciliation_1_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDebtReconciliation_1',
     },
   },
-  BasicAttackDebtReconciliation_1_anomBuildup: {
+  'BasicAttackDebtReconciliation_1:anomBuildup': {
     sheet: 'Ben',
-    name: 'BasicAttackDebtReconciliation_1_anomBuildup',
+    name: 'BasicAttackDebtReconciliation_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -142,13 +169,13 @@ export const formulas = {
       sheet: 'Ben',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDebtReconciliation_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDebtReconciliation_1',
     },
   },
-  BasicAttackDebtReconciliation_2_dmg: {
+  'BasicAttackDebtReconciliation_2:standardDmg': {
     sheet: 'Ben',
-    name: 'BasicAttackDebtReconciliation_2_dmg',
+    name: 'BasicAttackDebtReconciliation_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -156,13 +183,13 @@ export const formulas = {
       sheet: 'Ben',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDebtReconciliation_2_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDebtReconciliation_2',
     },
   },
-  BasicAttackDebtReconciliation_2_daze: {
+  'BasicAttackDebtReconciliation_2:dazeBuildup': {
     sheet: 'Ben',
-    name: 'BasicAttackDebtReconciliation_2_daze',
+    name: 'BasicAttackDebtReconciliation_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -170,13 +197,13 @@ export const formulas = {
       sheet: 'Ben',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDebtReconciliation_2_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDebtReconciliation_2',
     },
   },
-  BasicAttackDebtReconciliation_2_anomBuildup: {
+  'BasicAttackDebtReconciliation_2:anomBuildup': {
     sheet: 'Ben',
-    name: 'BasicAttackDebtReconciliation_2_anomBuildup',
+    name: 'BasicAttackDebtReconciliation_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -184,13 +211,13 @@ export const formulas = {
       sheet: 'Ben',
       damageType1: 'basic',
       attribute: 'physical',
-      skillType: 'basicSkill',
-      name: 'BasicAttackDebtReconciliation_2_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackDebtReconciliation_2',
     },
   },
-  DashAttackIncomingExpense_0_dmg: {
+  'DashAttackIncomingExpense_0:standardDmg': {
     sheet: 'Ben',
-    name: 'DashAttackIncomingExpense_0_dmg',
+    name: 'DashAttackIncomingExpense_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -198,13 +225,13 @@ export const formulas = {
       sheet: 'Ben',
       damageType1: 'dash',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackIncomingExpense_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackIncomingExpense_0',
     },
   },
-  DashAttackIncomingExpense_0_daze: {
+  'DashAttackIncomingExpense_0:dazeBuildup': {
     sheet: 'Ben',
-    name: 'DashAttackIncomingExpense_0_daze',
+    name: 'DashAttackIncomingExpense_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -212,13 +239,13 @@ export const formulas = {
       sheet: 'Ben',
       damageType1: 'dash',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackIncomingExpense_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackIncomingExpense_0',
     },
   },
-  DashAttackIncomingExpense_0_anomBuildup: {
+  'DashAttackIncomingExpense_0:anomBuildup': {
     sheet: 'Ben',
-    name: 'DashAttackIncomingExpense_0_anomBuildup',
+    name: 'DashAttackIncomingExpense_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -226,13 +253,13 @@ export const formulas = {
       sheet: 'Ben',
       damageType1: 'dash',
       attribute: 'physical',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackIncomingExpense_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackIncomingExpense_0',
     },
   },
-  DodgeCounterAccountsSettled_0_dmg: {
+  'DodgeCounterAccountsSettled_0:standardDmg': {
     sheet: 'Ben',
-    name: 'DodgeCounterAccountsSettled_0_dmg',
+    name: 'DodgeCounterAccountsSettled_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -240,13 +267,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterAccountsSettled_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterAccountsSettled_0',
     },
   },
-  DodgeCounterAccountsSettled_0_daze: {
+  'DodgeCounterAccountsSettled_0:dazeBuildup': {
     sheet: 'Ben',
-    name: 'DodgeCounterAccountsSettled_0_daze',
+    name: 'DodgeCounterAccountsSettled_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -254,13 +281,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterAccountsSettled_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterAccountsSettled_0',
     },
   },
-  DodgeCounterAccountsSettled_0_anomBuildup: {
+  'DodgeCounterAccountsSettled_0:anomBuildup': {
     sheet: 'Ben',
-    name: 'DodgeCounterAccountsSettled_0_anomBuildup',
+    name: 'DodgeCounterAccountsSettled_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -268,13 +295,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterAccountsSettled_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterAccountsSettled_0',
     },
   },
-  SpecialAttackFiscalFist_0_dmg: {
+  'SpecialAttackFiscalFist_0:standardDmg': {
     sheet: 'Ben',
-    name: 'SpecialAttackFiscalFist_0_dmg',
+    name: 'SpecialAttackFiscalFist_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -282,13 +309,13 @@ export const formulas = {
       sheet: 'Ben',
       damageType1: 'special',
       attribute: 'physical',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackFiscalFist_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackFiscalFist_0',
     },
   },
-  SpecialAttackFiscalFist_0_daze: {
+  'SpecialAttackFiscalFist_0:dazeBuildup': {
     sheet: 'Ben',
-    name: 'SpecialAttackFiscalFist_0_daze',
+    name: 'SpecialAttackFiscalFist_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -296,13 +323,13 @@ export const formulas = {
       sheet: 'Ben',
       damageType1: 'special',
       attribute: 'physical',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackFiscalFist_0_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackFiscalFist_0',
     },
   },
-  SpecialAttackFiscalFist_0_anomBuildup: {
+  'SpecialAttackFiscalFist_0:anomBuildup': {
     sheet: 'Ben',
-    name: 'SpecialAttackFiscalFist_0_anomBuildup',
+    name: 'SpecialAttackFiscalFist_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -310,13 +337,13 @@ export const formulas = {
       sheet: 'Ben',
       damageType1: 'special',
       attribute: 'physical',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackFiscalFist_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackFiscalFist_0',
     },
   },
-  SpecialAttackFiscalFist_1_dmg: {
+  'SpecialAttackFiscalFist_1:standardDmg': {
     sheet: 'Ben',
-    name: 'SpecialAttackFiscalFist_1_dmg',
+    name: 'SpecialAttackFiscalFist_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -324,13 +351,13 @@ export const formulas = {
       sheet: 'Ben',
       damageType1: 'special',
       attribute: 'physical',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackFiscalFist_1_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackFiscalFist_1',
     },
   },
-  SpecialAttackFiscalFist_1_daze: {
+  'SpecialAttackFiscalFist_1:dazeBuildup': {
     sheet: 'Ben',
-    name: 'SpecialAttackFiscalFist_1_daze',
+    name: 'SpecialAttackFiscalFist_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -338,13 +365,13 @@ export const formulas = {
       sheet: 'Ben',
       damageType1: 'special',
       attribute: 'physical',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackFiscalFist_1_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackFiscalFist_1',
     },
   },
-  SpecialAttackFiscalFist_1_anomBuildup: {
+  'SpecialAttackFiscalFist_1:anomBuildup': {
     sheet: 'Ben',
-    name: 'SpecialAttackFiscalFist_1_anomBuildup',
+    name: 'SpecialAttackFiscalFist_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -352,13 +379,13 @@ export const formulas = {
       sheet: 'Ben',
       damageType1: 'special',
       attribute: 'physical',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackFiscalFist_1_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackFiscalFist_1',
     },
   },
-  EXSpecialAttackCashflowCounter_0_dmg: {
+  'EXSpecialAttackCashflowCounter_0:standardDmg': {
     sheet: 'Ben',
-    name: 'EXSpecialAttackCashflowCounter_0_dmg',
+    name: 'EXSpecialAttackCashflowCounter_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -366,13 +393,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackCashflowCounter_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackCashflowCounter_0',
     },
   },
-  EXSpecialAttackCashflowCounter_0_daze: {
+  'EXSpecialAttackCashflowCounter_0:dazeBuildup': {
     sheet: 'Ben',
-    name: 'EXSpecialAttackCashflowCounter_0_daze',
+    name: 'EXSpecialAttackCashflowCounter_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -380,13 +407,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackCashflowCounter_0_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackCashflowCounter_0',
     },
   },
-  EXSpecialAttackCashflowCounter_0_anomBuildup: {
+  'EXSpecialAttackCashflowCounter_0:anomBuildup': {
     sheet: 'Ben',
-    name: 'EXSpecialAttackCashflowCounter_0_anomBuildup',
+    name: 'EXSpecialAttackCashflowCounter_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -394,13 +421,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackCashflowCounter_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackCashflowCounter_0',
     },
   },
-  EXSpecialAttackCashflowCounter_1_dmg: {
+  'EXSpecialAttackCashflowCounter_1:standardDmg': {
     sheet: 'Ben',
-    name: 'EXSpecialAttackCashflowCounter_1_dmg',
+    name: 'EXSpecialAttackCashflowCounter_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -408,13 +435,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackCashflowCounter_1_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackCashflowCounter_1',
     },
   },
-  EXSpecialAttackCashflowCounter_1_daze: {
+  'EXSpecialAttackCashflowCounter_1:dazeBuildup': {
     sheet: 'Ben',
-    name: 'EXSpecialAttackCashflowCounter_1_daze',
+    name: 'EXSpecialAttackCashflowCounter_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -422,13 +449,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackCashflowCounter_1_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackCashflowCounter_1',
     },
   },
-  EXSpecialAttackCashflowCounter_1_anomBuildup: {
+  'EXSpecialAttackCashflowCounter_1:anomBuildup': {
     sheet: 'Ben',
-    name: 'EXSpecialAttackCashflowCounter_1_anomBuildup',
+    name: 'EXSpecialAttackCashflowCounter_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -436,13 +463,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackCashflowCounter_1_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackCashflowCounter_1',
     },
   },
-  EXSpecialAttackCashflowCounter_2_dmg: {
+  'EXSpecialAttackCashflowCounter_2:standardDmg': {
     sheet: 'Ben',
-    name: 'EXSpecialAttackCashflowCounter_2_dmg',
+    name: 'EXSpecialAttackCashflowCounter_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -450,13 +477,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackCashflowCounter_2_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackCashflowCounter_2',
     },
   },
-  EXSpecialAttackCashflowCounter_2_daze: {
+  'EXSpecialAttackCashflowCounter_2:dazeBuildup': {
     sheet: 'Ben',
-    name: 'EXSpecialAttackCashflowCounter_2_daze',
+    name: 'EXSpecialAttackCashflowCounter_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -464,13 +491,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackCashflowCounter_2_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackCashflowCounter_2',
     },
   },
-  EXSpecialAttackCashflowCounter_2_anomBuildup: {
+  'EXSpecialAttackCashflowCounter_2:anomBuildup': {
     sheet: 'Ben',
-    name: 'EXSpecialAttackCashflowCounter_2_anomBuildup',
+    name: 'EXSpecialAttackCashflowCounter_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -478,13 +505,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackCashflowCounter_2_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackCashflowCounter_2',
     },
   },
-  EXSpecialAttackCashflowCounter_3_dmg: {
+  'EXSpecialAttackCashflowCounter_3:standardDmg': {
     sheet: 'Ben',
-    name: 'EXSpecialAttackCashflowCounter_3_dmg',
+    name: 'EXSpecialAttackCashflowCounter_3:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -492,13 +519,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackCashflowCounter_3_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackCashflowCounter_3',
     },
   },
-  EXSpecialAttackCashflowCounter_3_daze: {
+  'EXSpecialAttackCashflowCounter_3:dazeBuildup': {
     sheet: 'Ben',
-    name: 'EXSpecialAttackCashflowCounter_3_daze',
+    name: 'EXSpecialAttackCashflowCounter_3:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -506,13 +533,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackCashflowCounter_3_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackCashflowCounter_3',
     },
   },
-  EXSpecialAttackCashflowCounter_3_anomBuildup: {
+  'EXSpecialAttackCashflowCounter_3:anomBuildup': {
     sheet: 'Ben',
-    name: 'EXSpecialAttackCashflowCounter_3_anomBuildup',
+    name: 'EXSpecialAttackCashflowCounter_3:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -520,13 +547,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackCashflowCounter_3_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackCashflowCounter_3',
     },
   },
-  ChainAttackSignedAndSealed_0_dmg: {
+  'ChainAttackSignedAndSealed_0:standardDmg': {
     sheet: 'Ben',
-    name: 'ChainAttackSignedAndSealed_0_dmg',
+    name: 'ChainAttackSignedAndSealed_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -534,13 +561,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackSignedAndSealed_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackSignedAndSealed_0',
     },
   },
-  ChainAttackSignedAndSealed_0_daze: {
+  'ChainAttackSignedAndSealed_0:dazeBuildup': {
     sheet: 'Ben',
-    name: 'ChainAttackSignedAndSealed_0_daze',
+    name: 'ChainAttackSignedAndSealed_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -548,13 +575,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackSignedAndSealed_0_daze',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackSignedAndSealed_0',
     },
   },
-  ChainAttackSignedAndSealed_0_anomBuildup: {
+  'ChainAttackSignedAndSealed_0:anomBuildup': {
     sheet: 'Ben',
-    name: 'ChainAttackSignedAndSealed_0_anomBuildup',
+    name: 'ChainAttackSignedAndSealed_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -562,13 +589,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackSignedAndSealed_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackSignedAndSealed_0',
     },
   },
-  UltimateCompletePayback_0_dmg: {
+  'UltimateCompletePayback_0:standardDmg': {
     sheet: 'Ben',
-    name: 'UltimateCompletePayback_0_dmg',
+    name: 'UltimateCompletePayback_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -576,13 +603,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateCompletePayback_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'UltimateCompletePayback_0',
     },
   },
-  UltimateCompletePayback_0_daze: {
+  'UltimateCompletePayback_0:dazeBuildup': {
     sheet: 'Ben',
-    name: 'UltimateCompletePayback_0_daze',
+    name: 'UltimateCompletePayback_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -590,13 +617,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateCompletePayback_0_daze',
+      skillType1: 'chainSkill',
+      name: 'UltimateCompletePayback_0',
     },
   },
-  UltimateCompletePayback_0_anomBuildup: {
+  'UltimateCompletePayback_0:anomBuildup': {
     sheet: 'Ben',
-    name: 'UltimateCompletePayback_0_anomBuildup',
+    name: 'UltimateCompletePayback_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -604,13 +631,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateCompletePayback_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'UltimateCompletePayback_0',
     },
   },
-  QuickAssistJointAccount_0_dmg: {
+  'QuickAssistJointAccount_0:standardDmg': {
     sheet: 'Ben',
-    name: 'QuickAssistJointAccount_0_dmg',
+    name: 'QuickAssistJointAccount_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -618,13 +645,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistJointAccount_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistJointAccount_0',
     },
   },
-  QuickAssistJointAccount_0_daze: {
+  'QuickAssistJointAccount_0:dazeBuildup': {
     sheet: 'Ben',
-    name: 'QuickAssistJointAccount_0_daze',
+    name: 'QuickAssistJointAccount_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -632,13 +659,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistJointAccount_0_daze',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistJointAccount_0',
     },
   },
-  QuickAssistJointAccount_0_anomBuildup: {
+  'QuickAssistJointAccount_0:anomBuildup': {
     sheet: 'Ben',
-    name: 'QuickAssistJointAccount_0_anomBuildup',
+    name: 'QuickAssistJointAccount_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -646,13 +673,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistJointAccount_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistJointAccount_0',
     },
   },
-  DefensiveAssistRiskAllocation_0_dmg: {
+  'DefensiveAssistRiskAllocation_0:standardDmg': {
     sheet: 'Ben',
-    name: 'DefensiveAssistRiskAllocation_0_dmg',
+    name: 'DefensiveAssistRiskAllocation_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -660,13 +687,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistRiskAllocation_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistRiskAllocation_0',
     },
   },
-  DefensiveAssistRiskAllocation_0_daze: {
+  'DefensiveAssistRiskAllocation_0:dazeBuildup': {
     sheet: 'Ben',
-    name: 'DefensiveAssistRiskAllocation_0_daze',
+    name: 'DefensiveAssistRiskAllocation_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -674,13 +701,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistRiskAllocation_0_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistRiskAllocation_0',
     },
   },
-  DefensiveAssistRiskAllocation_0_anomBuildup: {
+  'DefensiveAssistRiskAllocation_0:anomBuildup': {
     sheet: 'Ben',
-    name: 'DefensiveAssistRiskAllocation_0_anomBuildup',
+    name: 'DefensiveAssistRiskAllocation_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -688,13 +715,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistRiskAllocation_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistRiskAllocation_0',
     },
   },
-  DefensiveAssistRiskAllocation_1_dmg: {
+  'DefensiveAssistRiskAllocation_1:standardDmg': {
     sheet: 'Ben',
-    name: 'DefensiveAssistRiskAllocation_1_dmg',
+    name: 'DefensiveAssistRiskAllocation_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -702,13 +729,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistRiskAllocation_1_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistRiskAllocation_1',
     },
   },
-  DefensiveAssistRiskAllocation_1_daze: {
+  'DefensiveAssistRiskAllocation_1:dazeBuildup': {
     sheet: 'Ben',
-    name: 'DefensiveAssistRiskAllocation_1_daze',
+    name: 'DefensiveAssistRiskAllocation_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -716,13 +743,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistRiskAllocation_1_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistRiskAllocation_1',
     },
   },
-  DefensiveAssistRiskAllocation_1_anomBuildup: {
+  'DefensiveAssistRiskAllocation_1:anomBuildup': {
     sheet: 'Ben',
-    name: 'DefensiveAssistRiskAllocation_1_anomBuildup',
+    name: 'DefensiveAssistRiskAllocation_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -730,13 +757,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistRiskAllocation_1_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistRiskAllocation_1',
     },
   },
-  DefensiveAssistRiskAllocation_2_dmg: {
+  'DefensiveAssistRiskAllocation_2:standardDmg': {
     sheet: 'Ben',
-    name: 'DefensiveAssistRiskAllocation_2_dmg',
+    name: 'DefensiveAssistRiskAllocation_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -744,13 +771,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistRiskAllocation_2_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistRiskAllocation_2',
     },
   },
-  DefensiveAssistRiskAllocation_2_daze: {
+  'DefensiveAssistRiskAllocation_2:dazeBuildup': {
     sheet: 'Ben',
-    name: 'DefensiveAssistRiskAllocation_2_daze',
+    name: 'DefensiveAssistRiskAllocation_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -758,13 +785,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistRiskAllocation_2_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistRiskAllocation_2',
     },
   },
-  DefensiveAssistRiskAllocation_2_anomBuildup: {
+  'DefensiveAssistRiskAllocation_2:anomBuildup': {
     sheet: 'Ben',
-    name: 'DefensiveAssistRiskAllocation_2_anomBuildup',
+    name: 'DefensiveAssistRiskAllocation_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -772,13 +799,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistRiskAllocation_2_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistRiskAllocation_2',
     },
   },
-  AssistFollowUpDontBreakContract_0_dmg: {
+  'AssistFollowUpDontBreakContract_0:standardDmg': {
     sheet: 'Ben',
-    name: 'AssistFollowUpDontBreakContract_0_dmg',
+    name: 'AssistFollowUpDontBreakContract_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -786,13 +813,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpDontBreakContract_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpDontBreakContract_0',
     },
   },
-  AssistFollowUpDontBreakContract_0_daze: {
+  'AssistFollowUpDontBreakContract_0:dazeBuildup': {
     sheet: 'Ben',
-    name: 'AssistFollowUpDontBreakContract_0_daze',
+    name: 'AssistFollowUpDontBreakContract_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -800,13 +827,13 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpDontBreakContract_0_daze',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpDontBreakContract_0',
     },
   },
-  AssistFollowUpDontBreakContract_0_anomBuildup: {
+  'AssistFollowUpDontBreakContract_0:anomBuildup': {
     sheet: 'Ben',
-    name: 'AssistFollowUpDontBreakContract_0_anomBuildup',
+    name: 'AssistFollowUpDontBreakContract_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -814,8 +841,8 @@ export const formulas = {
       sheet: 'Ben',
       attribute: 'fire',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpDontBreakContract_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpDontBreakContract_0',
     },
   },
   special_shield: {

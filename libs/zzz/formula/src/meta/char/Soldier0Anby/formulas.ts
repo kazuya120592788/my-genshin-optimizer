@@ -38,6 +38,33 @@ export const formulas = {
       name: 'disorderDmgInst_electric',
     },
   },
+  vortexDmgInst_electric: {
+    sheet: 'Soldier0Anby',
+    name: 'vortexDmgInst_electric',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Soldier0Anby',
+      attribute: 'electric',
+      damageType1: 'vortex',
+      name: 'vortexDmgInst_electric',
+    },
+  },
+  abloomDmgInst: {
+    sheet: 'Soldier0Anby',
+    name: 'abloomDmgInst',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Soldier0Anby',
+      attribute: 'electric',
+      damageType1: 'anomaly',
+      damageType2: 'abloom',
+      name: 'abloomDmgInst',
+    },
+  },
   anomalyBuildupInst: {
     sheet: 'Soldier0Anby',
     name: 'anomalyBuildupInst',
@@ -62,9 +89,9 @@ export const formulas = {
       name: 'dazeInst',
     },
   },
-  BasicAttackPenetratingShock_0_dmg: {
+  'BasicAttackPenetratingShock_0:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'BasicAttackPenetratingShock_0_dmg',
+    name: 'BasicAttackPenetratingShock_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -72,13 +99,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackPenetratingShock_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackPenetratingShock_0',
     },
   },
-  BasicAttackPenetratingShock_0_daze: {
+  'BasicAttackPenetratingShock_0:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'BasicAttackPenetratingShock_0_daze',
+    name: 'BasicAttackPenetratingShock_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -86,13 +113,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackPenetratingShock_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackPenetratingShock_0',
     },
   },
-  BasicAttackPenetratingShock_0_anomBuildup: {
+  'BasicAttackPenetratingShock_0:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'BasicAttackPenetratingShock_0_anomBuildup',
+    name: 'BasicAttackPenetratingShock_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -100,13 +127,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackPenetratingShock_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackPenetratingShock_0',
     },
   },
-  BasicAttackPenetratingShock_1_dmg: {
+  'BasicAttackPenetratingShock_1:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'BasicAttackPenetratingShock_1_dmg',
+    name: 'BasicAttackPenetratingShock_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -114,13 +141,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackPenetratingShock_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackPenetratingShock_1',
     },
   },
-  BasicAttackPenetratingShock_1_daze: {
+  'BasicAttackPenetratingShock_1:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'BasicAttackPenetratingShock_1_daze',
+    name: 'BasicAttackPenetratingShock_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -128,13 +155,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackPenetratingShock_1_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackPenetratingShock_1',
     },
   },
-  BasicAttackPenetratingShock_1_anomBuildup: {
+  'BasicAttackPenetratingShock_1:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'BasicAttackPenetratingShock_1_anomBuildup',
+    name: 'BasicAttackPenetratingShock_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -142,13 +169,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackPenetratingShock_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackPenetratingShock_1',
     },
   },
-  BasicAttackPenetratingShock_2_dmg: {
+  'BasicAttackPenetratingShock_2:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'BasicAttackPenetratingShock_2_dmg',
+    name: 'BasicAttackPenetratingShock_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -156,13 +183,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackPenetratingShock_2_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackPenetratingShock_2',
     },
   },
-  BasicAttackPenetratingShock_2_daze: {
+  'BasicAttackPenetratingShock_2:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'BasicAttackPenetratingShock_2_daze',
+    name: 'BasicAttackPenetratingShock_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -170,13 +197,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackPenetratingShock_2_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackPenetratingShock_2',
     },
   },
-  BasicAttackPenetratingShock_2_anomBuildup: {
+  'BasicAttackPenetratingShock_2:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'BasicAttackPenetratingShock_2_anomBuildup',
+    name: 'BasicAttackPenetratingShock_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -184,13 +211,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackPenetratingShock_2_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackPenetratingShock_2',
     },
   },
-  BasicAttackPenetratingShock_3_dmg: {
+  'BasicAttackPenetratingShock_3:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'BasicAttackPenetratingShock_3_dmg',
+    name: 'BasicAttackPenetratingShock_3:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -198,13 +225,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackPenetratingShock_3_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackPenetratingShock_3',
     },
   },
-  BasicAttackPenetratingShock_3_daze: {
+  'BasicAttackPenetratingShock_3:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'BasicAttackPenetratingShock_3_daze',
+    name: 'BasicAttackPenetratingShock_3:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -212,13 +239,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackPenetratingShock_3_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackPenetratingShock_3',
     },
   },
-  BasicAttackPenetratingShock_3_anomBuildup: {
+  'BasicAttackPenetratingShock_3:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'BasicAttackPenetratingShock_3_anomBuildup',
+    name: 'BasicAttackPenetratingShock_3:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -226,13 +253,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackPenetratingShock_3_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackPenetratingShock_3',
     },
   },
-  BasicAttackPenetratingShock_4_dmg: {
+  'BasicAttackPenetratingShock_4:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'BasicAttackPenetratingShock_4_dmg',
+    name: 'BasicAttackPenetratingShock_4:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -240,13 +267,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackPenetratingShock_4_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackPenetratingShock_4',
     },
   },
-  BasicAttackPenetratingShock_4_daze: {
+  'BasicAttackPenetratingShock_4:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'BasicAttackPenetratingShock_4_daze',
+    name: 'BasicAttackPenetratingShock_4:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -254,13 +281,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackPenetratingShock_4_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackPenetratingShock_4',
     },
   },
-  BasicAttackPenetratingShock_4_anomBuildup: {
+  'BasicAttackPenetratingShock_4:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'BasicAttackPenetratingShock_4_anomBuildup',
+    name: 'BasicAttackPenetratingShock_4:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -268,13 +295,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackPenetratingShock_4_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackPenetratingShock_4',
     },
   },
-  BasicAttackPenetratingShock_5_dmg: {
+  'BasicAttackPenetratingShock_5:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'BasicAttackPenetratingShock_5_dmg',
+    name: 'BasicAttackPenetratingShock_5:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -282,13 +309,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackPenetratingShock_5_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackPenetratingShock_5',
     },
   },
-  BasicAttackPenetratingShock_5_daze: {
+  'BasicAttackPenetratingShock_5:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'BasicAttackPenetratingShock_5_daze',
+    name: 'BasicAttackPenetratingShock_5:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -296,13 +323,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackPenetratingShock_5_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackPenetratingShock_5',
     },
   },
-  BasicAttackPenetratingShock_5_anomBuildup: {
+  'BasicAttackPenetratingShock_5:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'BasicAttackPenetratingShock_5_anomBuildup',
+    name: 'BasicAttackPenetratingShock_5:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -310,13 +337,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackPenetratingShock_5_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackPenetratingShock_5',
     },
   },
-  DashAttackTorrent_0_dmg: {
+  'DashAttackTorrent_0:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'DashAttackTorrent_0_dmg',
+    name: 'DashAttackTorrent_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -324,13 +351,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackTorrent_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackTorrent_0',
     },
   },
-  DashAttackTorrent_0_daze: {
+  'DashAttackTorrent_0:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'DashAttackTorrent_0_daze',
+    name: 'DashAttackTorrent_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -338,13 +365,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackTorrent_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackTorrent_0',
     },
   },
-  DashAttackTorrent_0_anomBuildup: {
+  'DashAttackTorrent_0:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'DashAttackTorrent_0_anomBuildup',
+    name: 'DashAttackTorrent_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -352,13 +379,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackTorrent_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackTorrent_0',
     },
   },
-  DodgeCounterGroundFlashCounter_0_dmg: {
+  'DodgeCounterGroundFlashCounter_0:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'DodgeCounterGroundFlashCounter_0_dmg',
+    name: 'DodgeCounterGroundFlashCounter_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -366,13 +393,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterGroundFlashCounter_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterGroundFlashCounter_0',
     },
   },
-  DodgeCounterGroundFlashCounter_0_daze: {
+  'DodgeCounterGroundFlashCounter_0:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'DodgeCounterGroundFlashCounter_0_daze',
+    name: 'DodgeCounterGroundFlashCounter_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -380,13 +407,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterGroundFlashCounter_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterGroundFlashCounter_0',
     },
   },
-  DodgeCounterGroundFlashCounter_0_anomBuildup: {
+  'DodgeCounterGroundFlashCounter_0:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'DodgeCounterGroundFlashCounter_0_anomBuildup',
+    name: 'DodgeCounterGroundFlashCounter_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -394,13 +421,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterGroundFlashCounter_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterGroundFlashCounter_0',
     },
   },
-  SpecialAttackCelestialThunder_0_dmg: {
+  'SpecialAttackCelestialThunder_0:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'SpecialAttackCelestialThunder_0_dmg',
+    name: 'SpecialAttackCelestialThunder_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -408,13 +435,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackCelestialThunder_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackCelestialThunder_0',
     },
   },
-  SpecialAttackCelestialThunder_0_daze: {
+  'SpecialAttackCelestialThunder_0:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'SpecialAttackCelestialThunder_0_daze',
+    name: 'SpecialAttackCelestialThunder_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -422,13 +449,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackCelestialThunder_0_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackCelestialThunder_0',
     },
   },
-  SpecialAttackCelestialThunder_0_anomBuildup: {
+  'SpecialAttackCelestialThunder_0:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'SpecialAttackCelestialThunder_0_anomBuildup',
+    name: 'SpecialAttackCelestialThunder_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -436,13 +463,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackCelestialThunder_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackCelestialThunder_0',
     },
   },
-  SpecialAttackAzureFlash_0_dmg: {
+  'SpecialAttackAzureFlash_0:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'SpecialAttackAzureFlash_0_dmg',
+    name: 'SpecialAttackAzureFlash_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -450,13 +477,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackAzureFlash_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackAzureFlash_0',
     },
   },
-  SpecialAttackAzureFlash_0_daze: {
+  'SpecialAttackAzureFlash_0:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'SpecialAttackAzureFlash_0_daze',
+    name: 'SpecialAttackAzureFlash_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -464,13 +491,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackAzureFlash_0_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackAzureFlash_0',
     },
   },
-  SpecialAttackAzureFlash_0_anomBuildup: {
+  'SpecialAttackAzureFlash_0:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'SpecialAttackAzureFlash_0_anomBuildup',
+    name: 'SpecialAttackAzureFlash_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -478,13 +505,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackAzureFlash_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackAzureFlash_0',
     },
   },
-  SpecialAttackAzureFlash_1_dmg: {
+  'SpecialAttackAzureFlash_1:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'SpecialAttackAzureFlash_1_dmg',
+    name: 'SpecialAttackAzureFlash_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -492,13 +519,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackAzureFlash_1_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackAzureFlash_1',
     },
   },
-  SpecialAttackAzureFlash_1_daze: {
+  'SpecialAttackAzureFlash_1:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'SpecialAttackAzureFlash_1_daze',
+    name: 'SpecialAttackAzureFlash_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -506,13 +533,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackAzureFlash_1_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackAzureFlash_1',
     },
   },
-  SpecialAttackAzureFlash_1_anomBuildup: {
+  'SpecialAttackAzureFlash_1:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'SpecialAttackAzureFlash_1_anomBuildup',
+    name: 'SpecialAttackAzureFlash_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -520,13 +547,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackAzureFlash_1_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackAzureFlash_1',
     },
   },
-  SpecialAttackThunderSmite_0_dmg: {
+  'SpecialAttackThunderSmite_0:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'SpecialAttackThunderSmite_0_dmg',
+    name: 'SpecialAttackThunderSmite_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -534,13 +561,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackThunderSmite_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackThunderSmite_0',
     },
   },
-  SpecialAttackThunderSmite_0_daze: {
+  'SpecialAttackThunderSmite_0:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'SpecialAttackThunderSmite_0_daze',
+    name: 'SpecialAttackThunderSmite_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -548,13 +575,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackThunderSmite_0_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackThunderSmite_0',
     },
   },
-  SpecialAttackThunderSmite_0_anomBuildup: {
+  'SpecialAttackThunderSmite_0:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'SpecialAttackThunderSmite_0_anomBuildup',
+    name: 'SpecialAttackThunderSmite_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -562,13 +589,55 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackThunderSmite_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackThunderSmite_0',
     },
   },
-  EXSpecialAttackSunderingBolt_0_dmg: {
+  'SpecialAttackAzureFlashBoundary_0:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'EXSpecialAttackSunderingBolt_0_dmg',
+    name: 'SpecialAttackAzureFlashBoundary_0:standardDmg',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'standardDmg',
+      sheet: 'Soldier0Anby',
+      attribute: 'electric',
+      damageType1: 'special',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackAzureFlashBoundary_0',
+    },
+  },
+  'SpecialAttackAzureFlashBoundary_0:dazeBuildup': {
+    sheet: 'Soldier0Anby',
+    name: 'SpecialAttackAzureFlashBoundary_0:dazeBuildup',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'dazeBuildup',
+      sheet: 'Soldier0Anby',
+      attribute: 'electric',
+      damageType1: 'special',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackAzureFlashBoundary_0',
+    },
+  },
+  'SpecialAttackAzureFlashBoundary_0:anomBuildup': {
+    sheet: 'Soldier0Anby',
+    name: 'SpecialAttackAzureFlashBoundary_0:anomBuildup',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomBuildup',
+      sheet: 'Soldier0Anby',
+      attribute: 'electric',
+      damageType1: 'special',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackAzureFlashBoundary_0',
+    },
+  },
+  'EXSpecialAttackSunderingBolt_0:standardDmg': {
+    sheet: 'Soldier0Anby',
+    name: 'EXSpecialAttackSunderingBolt_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -576,13 +645,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackSunderingBolt_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackSunderingBolt_0',
     },
   },
-  EXSpecialAttackSunderingBolt_0_daze: {
+  'EXSpecialAttackSunderingBolt_0:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'EXSpecialAttackSunderingBolt_0_daze',
+    name: 'EXSpecialAttackSunderingBolt_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -590,13 +659,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackSunderingBolt_0_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackSunderingBolt_0',
     },
   },
-  EXSpecialAttackSunderingBolt_0_anomBuildup: {
+  'EXSpecialAttackSunderingBolt_0:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'EXSpecialAttackSunderingBolt_0_anomBuildup',
+    name: 'EXSpecialAttackSunderingBolt_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -604,13 +673,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackSunderingBolt_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackSunderingBolt_0',
     },
   },
-  ChainAttackLeapingThunderstrike_0_dmg: {
+  'ChainAttackLeapingThunderstrike_0:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'ChainAttackLeapingThunderstrike_0_dmg',
+    name: 'ChainAttackLeapingThunderstrike_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -618,13 +687,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackLeapingThunderstrike_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackLeapingThunderstrike_0',
     },
   },
-  ChainAttackLeapingThunderstrike_0_daze: {
+  'ChainAttackLeapingThunderstrike_0:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'ChainAttackLeapingThunderstrike_0_daze',
+    name: 'ChainAttackLeapingThunderstrike_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -632,13 +701,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackLeapingThunderstrike_0_daze',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackLeapingThunderstrike_0',
     },
   },
-  ChainAttackLeapingThunderstrike_0_anomBuildup: {
+  'ChainAttackLeapingThunderstrike_0:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'ChainAttackLeapingThunderstrike_0_anomBuildup',
+    name: 'ChainAttackLeapingThunderstrike_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -646,13 +715,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackLeapingThunderstrike_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackLeapingThunderstrike_0',
     },
   },
-  UltimateVoidstrike_0_dmg: {
+  'UltimateVoidstrike_0:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'UltimateVoidstrike_0_dmg',
+    name: 'UltimateVoidstrike_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -660,13 +729,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateVoidstrike_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'UltimateVoidstrike_0',
     },
   },
-  UltimateVoidstrike_0_daze: {
+  'UltimateVoidstrike_0:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'UltimateVoidstrike_0_daze',
+    name: 'UltimateVoidstrike_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -674,13 +743,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateVoidstrike_0_daze',
+      skillType1: 'chainSkill',
+      name: 'UltimateVoidstrike_0',
     },
   },
-  UltimateVoidstrike_0_anomBuildup: {
+  'UltimateVoidstrike_0:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'UltimateVoidstrike_0_anomBuildup',
+    name: 'UltimateVoidstrike_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -688,13 +757,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateVoidstrike_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'UltimateVoidstrike_0',
     },
   },
-  QuickAssistCloudFlash_0_dmg: {
+  'QuickAssistCloudFlash_0:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'QuickAssistCloudFlash_0_dmg',
+    name: 'QuickAssistCloudFlash_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -702,13 +771,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistCloudFlash_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistCloudFlash_0',
     },
   },
-  QuickAssistCloudFlash_0_daze: {
+  'QuickAssistCloudFlash_0:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'QuickAssistCloudFlash_0_daze',
+    name: 'QuickAssistCloudFlash_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -716,13 +785,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistCloudFlash_0_daze',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistCloudFlash_0',
     },
   },
-  QuickAssistCloudFlash_0_anomBuildup: {
+  'QuickAssistCloudFlash_0:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'QuickAssistCloudFlash_0_anomBuildup',
+    name: 'QuickAssistCloudFlash_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -730,13 +799,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistCloudFlash_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistCloudFlash_0',
     },
   },
-  DefensiveAssistCounterSurge_0_dmg: {
+  'DefensiveAssistCounterSurge_0:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'DefensiveAssistCounterSurge_0_dmg',
+    name: 'DefensiveAssistCounterSurge_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -744,13 +813,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistCounterSurge_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistCounterSurge_0',
     },
   },
-  DefensiveAssistCounterSurge_0_daze: {
+  'DefensiveAssistCounterSurge_0:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'DefensiveAssistCounterSurge_0_daze',
+    name: 'DefensiveAssistCounterSurge_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -758,13 +827,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistCounterSurge_0_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistCounterSurge_0',
     },
   },
-  DefensiveAssistCounterSurge_0_anomBuildup: {
+  'DefensiveAssistCounterSurge_0:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'DefensiveAssistCounterSurge_0_anomBuildup',
+    name: 'DefensiveAssistCounterSurge_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -772,13 +841,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistCounterSurge_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistCounterSurge_0',
     },
   },
-  DefensiveAssistCounterSurge_1_dmg: {
+  'DefensiveAssistCounterSurge_1:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'DefensiveAssistCounterSurge_1_dmg',
+    name: 'DefensiveAssistCounterSurge_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -786,13 +855,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistCounterSurge_1_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistCounterSurge_1',
     },
   },
-  DefensiveAssistCounterSurge_1_daze: {
+  'DefensiveAssistCounterSurge_1:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'DefensiveAssistCounterSurge_1_daze',
+    name: 'DefensiveAssistCounterSurge_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -800,13 +869,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistCounterSurge_1_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistCounterSurge_1',
     },
   },
-  DefensiveAssistCounterSurge_1_anomBuildup: {
+  'DefensiveAssistCounterSurge_1:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'DefensiveAssistCounterSurge_1_anomBuildup',
+    name: 'DefensiveAssistCounterSurge_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -814,13 +883,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistCounterSurge_1_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistCounterSurge_1',
     },
   },
-  DefensiveAssistCounterSurge_2_dmg: {
+  'DefensiveAssistCounterSurge_2:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'DefensiveAssistCounterSurge_2_dmg',
+    name: 'DefensiveAssistCounterSurge_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -828,13 +897,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistCounterSurge_2_dmg',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistCounterSurge_2',
     },
   },
-  DefensiveAssistCounterSurge_2_daze: {
+  'DefensiveAssistCounterSurge_2:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'DefensiveAssistCounterSurge_2_daze',
+    name: 'DefensiveAssistCounterSurge_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -842,13 +911,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistCounterSurge_2_daze',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistCounterSurge_2',
     },
   },
-  DefensiveAssistCounterSurge_2_anomBuildup: {
+  'DefensiveAssistCounterSurge_2:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'DefensiveAssistCounterSurge_2_anomBuildup',
+    name: 'DefensiveAssistCounterSurge_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -856,13 +925,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'defensiveAssist',
-      skillType: 'assistSkill',
-      name: 'DefensiveAssistCounterSurge_2_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'DefensiveAssistCounterSurge_2',
     },
   },
-  AssistFollowUpConductingBlow_0_dmg: {
+  'AssistFollowUpConductingBlow_0:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'AssistFollowUpConductingBlow_0_dmg',
+    name: 'AssistFollowUpConductingBlow_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -870,13 +939,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpConductingBlow_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpConductingBlow_0',
     },
   },
-  AssistFollowUpConductingBlow_0_daze: {
+  'AssistFollowUpConductingBlow_0:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'AssistFollowUpConductingBlow_0_daze',
+    name: 'AssistFollowUpConductingBlow_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -884,13 +953,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpConductingBlow_0_daze',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpConductingBlow_0',
     },
   },
-  AssistFollowUpConductingBlow_0_anomBuildup: {
+  'AssistFollowUpConductingBlow_0:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'AssistFollowUpConductingBlow_0_anomBuildup',
+    name: 'AssistFollowUpConductingBlow_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -898,13 +967,13 @@ export const formulas = {
       sheet: 'Soldier0Anby',
       attribute: 'electric',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpConductingBlow_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpConductingBlow_0',
     },
   },
-  ChainAttackLeapingThunderstrike_aftershock0_dmg: {
+  'ChainAttackLeapingThunderstrike_aftershock0:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'ChainAttackLeapingThunderstrike_aftershock0_dmg',
+    name: 'ChainAttackLeapingThunderstrike_aftershock0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -913,13 +982,13 @@ export const formulas = {
       attribute: 'electric',
       damageType1: 'chain',
       damageType2: 'aftershock',
-      skillType: 'chainSkill',
-      name: 'ChainAttackLeapingThunderstrike_aftershock0_dmg',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackLeapingThunderstrike_aftershock0',
     },
   },
-  ChainAttackLeapingThunderstrike_aftershock0_daze: {
+  'ChainAttackLeapingThunderstrike_aftershock0:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'ChainAttackLeapingThunderstrike_aftershock0_daze',
+    name: 'ChainAttackLeapingThunderstrike_aftershock0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -928,13 +997,13 @@ export const formulas = {
       attribute: 'electric',
       damageType1: 'chain',
       damageType2: 'aftershock',
-      skillType: 'chainSkill',
-      name: 'ChainAttackLeapingThunderstrike_aftershock0_daze',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackLeapingThunderstrike_aftershock0',
     },
   },
-  ChainAttackLeapingThunderstrike_aftershock0_anomBuildup: {
+  'ChainAttackLeapingThunderstrike_aftershock0:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'ChainAttackLeapingThunderstrike_aftershock0_anomBuildup',
+    name: 'ChainAttackLeapingThunderstrike_aftershock0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -943,13 +1012,13 @@ export const formulas = {
       attribute: 'electric',
       damageType1: 'chain',
       damageType2: 'aftershock',
-      skillType: 'chainSkill',
-      name: 'ChainAttackLeapingThunderstrike_aftershock0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackLeapingThunderstrike_aftershock0',
     },
   },
-  UltimateVoidstrike_aftershock0_dmg: {
+  'UltimateVoidstrike_aftershock0:standardDmg': {
     sheet: 'Soldier0Anby',
-    name: 'UltimateVoidstrike_aftershock0_dmg',
+    name: 'UltimateVoidstrike_aftershock0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -958,13 +1027,13 @@ export const formulas = {
       attribute: 'electric',
       damageType1: 'ult',
       damageType2: 'aftershock',
-      skillType: 'chainSkill',
-      name: 'UltimateVoidstrike_aftershock0_dmg',
+      skillType1: 'chainSkill',
+      name: 'UltimateVoidstrike_aftershock0',
     },
   },
-  UltimateVoidstrike_aftershock0_daze: {
+  'UltimateVoidstrike_aftershock0:dazeBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'UltimateVoidstrike_aftershock0_daze',
+    name: 'UltimateVoidstrike_aftershock0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -973,13 +1042,13 @@ export const formulas = {
       attribute: 'electric',
       damageType1: 'ult',
       damageType2: 'aftershock',
-      skillType: 'chainSkill',
-      name: 'UltimateVoidstrike_aftershock0_daze',
+      skillType1: 'chainSkill',
+      name: 'UltimateVoidstrike_aftershock0',
     },
   },
-  UltimateVoidstrike_aftershock0_anomBuildup: {
+  'UltimateVoidstrike_aftershock0:anomBuildup': {
     sheet: 'Soldier0Anby',
-    name: 'UltimateVoidstrike_aftershock0_anomBuildup',
+    name: 'UltimateVoidstrike_aftershock0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -988,8 +1057,8 @@ export const formulas = {
       attribute: 'electric',
       damageType1: 'ult',
       damageType2: 'aftershock',
-      skillType: 'chainSkill',
-      name: 'UltimateVoidstrike_aftershock0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'UltimateVoidstrike_aftershock0',
     },
   },
   m6_additional_dmg: {

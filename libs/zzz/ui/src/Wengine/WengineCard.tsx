@@ -7,7 +7,7 @@ import {
 } from '@genshin-optimizer/common/ui'
 import type { WenginePhaseKey } from '@genshin-optimizer/zzz/assets'
 import {
-  specialityDefIcon,
+  specialtyDefIcon,
   wengineAsset,
   wenginePhaseIcon,
 } from '@genshin-optimizer/zzz/assets'
@@ -28,7 +28,7 @@ import {
   Typography,
 } from '@mui/material'
 import type { ReactNode } from 'react'
-import { Suspense, memo, useCallback } from 'react'
+import { memo, Suspense, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { StatDisplay } from '../Character'
 import { LocationAutocomplete } from '../Character/LocationAutocomplete'
@@ -56,10 +56,7 @@ export const WengineCard = memo(function WengineCard({
 }) {
   const { database } = useDatabaseContext()
   const wengine = useWengine(wengineId)
-  const onEditCB = useCallback(
-    () => onEdit && onEdit(wengineId),
-    [wengineId, onEdit]
-  )
+  const onEditCB = useCallback(() => onEdit?.(wengineId), [wengineId, onEdit])
   const setLocation = useCallback(
     (location: LocationKey) => database.wengines.set(wengineId, { location }),
     [database.wengines, wengineId]
@@ -173,7 +170,7 @@ export function WengineCardObj({
                         {
                           <ImgIcon
                             size={2}
-                            src={specialityDefIcon(wengineStat.type)}
+                            src={specialtyDefIcon(wengineStat.type)}
                           />
                         }{' '}
                         <WengineName wKey={key} />
@@ -236,10 +233,10 @@ export function WengineCardObj({
                     fontWeight: 'bold',
                   }}
                 >
-                  <StatDisplay statKey={'atk'} />
+                  <StatDisplay statKey={wengineStat['base_statkey']} />
                 </Typography>
                 <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
-                  {wengineStats['atk_base'].toFixed()}
+                  {wengineStats[wengineStat['base_statkey']].toFixed()}
                 </Typography>
               </Box>
               <WengineSubstatDisplay

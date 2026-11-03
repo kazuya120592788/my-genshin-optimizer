@@ -38,6 +38,33 @@ export const formulas = {
       name: 'disorderDmgInst_physical',
     },
   },
+  vortexDmgInst_physical: {
+    sheet: 'Pulchra',
+    name: 'vortexDmgInst_physical',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Pulchra',
+      attribute: 'physical',
+      damageType1: 'vortex',
+      name: 'vortexDmgInst_physical',
+    },
+  },
+  abloomDmgInst: {
+    sheet: 'Pulchra',
+    name: 'abloomDmgInst',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomalyDmg',
+      sheet: 'Pulchra',
+      attribute: 'physical',
+      damageType1: 'anomaly',
+      damageType2: 'abloom',
+      name: 'abloomDmgInst',
+    },
+  },
   anomalyBuildupInst: {
     sheet: 'Pulchra',
     name: 'anomalyBuildupInst',
@@ -62,9 +89,9 @@ export const formulas = {
       name: 'dazeInst',
     },
   },
-  BasicAttackSwiftStrike_0_dmg: {
+  'BasicAttackSwiftStrike_0:standardDmg': {
     sheet: 'Pulchra',
-    name: 'BasicAttackSwiftStrike_0_dmg',
+    name: 'BasicAttackSwiftStrike_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -72,13 +99,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSwiftStrike_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSwiftStrike_0',
     },
   },
-  BasicAttackSwiftStrike_0_daze: {
+  'BasicAttackSwiftStrike_0:dazeBuildup': {
     sheet: 'Pulchra',
-    name: 'BasicAttackSwiftStrike_0_daze',
+    name: 'BasicAttackSwiftStrike_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -86,13 +113,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSwiftStrike_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSwiftStrike_0',
     },
   },
-  BasicAttackSwiftStrike_0_anomBuildup: {
+  'BasicAttackSwiftStrike_0:anomBuildup': {
     sheet: 'Pulchra',
-    name: 'BasicAttackSwiftStrike_0_anomBuildup',
+    name: 'BasicAttackSwiftStrike_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -100,13 +127,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSwiftStrike_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSwiftStrike_0',
     },
   },
-  BasicAttackSwiftStrike_1_dmg: {
+  'BasicAttackSwiftStrike_1:standardDmg': {
     sheet: 'Pulchra',
-    name: 'BasicAttackSwiftStrike_1_dmg',
+    name: 'BasicAttackSwiftStrike_1:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -114,13 +141,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSwiftStrike_1_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSwiftStrike_1',
     },
   },
-  BasicAttackSwiftStrike_1_daze: {
+  'BasicAttackSwiftStrike_1:dazeBuildup': {
     sheet: 'Pulchra',
-    name: 'BasicAttackSwiftStrike_1_daze',
+    name: 'BasicAttackSwiftStrike_1:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -128,13 +155,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSwiftStrike_1_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSwiftStrike_1',
     },
   },
-  BasicAttackSwiftStrike_1_anomBuildup: {
+  'BasicAttackSwiftStrike_1:anomBuildup': {
     sheet: 'Pulchra',
-    name: 'BasicAttackSwiftStrike_1_anomBuildup',
+    name: 'BasicAttackSwiftStrike_1:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -142,13 +169,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSwiftStrike_1_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSwiftStrike_1',
     },
   },
-  BasicAttackSwiftStrike_2_dmg: {
+  'BasicAttackSwiftStrike_2:standardDmg': {
     sheet: 'Pulchra',
-    name: 'BasicAttackSwiftStrike_2_dmg',
+    name: 'BasicAttackSwiftStrike_2:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -156,13 +183,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSwiftStrike_2_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSwiftStrike_2',
     },
   },
-  BasicAttackSwiftStrike_2_daze: {
+  'BasicAttackSwiftStrike_2:dazeBuildup': {
     sheet: 'Pulchra',
-    name: 'BasicAttackSwiftStrike_2_daze',
+    name: 'BasicAttackSwiftStrike_2:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -170,13 +197,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSwiftStrike_2_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSwiftStrike_2',
     },
   },
-  BasicAttackSwiftStrike_2_anomBuildup: {
+  'BasicAttackSwiftStrike_2:anomBuildup': {
     sheet: 'Pulchra',
-    name: 'BasicAttackSwiftStrike_2_anomBuildup',
+    name: 'BasicAttackSwiftStrike_2:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -184,13 +211,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackSwiftStrike_2_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackSwiftStrike_2',
     },
   },
-  BasicAttackLeapingStrike_0_dmg: {
+  'BasicAttackLeapingStrike_0:standardDmg': {
     sheet: 'Pulchra',
-    name: 'BasicAttackLeapingStrike_0_dmg',
+    name: 'BasicAttackLeapingStrike_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -198,13 +225,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLeapingStrike_0_dmg',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLeapingStrike_0',
     },
   },
-  BasicAttackLeapingStrike_0_daze: {
+  'BasicAttackLeapingStrike_0:dazeBuildup': {
     sheet: 'Pulchra',
-    name: 'BasicAttackLeapingStrike_0_daze',
+    name: 'BasicAttackLeapingStrike_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -212,13 +239,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLeapingStrike_0_daze',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLeapingStrike_0',
     },
   },
-  BasicAttackLeapingStrike_0_anomBuildup: {
+  'BasicAttackLeapingStrike_0:anomBuildup': {
     sheet: 'Pulchra',
-    name: 'BasicAttackLeapingStrike_0_anomBuildup',
+    name: 'BasicAttackLeapingStrike_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -226,13 +253,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'basic',
-      skillType: 'basicSkill',
-      name: 'BasicAttackLeapingStrike_0_anomBuildup',
+      skillType1: 'basicSkill',
+      name: 'BasicAttackLeapingStrike_0',
     },
   },
-  DashAttackFirstStrikeAdvantage_0_dmg: {
+  'DashAttackFirstStrikeAdvantage_0:standardDmg': {
     sheet: 'Pulchra',
-    name: 'DashAttackFirstStrikeAdvantage_0_dmg',
+    name: 'DashAttackFirstStrikeAdvantage_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -240,13 +267,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackFirstStrikeAdvantage_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackFirstStrikeAdvantage_0',
     },
   },
-  DashAttackFirstStrikeAdvantage_0_daze: {
+  'DashAttackFirstStrikeAdvantage_0:dazeBuildup': {
     sheet: 'Pulchra',
-    name: 'DashAttackFirstStrikeAdvantage_0_daze',
+    name: 'DashAttackFirstStrikeAdvantage_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -254,13 +281,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackFirstStrikeAdvantage_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackFirstStrikeAdvantage_0',
     },
   },
-  DashAttackFirstStrikeAdvantage_0_anomBuildup: {
+  'DashAttackFirstStrikeAdvantage_0:anomBuildup': {
     sheet: 'Pulchra',
-    name: 'DashAttackFirstStrikeAdvantage_0_anomBuildup',
+    name: 'DashAttackFirstStrikeAdvantage_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -268,13 +295,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'dash',
-      skillType: 'dodgeSkill',
-      name: 'DashAttackFirstStrikeAdvantage_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DashAttackFirstStrikeAdvantage_0',
     },
   },
-  DodgeCounterRelentlessRetribution_0_dmg: {
+  'DodgeCounterRelentlessRetribution_0:standardDmg': {
     sheet: 'Pulchra',
-    name: 'DodgeCounterRelentlessRetribution_0_dmg',
+    name: 'DodgeCounterRelentlessRetribution_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -282,13 +309,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterRelentlessRetribution_0_dmg',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterRelentlessRetribution_0',
     },
   },
-  DodgeCounterRelentlessRetribution_0_daze: {
+  'DodgeCounterRelentlessRetribution_0:dazeBuildup': {
     sheet: 'Pulchra',
-    name: 'DodgeCounterRelentlessRetribution_0_daze',
+    name: 'DodgeCounterRelentlessRetribution_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -296,13 +323,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterRelentlessRetribution_0_daze',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterRelentlessRetribution_0',
     },
   },
-  DodgeCounterRelentlessRetribution_0_anomBuildup: {
+  'DodgeCounterRelentlessRetribution_0:anomBuildup': {
     sheet: 'Pulchra',
-    name: 'DodgeCounterRelentlessRetribution_0_anomBuildup',
+    name: 'DodgeCounterRelentlessRetribution_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -310,13 +337,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'dodgeCounter',
-      skillType: 'dodgeSkill',
-      name: 'DodgeCounterRelentlessRetribution_0_anomBuildup',
+      skillType1: 'dodgeSkill',
+      name: 'DodgeCounterRelentlessRetribution_0',
     },
   },
-  SpecialAttackRendingClaw_0_dmg: {
+  'SpecialAttackRendingClaw_0:standardDmg': {
     sheet: 'Pulchra',
-    name: 'SpecialAttackRendingClaw_0_dmg',
+    name: 'SpecialAttackRendingClaw_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -324,13 +351,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRendingClaw_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRendingClaw_0',
     },
   },
-  SpecialAttackRendingClaw_0_daze: {
+  'SpecialAttackRendingClaw_0:dazeBuildup': {
     sheet: 'Pulchra',
-    name: 'SpecialAttackRendingClaw_0_daze',
+    name: 'SpecialAttackRendingClaw_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -338,13 +365,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRendingClaw_0_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRendingClaw_0',
     },
   },
-  SpecialAttackRendingClaw_0_anomBuildup: {
+  'SpecialAttackRendingClaw_0:anomBuildup': {
     sheet: 'Pulchra',
-    name: 'SpecialAttackRendingClaw_0_anomBuildup',
+    name: 'SpecialAttackRendingClaw_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -352,58 +379,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'special',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRendingClaw_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRendingClaw_0',
     },
   },
-  SpecialAttackRendingClawNightmareShadow_0_dmg: {
+  'SpecialAttackRendingClawNightmareShadow_0:standardDmg': {
     sheet: 'Pulchra',
-    name: 'SpecialAttackRendingClawNightmareShadow_0_dmg',
-    tag: {
-      et: 'own',
-      qt: 'formula',
-      q: 'standardDmg',
-      sheet: 'Pulchra',
-      damageType1: 'special',
-      damageType2: 'aftershock',
-      attribute: 'physical',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRendingClawNightmareShadow_0_dmg',
-    },
-  },
-  SpecialAttackRendingClawNightmareShadow_0_daze: {
-    sheet: 'Pulchra',
-    name: 'SpecialAttackRendingClawNightmareShadow_0_daze',
-    tag: {
-      et: 'own',
-      qt: 'formula',
-      q: 'dazeBuildup',
-      sheet: 'Pulchra',
-      damageType1: 'special',
-      damageType2: 'aftershock',
-      attribute: 'physical',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRendingClawNightmareShadow_0_daze',
-    },
-  },
-  SpecialAttackRendingClawNightmareShadow_0_anomBuildup: {
-    sheet: 'Pulchra',
-    name: 'SpecialAttackRendingClawNightmareShadow_0_anomBuildup',
-    tag: {
-      et: 'own',
-      qt: 'formula',
-      q: 'anomBuildup',
-      sheet: 'Pulchra',
-      damageType1: 'special',
-      damageType2: 'aftershock',
-      attribute: 'physical',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRendingClawNightmareShadow_0_anomBuildup',
-    },
-  },
-  SpecialAttackRendingClawNightmareShadow_1_dmg: {
-    sheet: 'Pulchra',
-    name: 'SpecialAttackRendingClawNightmareShadow_1_dmg',
+    name: 'SpecialAttackRendingClawNightmareShadow_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -412,13 +394,13 @@ export const formulas = {
       damageType1: 'special',
       damageType2: 'aftershock',
       attribute: 'physical',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRendingClawNightmareShadow_1_dmg',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRendingClawNightmareShadow_0',
     },
   },
-  SpecialAttackRendingClawNightmareShadow_1_daze: {
+  'SpecialAttackRendingClawNightmareShadow_0:dazeBuildup': {
     sheet: 'Pulchra',
-    name: 'SpecialAttackRendingClawNightmareShadow_1_daze',
+    name: 'SpecialAttackRendingClawNightmareShadow_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -427,13 +409,13 @@ export const formulas = {
       damageType1: 'special',
       damageType2: 'aftershock',
       attribute: 'physical',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRendingClawNightmareShadow_1_daze',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRendingClawNightmareShadow_0',
     },
   },
-  SpecialAttackRendingClawNightmareShadow_1_anomBuildup: {
+  'SpecialAttackRendingClawNightmareShadow_0:anomBuildup': {
     sheet: 'Pulchra',
-    name: 'SpecialAttackRendingClawNightmareShadow_1_anomBuildup',
+    name: 'SpecialAttackRendingClawNightmareShadow_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -442,13 +424,58 @@ export const formulas = {
       damageType1: 'special',
       damageType2: 'aftershock',
       attribute: 'physical',
-      skillType: 'specialSkill',
-      name: 'SpecialAttackRendingClawNightmareShadow_1_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRendingClawNightmareShadow_0',
     },
   },
-  EXSpecialAttackRendingClawFlashstep_0_dmg: {
+  'SpecialAttackRendingClawNightmareShadow_1:standardDmg': {
     sheet: 'Pulchra',
-    name: 'EXSpecialAttackRendingClawFlashstep_0_dmg',
+    name: 'SpecialAttackRendingClawNightmareShadow_1:standardDmg',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'standardDmg',
+      sheet: 'Pulchra',
+      damageType1: 'special',
+      damageType2: 'aftershock',
+      attribute: 'physical',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRendingClawNightmareShadow_1',
+    },
+  },
+  'SpecialAttackRendingClawNightmareShadow_1:dazeBuildup': {
+    sheet: 'Pulchra',
+    name: 'SpecialAttackRendingClawNightmareShadow_1:dazeBuildup',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'dazeBuildup',
+      sheet: 'Pulchra',
+      damageType1: 'special',
+      damageType2: 'aftershock',
+      attribute: 'physical',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRendingClawNightmareShadow_1',
+    },
+  },
+  'SpecialAttackRendingClawNightmareShadow_1:anomBuildup': {
+    sheet: 'Pulchra',
+    name: 'SpecialAttackRendingClawNightmareShadow_1:anomBuildup',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomBuildup',
+      sheet: 'Pulchra',
+      damageType1: 'special',
+      damageType2: 'aftershock',
+      attribute: 'physical',
+      skillType1: 'specialSkill',
+      name: 'SpecialAttackRendingClawNightmareShadow_1',
+    },
+  },
+  'EXSpecialAttackRendingClawFlashstep_0:standardDmg': {
+    sheet: 'Pulchra',
+    name: 'EXSpecialAttackRendingClawFlashstep_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -456,13 +483,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackRendingClawFlashstep_0_dmg',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackRendingClawFlashstep_0',
     },
   },
-  EXSpecialAttackRendingClawFlashstep_0_daze: {
+  'EXSpecialAttackRendingClawFlashstep_0:dazeBuildup': {
     sheet: 'Pulchra',
-    name: 'EXSpecialAttackRendingClawFlashstep_0_daze',
+    name: 'EXSpecialAttackRendingClawFlashstep_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -470,13 +497,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackRendingClawFlashstep_0_daze',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackRendingClawFlashstep_0',
     },
   },
-  EXSpecialAttackRendingClawFlashstep_0_anomBuildup: {
+  'EXSpecialAttackRendingClawFlashstep_0:anomBuildup': {
     sheet: 'Pulchra',
-    name: 'EXSpecialAttackRendingClawFlashstep_0_anomBuildup',
+    name: 'EXSpecialAttackRendingClawFlashstep_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -484,13 +511,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'exSpecial',
-      skillType: 'specialSkill',
-      name: 'EXSpecialAttackRendingClawFlashstep_0_anomBuildup',
+      skillType1: 'specialSkill',
+      name: 'EXSpecialAttackRendingClawFlashstep_0',
     },
   },
-  ChainAttackHeyDidntExpectThatRight_0_dmg: {
+  'ChainAttackHeyDidntExpectThatRight_0:standardDmg': {
     sheet: 'Pulchra',
-    name: 'ChainAttackHeyDidntExpectThatRight_0_dmg',
+    name: 'ChainAttackHeyDidntExpectThatRight_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -498,13 +525,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackHeyDidntExpectThatRight_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackHeyDidntExpectThatRight_0',
     },
   },
-  ChainAttackHeyDidntExpectThatRight_0_daze: {
+  'ChainAttackHeyDidntExpectThatRight_0:dazeBuildup': {
     sheet: 'Pulchra',
-    name: 'ChainAttackHeyDidntExpectThatRight_0_daze',
+    name: 'ChainAttackHeyDidntExpectThatRight_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -512,13 +539,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackHeyDidntExpectThatRight_0_daze',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackHeyDidntExpectThatRight_0',
     },
   },
-  ChainAttackHeyDidntExpectThatRight_0_anomBuildup: {
+  'ChainAttackHeyDidntExpectThatRight_0:anomBuildup': {
     sheet: 'Pulchra',
-    name: 'ChainAttackHeyDidntExpectThatRight_0_anomBuildup',
+    name: 'ChainAttackHeyDidntExpectThatRight_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -526,13 +553,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'chain',
-      skillType: 'chainSkill',
-      name: 'ChainAttackHeyDidntExpectThatRight_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'ChainAttackHeyDidntExpectThatRight_0',
     },
   },
-  UltimateOhTimeToPlay_0_dmg: {
+  'UltimateOhTimeToPlay_0:standardDmg': {
     sheet: 'Pulchra',
-    name: 'UltimateOhTimeToPlay_0_dmg',
+    name: 'UltimateOhTimeToPlay_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -540,13 +567,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateOhTimeToPlay_0_dmg',
+      skillType1: 'chainSkill',
+      name: 'UltimateOhTimeToPlay_0',
     },
   },
-  UltimateOhTimeToPlay_0_daze: {
+  'UltimateOhTimeToPlay_0:dazeBuildup': {
     sheet: 'Pulchra',
-    name: 'UltimateOhTimeToPlay_0_daze',
+    name: 'UltimateOhTimeToPlay_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -554,13 +581,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateOhTimeToPlay_0_daze',
+      skillType1: 'chainSkill',
+      name: 'UltimateOhTimeToPlay_0',
     },
   },
-  UltimateOhTimeToPlay_0_anomBuildup: {
+  'UltimateOhTimeToPlay_0:anomBuildup': {
     sheet: 'Pulchra',
-    name: 'UltimateOhTimeToPlay_0_anomBuildup',
+    name: 'UltimateOhTimeToPlay_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -568,13 +595,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'ult',
-      skillType: 'chainSkill',
-      name: 'UltimateOhTimeToPlay_0_anomBuildup',
+      skillType1: 'chainSkill',
+      name: 'UltimateOhTimeToPlay_0',
     },
   },
-  QuickAssistContractBodyguard_0_dmg: {
+  'QuickAssistContractBodyguard_0:standardDmg': {
     sheet: 'Pulchra',
-    name: 'QuickAssistContractBodyguard_0_dmg',
+    name: 'QuickAssistContractBodyguard_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -582,13 +609,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistContractBodyguard_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistContractBodyguard_0',
     },
   },
-  QuickAssistContractBodyguard_0_daze: {
+  'QuickAssistContractBodyguard_0:dazeBuildup': {
     sheet: 'Pulchra',
-    name: 'QuickAssistContractBodyguard_0_daze',
+    name: 'QuickAssistContractBodyguard_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -596,13 +623,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistContractBodyguard_0_daze',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistContractBodyguard_0',
     },
   },
-  QuickAssistContractBodyguard_0_anomBuildup: {
+  'QuickAssistContractBodyguard_0:anomBuildup': {
     sheet: 'Pulchra',
-    name: 'QuickAssistContractBodyguard_0_anomBuildup',
+    name: 'QuickAssistContractBodyguard_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -610,13 +637,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'quickAssist',
-      skillType: 'assistSkill',
-      name: 'QuickAssistContractBodyguard_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'QuickAssistContractBodyguard_0',
     },
   },
-  AssistFollowUpIndependentPricing_0_dmg: {
+  'AssistFollowUpIndependentPricing_0:standardDmg': {
     sheet: 'Pulchra',
-    name: 'AssistFollowUpIndependentPricing_0_dmg',
+    name: 'AssistFollowUpIndependentPricing_0:standardDmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -624,13 +651,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpIndependentPricing_0_dmg',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpIndependentPricing_0',
     },
   },
-  AssistFollowUpIndependentPricing_0_daze: {
+  'AssistFollowUpIndependentPricing_0:dazeBuildup': {
     sheet: 'Pulchra',
-    name: 'AssistFollowUpIndependentPricing_0_daze',
+    name: 'AssistFollowUpIndependentPricing_0:dazeBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -638,13 +665,13 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpIndependentPricing_0_daze',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpIndependentPricing_0',
     },
   },
-  AssistFollowUpIndependentPricing_0_anomBuildup: {
+  'AssistFollowUpIndependentPricing_0:anomBuildup': {
     sheet: 'Pulchra',
-    name: 'AssistFollowUpIndependentPricing_0_anomBuildup',
+    name: 'AssistFollowUpIndependentPricing_0:anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -652,8 +679,8 @@ export const formulas = {
       sheet: 'Pulchra',
       attribute: 'physical',
       damageType1: 'assistFollowUp',
-      skillType: 'assistSkill',
-      name: 'AssistFollowUpIndependentPricing_0_anomBuildup',
+      skillType1: 'assistSkill',
+      name: 'AssistFollowUpIndependentPricing_0',
     },
   },
 } as const
