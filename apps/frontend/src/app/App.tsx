@@ -94,7 +94,12 @@ const PageTeam = lazy(
     }>
 )
 
-const PageMy = lazy(() => import('@genshin-optimizer/gi/page-my'))
+const PageMy = lazy(
+  () =>
+    import('@genshin-optimizer/gi/page-my') as unknown as Promise<{
+      default: ComponentType<any>
+    }>
+)
 
 function App() {
   const dbIndex = Number.parseInt(localStorage.getItem('dbIndex') || '1')
