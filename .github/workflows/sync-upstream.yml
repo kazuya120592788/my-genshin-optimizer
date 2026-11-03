@@ -2,11 +2,12 @@ name: Sync upstream
 
 # フォーク元の master を定期的にマージする。
 # - 自動解消できた場合: sync/upstream ブランチに push し、master への PR を作成・更新する
-# - 手動解消が必要な場合: 競合ファイルの一覧と手順を Issue に記録する
+# - 手動解消が必要な場合: ジョブを失敗させ（GitHub から失敗通知が届く）、
+#   競合ファイルの一覧と手順を実行結果のサマリーに書く
 #
 # 必要な設定: リポジトリシークレット SYNC_TOKEN（fine-grained PAT）
 #   Repository access: このリポジトリのみ
-#   Permissions: Contents / Pull requests / Issues / Workflows = Read and write
+#   Permissions: Contents / Pull requests / Workflows = Read and write
 #   ※ フォーク元のコミットには .github/workflows の変更が含まれるため、
 #     Workflows 権限のない GITHUB_TOKEN では push できない。
 #     また PAT で作った PR であれば Build ワークフローも起動する。
@@ -28,7 +29,6 @@ env:
   UPSTREAM_BRANCH: master
   BASE_BRANCH: master
   SYNC_BRANCH: sync/upstream
-  ISSUE_LABEL: upstream-sync
 
 jobs:
   sync:
@@ -45,13 +45,31 @@ jobs:
             echo "::error::シークレット SYNC_TOKEN が設定されていません（sync-upstream.yml の先頭コメント参照）"
             exit 1
           fi
+      # 取り込む更新がなければ、時間のかかる checkout をせずに終える
+      - name: Check upstream
+        id: check
+        run: |
+          upstream_sha=$(git ls-remote "https://github.com/${UPSTREAM_REPO}.git" "refs/heads/${UPSTREAM_BRANCH}" | cut -f1)
+          # BASE_BRANCH がフォーク元の最新コミットを含んでいれば identical / ahead になる
+          compare=$(gh api "repos/${GITHUB_REPOSITORY}/compare/${upstream_sha}...${BASE_BRANCH}" --jq .status 2>/dev/null || echo unknown)
+          echo "upstream: ${upstream_sha} / compare: ${compare}"
+          if [ "$compare" = identical ] || [ "$compare" = ahead ]; then
+            echo "フォーク元に取り込む更新はありません。" >>"$GITHUB_STEP_SUMMARY"
+            echo "needed=false" >>"$GITHUB_OUTPUT"
+          else
+            echo "needed=true" >>"$GITHUB_OUTPUT"
+          fi
+      # 履歴のファイル内容（blob）は取得せず、マージに必要な分だけ後から取得する
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        if: steps.check.outputs.needed == 'true'
         with:
           ref: ${{ env.BASE_BRANCH }}
           fetch-depth: 0
+          filter: blob:none
           token: ${{ secrets.SYNC_TOKEN }}
       - name: Merge upstream
         id: merge
+        if: steps.check.outputs.needed == 'true'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -80,13 +98,9 @@ jobs:
           esac
           echo "status=$status" >>"$GITHUB_OUTPUT"
 
-      - name: Close sync issue
-        if: steps.merge.outputs.status != 'conflict'
-        run: |
-          issue=$(gh issue list --label "$ISSUE_LABEL" --state open --json number --jq '.[0].number // empty')
-          if [ -n "$issue" ]; then
-            gh issue close "$issue" --comment "競合が解消されたため閉じます（${{ steps.merge.outputs.status }}）。"
-          fi
+      - name: Report up-to-date
+        if: steps.merge.outputs.status == 'up-to-date'
+        run: echo "フォーク元に取り込む更新はありません。" >>"$GITHUB_STEP_SUMMARY"
 
       - name: Push and open PR
         if: steps.merge.outputs.status == 'merged'
@@ -134,8 +148,9 @@ jobs:
           if [ -n "$pr" ]; then
             gh pr edit "$pr" --title "$title" --body-file "$body"
           else
-            gh pr create --head "$SYNC_BRANCH" --base "$BASE_BRANCH" --title "$title" --body-file "$body"
+            pr=$(gh pr create --head "$SYNC_BRANCH" --base "$BASE_BRANCH" --title "$title" --body-file "$body")
           fi
+          echo "フォーク元の ${COMMIT_COUNT} コミットを取り込む PR を作成・更新しました: ${pr}" >>"$GITHUB_STEP_SUMMARY"
 
       - name: Report conflicts
         if: steps.merge.outputs.status == 'conflict'
@@ -143,8 +158,9 @@ jobs:
           UPSTREAM_SHA: ${{ steps.merge.outputs.upstream_sha }}
           COMMIT_COUNT: ${{ steps.merge.outputs.commit_count }}
         run: |
-          body="$RUNNER_TEMP/issue-body.md"
           {
+            echo "## フォーク元の取り込みで競合が発生しています"
+            echo
             echo "フォーク元 \`${UPSTREAM_REPO}@${UPSTREAM_SHA::10}\`（${COMMIT_COUNT} コミット）の取り込みで、手動解消が必要な競合があります。"
             echo
             echo "### 手動解消が必要なファイル"
@@ -172,17 +188,8 @@ jobs:
             echo "git push -u origin HEAD  # master への PR を作成"
             echo '```'
             echo
-            echo "PR は **Create a merge commit** でマージしてください（Squash / Rebase だと次回も同じ競合が再発します）。マージ後、次回の実行でこの Issue は自動で閉じられます。"
-            echo
-            echo "---"
-            echo "_[Sync upstream](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}) により更新_"
-          } >"$body"
+            echo "PR は **Create a merge commit** でマージしてください（Squash / Rebase だと次回も同じ競合が再発します）。"
+          } >>"$GITHUB_STEP_SUMMARY"
 
-          gh label create "$ISSUE_LABEL" --color FBCA04 --description "フォーク元の取り込み" --force
-          title="フォーク元の取り込みで競合が発生しています"
-          issue=$(gh issue list --label "$ISSUE_LABEL" --state open --json number --jq '.[0].number // empty')
-          if [ -n "$issue" ]; then
-            gh issue edit "$issue" --title "$title" --body-file "$body"
-          else
-            gh issue create --title "$title" --body-file "$body" --label "$ISSUE_LABEL"
-          fi
+          echo "::error::フォーク元の取り込みで手動解消が必要な競合があります（$(wc -l <"$RUNNER_TEMP/conflicts.txt") ファイル）。手順は実行結果のサマリーを参照してください。"
+          exit 1
