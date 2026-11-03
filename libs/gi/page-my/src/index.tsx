@@ -25,14 +25,33 @@ import {
   Grid,
   Slider,
   Stack,
+  ToggleButton,
+  ToggleButtonGroup,
   Typography,
 } from '@mui/material'
 import { Suspense, useCallback, useEffect, useMemo, useState } from 'react'
 import type { JunkConfig, JunkReason, JunkResult } from './junkArtifacts'
-import { defaultJunkConfig, findJunkArtifacts } from './junkArtifacts'
+import {
+  defaultJunkConfig,
+  findJunkArtifacts,
+  junkProfiles,
+} from './junkArtifacts'
 
 const STORAGE_KEY = 'gi_page_my_junk_config'
 const PAGE_SIZE = 24
+
+const substatShortNames: Record<SubstatKey, string> = {
+  hp: 'HP',
+  hp_: 'HP%',
+  atk: '攻撃',
+  atk_: '攻撃%',
+  def: '防御',
+  def_: '防御%',
+  eleMas: '熟知',
+  enerRech_: 'チャージ',
+  critRate_: '会心率',
+  critDMG_: '会心ダメ',
+}
 
 const reasonLabels: Record<JunkReason, string> = {
   lowPotential: '伸びしろ不足',
@@ -45,15 +64,6 @@ const reasonColors: Record<JunkReason, 'error' | 'warning' | 'info'> = {
   lowRarity: 'info',
 }
 
-const presets: Array<{ label: string; keys: SubstatKey[] }> = [
-  { label: '攻撃会心', keys: ['atk_', 'critRate_', 'critDMG_'] },
-  { label: 'HP会心', keys: ['hp_', 'critRate_', 'critDMG_'] },
-  { label: '防御会心', keys: ['def_', 'critRate_', 'critDMG_'] },
-  { label: '熟知会心', keys: ['eleMas', 'critRate_', 'critDMG_'] },
-  { label: '熟知', keys: ['eleMas', 'enerRech_'] },
-  { label: '会心のみ', keys: ['critRate_', 'critDMG_'] },
-]
-
 function loadConfig(): JunkConfig {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
@@ -62,6 +72,10 @@ function loadConfig(): JunkConfig {
     return {
       ...defaultJunkConfig,
       ...parsed,
+      mode: parsed.mode === 'single' ? 'single' : 'allProfiles',
+      profileIds: (parsed.profileIds ?? defaultJunkConfig.profileIds).filter(
+        (id) => junkProfiles.some((p) => p.id === id)
+      ),
       usefulSubstats: (parsed.usefulSubstats ?? []).filter((k) =>
         allSubstatKeys.includes(k)
       ),
@@ -96,9 +110,25 @@ export default function PageMy() {
     return ids
   }, [buildEntries])
 
+  // 判定に使う型。single のときは選んだ有効サブステ1組だけ
+  const profiles = useMemo(
+    () =>
+      config.mode === 'single'
+        ? [{ id: 'custom', label: '指定', keys: config.usefulSubstats }]
+        : junkProfiles.filter(({ id }) => config.profileIds.includes(id)),
+    [config.mode, config.usefulSubstats, config.profileIds]
+  )
   const results = useMemo(
-    () => findJunkArtifacts(arts, usedInBuildIds, config),
-    [arts, usedInBuildIds, config]
+    () =>
+      !profiles.length
+        ? []
+        : findJunkArtifacts(
+            arts,
+            usedInBuildIds,
+            config,
+            profiles.map(({ keys }) => keys)
+          ),
+    [arts, usedInBuildIds, config, profiles]
   )
 
   const [reasonFilter, setReasonFilter] = useState<JunkReason[]>([])
@@ -123,14 +153,6 @@ export default function PageMy() {
     for (const r of results) for (const reason of r.reasons) counts[reason]++
     return counts
   }, [results])
-
-  const effFilter = useMemo(
-    () =>
-      new Set<SubstatKey>(
-        config.usefulSubstats.length ? config.usefulSubstats : allSubstatKeys
-      ),
-    [config.usefulSubstats]
-  )
 
   const [artifactIdToEdit, setArtifactIdToEdit] = useState<string>()
 
@@ -163,34 +185,89 @@ export default function PageMy() {
           <Stack spacing={2}>
             <Box>
               <Typography variant="subtitle1" gutterBottom>
-                有効サブステータス
+                判定のしかた
               </Typography>
-              <Box display="flex" gap={1} flexWrap="wrap" mb={1}>
-                {presets.map(({ label, keys }) => (
-                  <Chip
-                    key={label}
-                    label={label}
-                    size="small"
-                    onClick={() => setConfig({ usefulSubstats: keys })}
-                    color={
-                      keys.length === config.usefulSubstats.length &&
-                      keys.every((k) => config.usefulSubstats.includes(k))
-                        ? 'primary'
-                        : 'default'
-                    }
-                  />
-                ))}
-              </Box>
-              <SubstatToggle
-                selectedKeys={config.usefulSubstats}
-                onChange={(usefulSubstats) => setConfig({ usefulSubstats })}
-              />
-              {!config.usefulSubstats.length && (
-                <Typography variant="caption" color="text.secondary">
-                  未選択のときはすべてのサブステータスを有効とみなします。
-                </Typography>
-              )}
+              <ToggleButtonGroup
+                exclusive
+                size="small"
+                color="primary"
+                value={config.mode}
+                onChange={(_, mode) => mode && setConfig({ mode })}
+              >
+                <ToggleButton value="allProfiles">
+                  どのキャラでも不要
+                </ToggleButton>
+                <ToggleButton value="single">型を指定して判定</ToggleButton>
+              </ToggleButtonGroup>
             </Box>
+
+            {config.mode === 'allProfiles' ? (
+              <Box>
+                <Typography variant="subtitle1" gutterBottom>
+                  考慮するキャラの型
+                </Typography>
+                <Box display="flex" gap={1} flexWrap="wrap">
+                  {junkProfiles.map(({ id, label, keys }) => {
+                    const selected = config.profileIds.includes(id)
+                    return (
+                      <Chip
+                        key={id}
+                        label={`${label}（${keys.map((k) => substatShortNames[k]).join('・')}）`}
+                        color={selected ? 'primary' : 'default'}
+                        variant={selected ? 'filled' : 'outlined'}
+                        onClick={() =>
+                          setConfig({
+                            profileIds: selected
+                              ? config.profileIds.filter((p) => p !== id)
+                              : [...config.profileIds, id],
+                          })
+                        }
+                      />
+                    )
+                  })}
+                </Box>
+                <Typography variant="caption" color="text.secondary">
+                  各カードの Roll Value
+                  は、その聖遺物が一番向いている型で表示します。選んだ型のすべてで「伸びしろ不足」か「上位互換あり」に当てはまる聖遺物だけを候補にします。どれか1つの型で使い道があれば候補に入りません。
+                </Typography>
+                {!profiles.length && (
+                  <Alert severity="warning" sx={{ mt: 1 }}>
+                    型を1つ以上選んでください。
+                  </Alert>
+                )}
+              </Box>
+            ) : (
+              <Box>
+                <Typography variant="subtitle1" gutterBottom>
+                  有効サブステータス
+                </Typography>
+                <Box display="flex" gap={1} flexWrap="wrap" mb={1}>
+                  {junkProfiles.map(({ id, label, keys }) => (
+                    <Chip
+                      key={id}
+                      label={label}
+                      size="small"
+                      onClick={() => setConfig({ usefulSubstats: keys })}
+                      color={
+                        keys.length === config.usefulSubstats.length &&
+                        keys.every((k) => config.usefulSubstats.includes(k))
+                          ? 'primary'
+                          : 'default'
+                      }
+                    />
+                  ))}
+                </Box>
+                <SubstatToggle
+                  selectedKeys={config.usefulSubstats}
+                  onChange={(usefulSubstats) => setConfig({ usefulSubstats })}
+                />
+                {!config.usefulSubstats.length && (
+                  <Typography variant="caption" color="text.secondary">
+                    未選択のときはすべてのサブステータスを有効とみなします。
+                  </Typography>
+                )}
+              </Box>
+            )}
 
             <Box>
               <Typography variant="subtitle1">判定条件</Typography>
@@ -390,7 +467,12 @@ export default function PageMy() {
           <Grid item xs={1} key={result.id}>
             <JunkItem
               result={result}
-              effFilter={effFilter}
+              keys={profiles[result.bestProfileIndex]?.keys ?? []}
+              bestProfileLabel={
+                config.mode === 'allProfiles'
+                  ? profiles[result.bestProfileIndex]?.label
+                  : undefined
+              }
               onEdit={() => setArtifactIdToEdit(result.id)}
             />
           </Grid>
@@ -407,14 +489,20 @@ export default function PageMy() {
 
 function JunkItem({
   result,
-  effFilter,
+  keys,
+  bestProfileLabel,
   onEdit,
 }: {
   result: JunkResult
-  effFilter: Set<SubstatKey>
+  keys: SubstatKey[]
+  bestProfileLabel?: string
   onEdit: () => void
 }) {
   const database = useDatabase()
+  const effFilter = useMemo(
+    () => new Set<SubstatKey>(keys.length ? keys : allSubstatKeys),
+    [keys]
+  )
   const { id, reasons, maxEfficiency, dominatedBy } = result
   return (
     <Stack spacing={0.5} sx={{ height: '100%' }}>
@@ -427,13 +515,19 @@ function JunkItem({
             label={
               reason === 'dominated'
                 ? `${reasonLabels[reason]} (${dominatedBy.length})`
-                : reason === 'lowPotential'
+                : reason === 'lowPotential' && !bestProfileLabel
                   ? `${reasonLabels[reason]} (最大 ${Math.round(maxEfficiency * 100)}%)`
                   : reasonLabels[reason]
             }
           />
         ))}
       </Box>
+      {bestProfileLabel && (
+        <Typography variant="caption" color="text.secondary">
+          向いている型: {bestProfileLabel}（Max. Roll Value{' '}
+          {Math.round(maxEfficiency * 100)}%）
+        </Typography>
+      )}
       <Box flexGrow={1}>
         <ArtifactCard
           artifactId={id}

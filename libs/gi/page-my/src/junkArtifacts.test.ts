@@ -1,3 +1,4 @@
+import type { SubstatKey } from '@genshin-optimizer/gi/consts'
 import type { ISubstat } from '@genshin-optimizer/gi/schema'
 import type { JunkArtifact, JunkConfig } from './junkArtifacts'
 import { defaultJunkConfig, findJunkArtifacts } from './junkArtifacts'
@@ -116,5 +117,79 @@ describe('findJunkArtifacts', () => {
       minMaxEfficiency: 4,
     })
     expect(res).toEqual([])
+  })
+})
+
+describe('findJunkArtifacts（どのキャラでも不要）', () => {
+  const atkCrit: SubstatKey[] = ['atk_', 'critRate_', 'critDMG_']
+  const hpSupport: SubstatKey[] = ['hp_', 'enerRech_']
+  const allConfig: JunkConfig = {
+    ...config,
+    checkDominated: false,
+    checkLowPotential: true,
+    minMaxEfficiency: 3,
+  }
+  // 攻撃会心では弱いが、HPサポートなら使える
+  const hpEr = art('hpEr', [
+    { key: 'hp_', value: 15.2 },
+    { key: 'enerRech_', value: 16.8 },
+    { key: 'def', value: 23 },
+    { key: 'eleMas', value: 19 },
+  ])
+  // どの型でも弱い
+  const trash = art('trash', [
+    { key: 'hp', value: 568 },
+    { key: 'def', value: 42 },
+    { key: 'eleMas', value: 19 },
+    { key: 'critRate_', value: 3.1 },
+  ])
+
+  it('どれか1つの型で使い道があれば候補にしない', () => {
+    const res = findJunkArtifacts([hpEr, trash], new Set(), allConfig, [
+      atkCrit,
+      hpSupport,
+    ])
+    expect(res.map((r) => r.id)).toEqual(['trash'])
+  })
+
+  it('型を1つだけ指定すれば、その型で不要なものを候補にする', () => {
+    const res = findJunkArtifacts([hpEr, trash], new Set(), allConfig, [
+      atkCrit,
+    ])
+    expect(res.map((r) => r.id).sort()).toEqual(['hpEr', 'trash'])
+  })
+
+  it('一番向いている型を返す', () => {
+    const res = findJunkArtifacts(
+      [hpEr],
+      new Set(),
+      { ...allConfig, minMaxEfficiency: 9 },
+      [atkCrit, hpSupport]
+    )
+    expect(res[0].bestProfileIndex).toBe(1)
+  })
+
+  it('型ごとに理由が違っても、すべての型で不要なら候補にする', () => {
+    // 攻撃会心では上位互換あり、HPサポートでは伸びしろ不足
+    const better = art('better', [
+      { key: 'critRate_', value: 10.5 },
+      { key: 'critDMG_', value: 21 },
+      { key: 'atk_', value: 5.8 },
+      { key: 'def', value: 23 },
+    ])
+    const target = art('target', [
+      { key: 'critRate_', value: 10.1 },
+      { key: 'critDMG_', value: 20.2 },
+      { key: 'atk_', value: 5.3 },
+      { key: 'def', value: 23 },
+    ])
+    const res = findJunkArtifacts(
+      [better, target],
+      new Set(),
+      { ...allConfig, checkDominated: true },
+      [atkCrit, hpSupport]
+    )
+    expect(res.map((r) => r.id)).toEqual(['target'])
+    expect(res[0].reasons).toEqual(['lowPotential', 'dominated'])
   })
 })
