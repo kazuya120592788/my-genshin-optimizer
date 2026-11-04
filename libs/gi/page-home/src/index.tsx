@@ -19,7 +19,6 @@ import remarkGfm from 'remark-gfm'
 import InventoryCard from './InventoryCard'
 import QuickLinksCard from './QuickLinksCard'
 import ResinCard from './ResinCard'
-import TeamCard from './TeamCard'
 import VidGuideCard from './VidGuideCard'
 
 declare const __VERSION__: string
@@ -51,7 +50,6 @@ export default function PageHome() {
           <InventoryCard />
           <VidGuideCard />
           <PatchNotesCard />
-          <TeamCard />
         </Grid>
       </Grid>
     )
@@ -63,7 +61,6 @@ export default function PageHome() {
       <ResinCard />
       <VidGuideCard />
       <PatchNotesCard />
-      <TeamCard />
     </Box>
   )
 }
