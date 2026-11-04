@@ -9,6 +9,8 @@ import ArticleIcon from '@mui/icons-material/Article'
 import BookIcon from '@mui/icons-material/Book'
 import CleaningServicesIcon from '@mui/icons-material/CleaningServices'
 import ConstructionIcon from '@mui/icons-material/Construction'
+import DashboardIcon from '@mui/icons-material/Dashboard'
+import ExploreIcon from '@mui/icons-material/Explore'
 import GroupsIcon from '@mui/icons-material/Groups'
 import MenuIcon from '@mui/icons-material/Menu'
 import PeopleIcon from '@mui/icons-material/People'
@@ -99,6 +101,20 @@ const doc: ITab = {
   to: '/doc',
   value: 'doc',
 }
+const dashboard: ITab = {
+  i18Key: 'tabs.dashboard',
+  label: 'ダッシュボード',
+  icon: <DashboardIcon />,
+  to: '/dashboard',
+  value: 'dashboard',
+}
+const farming: ITab = {
+  i18Key: 'tabs.farming',
+  label: '周回先',
+  icon: <ExploreIcon />,
+  to: '/farming',
+  value: 'farming',
+}
 const junkArtifacts: ITab = {
   i18Key: 'tabs.junkArtifacts',
   label: '不要聖遺物',
@@ -159,7 +175,9 @@ const maincontent = [
   tools,
   scanner,
   doc,
+  dashboard,
   junkArtifacts,
+  farming,
   my,
   setting,
 ] as const
@@ -280,7 +298,9 @@ const mobileContent = [
   tools,
   scanner,
   doc,
+  dashboard,
   junkArtifacts,
+  farming,
   my,
   setting,
 ] as const

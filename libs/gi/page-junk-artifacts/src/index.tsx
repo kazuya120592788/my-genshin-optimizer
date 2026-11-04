@@ -2,13 +2,37 @@ import {
   useDataManagerEntries,
   useDataManagerValues,
 } from '@genshin-optimizer/common/database-ui'
-import { CardThemed } from '@genshin-optimizer/common/ui'
-import type { SubstatKey } from '@genshin-optimizer/gi/consts'
+import { CardThemed, ModalWrapper } from '@genshin-optimizer/common/ui'
+import type {
+  ArtifactProfile,
+  CharacterInsight,
+  JunkConfig,
+  JunkReason,
+  JunkResult,
+} from '@genshin-optimizer/gi/artifact-insight'
+import {
+  defaultJunkConfig,
+  findJunkArtifacts,
+  getUpgradeOutlook,
+  getUsedSetKeys,
+  junkConfigStorageKey,
+  junkExcludedCharsStorageKey,
+  junkProfiles,
+  loadJunkConfig,
+  loadJunkExcludedChars,
+  resolveJunkProfiles,
+  substatShortNames,
+  useCharacterInsights,
+} from '@genshin-optimizer/gi/artifact-insight'
+import type { CharacterKey, SubstatKey } from '@genshin-optimizer/gi/consts'
 import { allSubstatKeys } from '@genshin-optimizer/gi/consts'
-import { useDatabase } from '@genshin-optimizer/gi/db-ui'
+import type { ICachedArtifact } from '@genshin-optimizer/gi/db'
+import { useDatabase, useDBMeta } from '@genshin-optimizer/gi/db-ui'
 import {
   ArtifactCard,
   ArtifactEditor,
+  CharacterName,
+  CharIconSide,
   SubstatToggle,
 } from '@genshin-optimizer/gi/ui'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
@@ -29,77 +53,63 @@ import {
   ToggleButtonGroup,
   Typography,
 } from '@mui/material'
+import type { ReactNode } from 'react'
 import { Suspense, useCallback, useEffect, useMemo, useState } from 'react'
-import type { JunkConfig, JunkReason, JunkResult } from './junkArtifacts'
-import {
-  defaultJunkConfig,
-  findJunkArtifacts,
-  junkProfiles,
-} from './junkArtifacts'
 
-const STORAGE_KEY = 'gi_page_my_junk_config'
 const PAGE_SIZE = 24
 
-const substatShortNames: Record<SubstatKey, string> = {
-  hp: 'HP',
-  hp_: 'HP%',
-  atk: '攻撃',
-  atk_: '攻撃%',
-  def: '防御',
-  def_: '防御%',
-  eleMas: '熟知',
-  enerRech_: 'チャージ',
-  critRate_: '会心率',
-  critDMG_: '会心ダメ',
-}
-
 const reasonLabels: Record<JunkReason, string> = {
+  badMainStat: 'メインが合わない',
   lowPotential: '伸びしろ不足',
+  lowChance: '当たりにくい',
   dominated: '上位互換あり',
+  unusedSet: '使わないセット',
   lowRarity: '星4以下',
 }
-const reasonColors: Record<JunkReason, 'error' | 'warning' | 'info'> = {
+const reasonColors: Record<
+  JunkReason,
+  'error' | 'warning' | 'info' | 'secondary' | 'primary' | 'success'
+> = {
+  badMainStat: 'secondary',
   lowPotential: 'error',
+  lowChance: 'primary',
   dominated: 'warning',
+  unusedSet: 'success',
   lowRarity: 'info',
 }
 
-function loadConfig(): JunkConfig {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY)
-    if (!raw) return defaultJunkConfig
-    const parsed = JSON.parse(raw) as Partial<JunkConfig>
-    return {
-      ...defaultJunkConfig,
-      ...parsed,
-      mode: parsed.mode === 'single' ? 'single' : 'allProfiles',
-      profileIds: (parsed.profileIds ?? defaultJunkConfig.profileIds).filter(
-        (id) => junkProfiles.some((p) => p.id === id)
-      ),
-      usefulSubstats: (parsed.usefulSubstats ?? []).filter((k) =>
-        allSubstatKeys.includes(k)
-      ),
+const percent = (v: number) => `${Math.round(v * 100)}%`
+
+type PageProfile = ArtifactProfile & {
+  id: string
+  label: ReactNode
+  keys: SubstatKey[]
+}
+
+function useStored<T>(key: string, value: T) {
+  useEffect(() => {
+    try {
+      localStorage.setItem(key, JSON.stringify(value))
+    } catch {
+      // ストレージが使えない環境では保存しない
     }
-  } catch {
-    return defaultJunkConfig
-  }
+  }, [key, value])
 }
 
 export default function PageJunkArtifacts() {
   const database = useDatabase()
-  const [config, setConfigState] = useState<JunkConfig>(loadConfig)
+  const { gender } = useDBMeta()
+  const [config, setConfigState] = useState<JunkConfig>(loadJunkConfig)
   const setConfig = useCallback(
     (update: Partial<JunkConfig>) =>
       setConfigState((prev) => ({ ...prev, ...update })),
     []
   )
-  useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(config))
-    } catch {
-      // ストレージが使えない環境では保存しない
-    }
-  }, [config])
+  useStored(junkConfigStorageKey, config)
+  const [excludedChars, setExcludedChars] = useState<string[]>(
+    loadJunkExcludedChars
+  )
+  useStored(junkExcludedCharsStorageKey, excludedChars)
 
   const arts = useDataManagerValues(database.arts)
   const buildEntries = useDataManagerEntries(database.builds)
@@ -110,25 +120,49 @@ export default function PageJunkArtifacts() {
     return ids
   }, [buildEntries])
 
-  // 判定に使う型。single のときは選んだ有効サブステ1組だけ
-  const profiles = useMemo(
+  const insights = useCharacterInsights()
+  const usedSetKeys = useMemo(
     () =>
-      config.mode === 'single'
-        ? [{ id: 'custom', label: '指定', keys: config.usefulSubstats }]
-        : junkProfiles.filter(({ id }) => config.profileIds.includes(id)),
-    [config.mode, config.usefulSubstats, config.profileIds]
+      getUsedSetKeys(
+        insights,
+        buildEntries.map(([, { artifactIds }]) =>
+          Object.values(artifactIds)
+            .map((id) => (id ? database.arts.get(id) : undefined))
+            .filter((a): a is ICachedArtifact => !!a)
+        )
+      ),
+    [insights, buildEntries, database]
+  )
+
+  // 判定に使う型
+  const profiles = useMemo<PageProfile[]>(
+    () =>
+      resolveJunkProfiles(config, insights, excludedChars).map((p) => ({
+        ...p,
+        keys: [...p.keys],
+        label:
+          config.mode === 'characters' ? (
+            <CharacterName
+              characterKey={p.id as CharacterKey}
+              gender={gender}
+            />
+          ) : config.mode === 'single' ? (
+            '指定'
+          ) : (
+            junkProfiles.find(({ id }) => id === p.id)?.label
+          ),
+      })),
+    [config, insights, excludedChars, gender]
   )
   const results = useMemo(
     () =>
       !profiles.length
         ? []
-        : findJunkArtifacts(
-            arts,
-            usedInBuildIds,
-            config,
-            profiles.map(({ keys }) => keys)
-          ),
-    [arts, usedInBuildIds, config, profiles]
+        : findJunkArtifacts(arts, usedInBuildIds, config, {
+            profiles,
+            usedSetKeys,
+          }),
+    [arts, usedInBuildIds, config, profiles, usedSetKeys]
   )
 
   const [reasonFilter, setReasonFilter] = useState<JunkReason[]>([])
@@ -145,16 +179,15 @@ export default function PageJunkArtifacts() {
   useEffect(() => setLimit(PAGE_SIZE), [config, reasonFilter])
 
   const reasonCounts = useMemo(() => {
-    const counts: Record<JunkReason, number> = {
-      lowPotential: 0,
-      dominated: 0,
-      lowRarity: 0,
-    }
+    const counts = Object.fromEntries(
+      Object.keys(reasonLabels).map((r) => [r, 0])
+    ) as Record<JunkReason, number>
     for (const r of results) for (const reason of r.reasons) counts[reason]++
     return counts
   }, [results])
 
   const [artifactIdToEdit, setArtifactIdToEdit] = useState<string>()
+  const [compareResult, setCompareResult] = useState<JunkResult>()
 
   const deleteAllShown = () => {
     if (!shownResults.length) return
@@ -175,6 +208,15 @@ export default function PageJunkArtifacts() {
           cancelEdit={() => setArtifactIdToEdit(undefined)}
         />
       </Suspense>
+      <DominatedModal
+        result={compareResult}
+        keys={
+          compareResult
+            ? (profiles[compareResult.bestProfileIndex]?.keys ?? [])
+            : []
+        }
+        onClose={() => setCompareResult(undefined)}
+      />
       <CardThemed>
         <CardHeader
           title="不要聖遺物チェッカー"
@@ -194,6 +236,7 @@ export default function PageJunkArtifacts() {
                 value={config.mode}
                 onChange={(_, mode) => mode && setConfig({ mode })}
               >
+                <ToggleButton value="characters">所持キャラの型</ToggleButton>
                 <ToggleButton value="allProfiles">
                   どのキャラでも不要
                 </ToggleButton>
@@ -201,7 +244,14 @@ export default function PageJunkArtifacts() {
               </ToggleButtonGroup>
             </Box>
 
-            {config.mode === 'allProfiles' ? (
+            {config.mode === 'characters' && (
+              <CharacterProfiles
+                insights={insights}
+                excluded={excludedChars}
+                setExcluded={setExcludedChars}
+              />
+            )}
+            {config.mode === 'allProfiles' && (
               <Box>
                 <Typography variant="subtitle1" gutterBottom>
                   考慮するキャラの型
@@ -228,15 +278,11 @@ export default function PageJunkArtifacts() {
                 </Box>
                 <Typography variant="caption" color="text.secondary">
                   各カードの Roll Value
-                  は、その聖遺物が一番向いている型で表示します。選んだ型のすべてで「伸びしろ不足」か「上位互換あり」に当てはまる聖遺物だけを候補にします。どれか1つの型で使い道があれば候補に入りません。
+                  は、その聖遺物が一番向いている型で表示します。選んだ型のすべてで不要と判定された聖遺物だけを候補にします。どれか1つの型で使い道があれば候補に入りません。
                 </Typography>
-                {!profiles.length && (
-                  <Alert severity="warning" sx={{ mt: 1 }}>
-                    型を1つ以上選んでください。
-                  </Alert>
-                )}
               </Box>
-            ) : (
+            )}
+            {config.mode === 'single' && (
               <Box>
                 <Typography variant="subtitle1" gutterBottom>
                   有効サブステータス
@@ -268,10 +314,38 @@ export default function PageJunkArtifacts() {
                 )}
               </Box>
             )}
+            {!profiles.length && (
+              <Alert severity="warning">
+                {config.mode === 'characters'
+                  ? '型を推定できるキャラがいません。キャラに聖遺物を装備させるか、ほかの判定のしかたを選んでください。'
+                  : '型を1つ以上選んでください。'}
+              </Alert>
+            )}
 
             <Box>
               <Typography variant="subtitle1">判定条件</Typography>
               <Stack spacing={1}>
+                <Box>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={config.checkBadMainStat}
+                        onChange={(_, checkBadMainStat) =>
+                          setConfig({ checkBadMainStat })
+                        }
+                      />
+                    }
+                    label="メインが合わない: 時計・杯・冠のメインステータスが型に合わない"
+                  />
+                  <Typography
+                    variant="caption"
+                    color="text.secondary"
+                    component="div"
+                  >
+                    例: 攻撃会心型の防御%
+                    時計。時計は伸ばすステータスかチャージ、杯は伸ばすステータス（会心型なら元素・物理ダメージも）、冠は伸ばすステータスと会心（サポート型なら治療効果も）を合うものとします。
+                  </Typography>
+                </Box>
                 <Box>
                   <FormControlLabel
                     control={
@@ -282,7 +356,7 @@ export default function PageJunkArtifacts() {
                         }
                       />
                     }
-                    label={`伸びしろ不足: +20 まで強化しても Max. Roll Value が ${Math.round(config.minMaxEfficiency * 100)}% 未満`}
+                    label={`伸びしろ不足: +20 まで強化しても Max. Roll Value が ${percent(config.minMaxEfficiency)} 未満`}
                   />
                   <Box px={2} maxWidth={480}>
                     <Slider
@@ -294,7 +368,7 @@ export default function PageJunkArtifacts() {
                       step={0.5}
                       marks
                       valueLabelDisplay="auto"
-                      valueLabelFormat={(v) => `${Math.round(v * 100)}%`}
+                      valueLabelFormat={percent}
                       onChange={(_, v) =>
                         setConfig({ minMaxEfficiency: v as number })
                       }
@@ -305,6 +379,38 @@ export default function PageJunkArtifacts() {
                     Value」と同じ値で、有効サブステだけを数えます（星5の最大値1回分
                     =
                     100%）。未強化の聖遺物は、残りの強化がすべて有効サブステに最大値で伸びた場合の値です。
+                  </Typography>
+                </Box>
+                <Box>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={config.checkLowChance}
+                        onChange={(_, checkLowChance) =>
+                          setConfig({ checkLowChance })
+                        }
+                      />
+                    }
+                    label={`当たりにくい: 強化途中の星5で、+20 にしても Roll Value が ${percent(config.goodEfficiency)} 以上になる確率が ${percent(config.minGoodChance)} 未満`}
+                  />
+                  <Box px={2} maxWidth={480}>
+                    <Slider
+                      size="small"
+                      disabled={!config.checkLowChance}
+                      value={config.minGoodChance}
+                      min={0.05}
+                      max={0.5}
+                      step={0.05}
+                      marks
+                      valueLabelDisplay="auto"
+                      valueLabelFormat={percent}
+                      onChange={(_, v) =>
+                        setConfig({ minGoodChance: v as number })
+                      }
+                    />
+                  </Box>
+                  <Typography variant="caption" color="text.secondary">
+                    ゲームと同じ確率（強化のたびに4つのサブステから1つが伸びる・4段階の伸び幅が等確率）で計算します。強化に素材を使う前のふるい分けに使えます。
                   </Typography>
                 </Box>
                 <Box>
@@ -335,8 +441,50 @@ export default function PageJunkArtifacts() {
                     />
                   </Box>
                   <Typography variant="caption" color="text.secondary">
-                    レア度・レベルが同じか上で、有効サブステの値がすべて同じか上回っている聖遺物を上位互換とみなします。
+                    レア度・レベルが同じか上で、有効サブステの値がすべて同じか上回っている聖遺物を上位互換とみなします。カードの「上位互換あり」を押すと見比べられます。
                   </Typography>
+                </Box>
+                <Box>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={config.checkUnusedSet}
+                        onChange={(_, checkUnusedSet) =>
+                          setConfig({ checkUnusedSet })
+                        }
+                      />
+                    }
+                    label="使わないセット: どのキャラも2つ以上装備しておらず、保存済みビルドでも使っていないセット"
+                  />
+                  <Typography
+                    variant="caption"
+                    color="text.secondary"
+                    component="div"
+                  >
+                    ただし、メインが合っていて Max. Roll Value が当たりの目安（
+                    {percent(config.goodEfficiency)}
+                    ）以上のものは、オフピースに使えるので残します。型の判定とは関係なく候補にします。
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography>
+                    当たりの目安: Roll Value {percent(config.goodEfficiency)}
+                  </Typography>
+                  <Box px={2} maxWidth={480}>
+                    <Slider
+                      size="small"
+                      value={config.goodEfficiency}
+                      min={3}
+                      max={8}
+                      step={0.5}
+                      marks
+                      valueLabelDisplay="auto"
+                      valueLabelFormat={percent}
+                      onChange={(_, v) =>
+                        setConfig({ goodEfficiency: v as number })
+                      }
+                    />
+                  </Box>
                 </Box>
                 <FormControlLabel
                   control={
@@ -419,25 +567,30 @@ export default function PageJunkArtifacts() {
                   ` / ${results.length} 個`}
                 （全 {arts.length} 個中）
               </Typography>
-              {(Object.keys(reasonLabels) as JunkReason[]).map((reason) => (
-                <Chip
-                  key={reason}
-                  size="small"
-                  label={`${reasonLabels[reason]} ${reasonCounts[reason]}`}
-                  color={
-                    reasonFilter.includes(reason)
-                      ? reasonColors[reason]
-                      : 'default'
-                  }
-                  onClick={() =>
-                    setReasonFilter((prev) =>
-                      prev.includes(reason)
-                        ? prev.filter((r) => r !== reason)
-                        : [...prev, reason]
-                    )
-                  }
-                />
-              ))}
+              {(Object.keys(reasonLabels) as JunkReason[])
+                .filter(
+                  (reason) =>
+                    reasonCounts[reason] || reasonFilter.includes(reason)
+                )
+                .map((reason) => (
+                  <Chip
+                    key={reason}
+                    size="small"
+                    label={`${reasonLabels[reason]} ${reasonCounts[reason]}`}
+                    color={
+                      reasonFilter.includes(reason)
+                        ? reasonColors[reason]
+                        : 'default'
+                    }
+                    onClick={() =>
+                      setReasonFilter((prev) =>
+                        prev.includes(reason)
+                          ? prev.filter((r) => r !== reason)
+                          : [...prev, reason]
+                      )
+                    }
+                  />
+                ))}
             </Box>
             <Button
               color="error"
@@ -456,7 +609,7 @@ export default function PageJunkArtifacts() {
         </CardContent>
       </CardThemed>
 
-      {!results.length && (
+      {!results.length && !!profiles.length && (
         <Alert variant="filled" severity="success">
           条件に当てはまる不要候補はありません。
         </Alert>
@@ -469,11 +622,13 @@ export default function PageJunkArtifacts() {
               result={result}
               keys={profiles[result.bestProfileIndex]?.keys ?? []}
               bestProfileLabel={
-                config.mode === 'allProfiles'
+                config.mode !== 'single'
                   ? profiles[result.bestProfileIndex]?.label
                   : undefined
               }
+              goodEfficiency={config.goodEfficiency}
               onEdit={() => setArtifactIdToEdit(result.id)}
+              onCompare={() => setCompareResult(result)}
             />
           </Grid>
         ))}
@@ -487,16 +642,72 @@ export default function PageJunkArtifacts() {
   )
 }
 
+function CharacterProfiles({
+  insights,
+  excluded,
+  setExcluded,
+}: {
+  insights: CharacterInsight[]
+  excluded: string[]
+  setExcluded: (keys: string[]) => void
+}) {
+  const { gender } = useDBMeta()
+  return (
+    <Box>
+      <Typography variant="subtitle1" gutterBottom>
+        キャラごとに推定した型（
+        {insights.length -
+          excluded.filter((k) => insights.some((i) => i.key === k)).length}{' '}
+        人）
+      </Typography>
+      <Box display="flex" gap={1} flexWrap="wrap">
+        {insights.map(({ key, profile, fromOptConfig }) => {
+          const selected = !excluded.includes(key)
+          return (
+            <Chip
+              key={key}
+              icon={<CharIconSide characterKey={key} />}
+              label={
+                <span>
+                  <CharacterName characterKey={key} gender={gender} />（
+                  {profile.keys.map((k) => substatShortNames[k]).join('・')}
+                  {fromOptConfig && '・最適化設定'}）
+                </span>
+              }
+              color={selected ? 'primary' : 'default'}
+              variant={selected ? 'filled' : 'outlined'}
+              onClick={() =>
+                setExcluded(
+                  selected
+                    ? [...excluded, key]
+                    : excluded.filter((k) => k !== key)
+                )
+              }
+            />
+          )
+        })}
+      </Box>
+      <Typography variant="caption" color="text.secondary">
+        装備中の時計・杯・冠のメインステータス（最適化画面でメインステータスを絞り込んでいればその設定）から、キャラごとに有効サブステと使えるメインステータスを推定します。どのキャラにも使い道がない聖遺物だけを候補にします。チップを押すと、そのキャラを判定から外せます。
+      </Typography>
+    </Box>
+  )
+}
+
 function JunkItem({
   result,
   keys,
   bestProfileLabel,
+  goodEfficiency,
   onEdit,
+  onCompare,
 }: {
   result: JunkResult
   keys: SubstatKey[]
-  bestProfileLabel?: string
+  bestProfileLabel?: ReactNode
+  goodEfficiency: number
   onEdit: () => void
+  onCompare: () => void
 }) {
   const database = useDatabase()
   const effFilter = useMemo(
@@ -504,6 +715,11 @@ function JunkItem({
     [keys]
   )
   const { id, reasons, maxEfficiency, dominatedBy } = result
+  const art = database.arts.get(id)
+  const outlook = useMemo(
+    () => (art && art.level < 20 ? getUpgradeOutlook(art, keys) : undefined),
+    [art, keys]
+  )
   return (
     <Stack spacing={0.5} sx={{ height: '100%' }}>
       <Box display="flex" gap={0.5} flexWrap="wrap" alignItems="center">
@@ -512,20 +728,28 @@ function JunkItem({
             key={reason}
             size="small"
             color={reasonColors[reason]}
+            onClick={reason === 'dominated' ? onCompare : undefined}
             label={
               reason === 'dominated'
-                ? `${reasonLabels[reason]} (${dominatedBy.length})`
+                ? `${reasonLabels[reason]} (${dominatedBy.length}) ▸ 比べる`
                 : reason === 'lowPotential' && !bestProfileLabel
-                  ? `${reasonLabels[reason]} (最大 ${Math.round(maxEfficiency * 100)}%)`
+                  ? `${reasonLabels[reason]} (最大 ${percent(maxEfficiency)})`
                   : reasonLabels[reason]
             }
           />
         ))}
       </Box>
-      {bestProfileLabel && (
+      {bestProfileLabel && maxEfficiency > 0 && (
         <Typography variant="caption" color="text.secondary">
           向いている型: {bestProfileLabel}（Max. Roll Value{' '}
-          {Math.round(maxEfficiency * 100)}%）
+          {percent(maxEfficiency)}）
+        </Typography>
+      )}
+      {outlook && (
+        <Typography variant="caption" color="text.secondary">
+          +20 にしたとき: Roll Value 期待値 {percent(outlook.expected)}・
+          {percent(goodEfficiency)} 以上になる確率{' '}
+          {percent(outlook.chanceAtLeast(goodEfficiency))}
         </Typography>
       )}
       <Box flexGrow={1}>
@@ -541,5 +765,49 @@ function JunkItem({
         />
       </Box>
     </Stack>
+  )
+}
+
+/** 不要候補と、その上位互換を並べて見比べる */
+function DominatedModal({
+  result,
+  keys,
+  onClose,
+}: {
+  result?: JunkResult
+  keys: SubstatKey[]
+  onClose: () => void
+}) {
+  const effFilter = useMemo(
+    () => new Set<SubstatKey>(keys.length ? keys : allSubstatKeys),
+    [keys]
+  )
+  return (
+    <ModalWrapper open={!!result} onClose={onClose}>
+      <CardThemed>
+        <CardHeader
+          title="上位互換との比較"
+          subheader={`有効サブステ: ${(keys.length ? keys : allSubstatKeys).map((k) => substatShortNames[k]).join('・')}`}
+          action={<Button onClick={onClose}>閉じる</Button>}
+        />
+        <Divider />
+        {result && (
+          <CardContent>
+            <Grid container spacing={1} columns={{ xs: 1, sm: 2, md: 3 }}>
+              <Grid item xs={1}>
+                <Typography gutterBottom>不要候補</Typography>
+                <ArtifactCard artifactId={result.id} effFilter={effFilter} />
+              </Grid>
+              {result.dominatedBy.map((otherId, i) => (
+                <Grid item xs={1} key={otherId}>
+                  <Typography gutterBottom>上位互換 {i + 1}</Typography>
+                  <ArtifactCard artifactId={otherId} effFilter={effFilter} />
+                </Grid>
+              ))}
+            </Grid>
+          </CardContent>
+        )}
+      </CardThemed>
+    </ModalWrapper>
   )
 }
