@@ -46,6 +46,8 @@ export interface JunkConfig {
   checkUnusedSet: boolean
   /** 星4以下は不要候補 */
   checkLowRarity: boolean
+  /** 星4以下の聖遺物は対象外（一覧に出さない） */
+  excludeLowRarity: boolean
   /** ロック中の聖遺物は対象外 */
   excludeLocked: boolean
   /** 装備中の聖遺物は対象外 */
@@ -71,6 +73,7 @@ export const defaultJunkConfig: JunkConfig = {
   minGoodChance: 0.1,
   checkUnusedSet: false,
   checkLowRarity: true,
+  excludeLowRarity: true,
   excludeLocked: true,
   excludeEquipped: true,
   excludeInBuilds: true,
@@ -160,6 +163,7 @@ export function findJunkArtifacts(
   const profileFilters = profiles.map(({ keys }) => new Set<SubstatKey>(keys))
 
   const isProtected = (art: JunkArtifact) =>
+    (config.excludeLowRarity && art.rarity <= 4) ||
     (config.excludeLocked && art.lock) ||
     (config.excludeEquipped && !!art.location) ||
     (config.excludeInBuilds && usedInBuildIds.has(art.id))
@@ -232,7 +236,8 @@ export function findJunkArtifacts(
     })
     const best = perProfile[bestProfileIndex]
 
-    const lowRarity = config.checkLowRarity && art.rarity <= 4
+    const lowRarity =
+      config.checkLowRarity && !config.excludeLowRarity && art.rarity <= 4
     // 使っていないセットでも、メインが合って大きく伸びるものはオフピース候補として残す
     const unusedSet =
       config.checkUnusedSet &&
