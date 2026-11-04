@@ -1,0 +1,21 @@
+# フォーク元の取り込みで「新しく追加された行」にこれらが含まれていたら、自動マージを止めて確認に回す。
+# 1行に1つ、grep -E（大文字小文字を区別しない）の正規表現。# で始まる行と空行は無視。
+# 「ファイルパス: 追加された行」の形の文字列に対して照合するので、^ でパスも指定できる。
+
+# 広告
+^libs/common/ad/
+@genshin-optimizer/common/ad
+adsbygoogle
+googlesyndication
+lootbar
+playwire
+nitropay
+
+# フォーク元の運営者・コミュニティへの導線
+discord\.(gg|com/invite)
+patreon\.com
+paypal\.(me|com/donate)
+ko-fi\.com
+twitch\.tv/frzyc
+(twitter|x)\.com/frzyc
+frzyc\.github\.io
