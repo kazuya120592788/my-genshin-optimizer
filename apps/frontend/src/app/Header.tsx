@@ -7,6 +7,7 @@ import { FlowerIcon } from '@genshin-optimizer/gi/svgicons'
 import { SillyContext } from '@genshin-optimizer/gi/ui'
 import ArticleIcon from '@mui/icons-material/Article'
 import BookIcon from '@mui/icons-material/Book'
+import CleaningServicesIcon from '@mui/icons-material/CleaningServices'
 import ConstructionIcon from '@mui/icons-material/Construction'
 import GroupsIcon from '@mui/icons-material/Groups'
 import MenuIcon from '@mui/icons-material/Menu'
@@ -39,6 +40,8 @@ import silly_icon from './silly_icon.png'
 
 type ITab = {
   i18Key: string
+  /** 翻訳がないタブ（フォーク独自のページ）の表示名 */
+  label?: string
   icon: ReactNode
   to: string
   value: string
@@ -96,6 +99,13 @@ const doc: ITab = {
   to: '/doc',
   value: 'doc',
 }
+const junkArtifacts: ITab = {
+  i18Key: 'tabs.junkArtifacts',
+  label: '不要聖遺物',
+  icon: <CleaningServicesIcon />,
+  to: '/junk-artifacts',
+  value: 'junk-artifacts',
+}
 const my: ITab = {
   i18Key: 'tabs.my',
   icon: <FlowerIcon />,
@@ -149,6 +159,7 @@ const maincontent = [
   tools,
   scanner,
   doc,
+  junkArtifacts,
   my,
   setting,
 ] as const
@@ -227,11 +238,11 @@ function DesktopHeader({
             </Box>
           }
         />
-        {maincontent.map(({ i18Key, value, to, icon, textSuffix }) => {
+        {maincontent.map(({ i18Key, label, value, to, icon, textSuffix }) => {
           const tooltipIcon = isXL ? (
             icon
           ) : (
-            <Tooltip arrow title={t(i18Key)}>
+            <Tooltip arrow title={label ?? t(i18Key)}>
               {icon as JSX.Element}
             </Tooltip>
           )
@@ -246,7 +257,7 @@ function DesktopHeader({
               label={
                 isXL || textSuffix ? (
                   <Box display="flex" gap={0.5} alignItems="center">
-                    {isXL && <Typography>{t(i18Key)}</Typography>}
+                    {isXL && <Typography>{label ?? t(i18Key)}</Typography>}
                     {textSuffix}
                   </Box>
                 ) : undefined
@@ -269,6 +280,7 @@ const mobileContent = [
   tools,
   scanner,
   doc,
+  junkArtifacts,
   my,
   setting,
 ] as const
@@ -352,24 +364,26 @@ function MobileHeader({
                 </Typography>
               }
             />
-            {mobileContent.map(({ i18Key, value, to, icon, textSuffix }) => (
-              <Tab
-                key={value}
-                value={value}
-                component={RouterLink}
-                to={to}
-                onClick={handleDrawerToggle}
-                icon={icon as ReactElement}
-                iconPosition="start"
-                label={
-                  <Box display="flex" gap={0.5} alignItems="center">
-                    <Typography>{t(i18Key)}</Typography>
-                    {textSuffix}
-                  </Box>
-                }
-                sx={{ justifyContent: 'flex-start' }}
-              />
-            ))}
+            {mobileContent.map(
+              ({ i18Key, label, value, to, icon, textSuffix }) => (
+                <Tab
+                  key={value}
+                  value={value}
+                  component={RouterLink}
+                  to={to}
+                  onClick={handleDrawerToggle}
+                  icon={icon as ReactElement}
+                  iconPosition="start"
+                  label={
+                    <Box display="flex" gap={0.5} alignItems="center">
+                      <Typography>{label ?? t(i18Key)}</Typography>
+                      {textSuffix}
+                    </Box>
+                  }
+                  sx={{ justifyContent: 'flex-start' }}
+                />
+              )
+            )}
           </Tabs>
         </Drawer>
         <Toolbar>
