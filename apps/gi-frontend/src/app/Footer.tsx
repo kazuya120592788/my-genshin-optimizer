@@ -41,7 +41,7 @@ function FooterContent() {
           >
             Genshin Optimizer Version:
             <a
-              href="https://github.com/frzyc/genshin-optimizer/releases"
+              href={`${process.env.NX_URL_GITHUB_GO}/releases`}
               target="_blank"
               rel="noreferrer"
               style={{ color: 'inherit' }}
