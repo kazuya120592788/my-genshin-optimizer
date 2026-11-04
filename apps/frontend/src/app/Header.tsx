@@ -14,6 +14,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 import PeopleIcon from '@mui/icons-material/People'
 import ScannerIcon from '@mui/icons-material/Scanner'
 import SettingsIcon from '@mui/icons-material/Settings'
+import TrendingUpIcon from '@mui/icons-material/TrendingUp'
 import {
   AppBar,
   Avatar,
@@ -106,6 +107,13 @@ const junkArtifacts: ITab = {
   to: '/junk-artifacts',
   value: 'junk-artifacts',
 }
+const upgradePotential: ITab = {
+  i18Key: 'tabs.upgradePotential',
+  label: '伸びしろ',
+  icon: <TrendingUpIcon />,
+  to: '/upgrade-potential',
+  value: 'upgrade-potential',
+}
 const my: ITab = {
   i18Key: 'tabs.my',
   icon: <FlowerIcon />,
@@ -160,6 +168,7 @@ const maincontent = [
   scanner,
   doc,
   junkArtifacts,
+  upgradePotential,
   my,
   setting,
 ] as const
@@ -281,6 +290,7 @@ const mobileContent = [
   scanner,
   doc,
   junkArtifacts,
+  upgradePotential,
   my,
   setting,
 ] as const
