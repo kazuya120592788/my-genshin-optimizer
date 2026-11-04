@@ -4,6 +4,8 @@ name: Sync upstream
 # - 自動解消できた場合: sync/upstream ブランチに push し、master への PR を作成・更新して
 #   自動マージを有効にする（Build が通るとマージコミットでマージされる）
 #   ※ sync/upstream に手で追加したコミットがあれば上書きせず、ジョブを失敗させる
+#   ※ 取り込みで追加される行が .github/scripts/sync-upstream-blocklist.txt（広告・フォーク元の
+#     運営者情報など）に当たれば、自動マージせずにジョブを失敗させる（PR は作成する）
 # - 手動解消が必要な場合: ジョブを失敗させ（GitHub から失敗通知が届く）、
 #   競合ファイルの一覧と手順を実行結果のサマリーに書く
 #
@@ -151,7 +153,17 @@ jobs:
           fi
           if [ "$push" = true ]; then
             git push --force-with-lease="refs/heads/${SYNC_BRANCH}:${remote_sha}" origin "HEAD:refs/heads/${SYNC_BRANCH}"
+            target_sha=$(git rev-parse HEAD)
+          else
+            target_sha=$remote_sha
           fi
+
+          # master に対して新しく追加される行（「パス: 行」の形）をブロックリストと照合する
+          pattern=$(grep -vE '^[[:space:]]*(#|$)' .github/scripts/sync-upstream-blocklist.txt | paste -sd '|')
+          hits="$RUNNER_TEMP/blocklist-hits.txt"
+          git -c diff.renameLimit=0 diff --no-color --unified=0 "$base_sha" "$target_sha" -- . ':!.github' \
+            | awk '/^\+\+\+ b\// { file = substr($0, 7) } /^\+[^+]/ { print file ": " substr($0, 2) }' \
+            | grep -iE "$pattern" | cut -c1-200 >"$hits" || true
 
           body="$RUNNER_TEMP/pr-body.md"
           {
@@ -165,6 +177,18 @@ jobs:
               echo "### 自動解消した競合"
               echo
               sed 's/^/- /' "$RUNNER_TEMP/resolved.txt"
+              echo
+            fi
+            if [ -s "$hits" ]; then
+              echo "### ⚠️ 確認が必要な追加（自動マージを止めています）"
+              echo
+              echo "広告やフォーク元の運営者情報と思われる行が追加されます（\`.github/scripts/sync-upstream-blocklist.txt\` に一致）。"
+              echo "不要なら \`${SYNC_BRANCH}\` で削除してからマージしてください。"
+              echo
+              echo '```'
+              head -n 50 "$hits"
+              [ "$(wc -l <"$hits")" -gt 50 ] && echo "...（ほか $(($(wc -l <"$hits") - 50)) 行）"
+              echo '```'
               echo
             fi
             echo "## Testing/validation"
@@ -191,7 +215,21 @@ jobs:
           # 必須チェックがないと自動マージが Build を待たずにマージしてしまうため、確認してから有効にする
           required=$(gh api "repos/${GITHUB_REPOSITORY}/rules/branches/${BASE_BRANCH}" \
             --jq '[.[] | select(.type == "required_status_checks") | .parameters.required_status_checks[].context] | join(",")' 2>/dev/null || true)
-          if [[ ",${required}," == *",${REQUIRED_CHECK},"* ]]; then
+          if [ -s "$hits" ]; then
+            gh pr merge "$pr" --disable-auto 2>/dev/null || true
+            {
+              echo
+              echo "## ⚠️ 確認が必要な追加があるため、自動マージを止めました"
+              echo
+              echo "広告やフォーク元の運営者情報と思われる行が追加されます。PR を確認し、不要なら \`${SYNC_BRANCH}\` で削除してからマージしてください。"
+              echo
+              echo '```'
+              head -n 50 "$hits"
+              echo '```'
+            } >>"$GITHUB_STEP_SUMMARY"
+            echo "::error::確認が必要な追加（$(wc -l <"$hits") 行）があるため、自動マージを止めました。詳細は PR と実行結果のサマリーを参照してください。"
+            exit 1
+          elif [[ ",${required}," == *",${REQUIRED_CHECK},"* ]]; then
             gh pr merge "$pr" --auto --merge
             echo "自動マージを有効にしました（${REQUIRED_CHECK} が通るとマージされます）。" >>"$GITHUB_STEP_SUMMARY"
           else
