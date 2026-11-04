@@ -1,9 +1,9 @@
 import { objMap } from '@genshin-optimizer/common/util'
-import type { SubstatKey } from '@genshin-optimizer/gi/consts'
 import {
   allSubstatKeys,
   artSubstatRollData,
 } from '@genshin-optimizer/gi/consts'
+import type { SubstatKey } from '@genshin-optimizer/gi/consts'
 import type { BuildTc } from '@genshin-optimizer/gi/db'
 import { getSubstatValue } from '@genshin-optimizer/gi/util'
 import type { NumNode, OptNode } from '@genshin-optimizer/gi/wr'
@@ -175,6 +175,7 @@ export function optimizeTcUsingNodes(
     }
     for (let i = 0; i <= Math.min(maxSubsAssignable[x], toAssign); i++) {
       // TODO: Making sure that i + \sum { maxSubstats[xs] } >= distributedSubstats in each recursion will reduce unnecessary recursion considerably for large problems. It will also tighten the possibilities for the leaf recursion, so you don't need so many checkings.
+      // https://github.com/frzyc/genshin-optimizer/pull/781#discussion_r1138083742
       buffer[x] = substatValue(x, i)
       bufferRolls[x] = i
       permute(toAssign - i, xs)

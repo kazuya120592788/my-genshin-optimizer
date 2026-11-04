@@ -1,7 +1,7 @@
 import { applyArtifacts, computeAllStats, createProxiedStats, parseTestFlexObject } from "../TestUtils"
 import formula from "./data"
 
-const url = "https://example.com/#/flex?v=2&d=545k0314ak22t19z04z295k09444z15U02W01T895k0g341Hb9z06P0aa395k04242i21d45D09W095k01043r09D04W07b13006004L70A066617stamina3240hBlackcliffSlasher3L900101000"
+const url = "https://frzyc.github.io/genshin-optimizer/#/flex?v=2&d=545k0314ak22t19z04z295k09444z15U02W01T895k0g341Hb9z06P0aa395k04242i21d45D09W095k01043r09D04W07b13006004L70A066617stamina3240hBlackcliffSlasher3L900101000"
 const { artifacts } = parseTestFlexObject(url)
 
 let setupStats

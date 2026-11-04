@@ -2,7 +2,7 @@ import { applyArtifacts, computeAllStats, createProxiedStats, parseTestFlexObjec
 import formula from "./data"
 import weaponFormula from '../../Weapons/Claymore/SkywardPride/data'
 
-const url = "https://example.com/#/flex?v=2&d=595k0104aS09B13e08l2g5k03149215W04i2ae195k08247I03x0921aq3p5k0d34aa38W01db9a1g5k0944882aS04o26W0A106003L8005670cSkywardPride3L9001010151c1A5sheet6talent1e2114pyro0";
+const url = "https://frzyc.github.io/genshin-optimizer/#/flex?v=2&d=595k0104aS09B13e08l2g5k03149215W04i2ae195k08247I03x0921aq3p5k0d34aa38W01db9a1g5k0944882aS04o26W0A106003L8005670cSkywardPride3L9001010151c1A5sheet6talent1e2114pyro0";
 const { artifacts } = parseTestFlexObject(url);
 
 let setupStats;
