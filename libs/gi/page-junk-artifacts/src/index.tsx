@@ -339,15 +339,22 @@ export default function PageJunkArtifacts() {
                   </Typography>
                 </Box>
                 <FormControlLabel
+                  disabled={config.excludeLowRarity}
                   control={
                     <Checkbox
-                      checked={config.checkLowRarity}
+                      checked={
+                        config.checkLowRarity && !config.excludeLowRarity
+                      }
                       onChange={(_, checkLowRarity) =>
                         setConfig({ checkLowRarity })
                       }
                     />
                   }
-                  label="星4以下"
+                  label={
+                    config.excludeLowRarity
+                      ? '星4以下（「対象外にする聖遺物」で星4以下を除外中）'
+                      : '星4以下'
+                  }
                 />
               </Stack>
             </Box>
@@ -355,6 +362,17 @@ export default function PageJunkArtifacts() {
             <Box>
               <Typography variant="subtitle1">対象外にする聖遺物</Typography>
               <Box display="flex" flexWrap="wrap">
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={config.excludeLowRarity}
+                      onChange={(_, excludeLowRarity) =>
+                        setConfig({ excludeLowRarity })
+                      }
+                    />
+                  }
+                  label="星4以下"
+                />
                 <FormControlLabel
                   control={
                     <Checkbox
@@ -419,25 +437,29 @@ export default function PageJunkArtifacts() {
                   ` / ${results.length} 個`}
                 （全 {arts.length} 個中）
               </Typography>
-              {(Object.keys(reasonLabels) as JunkReason[]).map((reason) => (
-                <Chip
-                  key={reason}
-                  size="small"
-                  label={`${reasonLabels[reason]} ${reasonCounts[reason]}`}
-                  color={
-                    reasonFilter.includes(reason)
-                      ? reasonColors[reason]
-                      : 'default'
-                  }
-                  onClick={() =>
-                    setReasonFilter((prev) =>
-                      prev.includes(reason)
-                        ? prev.filter((r) => r !== reason)
-                        : [...prev, reason]
-                    )
-                  }
-                />
-              ))}
+              {(Object.keys(reasonLabels) as JunkReason[])
+                .filter(
+                  (reason) => reason !== 'lowRarity' || !config.excludeLowRarity
+                )
+                .map((reason) => (
+                  <Chip
+                    key={reason}
+                    size="small"
+                    label={`${reasonLabels[reason]} ${reasonCounts[reason]}`}
+                    color={
+                      reasonFilter.includes(reason)
+                        ? reasonColors[reason]
+                        : 'default'
+                    }
+                    onClick={() =>
+                      setReasonFilter((prev) =>
+                        prev.includes(reason)
+                          ? prev.filter((r) => r !== reason)
+                          : [...prev, reason]
+                      )
+                    }
+                  />
+                ))}
             </Box>
             <Button
               color="error"
@@ -504,9 +526,29 @@ function JunkItem({
     [keys]
   )
   const { id, reasons, maxEfficiency, dominatedBy } = result
+  // 理由の表示がどのカードのものか分かるよう、カードと一緒に枠で囲む
   return (
-    <Stack spacing={0.5} sx={{ height: '100%' }}>
-      <Box display="flex" gap={0.5} flexWrap="wrap" alignItems="center">
+    <CardThemed
+      bgt="light"
+      variant="outlined"
+      sx={{
+        height: '100%',
+        p: 0.5,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 0.5,
+        borderColor: 'divider',
+        borderWidth: 2,
+      }}
+    >
+      <Box
+        display="flex"
+        gap={0.5}
+        flexWrap="wrap"
+        alignItems="center"
+        px={0.5}
+        pt={0.5}
+      >
         {reasons.map((reason) => (
           <Chip
             key={reason}
@@ -523,7 +565,7 @@ function JunkItem({
         ))}
       </Box>
       {bestProfileLabel && (
-        <Typography variant="caption" color="text.secondary">
+        <Typography variant="caption" color="text.secondary" px={0.5}>
           向いている型: {bestProfileLabel}（Max. Roll Value{' '}
           {Math.round(maxEfficiency * 100)}%）
         </Typography>
@@ -540,6 +582,6 @@ function JunkItem({
           onEdit={onEdit}
         />
       </Box>
-    </Stack>
+    </CardThemed>
   )
 }

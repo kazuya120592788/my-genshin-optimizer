@@ -31,6 +31,7 @@ const config: JunkConfig = {
   usefulSubstats: ['critRate_', 'critDMG_'],
   checkLowPotential: false,
   checkLowRarity: false,
+  excludeLowRarity: false,
 }
 
 const good = art('good', [
@@ -98,6 +99,17 @@ describe('findJunkArtifacts', () => {
     })
     expect(res.map((r) => r.id)).toEqual(['worse'])
     expect(res[0].reasons).toEqual(['lowRarity', 'lowPotential'])
+  })
+
+  it('星4以下を対象外にすると一覧に出さない', () => {
+    const low = { ...worse, id: 'low', rarity: 4 }
+    const res = findJunkArtifacts([good, worse, low], new Set(), {
+      ...config,
+      checkLowRarity: true,
+      excludeLowRarity: true,
+    })
+    expect(res.map((r) => r.id)).toEqual(['worse'])
+    expect(res[0].reasons).toEqual(['dominated'])
   })
 
   it('未強化の聖遺物は残りの強化回数を伸びしろとして考慮する', () => {
