@@ -1,0 +1,8 @@
+{
+  "name": "gi-artifact-insight",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/gi/artifact-insight/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {}
+}

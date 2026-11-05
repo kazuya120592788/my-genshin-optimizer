@@ -1,39 +1,27 @@
-import type { SubstatKey } from '@genshin-optimizer/gi/consts'
+import type { ArtifactSetKey, SubstatKey } from '@genshin-optimizer/gi/consts'
 import { allSubstatKeys } from '@genshin-optimizer/gi/consts'
 import type { IArtifact } from '@genshin-optimizer/gi/schema'
 import { getArtifactEfficiency } from '@genshin-optimizer/gi/util'
+import type { ArtifactProfile } from './profiles'
+import { isMainStatUseful, junkProfiles } from './profiles'
+import { getUpgradeOutlook } from './upgradeChance'
 
 /** 不要候補と判定した理由 */
-export type JunkReason = 'lowPotential' | 'dominated' | 'lowRarity'
-
-export interface JunkProfile {
-  id: string
-  label: string
-  keys: SubstatKey[]
-}
-
-/** キャラの型ごとの有効サブステ */
-export const junkProfiles: JunkProfile[] = [
-  { id: 'atkCrit', label: '攻撃会心', keys: ['atk_', 'critRate_', 'critDMG_'] },
-  { id: 'hpCrit', label: 'HP会心', keys: ['hp_', 'critRate_', 'critDMG_'] },
-  { id: 'defCrit', label: '防御会心', keys: ['def_', 'critRate_', 'critDMG_'] },
-  {
-    id: 'emCrit',
-    label: '熟知会心',
-    keys: ['eleMas', 'critRate_', 'critDMG_'],
-  },
-  { id: 'em', label: '熟知', keys: ['eleMas', 'enerRech_'] },
-  { id: 'hpSupport', label: 'HPサポート', keys: ['hp_', 'enerRech_'] },
-  { id: 'atkSupport', label: '攻撃サポート', keys: ['atk_', 'enerRech_'] },
-  { id: 'crit', label: '会心のみ', keys: ['critRate_', 'critDMG_'] },
-]
+export type JunkReason =
+  | 'lowPotential'
+  | 'dominated'
+  | 'badMainStat'
+  | 'lowChance'
+  | 'unusedSet'
+  | 'lowRarity'
 
 export interface JunkConfig {
   /**
    * single: 選んだ有効サブステ1組で判定する
    * allProfiles: 選んだすべての型で不要なものだけを候補にする（どのキャラでも不要）
+   * characters: 所持キャラごとに推定した型のすべてで不要なものだけを候補にする
    */
-  mode: 'single' | 'allProfiles'
+  mode: 'single' | 'allProfiles' | 'characters'
   /** allProfiles で使う型の ID */
   profileIds: string[]
   /** 有効とみなすサブステータス */
@@ -46,6 +34,16 @@ export interface JunkConfig {
   checkDominated: boolean
   /** 何個以上の上位互換があれば不要候補とするか */
   dominatedCount: number
+  /** 型に合わないメインステータス（攻撃会心型の防御% 時計など）は不要候補 */
+  checkBadMainStat: boolean
+  /** 当たりとみなす Roll Value（+20 時点。星5の最大値1回分 = 1.0） */
+  goodEfficiency: number
+  /** 強化途中の星5で、+20 にしても当たりになる確率が低ければ不要候補 */
+  checkLowChance: boolean
+  /** 当たりになる確率の下限（0〜1） */
+  minGoodChance: number
+  /** どのキャラも使っていないセットで、オフピースにも向かなければ不要候補 */
+  checkUnusedSet: boolean
   /** 星4以下は不要候補 */
   checkLowRarity: boolean
   /** 星4以下の聖遺物は対象外（一覧に出さない） */
@@ -69,6 +67,11 @@ export const defaultJunkConfig: JunkConfig = {
   minMaxEfficiency: 4,
   checkDominated: true,
   dominatedCount: 1,
+  checkBadMainStat: true,
+  goodEfficiency: 6,
+  checkLowChance: false,
+  minGoodChance: 0.1,
+  checkUnusedSet: false,
   checkLowRarity: true,
   excludeLowRarity: true,
   excludeLocked: true,
@@ -133,24 +136,31 @@ function dominates(
   return rb !== ra ? rb < ra : b.id < a.id
 }
 
+export interface FindJunkOptions {
+  /** 判定に使う型。省略時は `config.usefulSubstats` の1組 */
+  profiles?: readonly ArtifactProfile[]
+  /** キャラが使っているセット（`checkUnusedSet` で使う） */
+  usedSetKeys?: ReadonlySet<ArtifactSetKey>
+}
+
 /**
  * 不要候補の聖遺物を探す。
  * 判定の対象外（ロック中・装備中など）の聖遺物も、上位互換の比較相手としては使う。
  *
  * `profiles` を複数渡すと「どのキャラ型でも不要」な聖遺物だけを返す。
- * つまり、すべての型で「伸びしろ不足」か「上位互換あり」に当てはまるものが対象になる
- * （星4以下は型に関係なく不要候補）。
+ * つまり、すべての型で「伸びしろ不足」「上位互換あり」「メインが合わない」の
+ * （と、設定によっては「当たりの確率が低い」）のどれかに当てはまるものが対象になる（星4以下・使わないセットは型に関係なく判定する）。
  */
 export function findJunkArtifacts(
   arts: readonly JunkArtifact[],
   usedInBuildIds: ReadonlySet<string>,
   config: JunkConfig,
-  profiles: readonly SubstatKey[][] = [config.usefulSubstats]
+  { profiles: profilesIn, usedSetKeys }: FindJunkOptions = {}
 ): JunkResult[] {
-  const profileKeys = (profiles.length ? profiles : [[]]).map((keys) =>
-    keys.length ? keys : [...allSubstatKeys]
-  )
-  const profileFilters = profileKeys.map((keys) => new Set<SubstatKey>(keys))
+  const profiles: ArtifactProfile[] = (
+    profilesIn?.length ? profilesIn : [{ keys: config.usefulSubstats }]
+  ).map((p) => (p.keys.length ? p : { ...p, keys: [...allSubstatKeys] }))
+  const profileFilters = profiles.map(({ keys }) => new Set<SubstatKey>(keys))
 
   const isProtected = (art: JunkArtifact) =>
     (config.excludeLowRarity && art.rarity <= 4) ||
@@ -176,33 +186,51 @@ export function findJunkArtifacts(
     const group = groups.get(`${art.setKey}|${art.slotKey}|${art.mainStatKey}`)
 
     // 型ごとに判定する
-    const perProfile = profileKeys.map((keys, i) => {
+    const perProfile = profiles.map((profile, i) => {
       const reasons: JunkReason[] = []
+      const mainStatOk = isMainStatUseful(art.slotKey, art.mainStatKey, profile)
+      if (config.checkBadMainStat && !mainStatOk) reasons.push('badMainStat')
       const { currentEfficiency, maxEfficiency } = getArtifactEfficiency(
         art,
         profileFilters[i]
       )
       if (config.checkLowPotential && maxEfficiency < config.minMaxEfficiency)
         reasons.push('lowPotential')
+      else if (config.checkLowChance && art.level < 20) {
+        const outlook = getUpgradeOutlook(art, profile.keys)
+        if (
+          outlook &&
+          outlook.chanceAtLeast(config.goodEfficiency) < config.minGoodChance
+        )
+          reasons.push('lowChance')
+      }
       let dominatedBy: string[] = []
       if (config.checkDominated && group) {
         dominatedBy = group
-          .filter((other) => dominates(other, art, keys, keepRank))
+          .filter((other) => dominates(other, art, profile.keys, keepRank))
           .map((other) => other.id)
         if (dominatedBy.length >= Math.max(1, config.dominatedCount))
           reasons.push('dominated')
       }
-      return { reasons, currentEfficiency, maxEfficiency, dominatedBy }
+      return {
+        reasons,
+        mainStatOk,
+        currentEfficiency,
+        maxEfficiency,
+        dominatedBy,
+      }
     })
 
-    // 一番伸びる型（＝この聖遺物を使うなら一番向いている型）
+    // 一番伸びる型（＝この聖遺物を使うなら一番向いている型）。メインが合う型を優先する
     let bestProfileIndex = 0
     perProfile.forEach((p, i) => {
       const best = perProfile[bestProfileIndex]
       if (
-        p.maxEfficiency > best.maxEfficiency ||
-        (p.maxEfficiency === best.maxEfficiency &&
-          p.currentEfficiency > best.currentEfficiency)
+        (p.mainStatOk && !best.mainStatOk) ||
+        (p.mainStatOk === best.mainStatOk &&
+          (p.maxEfficiency > best.maxEfficiency ||
+            (p.maxEfficiency === best.maxEfficiency &&
+              p.currentEfficiency > best.currentEfficiency)))
       )
         bestProfileIndex = i
     })
@@ -210,13 +238,27 @@ export function findJunkArtifacts(
 
     const lowRarity =
       config.checkLowRarity && !config.excludeLowRarity && art.rarity <= 4
+    // 使っていないセットでも、メインが合って大きく伸びるものはオフピース候補として残す
+    const unusedSet =
+      config.checkUnusedSet &&
+      !!usedSetKeys &&
+      !usedSetKeys.has(art.setKey) &&
+      !perProfile.some(
+        (p) => p.mainStatOk && p.maxEfficiency >= config.goodEfficiency
+      )
     const junkForAll = perProfile.every((p) => p.reasons.length)
-    if (!lowRarity && !junkForAll) continue
+    if (!lowRarity && !unusedSet && !junkForAll) continue
 
     const reasons: JunkReason[] = []
     if (lowRarity) reasons.push('lowRarity')
+    if (unusedSet) reasons.push('unusedSet')
     if (junkForAll)
-      for (const reason of ['lowPotential', 'dominated'] as const)
+      for (const reason of [
+        'badMainStat',
+        'lowPotential',
+        'lowChance',
+        'dominated',
+      ] as const)
         if (perProfile.some((p) => p.reasons.includes(reason)))
           reasons.push(reason)
 

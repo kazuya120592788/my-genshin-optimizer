@@ -69,6 +69,9 @@
       "@genshin-optimizer/gi/art-scanner": [
         "./libs/gi/art-scanner/src/index.ts"
       ],
+      "@genshin-optimizer/gi/artifact-insight": [
+        "./libs/gi/artifact-insight/src/index.ts"
+      ],
       "@genshin-optimizer/gi/assets": ["./libs/gi/assets/src/index.ts"],
       "@genshin-optimizer/gi/assets-data": [
         "./libs/gi/assets-data/src/index.ts"
@@ -100,7 +103,13 @@
       "@genshin-optimizer/gi/page-characters": [
         "./libs/gi/page-characters/src/index.tsx"
       ],
+      "@genshin-optimizer/gi/page-dashboard": [
+        "./libs/gi/page-dashboard/src/index.tsx"
+      ],
       "@genshin-optimizer/gi/page-doc": ["./libs/gi/page-doc/src/index.tsx"],
+      "@genshin-optimizer/gi/page-farming": [
+        "./libs/gi/page-farming/src/index.tsx"
+      ],
       "@genshin-optimizer/gi/page-home": ["./libs/gi/page-home/src/index.tsx"],
       "@genshin-optimizer/gi/page-junk-artifacts": [
         "./libs/gi/page-junk-artifacts/src/index.tsx"
