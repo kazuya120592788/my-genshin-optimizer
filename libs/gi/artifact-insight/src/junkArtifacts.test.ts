@@ -31,6 +31,7 @@ const config: JunkConfig = {
   usefulSubstats: ['critRate_', 'critDMG_'],
   checkLowPotential: false,
   checkLowRarity: false,
+  excludeLowRarity: false,
 }
 
 const good = art('good', [
@@ -100,6 +101,17 @@ describe('findJunkArtifacts', () => {
     expect(res[0].reasons).toEqual(['lowRarity', 'lowPotential'])
   })
 
+  it('星4以下を対象外にすると一覧に出さない', () => {
+    const low = { ...worse, id: 'low', rarity: 4 }
+    const res = findJunkArtifacts([good, worse, low], new Set(), {
+      ...config,
+      checkLowRarity: true,
+      excludeLowRarity: true,
+    })
+    expect(res.map((r) => r.id)).toEqual(['worse'])
+    expect(res[0].reasons).toEqual(['dominated'])
+  })
+
   it('未強化の聖遺物は残りの強化回数を伸びしろとして考慮する', () => {
     const fresh = art(
       'fresh',
@@ -121,8 +133,8 @@ describe('findJunkArtifacts', () => {
 })
 
 describe('findJunkArtifacts（どのキャラでも不要）', () => {
-  const atkCrit: SubstatKey[] = ['atk_', 'critRate_', 'critDMG_']
-  const hpSupport: SubstatKey[] = ['hp_', 'enerRech_']
+  const atkCrit = { keys: ['atk_', 'critRate_', 'critDMG_'] as SubstatKey[] }
+  const hpSupport = { keys: ['hp_', 'enerRech_'] as SubstatKey[] }
   const allConfig: JunkConfig = {
     ...config,
     checkDominated: false,
@@ -145,17 +157,16 @@ describe('findJunkArtifacts（どのキャラでも不要）', () => {
   ])
 
   it('どれか1つの型で使い道があれば候補にしない', () => {
-    const res = findJunkArtifacts([hpEr, trash], new Set(), allConfig, [
-      atkCrit,
-      hpSupport,
-    ])
+    const res = findJunkArtifacts([hpEr, trash], new Set(), allConfig, {
+      profiles: [atkCrit, hpSupport],
+    })
     expect(res.map((r) => r.id)).toEqual(['trash'])
   })
 
   it('型を1つだけ指定すれば、その型で不要なものを候補にする', () => {
-    const res = findJunkArtifacts([hpEr, trash], new Set(), allConfig, [
-      atkCrit,
-    ])
+    const res = findJunkArtifacts([hpEr, trash], new Set(), allConfig, {
+      profiles: [atkCrit],
+    })
     expect(res.map((r) => r.id).sort()).toEqual(['hpEr', 'trash'])
   })
 
@@ -164,7 +175,7 @@ describe('findJunkArtifacts（どのキャラでも不要）', () => {
       [hpEr],
       new Set(),
       { ...allConfig, minMaxEfficiency: 9 },
-      [atkCrit, hpSupport]
+      { profiles: [atkCrit, hpSupport] }
     )
     expect(res[0].bestProfileIndex).toBe(1)
   })
@@ -187,9 +198,96 @@ describe('findJunkArtifacts（どのキャラでも不要）', () => {
       [better, target],
       new Set(),
       { ...allConfig, checkDominated: true },
-      [atkCrit, hpSupport]
+      { profiles: [atkCrit, hpSupport] }
     )
     expect(res.map((r) => r.id)).toEqual(['target'])
     expect(res[0].reasons).toEqual(['lowPotential', 'dominated'])
+  })
+})
+
+describe('findJunkArtifacts（メインステータス・使わないセット）', () => {
+  const crit = { keys: ['atk_', 'critRate_', 'critDMG_'] as SubstatKey[] }
+  const subs = [
+    { key: 'critRate_', value: 10.5 },
+    { key: 'critDMG_', value: 21 },
+    { key: 'atk_', value: 9.9 },
+    { key: 'hp', value: 299 },
+  ] as const
+  const defSands = art('defSands', [...subs], {
+    slotKey: 'sands',
+    mainStatKey: 'def_',
+  })
+  const atkSands = art('atkSands', [...subs], {
+    slotKey: 'sands',
+    mainStatKey: 'atk_',
+  })
+  const mainConfig: JunkConfig = {
+    ...config,
+    checkDominated: false,
+    checkLowPotential: false,
+  }
+
+  it('型に合わないメインステータスを不要候補にする', () => {
+    const res = findJunkArtifacts([defSands, atkSands], new Set(), mainConfig, {
+      profiles: [crit],
+    })
+    expect(res.map((r) => r.id)).toEqual(['defSands'])
+    expect(res[0].reasons).toEqual(['badMainStat'])
+  })
+
+  it('メインが合う型が1つでもあれば候補にしない', () => {
+    const res = findJunkArtifacts([defSands], new Set(), mainConfig, {
+      profiles: [crit, { keys: ['def_', 'critRate_', 'critDMG_'] }],
+    })
+    expect(res).toEqual([])
+  })
+
+  it('使わないセットでも、オフピースに使えるものは残す', () => {
+    const weak = art('weak', [{ key: 'hp', value: 299 }], {
+      slotKey: 'sands',
+      mainStatKey: 'atk_',
+    })
+    const res = findJunkArtifacts(
+      [atkSands, weak],
+      new Set(),
+      { ...mainConfig, checkUnusedSet: true, goodEfficiency: 4 },
+      { profiles: [crit], usedSetKeys: new Set(['EmblemOfSeveredFate']) }
+    )
+    expect(res.map((r) => r.id)).toEqual(['weak'])
+    expect(res[0].reasons).toEqual(['unusedSet'])
+  })
+})
+
+describe('findJunkArtifacts（当たりの確率）', () => {
+  // 有効サブステが1つだけの未強化品
+  const fresh = art(
+    'fresh',
+    [
+      { key: 'critRate_', value: 2.7 },
+      { key: 'hp', value: 209 },
+      { key: 'def', value: 16 },
+      { key: 'atk', value: 14 },
+    ],
+    { level: 0 }
+  )
+  const chanceConfig: JunkConfig = {
+    ...config,
+    checkDominated: false,
+    checkLowChance: true,
+    goodEfficiency: 4,
+    minGoodChance: 0.1,
+  }
+
+  it('+20 にしても当たりになりにくい未強化品を候補にする', () => {
+    const res = findJunkArtifacts([fresh], new Set(), chanceConfig)
+    expect(res.map((r) => r.reasons)).toEqual([['lowChance']])
+  })
+
+  it('当たりの目安が低ければ候補にしない', () => {
+    const res = findJunkArtifacts([fresh], new Set(), {
+      ...chanceConfig,
+      goodEfficiency: 1.5,
+    })
+    expect(res).toEqual([])
   })
 })
