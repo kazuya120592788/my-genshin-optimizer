@@ -101,6 +101,15 @@ const PageJunkArtifacts = lazy(
     }>
 )
 
+const PageUpgradePotential = lazy(
+  () =>
+    import(
+      '@genshin-optimizer/gi/page-upgrade-potential'
+    ) as unknown as Promise<{
+      default: ComponentType<any>
+    }>
+)
+
 const PageDashboard = lazy(
   () =>
     import('@genshin-optimizer/gi/page-dashboard') as unknown as Promise<{
@@ -216,6 +225,10 @@ function Content() {
               <Route path="/scanner" element={<PageScanner />} />
               <Route path="/dashboard" element={<PageDashboard />} />
               <Route path="/junk-artifacts" element={<PageJunkArtifacts />} />
+              <Route
+                path="/upgrade-potential"
+                element={<PageUpgradePotential />}
+              />
               <Route path="/farming" element={<PageFarming />} />
               <Route path="/my" element={<PageMy />} />
             </Routes>

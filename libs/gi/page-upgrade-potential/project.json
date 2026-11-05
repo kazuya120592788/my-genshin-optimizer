@@ -1,0 +1,8 @@
+{
+  "name": "gi-page-upgrade-potential",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/gi/page-upgrade-potential/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {}
+}

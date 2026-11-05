@@ -128,6 +128,9 @@
       "@genshin-optimizer/gi/page-tools": [
         "./libs/gi/page-tools/src/index.tsx"
       ],
+      "@genshin-optimizer/gi/page-upgrade-potential": [
+        "./libs/gi/page-upgrade-potential/src/index.tsx"
+      ],
       "@genshin-optimizer/gi/page-weapons": [
         "./libs/gi/page-weapons/src/index.tsx"
       ],
