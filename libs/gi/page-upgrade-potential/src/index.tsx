@@ -17,9 +17,11 @@ import { useDatabase, useDBMeta } from '@genshin-optimizer/gi/db-ui'
 import { SlotIcon } from '@genshin-optimizer/gi/svgicons'
 import {
   ArtifactCard,
+  ArtifactEditor,
   CharacterName,
   CharIconSide,
 } from '@genshin-optimizer/gi/ui'
+import EditIcon from '@mui/icons-material/Edit'
 import {
   Alert,
   Box,
@@ -31,6 +33,7 @@ import {
   Divider,
   FormControlLabel,
   Grid,
+  IconButton,
   MenuItem,
   Select,
   Slider,
@@ -39,7 +42,7 @@ import {
   ToggleButtonGroup,
   Typography,
 } from '@mui/material'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Suspense, useCallback, useEffect, useMemo, useState } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import type {
   ArtifactScore,
@@ -115,6 +118,11 @@ type Suggestion = {
   slot: SlotAnalysis
   kind: 'swap' | 'train'
   keys: readonly SubstatKey[]
+}
+type SuggestionTarget = {
+  characterKey: CharacterKey
+  slotKey: ArtifactSlotKey
+  kind: 'swap' | 'train'
 }
 
 export default function PageUpgradePotential() {
@@ -199,14 +207,39 @@ export default function PageUpgradePotential() {
 
   const [limit, setLimit] = useState(PAGE_SIZE)
   useEffect(() => setLimit(PAGE_SIZE), [settings])
-  const [suggestion, setSuggestion] = useState<Suggestion>()
+  const [suggestionTarget, setSuggestionTarget] = useState<SuggestionTarget>()
+  // 聖遺物を編集したら最新の分析結果で表示し直すため、開いている候補は毎回引き直す
+  const suggestion = useMemo<Suggestion | undefined>(() => {
+    if (!suggestionTarget) return undefined
+    const found = analyses.find(
+      ({ analysis }) => analysis.characterKey === suggestionTarget.characterKey
+    )
+    const slot = found?.analysis.slots.find(
+      (s) => s.slotKey === suggestionTarget.slotKey
+    )
+    if (!found || !slot) return undefined
+    return {
+      characterKey: suggestionTarget.characterKey,
+      slot,
+      kind: suggestionTarget.kind,
+      keys: found.target.keys,
+    }
+  }, [analyses, suggestionTarget])
+  const [artifactIdToEdit, setArtifactIdToEdit] = useState<string>()
 
   return (
     <Stack spacing={1} sx={{ my: 1 }}>
-      {suggestion && (
+      <Suspense fallback={false}>
+        <ArtifactEditor
+          artifactIdToEdit={artifactIdToEdit}
+          cancelEdit={() => setArtifactIdToEdit(undefined)}
+        />
+      </Suspense>
+      {suggestionTarget && (
         <SuggestionModal
           suggestion={suggestion}
-          onClose={() => setSuggestion(undefined)}
+          onEdit={setArtifactIdToEdit}
+          onClose={() => setSuggestionTarget(undefined)}
         />
       )}
       <CardThemed>
@@ -361,13 +394,13 @@ export default function PageUpgradePotential() {
                 })
               }
               onSuggestionClick={(slot, kind) =>
-                setSuggestion({
+                setSuggestionTarget({
                   characterKey: analysis.characterKey as CharacterKey,
-                  slot,
+                  slotKey: slot.slotKey,
                   kind,
-                  keys: target.keys,
                 })
               }
+              onEdit={setArtifactIdToEdit}
             />
           </Grid>
         ))}
@@ -389,6 +422,7 @@ function CharacterItem({
   isAuto,
   onProfileChange,
   onSuggestionClick,
+  onEdit,
 }: {
   rank: number
   analysis: CharacterAnalysis
@@ -397,6 +431,7 @@ function CharacterItem({
   isAuto: boolean
   onProfileChange: (id: string | undefined) => void
   onSuggestionClick: (slot: SlotAnalysis, kind: 'swap' | 'train') => void
+  onEdit: (artifactId: string) => void
 }) {
   const { gender } = useDBMeta()
   const characterKey = analysis.characterKey as CharacterKey
@@ -469,6 +504,7 @@ function CharacterItem({
               key={slot.slotKey}
               slot={slot}
               onSuggestionClick={(kind) => onSuggestionClick(slot, kind)}
+              onEdit={onEdit}
             />
           ))}
         </Stack>
@@ -480,15 +516,17 @@ function CharacterItem({
 function SlotRow({
   slot,
   onSuggestionClick,
+  onEdit,
 }: {
   slot: SlotAnalysis
   onSuggestionClick: (kind: 'swap' | 'train') => void
+  onEdit: (artifactId: string) => void
 }) {
   const { equipped, swap, train, levelUpGain } = slot
   return (
     <Box display="flex" gap={1} alignItems="center" flexWrap="wrap">
       <SlotIcon slotKey={slot.slotKey} iconProps={{ fontSize: 'small' }} />
-      <Typography variant="body2" sx={{ minWidth: 150 }}>
+      <Typography variant="body2" sx={{ minWidth: 120 }}>
         {equipped ? (
           <>
             {pct(equipped.current)}
@@ -507,6 +545,16 @@ function SlotRow({
           </Typography>
         )}
       </Typography>
+      {equipped && (
+        <IconButton
+          size="small"
+          title="装備中の聖遺物を編集"
+          aria-label="装備中の聖遺物を編集"
+          onClick={() => onEdit(equipped.id)}
+        >
+          <EditIcon fontSize="small" />
+        </IconButton>
+      )}
       {equipped && equipped.rollsRemaining > 0 && levelUpGain > 0 && (
         <Chip
           size="small"
@@ -535,22 +583,42 @@ function SlotRow({
 }
 
 function SuggestionModal({
-  suggestion: { characterKey, slot, kind, keys },
+  suggestion,
+  onEdit,
   onClose,
 }: {
-  suggestion: Suggestion
+  suggestion?: Suggestion
+  onEdit: (artifactId: string) => void
   onClose: () => void
 }) {
   const database = useDatabase()
   const { gender } = useDBMeta()
+  const keys = suggestion?.keys
   const effFilter = useMemo(
-    () => new Set<SubstatKey>(keys.length ? keys : allSubstatKeys),
+    () => new Set<SubstatKey>(keys?.length ? keys : allSubstatKeys),
     [keys]
   )
-  const candidate = (kind === 'swap' ? slot.swap : slot.train) as
-    | (ArtifactScore & { gain: number })
-    | undefined
-  if (!candidate) return null
+  const candidate = (
+    suggestion?.kind === 'swap' ? suggestion.slot.swap : suggestion?.slot.train
+  ) as (ArtifactScore & { gain: number }) | undefined
+  if (!suggestion || !candidate)
+    return (
+      <ModalWrapper open onClose={onClose}>
+        <CardThemed>
+          <CardContent>
+            <Alert severity="info">
+              聖遺物が変わったため、この候補はなくなりました。
+            </Alert>
+            <Box display="flex" justifyContent="flex-end" mt={1}>
+              <Button color="secondary" onClick={onClose}>
+                閉じる
+              </Button>
+            </Box>
+          </CardContent>
+        </CardThemed>
+      </ModalWrapper>
+    )
+  const { characterKey, slot, kind } = suggestion
   const equip = () => {
     database.arts.set(candidate.id, {
       location: charKeyToLocCharKey(characterKey),
@@ -583,6 +651,7 @@ function SuggestionModal({
                   <ArtifactCard
                     artifactId={slot.equipped.id}
                     effFilter={effFilter}
+                    onEdit={() => slot.equipped && onEdit(slot.equipped.id)}
                   />
                 </Box>
               ) : (
@@ -595,6 +664,7 @@ function SuggestionModal({
                 <ArtifactCard
                   artifactId={candidate.id}
                   effFilter={effFilter}
+                  onEdit={() => onEdit(candidate.id)}
                   onLockToggle={() =>
                     database.arts.set(candidate.id, ({ lock }) => ({
                       lock: !lock,
