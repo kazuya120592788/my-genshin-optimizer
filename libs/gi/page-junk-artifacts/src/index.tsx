@@ -3,6 +3,7 @@ import {
   useDataManagerValues,
 } from '@genshin-optimizer/common/database-ui'
 import { CardThemed, ModalWrapper } from '@genshin-optimizer/common/ui'
+import { filterFunction } from '@genshin-optimizer/common/util'
 import type {
   ArtifactProfile,
   CharacterInsight,
@@ -27,15 +28,28 @@ import {
 import type { CharacterKey, SubstatKey } from '@genshin-optimizer/gi/consts'
 import { allSubstatKeys } from '@genshin-optimizer/gi/consts'
 import type { ICachedArtifact } from '@genshin-optimizer/gi/db'
-import { useDatabase, useDBMeta } from '@genshin-optimizer/gi/db-ui'
+import {
+  useDatabase,
+  useDBMeta,
+  useDisplayArtifact,
+} from '@genshin-optimizer/gi/db-ui'
+import type { FilterOption } from '@genshin-optimizer/gi/schema'
+import {
+  filterOptionSchema,
+  initialFilterOption,
+} from '@genshin-optimizer/gi/schema'
 import {
   ArtifactCard,
   ArtifactEditor,
+  ArtifactFilterDisplay,
   CharacterName,
   CharIconSide,
   SubstatToggle,
 } from '@genshin-optimizer/gi/ui'
+import { artifactFilterConfigs } from '@genshin-optimizer/gi/util'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
+import FilterListIcon from '@mui/icons-material/FilterList'
+import ReplayIcon from '@mui/icons-material/Replay'
 import {
   Alert,
   Box,
@@ -47,6 +61,7 @@ import {
   Divider,
   FormControlLabel,
   Grid,
+  Skeleton,
   Slider,
   Stack,
   ToggleButton,
@@ -57,6 +72,34 @@ import type { ReactNode } from 'react'
 import { Suspense, useCallback, useEffect, useMemo, useState } from 'react'
 
 const PAGE_SIZE = 24
+const FILTER_STORAGE_KEY = 'gi_page_junk_artifacts_filter'
+const FILTER_OPEN_STORAGE_KEY = 'gi_page_junk_artifacts_filter_open'
+
+function loadFilterOption(): FilterOption {
+  try {
+    const raw = localStorage.getItem(FILTER_STORAGE_KEY)
+    if (raw) return filterOptionSchema.parse(JSON.parse(raw))
+  } catch {
+    // 読み込めないときは初期値にする
+  }
+  return initialFilterOption()
+}
+
+function loadFilterOpen(): boolean {
+  try {
+    return localStorage.getItem(FILTER_OPEN_STORAGE_KEY) === 'true'
+  } catch {
+    return false
+  }
+}
+
+/** 初期値から変えている絞り込み条件の数 */
+function countActiveFilters(option: FilterOption): number {
+  const init = initialFilterOption()
+  return (Object.keys(init) as (keyof FilterOption)[]).filter(
+    (key) => JSON.stringify(option[key]) !== JSON.stringify(init[key])
+  ).length
+}
 
 const reasonLabels: Record<JunkReason, string> = {
   badMainStat: 'メインが合わない',
@@ -165,26 +208,60 @@ export default function PageJunkArtifacts() {
     [arts, usedInBuildIds, config, profiles, usedSetKeys]
   )
 
+  // セット・部位・メインなど、聖遺物一覧と同じ条件での絞り込み
+  const [filterOption, setFilterOption] =
+    useState<FilterOption>(loadFilterOption)
+  useStored(FILTER_STORAGE_KEY, filterOption)
+  const filterOptionDispatch = useCallback(
+    (option: Partial<FilterOption>) =>
+      setFilterOption((prev) => ({ ...prev, ...option })),
+    []
+  )
+  const [filterOpen, setFilterOpen] = useState(loadFilterOpen)
+  useStored(FILTER_OPEN_STORAGE_KEY, filterOpen)
+  const activeFilterCount = useMemo(
+    () => countActiveFilters(filterOption),
+    [filterOption]
+  )
+  // Roll Value の絞り込みで数えるサブステは聖遺物一覧と共通の設定を使う
+  const { effFilter: rvSubstats } = useDisplayArtifact()
+  const filteredResults = useMemo(() => {
+    if (!activeFilterCount) return results
+    const filterFunc = filterFunction(
+      filterOption,
+      artifactFilterConfigs({ effFilterSet: new Set(rvSubstats) })
+    )
+    return results.filter((r) => {
+      const art = database.arts.get(r.id)
+      return !!art && filterFunc(art)
+    })
+  }, [results, filterOption, activeFilterCount, database, rvSubstats])
+  const filteredIds = useMemo(
+    () => filteredResults.map(({ id }) => id),
+    [filteredResults]
+  )
+
   const [reasonFilter, setReasonFilter] = useState<JunkReason[]>([])
   const shownResults = useMemo(
     () =>
       reasonFilter.length
-        ? results.filter((r) =>
+        ? filteredResults.filter((r) =>
             reasonFilter.every((f) => r.reasons.includes(f))
           )
-        : results,
-    [results, reasonFilter]
+        : filteredResults,
+    [filteredResults, reasonFilter]
   )
   const [limit, setLimit] = useState(PAGE_SIZE)
-  useEffect(() => setLimit(PAGE_SIZE), [config, reasonFilter])
+  useEffect(() => setLimit(PAGE_SIZE), [config, reasonFilter, filterOption])
 
   const reasonCounts = useMemo(() => {
     const counts = Object.fromEntries(
       Object.keys(reasonLabels).map((r) => [r, 0])
     ) as Record<JunkReason, number>
-    for (const r of results) for (const reason of r.reasons) counts[reason]++
+    for (const r of filteredResults)
+      for (const reason of r.reasons) counts[reason]++
     return counts
-  }, [results])
+  }, [filteredResults])
 
   const [artifactIdToEdit, setArtifactIdToEdit] = useState<string>()
   const [compareResult, setCompareResult] = useState<JunkResult>()
@@ -578,6 +655,68 @@ export default function PageJunkArtifacts() {
             alignItems="center"
             justifyContent="space-between"
           >
+            <Box display="flex" gap={1} alignItems="center">
+              <FilterListIcon />
+              <Typography variant="h6">絞り込み</Typography>
+              {activeFilterCount > 0 && (
+                <Chip
+                  size="small"
+                  color="primary"
+                  label={`${activeFilterCount} 個の条件で絞り込み中`}
+                />
+              )}
+            </Box>
+            <Box display="flex" gap={1}>
+              <Button
+                size="small"
+                color="error"
+                startIcon={<ReplayIcon />}
+                disabled={!activeFilterCount}
+                onClick={() => setFilterOption(initialFilterOption())}
+              >
+                絞り込みを解除
+              </Button>
+              <Button
+                size="small"
+                variant="outlined"
+                onClick={() => setFilterOpen((o) => !o)}
+              >
+                {filterOpen ? '閉じる' : '開く'}
+              </Button>
+            </Box>
+          </Box>
+          <Typography variant="caption" color="text.secondary">
+            不要候補を、セット・部位・メインステータス・レア度・レベルなどで絞り込めます。聖遺物一覧の絞り込みと同じ条件です（各ボタンの数字は「表示中の不要候補
+            / 全聖遺物」です）。Roll Value
+            の絞り込みで数えるサブステータスは聖遺物一覧と共通の設定です。
+          </Typography>
+          {filterOpen && (
+            <Box mt={1}>
+              <Suspense
+                fallback={
+                  <Skeleton variant="rectangular" width="100%" height={300} />
+                }
+              >
+                <ArtifactFilterDisplay
+                  filterOption={filterOption}
+                  filterOptionDispatch={filterOptionDispatch}
+                  filteredIds={filteredIds}
+                />
+              </Suspense>
+            </Box>
+          )}
+        </CardContent>
+      </CardThemed>
+
+      <CardThemed>
+        <CardContent>
+          <Box
+            display="flex"
+            gap={1}
+            flexWrap="wrap"
+            alignItems="center"
+            justifyContent="space-between"
+          >
             <Box display="flex" gap={1} flexWrap="wrap" alignItems="center">
               <Typography>
                 不要候補 <strong>{shownResults.length}</strong> 個
@@ -631,6 +770,12 @@ export default function PageJunkArtifacts() {
       {!results.length && !!profiles.length && (
         <Alert variant="filled" severity="success">
           条件に当てはまる不要候補はありません。
+        </Alert>
+      )}
+      {!!results.length && !filteredResults.length && (
+        <Alert severity="info">
+          絞り込みに当てはまる不要候補はありません（絞り込み前は{' '}
+          {results.length} 個）。
         </Alert>
       )}
 
