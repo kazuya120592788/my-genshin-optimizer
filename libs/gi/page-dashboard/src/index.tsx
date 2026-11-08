@@ -83,6 +83,11 @@ function gapRatio(gap: OptimizerGap) {
   return gap.best / gap.current - 1
 }
 
+/** 並べ替え用。使えない最適化結果は差がないものとして扱う */
+function okGapRatio(gap?: OptimizerGap) {
+  return gap?.status === 'ok' ? gapRatio(gap) : 0
+}
+
 export default function PageDashboard() {
   const database = useDatabase()
   const arts = useDataManagerValues(database.arts)
@@ -149,10 +154,17 @@ export default function PageDashboard() {
               min === undefined || scores[s]! < scores[min]! ? s : min,
             undefined
           )
+        // 使える最適化結果を優先し、その中で一番伸びるチームを選ぶ
         const gap = gaps
           .filter((g) => g.charKey === key)
           .reduce<OptimizerGap | undefined>(
-            (max, g) => (!max || gapRatio(g) > gapRatio(max) ? g : max),
+            (max, g) =>
+              !max ||
+              (g.status === 'ok') > (max.status === 'ok') ||
+              ((g.status === 'ok') === (max.status === 'ok') &&
+                gapRatio(g) > gapRatio(max))
+                ? g
+                : max,
             undefined
           )
         return {
@@ -169,8 +181,7 @@ export default function PageDashboard() {
       })
       .sort(
         (a, b) =>
-          (b.gap ? gapRatio(b.gap) : 0) - (a.gap ? gapRatio(a.gap) : 0) ||
-          a.totalScore - b.totalScore
+          okGapRatio(b.gap) - okGapRatio(a.gap) || a.totalScore - b.totalScore
       )
   }, [insights, gaps])
 
@@ -266,7 +277,7 @@ function NextActions({
   const actions: Array<{ key: string; body: ReactNode; to?: string }> = []
 
   for (const row of rows
-    .filter((r) => r.gap && gapRatio(r.gap) >= MIN_GAP)
+    .filter((r) => r.gap && r.gap.status === 'ok' && gapRatio(r.gap) >= MIN_GAP)
     .slice(0, 3)) {
     const gap = row.gap!
     actions.push({
@@ -507,8 +518,20 @@ function CharacterTable({
                       component={RouterLink}
                       to={`/teams/${gap.teamId}/${gap.charKey}/optimize`}
                       underline="hover"
+                      color={gap.status === 'ok' ? 'primary' : 'warning.main'}
+                      title={
+                        gap.status === 'missing'
+                          ? '最適化結果の聖遺物が削除されています。最適化をやり直してください'
+                          : gap.status === 'outdated'
+                            ? `今の装備のほうが最適化結果より ${(-gapRatio(gap) * 100).toFixed(1)}% 高いです。最適化をやり直してください`
+                            : undefined
+                      }
                     >
-                      +{(gapRatio(gap) * 100).toFixed(1)}%
+                      {gap.status === 'missing'
+                        ? '結果が古い（聖遺物削除済み）'
+                        : gap.status === 'outdated'
+                          ? '結果が古い（今の装備が上）'
+                          : `+${(gapRatio(gap) * 100).toFixed(1)}%`}
                     </Link>
                   ) : gapsDone ? (
                     <Typography variant="body2" color="text.secondary">

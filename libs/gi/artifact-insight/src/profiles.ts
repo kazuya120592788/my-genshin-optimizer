@@ -135,9 +135,17 @@ export function inferProfile(
 
   const isScaling = (k: string): k is (typeof scalingKeys)[number] =>
     (scalingKeys as readonly string[]).includes(k)
-  if (narrowedMains.some(isScaling)) {
+  // 伸ばすステータスを1つでも外している部位だけを、伸ばすステータスの指定とみなす。
+  // 「ほかの元素の杯だけ外す」のように伸ばすステータスを全部残した絞り込みでは、
+  // 伸ばすステータスは選んでいないので装備から推定する。
+  const narrowedScaling = mainStatSlotKeys.flatMap((slot) => {
+    const selected = (narrowed[slot] ?? []).filter(isScaling)
+    const available = artSlotMainKeys[slot].filter(isScaling)
+    return selected.length < available.length ? selected : []
+  })
+  if (narrowedScaling.length) {
     // 最適化設定で選んだ伸ばすステータスはすべて使う
-    for (const k of narrowedMains) if (isScaling(k)) keys.add(k)
+    for (const k of narrowedScaling) keys.add(k)
   } else {
     const mainCount = (k: string) => equippedMains.filter((m) => m === k).length
     const subRolls = (k: SubstatKey) =>

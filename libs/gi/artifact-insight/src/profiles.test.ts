@@ -65,6 +65,29 @@ describe('inferProfile', () => {
     expect(p.mainStats!.sands).toEqual(['eleMas'])
   })
 
+  it('伸ばすステータスを全部残した絞り込み（ほかの元素の杯を外しただけ）では、装備から推定する', () => {
+    const p = inferProfile(
+      [
+        { slotKey: 'sands', mainStatKey: 'atk_' },
+        { slotKey: 'goblet', mainStatKey: 'anemo_dmg_' },
+        { slotKey: 'circlet', mainStatKey: 'critDMG_' },
+      ],
+      {
+        goblet: [
+          'hp_',
+          'eleMas',
+          'physical_dmg_',
+          'def_',
+          'atk_',
+          'anemo_dmg_',
+        ],
+      }
+    )!
+    expect(p.keys).toEqual(['atk_', 'critRate_', 'critDMG_'])
+    // 絞り込みそのものは、使えるメインステータスとして残す
+    expect(p.mainStats!.goblet).toContain('physical_dmg_')
+  })
+
   it('メインが割れたら、サブステの多い方を伸ばすステータスにし、合わないメインは使えないとみなす', () => {
     const p = inferProfile([
       {
