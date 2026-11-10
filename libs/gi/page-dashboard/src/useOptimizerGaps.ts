@@ -1,6 +1,7 @@
 import { useDataManagerValues } from '@genshin-optimizer/common/database-ui'
 import { objPathValue } from '@genshin-optimizer/common/util'
 import type { CharacterKey } from '@genshin-optimizer/gi/consts'
+import { allArtifactSlotKeys } from '@genshin-optimizer/gi/consts'
 import type { ICachedArtifact } from '@genshin-optimizer/gi/db'
 import { useDatabase, useDBMeta } from '@genshin-optimizer/gi/db-ui'
 import { getTeamDataCalc } from '@genshin-optimizer/gi/ui'
@@ -16,6 +17,13 @@ export interface OptimizerGap {
   best: number
   /** 最適化した日時 */
   buildDate: number
+  /**
+   * 最適化結果が今も使えるか。
+   * - ok: 使える
+   * - outdated: 今の装備のほうが良い（最適化したあとに装備を良くした）
+   * - missing: 最適化結果の聖遺物が削除されていて比べられない（best は current と同じ値にしている）
+   */
+  status: 'ok' | 'outdated' | 'missing'
 }
 
 /**
@@ -90,20 +98,26 @@ export function useOptimizerGaps() {
           : Number.NaN
       }
       const current = value()
+      if (!Number.isFinite(current) || current <= 0) return undefined
+      const base = {
+        teamId,
+        charKey: teamChar.key,
+        current,
+        buildDate: list.buildDate,
+      }
+      // 削除された聖遺物は最適化結果から消えるので、部位が欠けた結果とは比べない
+      if (
+        !optConfig.allowPartial &&
+        allArtifactSlotKeys.some((slot) => !build.artifactIds[slot])
+      )
+        return { ...base, best: current, status: 'missing' }
       const best = value(
         Object.values(build.artifactIds)
           .map((id) => (id ? database.arts.get(id) : undefined))
           .filter((a): a is ICachedArtifact => !!a)
       )
-      if (!Number.isFinite(current) || !Number.isFinite(best) || current <= 0)
-        return undefined
-      return {
-        teamId,
-        charKey: teamChar.key,
-        current,
-        best,
-        buildDate: list.buildDate,
-      }
+      if (!Number.isFinite(best)) return undefined
+      return { ...base, best, status: best < current ? 'outdated' : 'ok' }
     }
     const timer = setTimeout(step, 0)
     return () => {

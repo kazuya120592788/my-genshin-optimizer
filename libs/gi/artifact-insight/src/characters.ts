@@ -3,6 +3,7 @@ import type {
   ArtifactSlotKey,
   CharacterKey,
 } from '@genshin-optimizer/gi/consts'
+import { charKeyToLocCharKey } from '@genshin-optimizer/gi/consts'
 import type { ArtCharDatabase, ICachedArtifact } from '@genshin-optimizer/gi/db'
 import type { ArtifactProfile } from './profiles'
 import { inferProfile } from './profiles'
@@ -19,12 +20,17 @@ export interface CharacterInsight {
 /**
  * 所持キャラごとに、装備中の聖遺物と最適化設定から型を推定する。
  * 聖遺物を何も装備しておらず、最適化設定でメインステータスも絞り込んでいないキャラは含めない。
+ * 旅人は元素ごとにキャラがいるが聖遺物は共通なので、最初の1人だけを含める。
  */
 export function getCharacterInsights(
   database: ArtCharDatabase
 ): CharacterInsight[] {
   const insights: CharacterInsight[] = []
+  const seenLocations = new Set<string>()
   for (const char of database.chars.values) {
+    const location = charKeyToLocCharKey(char.key)
+    if (seenLocations.has(location)) continue
+    seenLocations.add(location)
     const equipped: CharacterInsight['equipped'] = {}
     for (const [slot, id] of Object.entries(char.equippedArtifacts)) {
       const art = id ? database.arts.get(id) : undefined
